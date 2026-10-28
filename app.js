@@ -408,6 +408,130 @@ const PawBridgeStore = {
     }
   ],
 
+  // Statutory Document Verification & Audit State
+  ngoVerificationStatus: 'provisional', // 'provisional' | 'verified'
+  auditorMode: true,
+  activeDocFilter: 'all',
+  selectedDocId: null,
+  activeReplaceDocId: null,
+
+  verificationDocuments: [
+    {
+      id: 'doc-reg',
+      category: 'Legal Entity Identification',
+      title: 'Trust Registration Deed / Society Certificate',
+      mandatory: true,
+      fileName: 'society_reg_deed_dl_act_xxi_2018.pdf',
+      fileSize: '3.4 MB',
+      uploadDate: '14 Oct 2026, 10:45 AM',
+      uploadedBy: 'Trustee Dr. Ananya Sharma',
+      uploadProgress: 100,
+      status: 'verified', // 'draft' | 'pending' | 'verified' | 'needs_changes' | 'rejected'
+      isSensitive: true,
+      maskedId: 'DL/2018/****923',
+      authority: 'Sub-Registrar of Societies, Govt of NCT Delhi',
+      hash: 'SHA256: 8a93bf81e7d0...9b31',
+      reviewDate: '16 Oct 2026',
+      auditorNotes: 'Verified against Registrar of Societies NCT Delhi gazette records. Registered entity name and registered office address authenticated.',
+      auditorName: 'Adv. Vikramaditya Sen (Senior Legal Auditor)'
+    },
+    {
+      id: 'doc-pan',
+      category: 'Tax Identity & Clearance',
+      title: 'Permanent Account Number (PAN) Card & NGO Darpan UID',
+      mandatory: true,
+      fileName: 'ngo_pan_card_incorporation_dl.pdf',
+      fileSize: '1.2 MB',
+      uploadDate: '14 Oct 2026, 11:15 AM',
+      uploadedBy: 'Finance Officer R. Saxena',
+      uploadProgress: 100,
+      status: 'verified',
+      isSensitive: true,
+      maskedId: 'AAATP****K',
+      authority: 'Income Tax Department & NITI Aayog NGO Darpan',
+      hash: 'SHA256: 3d71ff90c421...889e',
+      reviewDate: '16 Oct 2026',
+      auditorNotes: 'Entity PAN matched on Income Tax Department CBDT database. NITI Aayog NGO Darpan UID #DL/2019/021948 verified active.',
+      auditorName: 'Adv. Vikramaditya Sen (Senior Legal Auditor)'
+    },
+    {
+      id: 'doc-12a80g',
+      category: 'Non-Profit Tax Exemption',
+      title: 'Section 12A & 80G Approval Orders (Form 10AC)',
+      mandatory: true,
+      fileName: 'form_10ac_provisional_ay2024_2029.pdf',
+      fileSize: '2.8 MB',
+      uploadDate: 'Yesterday at 04:30 PM',
+      uploadedBy: 'Trustee Dr. Ananya Sharma',
+      uploadProgress: 100,
+      status: 'pending',
+      isSensitive: true,
+      maskedId: 'CIT(EXEMP)/DELHI/****3381',
+      authority: 'Commissioner of Income Tax (Exemptions), New Delhi',
+      hash: 'SHA256: d472aa10fc83...01fa',
+      reviewDate: 'Queued in Desk 2',
+      auditorNotes: 'Document uploaded and queued for Section 80G validity audit. Compliance desk currently validating 5-year provisional order compliance.',
+      auditorName: 'Under Scrutiny by CA R. K. Bhasin'
+    },
+    {
+      id: 'doc-mou',
+      category: 'Operational Authorization',
+      title: 'Municipal Stray Animal Birth Control (ABC) MOU',
+      mandatory: true,
+      fileName: 'mcd_delhi_abc_arv_tender_agreement_2025.pdf',
+      fileSize: '5.1 MB',
+      uploadDate: '3 days ago',
+      uploadedBy: 'Operations Head Vikas',
+      uploadProgress: 100,
+      status: 'needs_changes',
+      isSensitive: true,
+      maskedId: 'MCD/VET/2025/****401',
+      authority: 'Municipal Corporation of Delhi (Veterinary Services)',
+      hash: 'SHA256: 7f33bb19a12c...a024',
+      reviewDate: '26 Oct 2026',
+      auditorNotes: 'Auditor Remark: Page 6 of the Municipal bilateral agreement is missing the Executive Veterinary Officer municipal counter-stamp. Please re-upload the fully executed 7-page bilateral MOU.',
+      auditorName: 'Dr. Suniti Rao (Municipal Liaison Officer)'
+    },
+    {
+      id: 'doc-audit',
+      category: 'Humane Shelter Standards',
+      title: 'Veterinary Council of India (VCI) Shelter Ground Audit',
+      mandatory: false,
+      fileName: 'vci_shelter_inspection_audit_q3_2026.pdf',
+      fileSize: '4.6 MB',
+      uploadDate: 'Staged on Local Workstation',
+      uploadedBy: 'Draft by Vikas',
+      uploadProgress: 45,
+      status: 'draft',
+      isSensitive: true,
+      maskedId: 'VCI/INSP/2026/****12',
+      authority: 'Veterinary Council of India State Inspection Committee',
+      hash: 'SHA256: Pending upload completion',
+      reviewDate: 'Draft Staged',
+      auditorNotes: 'Draft staged locally. Click "Replace / Finalize Upload" to transfer to encrypted statutory vault and queue for compliance review.',
+      auditorName: 'Unassigned (Draft State)'
+    },
+    {
+      id: 'doc-fcra',
+      category: 'Cross-Border Giving Compliance',
+      title: 'Foreign Contribution Regulation Act (FCRA) License',
+      mandatory: false,
+      fileName: 'fcra_renewal_mha_notice_2024.pdf',
+      fileSize: '1.9 MB',
+      uploadDate: '15 Oct 2026',
+      uploadedBy: 'Finance Officer R. Saxena',
+      uploadProgress: 100,
+      status: 'rejected',
+      isSensitive: true,
+      maskedId: 'MHA/FCRA/Reg-****0144',
+      authority: 'Ministry of Home Affairs, Foreigners Division',
+      hash: 'SHA256: c382a991b100...ff42',
+      reviewDate: '18 Oct 2026',
+      auditorNotes: 'Disapproved: Certificate validity lapsed on 31 March 2024. The Ministry of Home Affairs validity extension notification or renewed Form FC-3R acknowledgement must be provided.',
+      auditorName: 'Adv. Vikramaditya Sen (Senior Legal Auditor)'
+    }
+  ],
+
   // Live Notifications
   notifications: [
     { id: 'notif-1', title: 'Critical Rescue Admitted', text: 'Case #RC-1048 (Leo) admitted to ICU-03. Surgical team on standby.', time: '45m ago', unread: true },
@@ -501,6 +625,68 @@ const PawBridgeApp = {
       // Dispatch Screen Elements
       dispatchIncidentsList: document.getElementById('dispatch-incidents-list'),
       btnTriggerSos: document.getElementById('btn-trigger-sos'),
+
+      // Document Verification Screen Elements
+      btnNavVerification: document.getElementById('btn-nav-verification'),
+      screenVerification: document.getElementById('screen-verification'),
+      verificationDocsGrid: document.getElementById('verification-docs-grid'),
+      checklistItemsContainer: document.getElementById('checklist-items-container'),
+      checklistPercentage: document.getElementById('checklist-percentage'),
+      checklistCounts: document.getElementById('checklist-counts'),
+      checklistStatusBadge: document.getElementById('checklist-status-badge'),
+      ngoStatusPill: document.getElementById('ngo-status-pill'),
+      safeguardProgressText: document.getElementById('safeguard-progress-text'),
+      safeguardProgressFill: document.getElementById('safeguard-progress-fill'),
+      btnToggleAuditorMode: document.getElementById('btn-toggle-auditor-mode'),
+      auditorModeLabel: document.getElementById('auditor-mode-label'),
+      btnRequestFinalSignoff: document.getElementById('btn-request-final-signoff'),
+      btnUploadAdditionalEvidence: document.getElementById('btn-upload-additional-evidence'),
+      filterChipsContainer: document.getElementById('verification-filter-chips'),
+
+      // Auditor Console Simulation Triggers
+      btnSimNeedsChangesFix: document.getElementById('btn-sim-needs-changes-fix'),
+      btnSimApproveAllMandatory: document.getElementById('btn-sim-approve-all-mandatory'),
+      btnSimResetDocs: document.getElementById('btn-sim-reset-docs'),
+
+      // Secure Doc Viewer Modal Elements
+      modalSecureDocViewer: document.getElementById('modal-secure-doc-viewer'),
+      btnCloseDocViewer: document.getElementById('btn-close-doc-viewer'),
+      viewerDocTitle: document.getElementById('viewer-doc-title'),
+      viewerDocCategory: document.getElementById('viewer-doc-category'),
+      viewerStatusPill: document.getElementById('viewer-status-pill'),
+      viewerReviewDate: document.getElementById('viewer-review-date'),
+      viewerStatusSelect: document.getElementById('viewer-status-select'),
+      viewerAuditorNotes: document.getElementById('viewer-auditor-notes'),
+      viewerFileSize: document.getElementById('viewer-file-size'),
+      viewerFileHash: document.getElementById('viewer-file-hash'),
+      viewerUploadedBy: document.getElementById('viewer-uploaded-by'),
+      viewerPaperInner: document.getElementById('viewer-paper-inner'),
+      btnViewerSaveStatus: document.getElementById('btn-viewer-save-status'),
+      btnViewerDownloadMock: document.getElementById('btn-viewer-download-mock'),
+
+      // Replace / Upload Document Modal Elements
+      modalReplaceDocument: document.getElementById('modal-replace-document'),
+      btnCloseReplaceModal: document.getElementById('btn-close-replace-modal'),
+      btnCancelReplaceModal: document.getElementById('btn-cancel-replace-modal'),
+      replaceDropzone: document.getElementById('replace-dropzone'),
+      replaceFileInput: document.getElementById('replace-file-input'),
+      replaceProgressContainer: document.getElementById('replace-progress-container'),
+      replaceProgressBar: document.getElementById('replace-progress-bar'),
+      replacePercentText: document.getElementById('replace-percent-text'),
+      replaceSelectedFilename: document.getElementById('replace-selected-filename'),
+      replaceStatusHint: document.getElementById('replace-status-hint'),
+      replaceBytesHint: document.getElementById('replace-bytes-hint'),
+      btnStartSimulatedUpload: document.getElementById('btn-start-simulated-upload'),
+      replaceModalTitle: document.getElementById('replace-modal-title'),
+      replaceModalSubtitle: document.getElementById('replace-modal-subtitle'),
+
+      // Auditor Sign-off Modal Elements
+      modalAuditorApproval: document.getElementById('modal-auditor-approval'),
+      btnCloseApprovalModal: document.getElementById('btn-close-approval-modal'),
+      btnCancelApprovalModal: document.getElementById('btn-cancel-approval-modal'),
+      btnConfirmFinalApproval: document.getElementById('btn-confirm-final-approval'),
+      approvalModalContent: document.getElementById('approval-modal-content'),
+      approvalModalFooter: document.getElementById('approval-modal-footer'),
 
       // Compliance Screen Elements
       complianceGrid: document.getElementById('compliance-grid'),
@@ -645,6 +831,12 @@ const PawBridgeApp = {
     }
     if (this.dom.btnNavRegister) {
       this.dom.btnNavRegister.addEventListener('click', () => this.switchAuthMode('register'));
+    }
+    if (this.dom.btnNavVerification) {
+      this.dom.btnNavVerification.addEventListener('click', () => {
+        this.switchAuthMode('app');
+        this.navigateTo('verification');
+      });
     }
 
     // Inter-screen Auth Links
@@ -894,6 +1086,94 @@ const PawBridgeApp = {
     // Restock All button in inventory
     if (this.dom.btnRestockAll) {
       this.dom.btnRestockAll.addEventListener('click', () => this.restockInventory());
+    }
+
+    // ============================================================
+    // DOCUMENT VERIFICATION & STATUTORY AUDIT EVENT LISTENERS
+    // ============================================================
+    if (this.dom.btnToggleAuditorMode) {
+      this.dom.btnToggleAuditorMode.addEventListener('click', () => this.toggleAuditorMode());
+    }
+
+    if (this.dom.btnRequestFinalSignoff) {
+      this.dom.btnRequestFinalSignoff.addEventListener('click', () => this.openAuditorApprovalModal());
+    }
+
+    if (this.dom.btnUploadAdditionalEvidence) {
+      this.dom.btnUploadAdditionalEvidence.addEventListener('click', () => this.openReplaceModal('doc-audit'));
+    }
+
+    // Filter Chips
+    if (this.dom.filterChipsContainer) {
+      this.dom.filterChipsContainer.querySelectorAll('.verification-filter-chip').forEach(chip => {
+        chip.addEventListener('click', () => {
+          this.dom.filterChipsContainer.querySelectorAll('.verification-filter-chip').forEach(c => c.classList.remove('active'));
+          chip.classList.add('active');
+          PawBridgeStore.activeDocFilter = chip.getAttribute('data-filter') || 'all';
+          this.renderVerificationScreen();
+        });
+      });
+    }
+
+    // Auditor Console Simulations
+    if (this.dom.btnSimNeedsChangesFix) {
+      this.dom.btnSimNeedsChangesFix.addEventListener('click', () => this.simulateReuploadFix());
+    }
+    if (this.dom.btnSimApproveAllMandatory) {
+      this.dom.btnSimApproveAllMandatory.addEventListener('click', () => this.approveAllMandatoryDocs());
+    }
+    if (this.dom.btnSimResetDocs) {
+      this.dom.btnSimResetDocs.addEventListener('click', () => this.resetDocsState());
+    }
+
+    // Secure Document Viewer Modal
+    if (this.dom.btnCloseDocViewer) {
+      this.dom.btnCloseDocViewer.addEventListener('click', () => this.closeDocViewer());
+    }
+    if (this.dom.btnViewerSaveStatus) {
+      this.dom.btnViewerSaveStatus.addEventListener('click', () => this.saveViewerStatus());
+    }
+    if (this.dom.btnViewerDownloadMock) {
+      this.dom.btnViewerDownloadMock.addEventListener('click', () => {
+        this.showToast('Encrypted document copy downloaded (AES-256 watermarked)', 'success');
+      });
+    }
+
+    // Replace / Upload Modal
+    if (this.dom.btnCloseReplaceModal) {
+      this.dom.btnCloseReplaceModal.addEventListener('click', () => this.closeReplaceModal());
+    }
+    if (this.dom.btnCancelReplaceModal) {
+      this.dom.btnCancelReplaceModal.addEventListener('click', () => this.closeReplaceModal());
+    }
+    if (this.dom.replaceDropzone) {
+      this.dom.replaceDropzone.addEventListener('click', () => {
+        if (this.dom.replaceFileInput) this.dom.replaceFileInput.click();
+      });
+    }
+    if (this.dom.replaceFileInput) {
+      this.dom.replaceFileInput.addEventListener('change', (e) => {
+        const file = e.target.files[0];
+        if (file && this.dom.replaceSelectedFilename && this.dom.replaceProgressContainer) {
+          this.dom.replaceSelectedFilename.textContent = file.name;
+          this.dom.replaceProgressContainer.style.display = 'block';
+          if (this.dom.replaceBytesHint) this.dom.replaceBytesHint.textContent = `0 MB / ${(file.size / (1024*1024)).toFixed(1)} MB`;
+        }
+      });
+    }
+    if (this.dom.btnStartSimulatedUpload) {
+      this.dom.btnStartSimulatedUpload.addEventListener('click', () => this.startSimulatedUpload());
+    }
+
+    // Auditor Approval Sign-Off Modal
+    if (this.dom.btnCloseApprovalModal) {
+      this.dom.btnCloseApprovalModal.addEventListener('click', () => this.closeAuditorApprovalModal());
+    }
+    if (this.dom.btnCancelApprovalModal) {
+      this.dom.btnCancelApprovalModal.addEventListener('click', () => this.closeAuditorApprovalModal());
+    }
+    if (this.dom.btnConfirmFinalApproval) {
+      this.dom.btnConfirmFinalApproval.addEventListener('click', () => this.confirmFinalApproval());
     }
   },
 
@@ -1384,6 +1664,7 @@ const PawBridgeApp = {
       clinical: { section: 'Veterinary Center', title: 'Clinical Care & Daily Meds' },
       adoptions: { section: 'Programs', title: 'Adoption & Foster Desk' },
       dispatch: { section: 'Logistics', title: 'Ambulance & Field Dispatch' },
+      verification: { section: 'Governance', title: 'Document Verification & Audit' },
       compliance: { section: 'Governance', title: 'Compliance & Document Vault' },
       inventory: { section: 'Logistics', title: 'Medical Supplies & Feed' }
     };
@@ -1416,6 +1697,9 @@ const PawBridgeApp = {
       case 'dispatch':
         this.renderDispatchIncidents();
         break;
+      case 'verification':
+        this.renderVerificationScreen();
+        break;
       case 'compliance':
         this.renderComplianceGrid();
         break;
@@ -1432,6 +1716,7 @@ const PawBridgeApp = {
     this.renderClinicalRounds();
     this.renderAdoptionsKanban();
     this.renderDispatchIncidents();
+    this.renderVerificationScreen();
     this.renderComplianceGrid();
     this.renderInventoryTable();
     this.renderNotifications();
@@ -1871,6 +2156,725 @@ const PawBridgeApp = {
     PawBridgeStore.dispatchIncidents.unshift(newInc);
     this.renderDispatchIncidents();
     this.showToast(`🚨 New emergency alert ${newId} logged and ambulance dispatched`, 'alert');
+  },
+
+  // ============================================================
+  // DOCUMENT VERIFICATION & STATUTORY AUDIT ENGINE
+  // ============================================================
+  renderVerificationScreen() {
+    if (!this.dom.verificationDocsGrid) return;
+
+    const docs = PawBridgeStore.verificationDocuments;
+    const mandatoryDocs = docs.filter(d => d.mandatory);
+    const mandatoryCount = mandatoryDocs.length;
+    const verifiedMandatoryCount = mandatoryDocs.filter(d => d.status === 'verified').length;
+    const compliancePercent = Math.round((verifiedMandatoryCount / mandatoryCount) * 100);
+
+    // Filter counts update
+    const counts = {
+      all: docs.length,
+      pending: docs.filter(d => d.status === 'pending').length,
+      needs_changes: docs.filter(d => d.status === 'needs_changes').length,
+      verified: docs.filter(d => d.status === 'verified').length,
+      draft: docs.filter(d => d.status === 'draft').length,
+      rejected: docs.filter(d => d.status === 'rejected').length
+    };
+
+    const countAllEl = document.getElementById('count-filter-all');
+    const countPendingEl = document.getElementById('count-filter-pending');
+    const countNeedsChangesEl = document.getElementById('count-filter-needs-changes');
+    const countVerifiedEl = document.getElementById('count-filter-verified');
+    const countDraftEl = document.getElementById('count-filter-draft');
+    const countRejectedEl = document.getElementById('count-filter-rejected');
+
+    if (countAllEl) countAllEl.textContent = counts.all;
+    if (countPendingEl) countPendingEl.textContent = counts.pending;
+    if (countNeedsChangesEl) countNeedsChangesEl.textContent = counts.needs_changes;
+    if (countVerifiedEl) countVerifiedEl.textContent = counts.verified;
+    if (countDraftEl) countDraftEl.textContent = counts.draft;
+    if (countRejectedEl) countRejectedEl.textContent = counts.rejected;
+
+    // Safeguard Progress update
+    if (this.dom.safeguardProgressText) {
+      this.dom.safeguardProgressText.textContent = `${verifiedMandatoryCount} of ${mandatoryCount} Cleared (${compliancePercent}%)`;
+    }
+    if (this.dom.safeguardProgressFill) {
+      this.dom.safeguardProgressFill.style.width = `${compliancePercent}%`;
+    }
+    if (this.dom.checklistPercentage) {
+      this.dom.checklistPercentage.textContent = `${compliancePercent}%`;
+    }
+    if (this.dom.checklistCounts) {
+      this.dom.checklistCounts.textContent = `${verifiedMandatoryCount} / ${mandatoryCount} Mandatory`;
+    }
+
+    // Gatekeeping Rule: Do not mark an NGO verified before approval
+    const isFullyApproved = verifiedMandatoryCount === mandatoryCount && PawBridgeStore.ngoVerificationStatus === 'verified';
+
+    if (this.dom.ngoStatusPill) {
+      if (isFullyApproved) {
+        this.dom.ngoStatusPill.className = 'status-pill status-verified';
+        this.dom.ngoStatusPill.textContent = '✓ Verified Tier-1 Non-Profit Trust';
+      } else if (verifiedMandatoryCount === mandatoryCount) {
+        this.dom.ngoStatusPill.className = 'status-pill status-pending';
+        this.dom.ngoStatusPill.textContent = 'Mandatory Criteria Met • Ready for Auditor Sign-Off';
+      } else {
+        this.dom.ngoStatusPill.className = 'status-pill status-pending';
+        this.dom.ngoStatusPill.textContent = 'Provisional Tier-1 • Clearance Incomplete';
+      }
+    }
+
+    if (this.dom.checklistStatusBadge) {
+      if (isFullyApproved) {
+        this.dom.checklistStatusBadge.className = 'status-pill status-verified';
+        this.dom.checklistStatusBadge.textContent = 'Verified Active';
+      } else if (verifiedMandatoryCount === mandatoryCount) {
+        this.dom.checklistStatusBadge.className = 'status-pill status-pending';
+        this.dom.checklistStatusBadge.textContent = 'Ready for Sign-Off';
+      } else {
+        this.dom.checklistStatusBadge.className = 'status-pill status-pending';
+        this.dom.checklistStatusBadge.textContent = 'In Progress';
+      }
+    }
+
+    // Render Checklist Items
+    if (this.dom.checklistItemsContainer) {
+      this.dom.checklistItemsContainer.innerHTML = docs.map(d => {
+        const bullets = {
+          verified: '✓',
+          pending: '⏳',
+          needs_changes: '⚠️',
+          rejected: '✕',
+          draft: '📄'
+        };
+        const statusLabels = {
+          verified: 'Verified',
+          pending: 'Pending Review',
+          needs_changes: 'Needs Changes',
+          rejected: 'Rejected',
+          draft: 'Draft Staged'
+        };
+        return `
+          <div class="checklist-item ${d.status}">
+            <div class="checklist-item-bullet">${bullets[d.status]}</div>
+            <div class="checklist-item-content">
+              <div class="checklist-item-name">${d.title}</div>
+              <div class="checklist-item-sub">
+                ${d.mandatory ? '<strong>Mandatory</strong> • ' : 'Supporting • '}
+                <span class="status-pill status-${d.status.replace('_', '-')}" style="font-size: 10px; padding: 1px 6px;">
+                  ${statusLabels[d.status]}
+                </span>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    // Filter documents
+    const filter = PawBridgeStore.activeDocFilter || 'all';
+    const filteredDocs = filter === 'all' ? docs : docs.filter(d => d.status === filter);
+
+    // Render Document Upload Cards
+    this.dom.verificationDocsGrid.innerHTML = filteredDocs.map(d => this.generateDocCardMarkup(d)).join('');
+  },
+
+  generateDocCardMarkup(d) {
+    const statusClasses = {
+      draft: 'status-draft',
+      pending: 'status-pending',
+      verified: 'status-verified',
+      needs_changes: 'status-needs-changes',
+      rejected: 'status-rejected'
+    };
+
+    const statusLabels = {
+      draft: 'Draft',
+      pending: 'Pending review',
+      verified: 'Verified',
+      needs_changes: 'Needs changes',
+      rejected: 'Rejected'
+    };
+
+    const isNeedsChanges = d.status === 'needs_changes';
+    const isRejected = d.status === 'rejected';
+
+    return `
+      <div class="verification-doc-card ${d.mandatory ? 'mandatory-card' : ''} ${isNeedsChanges ? 'needs-changes-card' : ''} ${isRejected ? 'rejected-card' : ''}">
+        <!-- Card Top Header -->
+        <div class="doc-card-header">
+          <div>
+            <div class="doc-card-category">${d.category}</div>
+            <h3 class="doc-card-title">${d.title}</h3>
+          </div>
+          <span class="status-pill ${statusClasses[d.status]}">
+            ${statusLabels[d.status]}
+          </span>
+        </div>
+
+        <!-- Privacy & Protection Shields -->
+        <div class="doc-card-badges-row">
+          ${d.mandatory ? '<span class="privacy-shield-tag" style="background: rgba(83, 103, 71, 0.12); color: var(--color-olive-dark); font-weight: 600;">★ Mandatory Statutory Item</span>' : '<span class="privacy-shield-tag">Supporting Evidence</span>'}
+          <span class="privacy-shield-tag" title="Restricted to certified legal auditors">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            <span>AES-256 Confidential</span>
+          </span>
+          <span class="doc-masked-id" title="Statutory Identity / Tax ID">${d.maskedId}</span>
+        </div>
+
+        <!-- Attached File Info Box -->
+        <div class="doc-file-info-box">
+          <div class="doc-file-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          </div>
+          <div class="doc-file-meta">
+            <div class="doc-file-name" title="${d.fileName}">${d.fileName}</div>
+            <div class="doc-file-subtext">
+              <span>${d.fileSize}</span>
+              <span>•</span>
+              <span>${d.uploadDate}</span>
+              <span>•</span>
+              <span>${d.uploadedBy}</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Upload Progress Component -->
+        <div class="doc-upload-progress-wrap">
+          <div class="doc-progress-label-row">
+            <span>Upload Progress</span>
+            <strong>${d.uploadProgress}% ${d.uploadProgress === 100 ? 'Uploaded' : 'Staged'}</strong>
+          </div>
+          <div class="doc-progress-track">
+            <div class="doc-progress-fill status-${d.status.replace('_', '-')}" style="width: ${d.uploadProgress}%;"></div>
+          </div>
+        </div>
+
+        <!-- Auditor Remark & Feedback Box -->
+        <div class="doc-auditor-alert ${d.status}">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink: 0; margin-top: 1px;">
+            ${d.status === 'verified' ? '<polyline points="20 6 9 17 4 12"/>' : (d.status === 'needs_changes' ? '<polygon points="7.86 2 16.14 2 22 7.86 22 16.14 16.14 22 7.86 22 2 16.14 2 7.86 7.86 2"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>' : '<circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>')}
+          </svg>
+          <div>
+            <strong>${d.status === 'verified' ? 'Auditor Attestation: ' : (d.status === 'needs_changes' ? 'Action Required: ' : (d.status === 'rejected' ? 'Rejection Reason: ' : 'Status Remark: '))}</strong>
+            <span>${d.auditorNotes}</span>
+          </div>
+        </div>
+
+        <!-- Action Buttons Footer -->
+        <div class="doc-card-actions">
+          <div class="doc-card-actions-left">
+            <button type="button" class="btn-card-action" onclick="PawBridgeApp.openDocViewer('${d.id}')" title="Inspect official document in encrypted viewer">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+              <span>Preview</span>
+            </button>
+            <button type="button" class="btn-card-action" onclick="PawBridgeApp.openReplaceModal('${d.id}')" title="Upload revised or replacement file">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+              <span>Replace</span>
+            </button>
+            <button type="button" class="btn-card-action danger" onclick="PawBridgeApp.removeDocFile('${d.id}')" title="Remove document and reset to Draft">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+              <span>Remove</span>
+            </button>
+          </div>
+
+          <!-- Auditor Fast Status Select -->
+          <div style="display: flex; align-items: center; gap: 4px;">
+            <label style="font-size: 11px; color: var(--color-text-subtle);">Auditor:</label>
+            <select class="auditor-status-select" onchange="PawBridgeApp.quickChangeDocStatus('${d.id}', this.value)" title="Change document status directly">
+              <option value="draft" ${d.status === 'draft' ? 'selected' : ''}>Draft</option>
+              <option value="pending" ${d.status === 'pending' ? 'selected' : ''}>Pending review</option>
+              <option value="verified" ${d.status === 'verified' ? 'selected' : ''}>Verified</option>
+              <option value="needs_changes" ${d.status === 'needs_changes' ? 'selected' : ''}>Needs changes</option>
+              <option value="rejected" ${d.status === 'rejected' ? 'selected' : ''}>Rejected</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    `;
+  },
+
+  openDocViewer(docId) {
+    const doc = PawBridgeStore.verificationDocuments.find(d => d.id === docId);
+    if (!doc) return;
+
+    PawBridgeStore.selectedDocId = docId;
+
+    if (this.dom.viewerDocTitle) this.dom.viewerDocTitle.textContent = doc.title;
+    if (this.dom.viewerDocCategory) this.dom.viewerDocCategory.textContent = doc.category;
+    if (this.dom.viewerReviewDate) this.dom.viewerReviewDate.textContent = doc.reviewDate;
+    if (this.dom.viewerFileSize) this.dom.viewerFileSize.textContent = doc.fileSize;
+    if (this.dom.viewerFileHash) this.dom.viewerFileHash.textContent = doc.hash;
+    if (this.dom.viewerUploadedBy) this.dom.viewerUploadedBy.textContent = doc.uploadedBy;
+    if (this.dom.viewerAuditorNotes) this.dom.viewerAuditorNotes.value = doc.auditorNotes;
+
+    const statusClasses = {
+      draft: 'status-draft',
+      pending: 'status-pending',
+      verified: 'status-verified',
+      needs_changes: 'status-needs-changes',
+      rejected: 'status-rejected'
+    };
+    const statusLabels = {
+      draft: 'Draft Staged',
+      pending: 'Pending Review',
+      verified: 'Verified Active',
+      needs_changes: 'Needs Changes',
+      rejected: 'Rejected'
+    };
+
+    if (this.dom.viewerStatusPill) {
+      this.dom.viewerStatusPill.className = `status-pill ${statusClasses[doc.status]}`;
+      this.dom.viewerStatusPill.textContent = statusLabels[doc.status];
+    }
+    if (this.dom.viewerStatusSelect) {
+      this.dom.viewerStatusSelect.value = doc.status;
+    }
+
+    // Official Document Paper Simulation Inner Markup
+    if (this.dom.viewerPaperInner) {
+      this.dom.viewerPaperInner.innerHTML = `
+        <div style="border-bottom: 2px solid #29352B; padding-bottom: 14px; margin-bottom: 20px; text-align: center;">
+          <div style="font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 700; color: #536747;">
+            GOVERNMENT OF NATIONAL CAPITAL TERRITORY OF DELHI
+          </div>
+          <div style="font-size: 10px; color: #666; margin-top: 2px;">
+            OFFICIAL STATUTORY RECORD • ANIMAL WELFARE RECOGNITION ENCLAVE
+          </div>
+          <h2 style="font-size: 18px; margin: 12px 0 4px; font-weight: 700; color: #1E281F; font-family: serif;">
+            ${doc.title.toUpperCase()}
+          </h2>
+          <div style="font-size: 11px; font-family: monospace; color: #444;">
+            REGISTRATION IDENTIFIER: <span style="background: #FFF9E6; padding: 2px 6px; border: 1px solid #E5B95C; font-weight: bold;">${doc.maskedId}</span>
+          </div>
+        </div>
+
+        <div style="font-size: 13px; line-height: 22px; color: #2A362B; font-family: serif; margin-bottom: 24px;">
+          <p style="margin-bottom: 12px;">
+            This is to certify that <strong>HAPPY TAILS ANIMAL SANCTUARY TRUST</strong> has deposited and verified the aforementioned instrument pursuant to the applicable animal protection statutes and charity registration regulations.
+          </p>
+          <div style="background: #F8F6F0; border-left: 3px solid #536747; padding: 10px 14px; margin: 12px 0; font-size: 12px; font-family: sans-serif;">
+            <div><strong>Statutory Authority:</strong> ${doc.authority}</div>
+            <div><strong>Attested Officer:</strong> ${doc.auditorName}</div>
+            <div><strong>Cryptographic Hash:</strong> <span style="font-family: monospace; font-size: 11px;">${doc.hash}</span></div>
+            <div><strong>Privacy Redaction:</strong> Non-public trustee identifiers masked per PawBridge Security Enclave.</div>
+          </div>
+          <p>
+            The organization is maintained on active clinical registry and remains subject to periodic veterinary board inspection.
+          </p>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-top: 36px; padding-top: 14px; border-top: 1px dashed #CCC; font-family: sans-serif;">
+          <div>
+            <div style="font-size: 10px; text-transform: uppercase; color: #777;">Digital Signature</div>
+            <div style="font-family: monospace; font-size: 11px; color: #536747; font-weight: bold;">✓ CRYPTO-SIGNED (AWBI-2026)</div>
+            <div style="font-size: 10px; color: #999;">Hash: ${doc.hash.slice(0, 22)}...</div>
+          </div>
+          <div style="text-align: right;">
+            <div style="width: 64px; height: 64px; border: 2px solid #536747; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 9px; text-transform: uppercase; font-weight: bold; color: #536747; text-align: center; line-height: 11px; margin-left: auto;">
+              SEAL OF<br>TRUST<br>VERIFIED
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    if (this.dom.modalSecureDocViewer) {
+      this.dom.modalSecureDocViewer.classList.add('active');
+    }
+  },
+
+  closeDocViewer() {
+    if (this.dom.modalSecureDocViewer) {
+      this.dom.modalSecureDocViewer.classList.remove('active');
+    }
+  },
+
+  saveViewerStatus() {
+    const docId = PawBridgeStore.selectedDocId;
+    if (!docId) return;
+
+    const doc = PawBridgeStore.verificationDocuments.find(d => d.id === docId);
+    if (!doc) return;
+
+    const newStatus = this.dom.viewerStatusSelect?.value || doc.status;
+    const newNotes = this.dom.viewerAuditorNotes?.value.trim() || doc.auditorNotes;
+
+    doc.status = newStatus;
+    doc.auditorNotes = newNotes;
+    doc.reviewDate = 'Today (Auditor Update)';
+
+    this.closeDocViewer();
+    this.renderVerificationScreen();
+    this.showToast(`Updated audit status for ${doc.title}: ${newStatus.toUpperCase()}`, 'success');
+  },
+
+  openReplaceModal(docId) {
+    const doc = PawBridgeStore.verificationDocuments.find(d => d.id === docId);
+    if (!doc) return;
+
+    PawBridgeStore.activeReplaceDocId = docId;
+
+    if (this.dom.replaceModalTitle) this.dom.replaceModalTitle.textContent = `Upload / Replace ${doc.title}`;
+    if (this.dom.replaceModalSubtitle) this.dom.replaceModalSubtitle.textContent = `Replacing current file: ${doc.fileName}`;
+
+    if (this.dom.replaceProgressContainer) this.dom.replaceProgressContainer.style.display = 'none';
+    if (this.dom.replaceProgressBar) this.dom.replaceProgressBar.style.width = '0%';
+    if (this.dom.replacePercentText) this.dom.replacePercentText.textContent = '0%';
+    if (this.dom.replaceSelectedFilename) this.dom.replaceSelectedFilename.textContent = `revised_${doc.id}_certified.pdf`;
+
+    if (this.dom.modalReplaceDocument) {
+      this.dom.modalReplaceDocument.classList.add('active');
+    }
+  },
+
+  closeReplaceModal() {
+    if (this.dom.modalReplaceDocument) {
+      this.dom.modalReplaceDocument.classList.remove('active');
+    }
+  },
+
+  startSimulatedUpload() {
+    const docId = PawBridgeStore.activeReplaceDocId;
+    const doc = PawBridgeStore.verificationDocuments.find(d => d.id === docId);
+    if (!doc) return;
+
+    if (this.dom.replaceProgressContainer) this.dom.replaceProgressContainer.style.display = 'block';
+
+    const bar = this.dom.replaceProgressBar;
+    const percent = this.dom.replacePercentText;
+    const hint = this.dom.replaceStatusHint;
+    const bytes = this.dom.replaceBytesHint;
+    const btn = this.dom.btnStartSimulatedUpload;
+
+    if (btn) btn.disabled = true;
+
+    let progress = 0;
+    const interval = setInterval(() => {
+      progress += 25;
+      if (bar) bar.style.width = `${progress}%`;
+      if (percent) percent.textContent = `${progress}%`;
+
+      if (progress === 25) {
+        if (hint) hint.textContent = 'Encrypting document payload with AES-256-GCM...';
+        if (bytes) bytes.textContent = '1.1 MB / 4.2 MB';
+      } else if (progress === 50) {
+        if (hint) hint.textContent = 'Computing SHA-256 cryptographic digest...';
+        if (bytes) bytes.textContent = '2.4 MB / 4.2 MB';
+      } else if (progress === 75) {
+        if (hint) hint.textContent = 'Transferring to PawBridge statutory vault...';
+        if (bytes) bytes.textContent = '3.5 MB / 4.2 MB';
+      } else if (progress >= 100) {
+        clearInterval(interval);
+        if (hint) hint.textContent = 'Upload complete! Attached to verification pipeline.';
+        if (bytes) bytes.textContent = '4.2 MB / 4.2 MB';
+
+        setTimeout(() => {
+          doc.fileName = this.dom.replaceSelectedFilename?.textContent || `revised_${doc.id}_final.pdf`;
+          doc.fileSize = '4.2 MB';
+          doc.uploadDate = 'Just now';
+          doc.uploadedBy = 'Trustee Dr. Ananya Sharma';
+          doc.uploadProgress = 100;
+          doc.status = 'pending';
+          doc.auditorNotes = 'Revised document uploaded. Queued for certified legal officer scrutiny.';
+
+          if (btn) btn.disabled = false;
+          this.closeReplaceModal();
+          this.renderVerificationScreen();
+          this.showToast(`✓ Revised ${doc.title} uploaded and queued for review`, 'success');
+        }, 500);
+      }
+    }, 280);
+  },
+
+  removeDocFile(docId) {
+    const doc = PawBridgeStore.verificationDocuments.find(d => d.id === docId);
+    if (!doc) return;
+
+    if (confirm(`Remove "${doc.fileName}"? This document will be cleared and reset to Draft state awaiting re-upload.`)) {
+      doc.fileName = 'No file attached - Staged draft';
+      doc.fileSize = '0 MB';
+      doc.uploadProgress = 0;
+      doc.status = 'draft';
+      doc.auditorNotes = 'Document removed by trustee. Re-upload required to enter verification queue.';
+
+      this.renderVerificationScreen();
+      this.showToast(`Document file removed and status reset to Draft`, 'alert');
+    }
+  },
+
+  quickChangeDocStatus(docId, newStatus) {
+    const doc = PawBridgeStore.verificationDocuments.find(d => d.id === docId);
+    if (!doc) return;
+
+    doc.status = newStatus;
+    if (newStatus === 'verified') {
+      doc.uploadProgress = 100;
+      doc.auditorNotes = 'Approved: Document verified against official gazette records by compliance panel.';
+    } else if (newStatus === 'needs_changes') {
+      doc.auditorNotes = 'Action Required: Page 6 requires executive authority counter-signature. Please re-upload.';
+    } else if (newStatus === 'rejected') {
+      doc.auditorNotes = 'Disapproved: Instrument expired or registration name mismatch.';
+    } else if (newStatus === 'pending') {
+      doc.uploadProgress = 100;
+      doc.auditorNotes = 'Queued in Desk 2. Under scrutiny by statutory legal auditor.';
+    } else if (newStatus === 'draft') {
+      doc.uploadProgress = 40;
+      doc.auditorNotes = 'Draft file staged on local workstation. Click Replace/Upload to finalize.';
+    }
+
+    this.renderVerificationScreen();
+    this.showToast(`[Auditor Mode] Set ${doc.title} to ${newStatus.toUpperCase()}`, 'success');
+  },
+
+  openAuditorApprovalModal() {
+    const docs = PawBridgeStore.verificationDocuments;
+    const mandatoryDocs = docs.filter(d => d.mandatory);
+    const unverifiedMandatory = mandatoryDocs.filter(d => d.status !== 'verified');
+    const isReady = unverifiedMandatory.length === 0;
+
+    const content = this.dom.approvalModalContent;
+    const footer = this.dom.approvalModalFooter;
+
+    if (!isReady) {
+      if (content) {
+        content.innerHTML = `
+          <div style="background: #FDF1ED; border: 1px solid var(--color-terracotta-border); border-radius: 8px; padding: 16px; margin-bottom: 16px;">
+            <div style="display: flex; gap: 10px; align-items: flex-start;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--color-terracotta); flex-shrink: 0; margin-top: 2px;">
+                <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
+              </svg>
+              <div>
+                <strong style="font-size: 14px; color: var(--color-terracotta-dark);">Verification Approval Blocked</strong>
+                <p style="font-size: 13px; line-height: 19px; color: #7B3E2C; margin-top: 4px;">
+                  Per PawBridge statutory guidelines, an NGO cannot be marked as verified prior to formal legal clearance of <strong>all mandatory documents</strong>.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div style="font-size: 13px; font-weight: 600; color: var(--color-text-dark); margin-bottom: 8px;">
+            Unresolved Mandatory Documents (${unverifiedMandatory.length}):
+          </div>
+          <ul style="padding-left: 20px; font-size: 13px; color: var(--color-text-muted); line-height: 22px; margin-bottom: 16px;">
+            ${unverifiedMandatory.map(d => `<li><strong>${d.title}</strong> — Current status: <span class="status-pill status-${d.status.replace('_', '-')}" style="font-size: 11px; padding: 1px 6px;">${d.status.toUpperCase()}</span></li>`).join('')}
+          </ul>
+
+          <p style="font-size: 12px; color: var(--color-text-subtle); line-height: 18px;">
+            Tip: You can use the "Approve All Mandatory Documents" trigger in the Auditor Simulation Console on the right to test the successful verification state.
+          </p>
+        `;
+      }
+      if (this.dom.btnConfirmFinalApproval) {
+        this.dom.btnConfirmFinalApproval.style.display = 'none';
+      }
+    } else {
+      if (content) {
+        content.innerHTML = `
+          <div style="background: #F3F7F0; border: 1px solid #C8DEC2; border-radius: 8px; padding: 16px; margin-bottom: 16px;">
+            <div style="display: flex; gap: 10px; align-items: flex-start;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="color: var(--color-olive); flex-shrink: 0; margin-top: 2px;">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+              <div>
+                <strong style="font-size: 14px; color: var(--color-olive-dark);">All Mandatory Compliance Clearances Verified</strong>
+                <p style="font-size: 13px; line-height: 19px; color: #354E2C; margin-top: 4px;">
+                  Happy Tails Animal Sanctuary Trust has cleared all 4 mandatory legal prerequisites. You are authorized to affix the cryptographic compliance key.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div style="background: #FAF8F2; border: 1px solid var(--color-border); border-radius: 8px; padding: 14px; margin-bottom: 16px; font-size: 12px; line-height: 20px;">
+            <div><strong>Entity:</strong> Happy Tails Animal Sanctuary Trust (#DL-402)</div>
+            <div><strong>Auditor:</strong> Adv. Vikramaditya Sen, Senior Compliance Panel</div>
+            <div><strong>Cryptographic Key:</strong> <span style="font-family: monospace;">RSA-4096: 9b23-ac44-f810-77a1</span></div>
+            <div><strong>Audit Stamp:</strong> AWBI & MCA Section 80G Attestation</div>
+          </div>
+
+          <label class="custom-checkbox-wrap" style="font-size: 13px;">
+            <input type="checkbox" id="chk-auditor-affirmation" checked />
+            <span>I confirm that all uploaded documents have been inspected against sovereign registries and declare this shelter Tier-1 Verified.</span>
+          </label>
+        `;
+      }
+      if (this.dom.btnConfirmFinalApproval) {
+        this.dom.btnConfirmFinalApproval.style.display = 'inline-flex';
+      }
+    }
+
+    if (this.dom.modalAuditorApproval) {
+      this.dom.modalAuditorApproval.classList.add('active');
+    }
+  },
+
+  closeAuditorApprovalModal() {
+    if (this.dom.modalAuditorApproval) {
+      this.dom.modalAuditorApproval.classList.remove('active');
+    }
+  },
+
+  confirmFinalApproval() {
+    PawBridgeStore.ngoVerificationStatus = 'verified';
+    this.closeAuditorApprovalModal();
+    this.renderVerificationScreen();
+    this.showToast('🎉 Official NGO Verification Approved! Tier-1 Trust Seal and public trust features unlocked.', 'success');
+  },
+
+  simulateReuploadFix() {
+    const mou = PawBridgeStore.verificationDocuments.find(d => d.id === 'doc-mou');
+    if (mou) {
+      mou.status = 'pending';
+      mou.fileName = 'mcd_delhi_abc_agreement_signed_page6_fixed.pdf';
+      mou.uploadDate = 'Just now (Resubmitted)';
+      mou.uploadProgress = 100;
+      mou.auditorNotes = 'Revised bilateral agreement with page 6 municipal stamp received. Under re-scrutiny.';
+      this.renderVerificationScreen();
+      this.showToast('✓ Simulated resubmission of Municipal ABC Agreement (Status -> Pending review)', 'success');
+    }
+  },
+
+  approveAllMandatoryDocs() {
+    PawBridgeStore.verificationDocuments.forEach(d => {
+      if (d.mandatory) {
+        d.status = 'verified';
+        d.uploadProgress = 100;
+        d.auditorNotes = 'Verified Active: Sovereign registration and tax records confirmed by compliance board.';
+      }
+    });
+    this.renderVerificationScreen();
+    this.showToast('✓ All mandatory documents set to Verified. You may now trigger final Auditor Sign-Off.', 'success');
+  },
+
+  resetDocsState() {
+    PawBridgeStore.ngoVerificationStatus = 'provisional';
+    PawBridgeStore.verificationDocuments = [
+      {
+        id: 'doc-reg',
+        category: 'Legal Entity Identification',
+        title: 'Trust Registration Deed / Society Certificate',
+        mandatory: true,
+        fileName: 'society_reg_deed_dl_act_xxi_2018.pdf',
+        fileSize: '3.4 MB',
+        uploadDate: '14 Oct 2026, 10:45 AM',
+        uploadedBy: 'Trustee Dr. Ananya Sharma',
+        uploadProgress: 100,
+        status: 'verified',
+        isSensitive: true,
+        maskedId: 'DL/2018/****923',
+        authority: 'Sub-Registrar of Societies, Govt of NCT Delhi',
+        hash: 'SHA256: 8a93bf81e7d0...9b31',
+        reviewDate: '16 Oct 2026',
+        auditorNotes: 'Verified against Registrar of Societies NCT Delhi gazette records. Registered entity name and registered office address authenticated.',
+        auditorName: 'Adv. Vikramaditya Sen (Senior Legal Auditor)'
+      },
+      {
+        id: 'doc-pan',
+        category: 'Tax Identity & Clearance',
+        title: 'Permanent Account Number (PAN) Card & NGO Darpan UID',
+        mandatory: true,
+        fileName: 'ngo_pan_card_incorporation_dl.pdf',
+        fileSize: '1.2 MB',
+        uploadDate: '14 Oct 2026, 11:15 AM',
+        uploadedBy: 'Finance Officer R. Saxena',
+        uploadProgress: 100,
+        status: 'verified',
+        isSensitive: true,
+        maskedId: 'AAATP****K',
+        authority: 'Income Tax Department & NITI Aayog NGO Darpan',
+        hash: 'SHA256: 3d71ff90c421...889e',
+        reviewDate: '16 Oct 2026',
+        auditorNotes: 'Entity PAN matched on Income Tax Department CBDT database. NITI Aayog NGO Darpan UID #DL/2019/021948 verified active.',
+        auditorName: 'Adv. Vikramaditya Sen (Senior Legal Auditor)'
+      },
+      {
+        id: 'doc-12a80g',
+        category: 'Non-Profit Tax Exemption',
+        title: 'Section 12A & 80G Approval Orders (Form 10AC)',
+        mandatory: true,
+        fileName: 'form_10ac_provisional_ay2024_2029.pdf',
+        fileSize: '2.8 MB',
+        uploadDate: 'Yesterday at 04:30 PM',
+        uploadedBy: 'Trustee Dr. Ananya Sharma',
+        uploadProgress: 100,
+        status: 'pending',
+        isSensitive: true,
+        maskedId: 'CIT(EXEMP)/DELHI/****3381',
+        authority: 'Commissioner of Income Tax (Exemptions), New Delhi',
+        hash: 'SHA256: d472aa10fc83...01fa',
+        reviewDate: 'Queued in Desk 2',
+        auditorNotes: 'Document uploaded and queued for Section 80G validity audit. Compliance desk currently validating 5-year provisional order compliance.',
+        auditorName: 'Under Scrutiny by CA R. K. Bhasin'
+      },
+      {
+        id: 'doc-mou',
+        category: 'Operational Authorization',
+        title: 'Municipal Stray Animal Birth Control (ABC) MOU',
+        mandatory: true,
+        fileName: 'mcd_delhi_abc_arv_tender_agreement_2025.pdf',
+        fileSize: '5.1 MB',
+        uploadDate: '3 days ago',
+        uploadedBy: 'Operations Head Vikas',
+        uploadProgress: 100,
+        status: 'needs_changes',
+        isSensitive: true,
+        maskedId: 'MCD/VET/2025/****401',
+        authority: 'Municipal Corporation of Delhi (Veterinary Services)',
+        hash: 'SHA256: 7f33bb19a12c...a024',
+        reviewDate: '26 Oct 2026',
+        auditorNotes: 'Auditor Remark: Page 6 of the Municipal bilateral agreement is missing the Executive Veterinary Officer municipal counter-stamp. Please re-upload the fully executed 7-page bilateral MOU.',
+        auditorName: 'Dr. Suniti Rao (Municipal Liaison Officer)'
+      },
+      {
+        id: 'doc-audit',
+        category: 'Humane Shelter Standards',
+        title: 'Veterinary Council of India (VCI) Shelter Ground Audit',
+        mandatory: false,
+        fileName: 'vci_shelter_inspection_audit_q3_2026.pdf',
+        fileSize: '4.6 MB',
+        uploadDate: 'Staged on Local Workstation',
+        uploadedBy: 'Draft by Vikas',
+        uploadProgress: 45,
+        status: 'draft',
+        isSensitive: true,
+        maskedId: 'VCI/INSP/2026/****12',
+        authority: 'Veterinary Council of India State Inspection Committee',
+        hash: 'SHA256: Pending upload completion',
+        reviewDate: 'Draft Staged',
+        auditorNotes: 'Draft staged locally. Click "Replace / Finalize Upload" to transfer to encrypted statutory vault and queue for compliance review.',
+        auditorName: 'Unassigned (Draft State)'
+      },
+      {
+        id: 'doc-fcra',
+        category: 'Cross-Border Giving Compliance',
+        title: 'Foreign Contribution Regulation Act (FCRA) License',
+        mandatory: false,
+        fileName: 'fcra_renewal_mha_notice_2024.pdf',
+        fileSize: '1.9 MB',
+        uploadDate: '15 Oct 2026',
+        uploadedBy: 'Finance Officer R. Saxena',
+        uploadProgress: 100,
+        status: 'rejected',
+        isSensitive: true,
+        maskedId: 'MHA/FCRA/Reg-****0144',
+        authority: 'Ministry of Home Affairs, Foreigners Division',
+        hash: 'SHA256: c382a991b100...ff42',
+        reviewDate: '18 Oct 2026',
+        auditorNotes: 'Disapproved: Certificate validity lapsed on 31 March 2024. The Ministry of Home Affairs validity extension notification or renewed Form FC-3R acknowledgement must be provided.',
+        auditorName: 'Adv. Vikramaditya Sen (Senior Legal Auditor)'
+      }
+    ];
+    this.renderVerificationScreen();
+    this.showToast('Reset documents state to initial demonstration scenario', 'success');
+  },
+
+  toggleAuditorMode() {
+    PawBridgeStore.auditorMode = !PawBridgeStore.auditorMode;
+    if (this.dom.auditorModeLabel) {
+      this.dom.auditorModeLabel.textContent = `Auditor Mode: ${PawBridgeStore.auditorMode ? 'Active' : 'Inactive'}`;
+    }
+    this.renderVerificationScreen();
+    this.showToast(`Auditor Review Mode ${PawBridgeStore.auditorMode ? 'Enabled' : 'Disabled'}`, 'success');
   },
 
   // ============================================================

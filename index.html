@@ -42,6 +42,9 @@
         <button type="button" class="proto-toggle-btn active" id="btn-nav-app" title="Shelter Operations Workspace">
           📊 Operations
         </button>
+        <button type="button" class="proto-toggle-btn" id="btn-nav-verification" title="Document Verification Screen">
+          🛡️ Verification
+        </button>
         <button type="button" class="proto-toggle-btn" id="btn-nav-login" title="Desktop Login Screen">
           🔐 Sign In
         </button>
@@ -1011,6 +1014,13 @@
               <!-- GROUP 3: GOVERNANCE & TRUST -->
               <div class="nav-section-group">
                 <div class="nav-section-title">Trust & Governance</div>
+                <button type="button" class="nav-item-btn" data-screen="verification">
+                  <div class="nav-item-left">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><path d="M9 15l2 2 4-4"/></svg>
+                    <span>Doc Verification</span>
+                  </div>
+                  <span class="nav-badge-pill gold" id="nav-badge-verification">Review</span>
+                </button>
                 <button type="button" class="nav-item-btn" data-screen="compliance">
                   <div class="nav-item-left">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 12 15 16 10"/></svg>
@@ -1606,6 +1616,181 @@
             </section>
 
             <!-- ------------------------------------------------------------
+                 SCREEN: DOCUMENT VERIFICATION & STATUTORY AUDIT
+                 ------------------------------------------------------------ -->
+            <section class="screen-view" id="screen-verification">
+              <!-- Screen Header Banner -->
+              <div class="screen-header-banner">
+                <div class="screen-header-left">
+                  <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 4px;">
+                    <h1 class="page-title-36" style="margin-bottom: 0;">Document Verification & Audit</h1>
+                    <span class="status-pill status-pending" id="ngo-status-pill">Provisional Tier-1 • Clearance Incomplete</span>
+                  </div>
+                  <p class="body-text-16 muted">Statutory scrutiny of incorporation, tax exemption orders, permanent ID, and shelter operational authorizations.</p>
+                </div>
+                <div class="screen-header-actions" style="display: flex; align-items: center; gap: 10px;">
+                  <button type="button" class="btn-secondary-cream" id="btn-toggle-auditor-mode">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                    <span id="auditor-mode-label">Auditor Mode: Active</span>
+                  </button>
+                  <button type="button" class="btn-primary-olive" id="btn-request-final-signoff">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 12 15 16 10"/></svg>
+                    <span>Auditor Sign-Off & Seal</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Mandatory Gatekeeping Safeguard Notice -->
+              <div class="verification-safeguard-banner" id="verification-safeguard-banner">
+                <div class="verification-safeguard-left">
+                  <div class="verification-safeguard-icon">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                  </div>
+                  <div>
+                    <div class="verification-safeguard-title">
+                      <span>Statutory Gatekeeping Active • Shelter Verification Locked</span>
+                      <span class="privacy-shield-tag">Strict Verification Policy</span>
+                    </div>
+                    <p class="verification-safeguard-desc">
+                      PawBridge compliance protocol strictly prohibits marking an NGO verified prior to full legal approval. Happy Tails Animal Sanctuary Trust is currently in <strong>Provisional Tier-1</strong> status. Public verification badges, automated 80G tax receipts, and emergency dispatch feeds will remain locked until all mandatory filings are verified.
+                    </p>
+                  </div>
+                </div>
+                <div class="verification-safeguard-right">
+                  <div style="display: flex; justify-content: space-between; width: 100%;">
+                    <span class="safeguard-metric-label">Mandatory Clearances</span>
+                    <strong style="font-size: 13px; color: var(--color-olive);" id="safeguard-progress-text">2 of 4 Cleared (50%)</strong>
+                  </div>
+                  <div class="safeguard-progress-bar">
+                    <div class="safeguard-progress-fill" id="safeguard-progress-fill" style="width: 50%;"></div>
+                  </div>
+                  <span style="font-size: 11px; color: var(--color-text-subtle);">Auditor sign-off required for Tier-1 Trust Seal</span>
+                </div>
+              </div>
+
+              <!-- Two-Column Main Layout -->
+              <div class="verification-screen-layout">
+                <!-- Left Main Column: Filter Toolbar & Upload Cards Grid -->
+                <div class="verification-main-column">
+                  <div class="verification-filter-toolbar">
+                    <div class="verification-filter-chips" id="verification-filter-chips">
+                      <button type="button" class="verification-filter-chip active" data-filter="all">
+                        <span>All Documents</span>
+                        <span class="chip-count" id="count-filter-all">6</span>
+                      </button>
+                      <button type="button" class="verification-filter-chip" data-filter="pending">
+                        <span>Pending Review</span>
+                        <span class="chip-count" id="count-filter-pending">1</span>
+                      </button>
+                      <button type="button" class="verification-filter-chip" data-filter="needs_changes">
+                        <span>Needs Changes</span>
+                        <span class="chip-count" id="count-filter-needs-changes">1</span>
+                      </button>
+                      <button type="button" class="verification-filter-chip" data-filter="verified">
+                        <span>Verified</span>
+                        <span class="chip-count" id="count-filter-verified">2</span>
+                      </button>
+                      <button type="button" class="verification-filter-chip" data-filter="draft">
+                        <span>Draft</span>
+                        <span class="chip-count" id="count-filter-draft">1</span>
+                      </button>
+                      <button type="button" class="verification-filter-chip" data-filter="rejected">
+                        <span>Rejected</span>
+                        <span class="chip-count" id="count-filter-rejected">1</span>
+                      </button>
+                    </div>
+
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                      <button type="button" class="btn-secondary-cream" id="btn-upload-additional-evidence" style="font-size: 13px;">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                        <span>Upload Evidence</span>
+                      </button>
+                    </div>
+                  </div>
+
+                  <!-- Upload Cards Grid (Dynamically rendered) -->
+                  <div class="verification-docs-grid" id="verification-docs-grid">
+                    <!-- Populated by app.js -->
+                  </div>
+                </div>
+
+                <!-- Right Column: Verification Checklist & Privacy Enclave -->
+                <aside class="verification-sidebar-column">
+                  <!-- Verification Checklist Card -->
+                  <div class="verification-checklist-card">
+                    <div class="checklist-header">
+                      <h3 class="checklist-title">Verification Checklist</h3>
+                      <span class="status-pill status-pending" id="checklist-status-badge">In Progress</span>
+                    </div>
+
+                    <div class="checklist-summary-meter">
+                      <div>
+                        <div class="meter-num" id="checklist-percentage">50%</div>
+                        <div class="meter-label">Overall Completion</div>
+                      </div>
+                      <div style="text-align: right;">
+                        <div style="font-weight: 700; font-size: 14px; color: var(--color-text-dark);" id="checklist-counts">2 / 4 Mandatory</div>
+                        <div class="meter-label">Statutory Filings</div>
+                      </div>
+                    </div>
+
+                    <div class="checklist-items-list" id="checklist-items-container">
+                      <!-- Rendered by app.js -->
+                    </div>
+                  </div>
+
+                  <!-- Sensitive Document Privacy & Encryption Assurance -->
+                  <div class="verification-privacy-card">
+                    <h4 class="privacy-card-title">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                      <span>Private & Encrypted Storage</span>
+                    </h4>
+                    <div class="privacy-pills-list">
+                      <div class="privacy-pill-row">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--color-olive); flex-shrink: 0; margin-top: 2px;"><polyline points="20 6 9 17 4 12"/></svg>
+                        <span><strong>AES-256 Encryption:</strong> Uploaded statutory documents are encrypted at rest and transmitted via TLS 1.3.</span>
+                      </div>
+                      <div class="privacy-pill-row">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--color-olive); flex-shrink: 0; margin-top: 2px;"><polyline points="20 6 9 17 4 12"/></svg>
+                        <span><strong>PII Masking:</strong> Sensitive PAN, Darpan, and Aadhaar identifiers are masked from non-trustee viewers.</span>
+                      </div>
+                      <div class="privacy-pill-row">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--color-olive); flex-shrink: 0; margin-top: 2px;"><polyline points="20 6 9 17 4 12"/></svg>
+                        <span><strong>Auditor Watermarking:</strong> Every view renders an immutable diagonal watermark with auditor ID and timestamp.</span>
+                      </div>
+                      <div class="privacy-pill-row">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--color-olive); flex-shrink: 0; margin-top: 2px;"><polyline points="20 6 9 17 4 12"/></svg>
+                        <span><strong>Zero Public Indexing:</strong> Files are barred from web crawlers, search engines, and unauthorized third parties.</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Auditor Testing & Review Console -->
+                  <div class="auditor-console-card">
+                    <div class="auditor-console-title">
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                      <span>Auditor Simulation Console</span>
+                    </div>
+                    <p style="font-size: 12px; color: var(--color-text-muted); line-height: 17px; margin-bottom: 12px;">
+                      Simulate the complete compliance review lifecycle. Test how individual document status changes affect the overall NGO verification gate.
+                    </p>
+                    <div class="auditor-console-actions">
+                      <button type="button" class="btn-secondary-cream" id="btn-sim-needs-changes-fix" style="font-size: 12px; padding: 6px 10px;">
+                        <span>Simulate Resubmission (MOU → Pending)</span>
+                      </button>
+                      <button type="button" class="btn-secondary-cream" id="btn-sim-approve-all-mandatory" style="font-size: 12px; padding: 6px 10px; color: var(--color-olive-dark);">
+                        <span>Approve All Mandatory Documents</span>
+                      </button>
+                      <button type="button" class="btn-secondary-cream" id="btn-sim-reset-docs" style="font-size: 12px; padding: 6px 10px;">
+                        <span>Reset Initial 5-Status State</span>
+                      </button>
+                    </div>
+                  </div>
+                </aside>
+              </div>
+            </section>
+
+            <!-- ------------------------------------------------------------
                  SCREEN 7: COMPLIANCE & STATUTORY VAULT
                  ------------------------------------------------------------ -->
             <section class="screen-view" id="screen-compliance">
@@ -1834,6 +2019,179 @@
           <button type="submit" class="btn-primary-olive">Send Recovery Instructions</button>
         </div>
       </form>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       MODAL 4: SECURE DOCUMENT VIEWER WITH WATERMARK & PRIVACY
+       ============================================================ -->
+  <div class="modal-overlay" id="modal-secure-doc-viewer" role="dialog" aria-modal="true" aria-labelledby="doc-viewer-modal-title">
+    <div class="secure-doc-modal-window">
+      <div class="modal-header" style="background: #FAF8F2; border-bottom: 1px solid var(--color-border); padding: 14px 20px;">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <div class="privacy-shield-tag" style="background: #E8EDE3; color: #2E5325; border-color: #536747;">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <span>AES-256 Encrypted Viewer</span>
+          </div>
+          <h3 class="modal-title" id="doc-viewer-modal-title" style="font-size: 17px;">Statutory Document Preview</h3>
+        </div>
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <span style="font-size: 11px; font-family: monospace; color: var(--color-text-subtle);" id="viewer-access-log">Access Logged #PB-AUD-882</span>
+          <button type="button" class="modal-close-btn" id="btn-close-doc-viewer" aria-label="Close viewer">✕</button>
+        </div>
+      </div>
+
+      <div class="secure-doc-viewer-grid">
+        <!-- Center Document Paper Preview with Diagonal Watermark -->
+        <div class="secure-doc-preview-pane">
+          <div class="secure-doc-paper" id="secure-doc-paper-content">
+            <div class="secure-doc-watermark">PAWBRIDGE CONFIDENTIAL • AUDITOR VIEW ONLY</div>
+            <!-- Dynamic Document Rendering -->
+            <div id="viewer-paper-inner"></div>
+          </div>
+        </div>
+
+        <!-- Right Metadata & Auditor Remarks Panel -->
+        <div class="secure-doc-sidebar">
+          <div>
+            <span class="label-13 uppercase" style="margin-bottom: 4px; display: block;">Document Classification</span>
+            <div style="font-size: 15px; font-weight: 700; color: var(--color-text-dark); line-height: 20px;" id="viewer-doc-title">Trust Registration Deed</div>
+            <div style="font-size: 12px; color: var(--color-text-muted); margin-top: 2px;" id="viewer-doc-category">Legal Entity Identification</div>
+          </div>
+
+          <div style="background: #FFFFFF; border: 1px solid var(--color-border-subtle); border-radius: 8px; padding: 12px;">
+            <div style="font-size: 11px; color: var(--color-text-subtle); text-transform: uppercase; font-weight: 700; margin-bottom: 6px;">Verification Status</div>
+            <div style="display: flex; align-items: center; justify-content: space-between;">
+              <span class="status-pill status-verified" id="viewer-status-pill">Verified Active</span>
+              <span style="font-size: 11px; color: var(--color-text-muted);" id="viewer-review-date">14 Oct 2026</span>
+            </div>
+          </div>
+
+          <div class="form-group" style="margin-bottom: 0;">
+            <label class="form-label" style="font-size: 12px;">Auditor Status Decision (Interactive)</label>
+            <select id="viewer-status-select" class="form-input" style="font-size: 13px; height: 38px;">
+              <option value="draft">Draft (Staged)</option>
+              <option value="pending">Pending review (In Queue)</option>
+              <option value="verified">Verified (Approved)</option>
+              <option value="needs_changes">Needs changes (Action Required)</option>
+              <option value="rejected">Rejected (Disapproved)</option>
+            </select>
+          </div>
+
+          <div class="form-group" style="margin-bottom: 0;">
+            <label class="form-label" style="font-size: 12px;">Auditor Notes / Feedback Remarks</label>
+            <textarea id="viewer-auditor-notes" class="form-textarea" rows="3" style="font-size: 12px; line-height: 18px;" placeholder="Enter auditor remarks or reasons for decision..."></textarea>
+          </div>
+
+          <div style="font-size: 11px; color: var(--color-text-muted); line-height: 16px; border-top: 1px solid var(--color-border-subtle); padding-top: 10px;">
+            <div><strong>File Size:</strong> <span id="viewer-file-size">3.4 MB</span></div>
+            <div><strong>SHA-256:</strong> <span style="font-family: monospace;" id="viewer-file-hash">8a93...9b31</span></div>
+            <div><strong>Uploaded By:</strong> <span id="viewer-uploaded-by">Dr. Ananya S.</span></div>
+            <div><strong>Privacy:</strong> Redacted PII (AES-256 Vault)</div>
+          </div>
+
+          <div style="margin-top: auto; display: flex; flex-direction: column; gap: 8px;">
+            <button type="button" class="btn-primary-olive" id="btn-viewer-save-status" style="width: 100%; justify-content: center; font-size: 13px;">
+              Update Document Status
+            </button>
+            <button type="button" class="btn-secondary-cream" id="btn-viewer-download-mock" style="width: 100%; justify-content: center; font-size: 12px;">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              <span>Download Encrypted Audit Copy</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       MODAL 5: UPLOAD / REPLACE DOCUMENT WITH ANIMATED PROGRESS
+       ============================================================ -->
+  <div class="modal-overlay" id="modal-replace-document" role="dialog" aria-modal="true" aria-labelledby="replace-modal-title">
+    <div class="modal-window" style="max-width: 520px;">
+      <div class="modal-header">
+        <div>
+          <h3 class="modal-title" id="replace-modal-title">Upload / Replace Document</h3>
+          <p style="font-size: 13px; color: var(--color-text-muted); margin-top: 2px;" id="replace-modal-subtitle">Replace statutory evidence file</p>
+        </div>
+        <button type="button" class="modal-close-btn" id="btn-close-replace-modal" aria-label="Close modal">✕</button>
+      </div>
+
+      <div class="modal-body">
+        <!-- Interactive Drag-and-Drop Area -->
+        <div class="drag-upload-zone" id="replace-dropzone" style="cursor: pointer; padding: 28px 20px; text-align: center; border: 2px dashed var(--color-olive-border); border-radius: 10px; background: #FAF8F2; margin-bottom: 18px; transition: all var(--transition-fast);">
+          <div style="width: 44px; height: 44px; border-radius: 50%; background: #FFFFFF; border: 1px solid var(--color-border); display: flex; align-items: center; justify-content: center; margin: 0 auto 12px; color: var(--color-olive);">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+          </div>
+          <div style="font-size: 14px; font-weight: 600; color: var(--color-text-dark); margin-bottom: 4px;">Click to select file or drag & drop</div>
+          <div style="font-size: 12px; color: var(--color-text-muted);">PDF, Scanned JPG or PNG (Max 15 MB)</div>
+          <input type="file" id="replace-file-input" style="display: none;" accept=".pdf,.png,.jpg,.jpeg" />
+        </div>
+
+        <!-- Simulated Staged File Info & Progress -->
+        <div id="replace-progress-container" style="display: none; background: #FFFFFF; border: 1px solid var(--color-border); border-radius: 8px; padding: 14px; margin-bottom: 16px;">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+            <div style="display: flex; align-items: center; gap: 8px; min-width: 0;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--color-olive); flex-shrink: 0;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+              <span style="font-size: 13px; font-weight: 600; color: var(--color-text-dark); text-overflow: ellipsis; overflow: hidden; white-space: nowrap;" id="replace-selected-filename">revised_document.pdf</span>
+            </div>
+            <span style="font-size: 12px; font-weight: 700; color: var(--color-olive);" id="replace-percent-text">0%</span>
+          </div>
+
+          <div class="doc-progress-track" style="height: 8px; margin-bottom: 6px;">
+            <div class="doc-progress-fill status-verified" id="replace-progress-bar" style="width: 0%;"></div>
+          </div>
+          <div style="display: flex; justify-content: space-between; font-size: 11px; color: var(--color-text-subtle);">
+            <span id="replace-status-hint">Simulating cryptographic hashing & upload...</span>
+            <span id="replace-bytes-hint">0 MB / 4.2 MB</span>
+          </div>
+        </div>
+
+        <div style="background: #FFFDF7; border: 1px solid var(--color-gold-border); border-radius: 8px; padding: 12px; font-size: 12px; line-height: 18px; color: #8A6414; display: flex; gap: 8px;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink: 0; margin-top: 1px;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          <span>Replacing this document will reset its audit state to <strong>Pending Review</strong>. Certified compliance officers will re-scrutinize the new file.</span>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn-secondary-cream" id="btn-cancel-replace-modal">Cancel</button>
+        <button type="button" class="btn-primary-olive" id="btn-start-simulated-upload">
+          <span>Start Upload & Send for Audit</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       MODAL 6: FORMAL STATUTORY AUDITOR SIGN-OFF & APPROVAL
+       ============================================================ -->
+  <div class="modal-overlay" id="modal-auditor-approval" role="dialog" aria-modal="true" aria-labelledby="approval-modal-title">
+    <div class="modal-window" style="max-width: 580px;">
+      <div class="modal-header">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <div class="completion-badge-shield" style="width: 38px; height: 38px; margin-bottom: 0;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+          </div>
+          <div>
+            <h3 class="modal-title" id="approval-modal-title">Statutory Audit Sign-Off</h3>
+            <p style="font-size: 12px; color: var(--color-text-muted); margin-top: 1px;">PawBridge Compliance Board Tier-1 Certification</p>
+          </div>
+        </div>
+        <button type="button" class="modal-close-btn" id="btn-close-approval-modal" aria-label="Close modal">✕</button>
+      </div>
+
+      <div class="modal-body">
+        <div id="approval-modal-content">
+          <!-- Populated dynamically based on whether all mandatory docs are cleared -->
+        </div>
+      </div>
+
+      <div class="modal-footer" id="approval-modal-footer">
+        <button type="button" class="btn-secondary-cream" id="btn-cancel-approval-modal">Dismiss</button>
+        <button type="button" class="btn-primary-olive" id="btn-confirm-final-approval">
+          <span>Affix Digital Signature & Issue Trust Seal</span>
+        </button>
+      </div>
     </div>
   </div>
 
