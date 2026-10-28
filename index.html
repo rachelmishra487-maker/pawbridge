@@ -238,15 +238,16 @@
       </section>
 
       <!-- ============================================================
-           SCREEN: DESKTOP NGO REGISTRATION (TWO-COLUMN LAYOUT)
+           SCREEN: MULTI-STEP DESKTOP NGO REGISTRATION WIZARD
+           5 Steps: 1. Org Details, 2. Contact/Loc, 3. Docs, 4. Impact, 5. Review
            ============================================================ -->
-      <section class="auth-canvas-container" id="view-auth-register" style="display: none;">
-        <!-- Left Column: Minimal Brand Panel -->
-        <div class="auth-brand-panel">
-          <div class="auth-brand-top">
-            <div class="auth-logo-header">
-              <div class="auth-logo-box">
-                <svg width="24" height="24" viewBox="0 0 32 32" fill="none">
+      <section class="wizard-full-viewport" id="view-auth-register" style="display: none;">
+        <!-- Top Progress Indicator Strip -->
+        <div class="wizard-progress-header">
+          <div class="wizard-top-title-row">
+            <div class="wizard-title-group">
+              <div class="wizard-brand-logo">
+                <svg width="20" height="20" viewBox="0 0 32 32" fill="none">
                   <path d="M4 25C8 14 16 8 28 8" stroke="#FFFFFF" stroke-width="2.8" stroke-linecap="round"/>
                   <path d="M4 25C10 25 18 20 28 8" stroke="#E5B95C" stroke-width="2" stroke-linecap="round" stroke-dasharray="2 3"/>
                   <circle cx="12" cy="11" r="2.2" fill="#FFFFFF"/>
@@ -257,180 +258,645 @@
                 </svg>
               </div>
               <div>
-                <div class="auth-brand-title">PawBridge</div>
-                <div class="auth-brand-sub">NGO Verification & Onboarding</div>
+                <span class="label-13 uppercase" style="color: var(--color-olive); font-weight: 700;">PawBridge Onboarding</span>
+                <h1 class="wizard-main-heading">NGO Verification & Registration</h1>
               </div>
             </div>
 
-            <h2 class="auth-hero-statement">Join 180+ Verified Animal Welfare Shelters Across India</h2>
-            <p class="auth-hero-lead">PawBridge verifies authentic animal-welfare NGOs to provide clinical hospital management, public transparency, and volunteer mobilization.</p>
-
-            <div class="auth-brand-card">
-              <div class="auth-dog-preview">
-                <img src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=600&q=80" alt="Shelter volunteer caring for dog" />
-                <span class="auth-dog-tag">VERIFIED NETWORK</span>
-              </div>
-              <p class="auth-dog-caption">
-                <em>"Every registered shelter receives tamper-evident microchip custody records, audited compliance vaults, and seamless foster matching."</em>
-              </p>
-            </div>
-
-            <div class="auth-trust-pillars">
-              <div class="auth-trust-row">
-                <div class="auth-trust-icon">✓</div>
-                <span>Pre-formatted 12A/80G & FCRA Audit Vault</span>
-              </div>
-              <div class="auth-trust-row">
-                <div class="auth-trust-icon">✓</div>
-                <span>End-to-End Animal Birth Control (ABC) Tracking</span>
-              </div>
-              <div class="auth-trust-row">
-                <div class="auth-trust-icon">✓</div>
-                <span>Direct Access to Community Emergency SOS Calls</span>
-              </div>
+            <div style="display: flex; align-items: center; gap: 12px;">
+              <span class="label-13" id="wizard-step-counter">Step 1 of 5</span>
+              <button type="button" class="btn-secondary-cream" id="btn-wizard-exit-login" style="padding: 6px 12px; font-size: 12px;">
+                Exit to Login
+              </button>
             </div>
           </div>
 
-          <div class="auth-brand-footer">
-            <span>Section 8 • Public Trust • AWBI Certified</span>
-            <span>Zero Platform Fees for Registered NGOs</span>
+          <!-- Progress Stepper Track -->
+          <div class="wizard-stepper-track" role="tablist" aria-label="Registration Progress">
+            <div class="stepper-connecting-bar">
+              <div class="stepper-progress-fill" id="stepper-progress-fill" style="width: 0%;"></div>
+            </div>
+
+            <div class="wizard-step-node active" data-step="1">
+              <div class="step-circle">1</div>
+              <span class="step-label-text">Organisation</span>
+            </div>
+
+            <div class="wizard-step-node" data-step="2">
+              <div class="step-circle">2</div>
+              <span class="step-label-text">Contact & Location</span>
+            </div>
+
+            <div class="wizard-step-node" data-step="3">
+              <div class="step-circle">3</div>
+              <span class="step-label-text">Documents</span>
+            </div>
+
+            <div class="wizard-step-node" data-step="4">
+              <div class="step-circle">4</div>
+              <span class="step-label-text">History & Impact</span>
+            </div>
+
+            <div class="wizard-step-node" data-step="5">
+              <div class="step-circle">5</div>
+              <span class="step-label-text">Review & Submit</span>
+            </div>
           </div>
         </div>
 
-        <!-- Right Column: Form Panel -->
-        <div class="auth-form-panel">
-          <div class="auth-form-container" style="max-width: 620px;">
-            <div class="auth-form-header">
-              <h1 class="auth-form-title">Register Your Organisation</h1>
-              <p class="auth-form-subtitle">Complete initial details to establish your shelter profile and begin verification.</p>
-            </div>
+        <!-- Wizard Main Content Area -->
+        <div class="wizard-stage-body">
+          <div class="wizard-card-surface">
 
-            <form id="form-auth-register" novalidate>
-              <!-- Row 1: Organisation Name & Registration Type -->
-              <div class="form-grid-2" style="margin-bottom: 14px;">
+            <!-- STEP 1: ORGANISATION DETAILS -->
+            <div class="wizard-step-pane active" id="wizard-pane-1">
+              <div class="wizard-step-header">
+                <h2 class="wizard-step-title">1. Organisation Details</h2>
+                <p class="wizard-step-subtitle">Provide official statutory registration credentials as recognized by regulatory authorities.</p>
+              </div>
+
+              <div class="wizard-info-callout">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+                <div>
+                  <strong>Statutory Accuracy:</strong> The organization name, registration number, and legal structure must match your official certificate of incorporation or registered Trust Deed.
+                </div>
+              </div>
+
+              <div class="form-grid-2" style="margin-bottom: 20px;">
                 <div class="form-group">
-                  <label for="reg-org-name" class="form-label">Organisation / Shelter Name *</label>
-                  <input type="text" id="reg-org-name" class="form-input" placeholder="e.g. Happy Tails Animal Sanctuary" required />
-                  <div class="field-error-msg" id="reg-org-name-error">
+                  <label for="wiz-org-name" class="form-label">Organisation / Shelter Legal Name *</label>
+                  <input type="text" id="wiz-org-name" class="form-input" placeholder="e.g. Happy Tails Animal Sanctuary Trust" value="Happy Tails Animal Sanctuary" required />
+                  <div class="field-error-msg" id="wiz-org-name-error">
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-                    <span>Please enter your registered organisation name.</span>
+                    <span>Please enter a valid organisation name (minimum 3 characters).</span>
                   </div>
                 </div>
 
                 <div class="form-group">
-                  <label for="reg-org-type" class="form-label">Registration Legal Type *</label>
-                  <select id="reg-org-type" class="form-select" required>
-                    <option value="" disabled selected>Select legal structure</option>
-                    <option value="Trust">Charitable Trust (Indian Trusts Act, 1882)</option>
-                    <option value="Society">Registered Society (Societies Act XXI of 1860)</option>
-                    <option value="Sec8">Section 8 Non-Profit Company (Companies Act)</option>
-                    <option value="AWBI">AWBI Recognized Animal Welfare Org</option>
-                    <option value="Municipal">Municipal Shelter / ABC Partner</option>
+                  <label for="wiz-org-type" class="form-label">Registration Legal Type *</label>
+                  <select id="wiz-org-type" class="form-select" required>
+                    <option value="Trust" selected>Charitable Trust (Indian Trusts Act, 1882)</option>
+                    <option value="Society">Registered Society (Societies Registration Act XXI of 1860)</option>
+                    <option value="Sec8">Section 8 Non-Profit Company (Companies Act, 2013)</option>
+                    <option value="AWBI">AWBI Recognized Animal Welfare Organisation</option>
+                    <option value="Municipal">Municipal Shelter / ABC Outreach Partner</option>
                   </select>
-                  <div class="field-error-msg" id="reg-org-type-error">
+                  <div class="field-error-msg" id="wiz-org-type-error">
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-                    <span>Please select your NGO registration type.</span>
+                    <span>Please select your registration legal type.</span>
                   </div>
                 </div>
               </div>
 
-              <!-- Row 2: Year Established & Contact Email -->
-              <div class="form-grid-2" style="margin-bottom: 14px;">
+              <div class="form-grid-2" style="margin-bottom: 20px;">
                 <div class="form-group">
-                  <label for="reg-org-year" class="form-label">Year Established *</label>
-                  <input type="number" id="reg-org-year" class="form-input" placeholder="e.g. 2018" min="1950" max="2026" required />
-                  <div class="field-error-msg" id="reg-org-year-error">
+                  <label for="wiz-org-regno" class="form-label">Registration / Incorporation Number *</label>
+                  <input type="text" id="wiz-org-regno" class="form-input" placeholder="e.g. DL/2018/01923" value="DL/2018/01923" required />
+                  <div class="field-error-msg" id="wiz-org-regno-error">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                    <span>Registration number is required.</span>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="wiz-org-year" class="form-label">Year Established *</label>
+                  <input type="number" id="wiz-org-year" class="form-input" placeholder="e.g. 2018" min="1950" max="2026" value="2018" required />
+                  <div class="field-error-msg" id="wiz-org-year-error">
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
                     <span>Enter a valid year between 1950 and 2026.</span>
                   </div>
                 </div>
+              </div>
+
+              <div class="form-grid-2">
+                <div class="form-group">
+                  <label for="wiz-facility-type" class="form-label">Primary Shelter Facility Type *</label>
+                  <select id="wiz-facility-type" class="form-select" required>
+                    <option value="Full Trauma Shelter & Hospital" selected>Full Trauma Shelter & In-House Vet Clinic</option>
+                    <option value="Sterilization Outreach Center">ABC / Sterilization & Vaccination Center</option>
+                    <option value="Sanctuary & Senior Hospice">Dog Sanctuary & Senior Animal Hospice</option>
+                    <option value="Foster Rescue Network">Foster-Based Rescue Network</option>
+                  </select>
+                </div>
 
                 <div class="form-group">
-                  <label for="reg-org-email" class="form-label">Official Contact Email *</label>
-                  <input type="email" id="reg-org-email" class="form-input" placeholder="e.g. contact@happytails.org" required />
-                  <div class="field-error-msg" id="reg-org-email-error">
+                  <label for="wiz-kennel-capacity" class="form-label">Total Active Bay / Kennel Capacity *</label>
+                  <input type="number" id="wiz-kennel-capacity" class="form-input" placeholder="e.g. 45" min="1" max="500" value="45" required />
+                  <div class="field-error-msg" id="wiz-kennel-capacity-error">
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-                    <span>Please enter a valid official email address.</span>
+                    <span>Please enter your facility bay capacity.</span>
                   </div>
                 </div>
               </div>
+            </div>
 
-              <!-- Row 3: Authorized Representative & Facility Type -->
-              <div class="form-grid-2" style="margin-bottom: 14px;">
+            <!-- STEP 2: CONTACT AND LOCATION -->
+            <div class="wizard-step-pane" id="wizard-pane-2">
+              <div class="wizard-step-header">
+                <h2 class="wizard-step-title">2. Contact and Location</h2>
+                <p class="wizard-step-subtitle">Authorized contact persons, emergency dispatch numbers, and shelter physical address.</p>
+              </div>
+
+              <div class="form-grid-2" style="margin-bottom: 20px;">
                 <div class="form-group">
-                  <label for="reg-rep-name" class="form-label">Managing Trustee / Director *</label>
-                  <input type="text" id="reg-rep-name" class="form-input" placeholder="e.g. Dr. Ananya Sharma" required />
-                  <div class="field-error-msg" id="reg-rep-name-error">
+                  <label for="wiz-rep-name" class="form-label">Managing Trustee / Authorized Representative *</label>
+                  <input type="text" id="wiz-rep-name" class="form-input" placeholder="e.g. Dr. Ananya Sharma" value="Dr. Ananya Sharma" required />
+                  <div class="field-error-msg" id="wiz-rep-name-error">
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
                     <span>Representative name is required.</span>
                   </div>
                 </div>
 
                 <div class="form-group">
-                  <label for="reg-facility-type" class="form-label">Primary Shelter Facility</label>
-                  <select id="reg-facility-type" class="form-select">
-                    <option value="full">Full Trauma Shelter & In-House Vet Clinic</option>
-                    <option value="abc">ABC / Sterilization Outreach Center</option>
-                    <option value="sanctuary">Dog Sanctuary & Senior Hospice</option>
-                    <option value="foster">Foster-Based Rescue Network</option>
+                  <label for="wiz-rep-role" class="form-label">Designation / Role in Organisation *</label>
+                  <input type="text" id="wiz-rep-role" class="form-input" placeholder="e.g. Managing Trustee & Lead Vet" value="Managing Trustee & Chief Veterinarian" required />
+                  <div class="field-error-msg" id="wiz-rep-role-error">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                    <span>Role is required.</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-grid-2" style="margin-bottom: 20px;">
+                <div class="form-group">
+                  <label for="wiz-contact-email" class="form-label">Official Organisation Email *</label>
+                  <input type="email" id="wiz-contact-email" class="form-input" placeholder="e.g. contact@happytails.org" value="contact@happytails.org" required />
+                  <div class="field-error-msg" id="wiz-contact-email-error">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                    <span>Please enter a valid official email address.</span>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="wiz-phone" class="form-label">Primary Administrative Phone *</label>
+                  <input type="tel" id="wiz-phone" class="form-input" placeholder="e.g. 9876543210" value="9876543210" required />
+                  <div class="field-error-msg" id="wiz-phone-error">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                    <span>Valid 10-digit phone number is required.</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-grid-2" style="margin-bottom: 20px;">
+                <div class="form-group">
+                  <label for="wiz-helpline" class="form-label">24/7 Field Rescue Emergency Helpline *</label>
+                  <input type="tel" id="wiz-helpline" class="form-input" placeholder="e.g. +91 98110 02233" value="+91 98110 02233" required />
+                  <div class="field-error-msg" id="wiz-helpline-error">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                    <span>Emergency helpline is required.</span>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="wiz-address" class="form-label">Shelter Physical Address *</label>
+                  <input type="text" id="wiz-address" class="form-input" placeholder="e.g. Plot 12, Farm Road, Chhatarpur" value="Plot 12, Farm Road, Chhatarpur" required />
+                  <div class="field-error-msg" id="wiz-address-error">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                    <span>Shelter street address is required.</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-grid-3" style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px;">
+                <div class="form-group">
+                  <label for="wiz-city" class="form-label">City / District *</label>
+                  <input type="text" id="wiz-city" class="form-input" placeholder="e.g. New Delhi" value="New Delhi" required />
+                  <div class="field-error-msg" id="wiz-city-error">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                    <span>City is required.</span>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="wiz-state" class="form-label">State / UT *</label>
+                  <select id="wiz-state" class="form-select" required>
+                    <option value="Delhi NCR" selected>Delhi NCR</option>
+                    <option value="Maharashtra">Maharashtra</option>
+                    <option value="Karnataka">Karnataka</option>
+                    <option value="Haryana">Haryana</option>
+                    <option value="Uttar Pradesh">Uttar Pradesh</option>
+                    <option value="Tamil Nadu">Tamil Nadu</option>
+                    <option value="West Bengal">West Bengal</option>
+                    <option value="Other">Other State</option>
                   </select>
                 </div>
+
+                <div class="form-group">
+                  <label for="wiz-pincode" class="form-label">Postal PIN Code *</label>
+                  <input type="text" id="wiz-pincode" class="form-input" placeholder="e.g. 110074" value="110074" required />
+                  <div class="field-error-msg" id="wiz-pincode-error">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                    <span>6-digit PIN code required.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- STEP 3: DOCUMENTS -->
+            <div class="wizard-step-pane" id="wizard-pane-3">
+              <div class="wizard-step-header">
+                <h2 class="wizard-step-title">3. Statutory Verification Documents</h2>
+                <p class="wizard-step-subtitle">Upload official certificates for statutory verification. Stored with tamper-evident checksums.</p>
               </div>
 
-              <!-- Row 4: Password & Confirm Password -->
-              <div class="form-grid-2" style="margin-bottom: 16px;">
-                <div class="form-group">
-                  <label for="reg-password" class="form-label">Master Admin Password *</label>
-                  <div class="input-with-action">
-                    <input type="password" id="reg-password" class="form-input" placeholder="Min. 8 characters" required />
-                    <button type="button" class="btn-input-toggle" id="btn-toggle-reg-pwd" aria-label="Toggle password visibility">
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+              <div class="wizard-info-callout">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 12 15 16 10"/></svg>
+                <div>
+                  <strong>Encrypted Vault:</strong> Documents are protected under end-to-end access control. Files can be PDF, JPG or PNG up to 10 MB per file. Sample pre-verified certificates are attached for demonstration.
+                </div>
+              </div>
+
+              <div class="doc-upload-grid">
+                <!-- Doc 1: Registration Certificate -->
+                <div class="doc-upload-card">
+                  <div class="doc-card-left">
+                    <div class="doc-file-icon">
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                    </div>
+                    <div class="doc-text-meta">
+                      <span class="doc-title-name">NGO Registration Certificate / Trust Deed *</span>
+                      <span class="doc-specs-text">Official incorporation deed under Society/Trust Act (Mandatory)</span>
+                    </div>
+                  </div>
+                  <div class="doc-card-right">
+                    <span class="attached-file-pill">
+                      <span>✓ HappyTails_TrustDeed.pdf (2.4 MB)</span>
+                    </span>
+                    <button type="button" class="btn-secondary-cream" style="font-size: 11px; padding: 4px 8px;" onclick="PawBridgeApp.showToast('Replaced document file with new upload', 'success')">
+                      Replace
                     </button>
                   </div>
-                  <div class="field-error-msg" id="reg-password-error">
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-                    <span>Password must be at least 8 characters.</span>
+                </div>
+
+                <!-- Doc 2: PAN Card -->
+                <div class="doc-upload-card">
+                  <div class="doc-card-left">
+                    <div class="doc-file-icon">
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><line x1="7" y1="8" x2="17" y2="8"/><line x1="7" y1="12" x2="13" y2="12"/><line x1="7" y1="16" x2="10" y2="16"/></svg>
+                    </div>
+                    <div class="doc-text-meta">
+                      <span class="doc-title-name">NGO Entity PAN Card *</span>
+                      <span class="doc-specs-text">Permanent Account Number issued by Income Tax Dept (Mandatory)</span>
+                    </div>
                   </div>
+                  <div class="doc-card-right">
+                    <span class="attached-file-pill">
+                      <span>✓ HappyTails_PAN_Card.pdf (890 KB)</span>
+                    </span>
+                    <button type="button" class="btn-secondary-cream" style="font-size: 11px; padding: 4px 8px;" onclick="PawBridgeApp.showToast('Replaced document file with new upload', 'success')">
+                      Replace
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Doc 3: Section 12A & 80G -->
+                <div class="doc-upload-card">
+                  <div class="doc-card-left">
+                    <div class="doc-file-icon">
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                    </div>
+                    <div class="doc-text-meta">
+                      <span class="doc-title-name">Section 12A & 80G Tax Exemption Certificate</span>
+                      <span class="doc-specs-text">Provides 50% donor tax exemption badge on public listings</span>
+                    </div>
+                  </div>
+                  <div class="doc-card-right">
+                    <span class="attached-file-pill">
+                      <span>✓ Section12A_80G_Orders.pdf (1.6 MB)</span>
+                    </span>
+                    <button type="button" class="btn-secondary-cream" style="font-size: 11px; padding: 4px 8px;" onclick="PawBridgeApp.showToast('Replaced document file with new upload', 'success')">
+                      Replace
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Doc 4: AWBI Recognition -->
+                <div class="doc-upload-card">
+                  <div class="doc-card-left">
+                    <div class="doc-file-icon">
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><circle cx="12" cy="11" r="3"/></svg>
+                    </div>
+                    <div class="doc-text-meta">
+                      <span class="doc-title-name">Animal Welfare Board of India (AWBI) Recognition</span>
+                      <span class="doc-specs-text">Grants Verified Green Shield Accreditation on PawBridge</span>
+                    </div>
+                  </div>
+                  <div class="doc-card-right">
+                    <span class="attached-file-pill">
+                      <span>✓ AWBI_Recognition_DL402.pdf (1.2 MB)</span>
+                    </span>
+                    <button type="button" class="btn-secondary-cream" style="font-size: 11px; padding: 4px 8px;" onclick="PawBridgeApp.showToast('Replaced document file with new upload', 'success')">
+                      Replace
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- STEP 4: RESCUE HISTORY AND IMPACT -->
+            <div class="wizard-step-pane" id="wizard-pane-4">
+              <div class="wizard-step-header">
+                <h2 class="wizard-step-title">4. Rescue History and Impact</h2>
+                <p class="wizard-step-subtitle">Operational track record, medical capabilities, and community volunteer strength.</p>
+              </div>
+
+              <div class="form-group" style="margin-bottom: 20px;">
+                <label for="wiz-mission" class="form-label">Primary Operational Mission & Focus Statement *</label>
+                <textarea id="wiz-mission" class="form-textarea" rows="3" placeholder="Describe your primary animal welfare mission, focus areas, and street animal rehabilitation..." required>Dedicated to the humane rescue, medical trauma rehabilitation, and sterilization of street dogs across Delhi NCR since 2018. We operate a 24/7 trauma emergency ward, rabies vaccination outreach, and high-standard foster-to-adopt placements.</textarea>
+                <div class="field-error-msg" id="wiz-mission-error">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                  <span>Mission statement is required (minimum 20 characters).</span>
+                </div>
+              </div>
+
+              <div class="form-grid-2" style="margin-bottom: 20px;">
+                <div class="form-group">
+                  <label for="wiz-rescue-vol" class="form-label">Average Monthly Rescue Intake Volume *</label>
+                  <select id="wiz-rescue-vol" class="form-select" required>
+                    <option value="16–40 rescues/month" selected>16–40 rescues / month (Mid-sized Sanctuary)</option>
+                    <option value="1–15 rescues/month">1–15 rescues / month (Community Foster Group)</option>
+                    <option value="41–80 rescues/month">41–80 rescues / month (Large Regional Shelter)</option>
+                    <option value="80+ rescues/month">80+ rescues / month (High-volume ABC Hospital)</option>
+                  </select>
                 </div>
 
                 <div class="form-group">
-                  <label for="reg-confirm-password" class="form-label">Confirm Password *</label>
-                  <input type="password" id="reg-confirm-password" class="form-input" placeholder="Re-enter password" required />
-                  <div class="field-error-msg" id="reg-confirm-error">
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-                    <span>Passwords do not match.</span>
+                  <label for="wiz-volunteers-count" class="form-label">Active Volunteers & Foster Carers Network</label>
+                  <input type="number" id="wiz-volunteers-count" class="form-input" placeholder="e.g. 35" min="1" max="1000" value="38" />
+                </div>
+              </div>
+
+              <div class="form-group" style="margin-bottom: 20px;">
+                <label class="form-label">Shelter Clinical & Surgical Capabilities (Select all that apply) *</label>
+                <div class="capabilities-chips-grid">
+                  <label class="chip-checkbox-label checked">
+                    <input type="checkbox" id="cap-trauma" checked />
+                    <span style="font-size: 13px; font-weight: 500;">In-House Trauma ICU</span>
+                  </label>
+                  <label class="chip-checkbox-label checked">
+                    <input type="checkbox" id="cap-surgery" checked />
+                    <span style="font-size: 13px; font-weight: 500;">Surgical OT Unit</span>
+                  </label>
+                  <label class="chip-checkbox-label checked">
+                    <input type="checkbox" id="cap-quarantine" checked />
+                    <span style="font-size: 13px; font-weight: 500;">Infectious Quarantine</span>
+                  </label>
+                  <label class="chip-checkbox-label checked">
+                    <input type="checkbox" id="cap-ambulance" checked />
+                    <span style="font-size: 13px; font-weight: 500;">Animal Ambulance Fleet</span>
+                  </label>
+                  <label class="chip-checkbox-label checked">
+                    <input type="checkbox" id="cap-abc" checked />
+                    <span style="font-size: 13px; font-weight: 500;">Sterilization Outreach</span>
+                  </label>
+                  <label class="chip-checkbox-label checked">
+                    <input type="checkbox" id="cap-diagnostics" checked />
+                    <span style="font-size: 13px; font-weight: 500;">Diagnostic Blood Lab</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="wiz-achievement" class="form-label">Key Past Milestone or Recognitions</label>
+                <input type="text" id="wiz-achievement" class="form-input" placeholder="e.g. Vaccinated 1,200 street dogs in 2024 rabies drive" value="Vaccinated 1,200+ street dogs in 2024 Delhi SPCA rabies eradication campaign." />
+              </div>
+            </div>
+
+            <!-- STEP 5: REVIEW AND SUBMIT -->
+            <div class="wizard-step-pane" id="wizard-pane-5">
+              <div class="wizard-step-header">
+                <h2 class="wizard-step-title">5. Review and Submit Application</h2>
+                <p class="wizard-step-subtitle">Inspect your submitted shelter dossier, set master admin access credentials, and submit for verification.</p>
+              </div>
+
+              <div class="review-blocks-stack">
+                <!-- Card 1: Org Details -->
+                <div class="review-summary-card">
+                  <div class="review-card-header">
+                    <div class="review-card-title">
+                      <span>1. Organisation & Legal Structure</span>
+                    </div>
+                    <button type="button" class="btn-edit-step" onclick="PawBridgeApp.jumpToWizardStep(1)">Edit</button>
+                  </div>
+                  <div class="review-key-vals-grid">
+                    <div class="review-item">
+                      <span class="review-key">Organisation Name</span>
+                      <span class="review-val" id="rev-org-name">Happy Tails Animal Sanctuary</span>
+                    </div>
+                    <div class="review-item">
+                      <span class="review-key">Legal Structure</span>
+                      <span class="review-val" id="rev-org-type">Charitable Trust</span>
+                    </div>
+                    <div class="review-item">
+                      <span class="review-key">Registration Number</span>
+                      <span class="review-val" id="rev-org-regno">DL/2018/01923</span>
+                    </div>
+                    <div class="review-item">
+                      <span class="review-key">Year Established</span>
+                      <span class="review-val" id="rev-org-year">2018</span>
+                    </div>
+                    <div class="review-item">
+                      <span class="review-key">Primary Facility</span>
+                      <span class="review-val" id="rev-facility-type">Full Trauma Shelter & Hospital</span>
+                    </div>
+                    <div class="review-item">
+                      <span class="review-key">Kennel Capacity</span>
+                      <span class="review-val" id="rev-kennel-capacity">45 Bays</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Card 2: Contact & Location -->
+                <div class="review-summary-card">
+                  <div class="review-card-header">
+                    <div class="review-card-title">
+                      <span>2. Contact & Geographic Location</span>
+                    </div>
+                    <button type="button" class="btn-edit-step" onclick="PawBridgeApp.jumpToWizardStep(2)">Edit</button>
+                  </div>
+                  <div class="review-key-vals-grid">
+                    <div class="review-item">
+                      <span class="review-key">Authorized Trustee</span>
+                      <span class="review-val" id="rev-rep-name">Dr. Ananya Sharma</span>
+                    </div>
+                    <div class="review-item">
+                      <span class="review-key">Designation</span>
+                      <span class="review-val" id="rev-rep-role">Managing Trustee & Lead Vet</span>
+                    </div>
+                    <div class="review-item">
+                      <span class="review-key">Contact Email</span>
+                      <span class="review-val" id="rev-contact-email">contact@happytails.org</span>
+                    </div>
+                    <div class="review-item">
+                      <span class="review-key">Helpline</span>
+                      <span class="review-val" id="rev-helpline">+91 98110 02233</span>
+                    </div>
+                    <div class="review-item" style="grid-column: span 2;">
+                      <span class="review-key">Physical Address</span>
+                      <span class="review-val" id="rev-full-address">Plot 12, Farm Road, Chhatarpur, New Delhi 110074</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Card 3: Documents Manifest -->
+                <div class="review-summary-card">
+                  <div class="review-card-header">
+                    <div class="review-card-title">
+                      <span>3. Uploaded Statutory Documents</span>
+                    </div>
+                    <button type="button" class="btn-edit-step" onclick="PawBridgeApp.jumpToWizardStep(3)">Edit</button>
+                  </div>
+                  <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+                    <span class="attached-file-pill">✓ TrustDeed_Certificate.pdf</span>
+                    <span class="attached-file-pill">✓ NGO_PAN_Card.pdf</span>
+                    <span class="attached-file-pill">✓ Section12A_80G_Orders.pdf</span>
+                    <span class="attached-file-pill">✓ AWBI_Recognition_DL402.pdf</span>
                   </div>
                 </div>
               </div>
 
-              <!-- Compliance Declaration -->
-              <div style="margin-bottom: 20px;">
-                <label class="custom-checkbox-wrap" style="align-items: flex-start;">
-                  <input type="checkbox" id="reg-terms-check" style="margin-top: 3px;" required />
-                  <span style="font-size: 13px; line-height: 18px; color: var(--color-text-muted);">
-                    I declare that this organisation is legally registered and adheres to AWBI humane shelter guidelines, sterilization protocols, and anti-cruelty standards.
-                  </span>
-                </label>
-                <div class="field-error-msg" id="reg-terms-error" style="margin-left: 24px;">
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-                  <span>You must accept the animal welfare declaration to proceed.</span>
+              <!-- Master Admin Account Password Creation -->
+              <div style="background: #FFFFFF; border: 1px solid var(--color-border); border-radius: 12px; padding: 24px; margin-bottom: 24px;">
+                <h3 style="font-family: var(--font-heading); font-size: 18px; font-weight: 700; color: var(--color-text-dark); margin-bottom: 6px;">
+                  Create Master Admin Password
+                </h3>
+                <p style="font-size: 13px; color: var(--color-text-muted); margin-bottom: 16px;">
+                  This password will be used to authenticate your shelter terminal and authorize statutory compliance reports.
+                </p>
+
+                <div class="form-grid-2">
+                  <div class="form-group">
+                    <label for="wiz-master-pwd" class="form-label">Master Password *</label>
+                    <div class="input-with-action">
+                      <input type="password" id="wiz-master-pwd" class="form-input" placeholder="Min. 8 characters" value="pawbridge2026" required />
+                      <button type="button" class="btn-input-toggle" id="btn-toggle-wiz-pwd" aria-label="Toggle password visibility">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                      </button>
+                    </div>
+                    <div class="field-error-msg" id="wiz-master-pwd-error">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                      <span>Password must be at least 8 characters.</span>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="wiz-confirm-pwd" class="form-label">Confirm Password *</label>
+                    <input type="password" id="wiz-confirm-pwd" class="form-input" placeholder="Re-enter password" value="pawbridge2026" required />
+                    <div class="field-error-msg" id="wiz-confirm-pwd-error">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                      <span>Passwords do not match.</span>
+                    </div>
+                  </div>
                 </div>
               </div>
 
-              <button type="submit" class="btn-primary-olive" style="width: 100%; justify-content: center; height: 46px; font-size: 15px;">
-                <span>Create NGO Account & Begin Verification</span>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+              <!-- Legal Undertaking Checkbox -->
+              <div style="background: #FAF8F2; border: 1px solid var(--color-border); border-radius: 10px; padding: 16px 20px; margin-bottom: 24px;">
+                <label class="custom-checkbox-wrap" style="align-items: flex-start;">
+                  <input type="checkbox" id="wiz-legal-terms" checked style="margin-top: 3px;" required />
+                  <span style="font-size: 13px; line-height: 20px; color: var(--color-text-dark);">
+                    I, on behalf of the registered organisation, declare under penalty of perjury that all submitted documents and information are authentic. We pledge strict adherence to the Animal Welfare Board of India (AWBI) humane shelter standards, anti-cruelty protocols, and the Prevention of Cruelty to Animals (PCA) Act, 1960.
+                  </span>
+                </label>
+                <div class="field-error-msg" id="wiz-legal-terms-error" style="margin-left: 24px; margin-top: 6px;">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                  <span>You must accept the legal declaration to submit your application.</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- STEP 6: CLEAR COMPLETION STATE -->
+            <div class="wizard-step-pane" id="wizard-pane-completion">
+              <div class="wizard-completion-card">
+                <div class="completion-badge-shield">
+                  <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <path d="M20 6L9 17l-5-5"/>
+                  </svg>
+                </div>
+
+                <h2 class="page-title-36" style="font-size: 32px; margin-bottom: 8px;">Registration Submitted Successfully</h2>
+                <p class="body-text-16 muted" style="max-width: 540px;">
+                  Your shelter application has been logged and cryptographically signed. Your operational workspace is now ready in Provisional Tier 1 mode.
+                </p>
+
+                <div class="completion-ref-box">
+                  <div>
+                    <span class="label-13 uppercase">Application Reference ID</span>
+                    <div style="font-family: var(--font-heading); font-size: 18px; font-weight: 700; color: var(--color-olive-dark);">
+                      PB-REG-2026-8819
+                    </div>
+                  </div>
+                  <div style="border-left: 1px solid var(--color-border); padding-left: 16px;">
+                    <span class="label-13 uppercase">Statutory Audit Hash</span>
+                    <div style="font-family: monospace; font-size: 11px; color: var(--color-text-muted);">
+                      SHA256: 8f91a0c4...992b
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Next Steps Timeline -->
+                <div class="completion-timeline">
+                  <div class="timeline-step-row">
+                    <span style="color: #4EA348; font-weight: 700;">✓</span>
+                    <div style="flex: 1;">
+                      <strong style="font-size: 13px;">Automated Document Integrity Scan</strong>
+                      <div style="font-size: 11px; color: var(--color-text-muted);">Trust deed and PAN card checksums verified</div>
+                    </div>
+                    <span class="status-pill stable" style="font-size: 11px;">Completed</span>
+                  </div>
+
+                  <div class="timeline-step-row">
+                    <span style="color: var(--color-gold-dark); font-weight: 700;">●</span>
+                    <div style="flex: 1;">
+                      <strong style="font-size: 13px;">Trust & Compliance Officer Review</strong>
+                      <div style="font-size: 11px; color: var(--color-text-muted);">Desk review of AWBI and 12A/80G filings (Turnaround: 24–48 hours)</div>
+                    </div>
+                    <span class="status-pill quarantine" style="font-size: 11px;">In Progress</span>
+                  </div>
+
+                  <div class="timeline-step-row">
+                    <span style="color: var(--color-text-subtle); font-weight: 700;">○</span>
+                    <div style="flex: 1;">
+                      <strong style="font-size: 13px;">National Public AWBI Directory Badge</strong>
+                      <div style="font-size: 11px; color: var(--color-text-muted);">Official verified badge published to donor directory</div>
+                    </div>
+                    <span style="font-size: 11px; color: var(--color-text-subtle);">Pending Review</span>
+                  </div>
+                </div>
+
+                <div style="display: flex; gap: 14px; width: 100%; justify-content: center;">
+                  <button type="button" class="btn-primary-olive" id="btn-launch-shelter-workspace" style="padding: 12px 28px; font-size: 15px;">
+                    Launch Shelter Workspace Now →
+                  </button>
+                  <button type="button" class="btn-secondary-cream" onclick="window.print()" style="padding: 12px 20px;">
+                    Download Dossier (PDF)
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- WIZARD FOOTER NAVIGATION CONTROLS (STEPS 1 - 5) -->
+            <div class="wizard-footer-bar" id="wizard-footer-bar">
+              <button type="button" class="btn-secondary-cream" id="btn-wizard-back">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+                <span>Back</span>
               </button>
 
-              <div class="auth-bottom-cta">
-                <span>Already registered with PawBridge?</span>
-                <button type="button" class="auth-text-link" id="link-goto-login">
-                  Sign in to your account →
+              <div class="wizard-footer-right">
+                <button type="button" class="btn-secondary-cream" id="btn-wizard-save-draft" title="Save progress to draft storage">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+                  <span>Save Draft</span>
+                </button>
+
+                <button type="button" class="btn-primary-olive" id="btn-wizard-continue">
+                  <span id="btn-wizard-continue-text">Continue</span>
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
                 </button>
               </div>
-            </form>
-          </div>
-        </div>
+            </div>
+
+          </div><!-- END .wizard-card-surface -->
+        </div><!-- END .wizard-stage-body -->
       </section>
 
       <!-- MAIN APP LAYOUT (SIDEBAR + CONTENT) -->

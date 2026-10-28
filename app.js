@@ -520,27 +520,79 @@ const PawBridgeApp = {
       btnForgotPwdTrigger: document.getElementById('btn-forgot-pwd-trigger'),
       linkGotoRegister: document.getElementById('link-goto-register'),
 
-      // Auth Register Elements
-      formAuthRegister: document.getElementById('form-auth-register'),
-      regOrgName: document.getElementById('reg-org-name'),
-      regOrgType: document.getElementById('reg-org-type'),
-      regOrgYear: document.getElementById('reg-org-year'),
-      regOrgEmail: document.getElementById('reg-org-email'),
-      regRepName: document.getElementById('reg-rep-name'),
-      regFacilityType: document.getElementById('reg-facility-type'),
-      regPassword: document.getElementById('reg-password'),
-      regConfirmPassword: document.getElementById('reg-confirm-password'),
-      regTermsCheck: document.getElementById('reg-terms-check'),
-      regOrgNameError: document.getElementById('reg-org-name-error'),
-      regOrgTypeError: document.getElementById('reg-org-type-error'),
-      regOrgYearError: document.getElementById('reg-org-year-error'),
-      regOrgEmailError: document.getElementById('reg-org-email-error'),
-      regRepNameError: document.getElementById('reg-rep-name-error'),
-      regPasswordError: document.getElementById('reg-password-error'),
-      regConfirmError: document.getElementById('reg-confirm-error'),
-      regTermsError: document.getElementById('reg-terms-error'),
-      btnToggleRegPwd: document.getElementById('btn-toggle-reg-pwd'),
-      linkGotoLogin: document.getElementById('link-goto-login'),
+      // Multi-Step Registration Wizard Elements
+      stepperProgressFill: document.getElementById('stepper-progress-fill'),
+      wizardStepCounter: document.getElementById('wizard-step-counter'),
+      wizardStepNodes: document.querySelectorAll('.wizard-step-node'),
+      wizardPanes: document.querySelectorAll('.wizard-step-pane'),
+      btnWizardBack: document.getElementById('btn-wizard-back'),
+      btnWizardSaveDraft: document.getElementById('btn-wizard-save-draft'),
+      btnWizardContinue: document.getElementById('btn-wizard-continue'),
+      btnWizardContinueText: document.getElementById('btn-wizard-continue-text'),
+      btnWizardExitLogin: document.getElementById('btn-wizard-exit-login'),
+      btnLaunchShelterWorkspace: document.getElementById('btn-launch-shelter-workspace'),
+      btnToggleWizPwd: document.getElementById('btn-toggle-wiz-pwd'),
+      wizardFooterBar: document.getElementById('wizard-footer-bar'),
+
+      // Wizard Step 1 Inputs
+      wizOrgName: document.getElementById('wiz-org-name'),
+      wizOrgType: document.getElementById('wiz-org-type'),
+      wizOrgRegno: document.getElementById('wiz-org-regno'),
+      wizOrgYear: document.getElementById('wiz-org-year'),
+      wizFacilityType: document.getElementById('wiz-facility-type'),
+      wizKennelCapacity: document.getElementById('wiz-kennel-capacity'),
+      wizOrgNameError: document.getElementById('wiz-org-name-error'),
+      wizOrgTypeError: document.getElementById('wiz-org-type-error'),
+      wizOrgRegnoError: document.getElementById('wiz-org-regno-error'),
+      wizOrgYearError: document.getElementById('wiz-org-year-error'),
+      wizKennelCapacityError: document.getElementById('wiz-kennel-capacity-error'),
+
+      // Wizard Step 2 Inputs
+      wizRepName: document.getElementById('wiz-rep-name'),
+      wizRepRole: document.getElementById('wiz-rep-role'),
+      wizContactEmail: document.getElementById('wiz-contact-email'),
+      wizPhone: document.getElementById('wiz-phone'),
+      wizHelpline: document.getElementById('wiz-helpline'),
+      wizAddress: document.getElementById('wiz-address'),
+      wizCity: document.getElementById('wiz-city'),
+      wizState: document.getElementById('wiz-state'),
+      wizPincode: document.getElementById('wiz-pincode'),
+      wizRepNameError: document.getElementById('wiz-rep-name-error'),
+      wizRepRoleError: document.getElementById('wiz-rep-role-error'),
+      wizContactEmailError: document.getElementById('wiz-contact-email-error'),
+      wizPhoneError: document.getElementById('wiz-phone-error'),
+      wizHelplineError: document.getElementById('wiz-helpline-error'),
+      wizAddressError: document.getElementById('wiz-address-error'),
+      wizCityError: document.getElementById('wiz-city-error'),
+      wizPincodeError: document.getElementById('wiz-pincode-error'),
+
+      // Wizard Step 4 Inputs
+      wizMission: document.getElementById('wiz-mission'),
+      wizRescueVol: document.getElementById('wiz-rescue-vol'),
+      wizVolunteersCount: document.getElementById('wiz-volunteers-count'),
+      wizAchievement: document.getElementById('wiz-achievement'),
+      wizMissionError: document.getElementById('wiz-mission-error'),
+
+      // Wizard Step 5 Inputs
+      wizMasterPwd: document.getElementById('wiz-master-pwd'),
+      wizConfirmPwd: document.getElementById('wiz-confirm-pwd'),
+      wizLegalTerms: document.getElementById('wiz-legal-terms'),
+      wizMasterPwdError: document.getElementById('wiz-master-pwd-error'),
+      wizConfirmPwdError: document.getElementById('wiz-confirm-pwd-error'),
+      wizLegalTermsError: document.getElementById('wiz-legal-terms-error'),
+
+      // Wizard Review Display Elements
+      revOrgName: document.getElementById('rev-org-name'),
+      revOrgType: document.getElementById('rev-org-type'),
+      revOrgRegno: document.getElementById('rev-org-regno'),
+      revOrgYear: document.getElementById('rev-org-year'),
+      revFacilityType: document.getElementById('rev-facility-type'),
+      revKennelCapacity: document.getElementById('rev-kennel-capacity'),
+      revRepName: document.getElementById('rev-rep-name'),
+      revRepRole: document.getElementById('rev-rep-role'),
+      revContactEmail: document.getElementById('rev-contact-email'),
+      revHelpline: document.getElementById('rev-helpline'),
+      revFullAddress: document.getElementById('rev-full-address'),
 
       // Sidebar Logout
       btnSidebarLogout: document.getElementById('btn-sidebar-logout'),
@@ -626,11 +678,6 @@ const PawBridgeApp = {
         this.togglePasswordVisibility(this.dom.loginPassword);
       });
     }
-    if (this.dom.btnToggleRegPwd && this.dom.regPassword) {
-      this.dom.btnToggleRegPwd.addEventListener('click', () => {
-        this.togglePasswordVisibility(this.dom.regPassword);
-      });
-    }
 
     // Login Form Submission
     if (this.dom.formAuthLogin) {
@@ -640,13 +687,68 @@ const PawBridgeApp = {
       });
     }
 
-    // Register Form Submission
-    if (this.dom.formAuthRegister) {
-      this.dom.formAuthRegister.addEventListener('submit', (e) => {
-        e.preventDefault();
-        this.handleRegisterSubmit();
+    // Multi-Step Wizard Event Listeners
+    if (this.dom.wizardStepNodes) {
+      this.dom.wizardStepNodes.forEach(node => {
+        node.addEventListener('click', () => {
+          const targetStep = parseInt(node.getAttribute('data-step'), 10);
+          this.jumpToWizardStep(targetStep);
+        });
       });
     }
+
+    if (this.dom.btnWizardBack) {
+      this.dom.btnWizardBack.addEventListener('click', () => this.retreatWizardStep());
+    }
+    if (this.dom.btnWizardContinue) {
+      this.dom.btnWizardContinue.addEventListener('click', () => this.advanceWizardStep());
+    }
+    if (this.dom.btnWizardSaveDraft) {
+      this.dom.btnWizardSaveDraft.addEventListener('click', () => this.saveWizardDraft());
+    }
+    if (this.dom.btnWizardExitLogin) {
+      this.dom.btnWizardExitLogin.addEventListener('click', () => this.switchAuthMode('login'));
+    }
+    if (this.dom.btnLaunchShelterWorkspace) {
+      this.dom.btnLaunchShelterWorkspace.addEventListener('click', () => this.launchShelterFromWizard());
+    }
+    if (this.dom.btnToggleWizPwd && this.dom.wizMasterPwd) {
+      this.dom.btnToggleWizPwd.addEventListener('click', () => {
+        this.togglePasswordVisibility(this.dom.wizMasterPwd);
+      });
+    }
+
+    // Clear validation errors on user input for wizard fields
+    const wizFields = [
+      'wizOrgName', 'wizOrgRegno', 'wizOrgYear', 'wizKennelCapacity',
+      'wizRepName', 'wizRepRole', 'wizContactEmail', 'wizPhone', 'wizHelpline',
+      'wizAddress', 'wizCity', 'wizPincode', 'wizMission', 'wizMasterPwd', 'wizConfirmPwd'
+    ];
+    wizFields.forEach(field => {
+      if (this.dom[field]) {
+        this.dom[field].addEventListener('input', () => {
+          this.dom[field].classList.remove('is-invalid');
+          const err = this.dom[`${field}Error`];
+          if (err) err.classList.remove('visible');
+        });
+      }
+    });
+
+    if (this.dom.wizLegalTerms && this.dom.wizLegalTermsError) {
+      this.dom.wizLegalTerms.addEventListener('change', () => {
+        if (this.dom.wizLegalTerms.checked) {
+          this.dom.wizLegalTermsError.classList.remove('visible');
+        }
+      });
+    }
+
+    // Capabilities Chip Checkboxes style sync
+    document.querySelectorAll('.chip-checkbox-label input[type="checkbox"]').forEach(cb => {
+      cb.addEventListener('change', () => {
+        const parent = cb.closest('.chip-checkbox-label');
+        if (parent) parent.classList.toggle('checked', cb.checked);
+      });
+    });
 
     // Forgot Password Trigger & Modal
     if (this.dom.btnForgotPwdTrigger) {
@@ -668,7 +770,7 @@ const PawBridgeApp = {
       });
     }
 
-    // Clear validation errors on user input
+    // Clear validation errors on login inputs
     ['loginEmail', 'loginPassword'].forEach(field => {
       if (this.dom[field]) {
         this.dom[field].addEventListener('input', () => {
@@ -678,24 +780,6 @@ const PawBridgeApp = {
         });
       }
     });
-
-    ['regOrgName', 'regOrgType', 'regOrgYear', 'regOrgEmail', 'regRepName', 'regPassword', 'regConfirmPassword'].forEach(field => {
-      if (this.dom[field]) {
-        this.dom[field].addEventListener('input', () => {
-          this.dom[field].classList.remove('is-invalid');
-          const err = this.dom[`${field}Error`];
-          if (err) err.classList.remove('visible');
-        });
-      }
-    });
-
-    if (this.dom.regTermsCheck && this.dom.regTermsError) {
-      this.dom.regTermsCheck.addEventListener('change', () => {
-        if (this.dom.regTermsCheck.checked) {
-          this.dom.regTermsError.classList.remove('visible');
-        }
-      });
-    }
 
     // Sidebar Navigation
     this.dom.navItems.forEach(btn => {
@@ -916,97 +1000,324 @@ const PawBridgeApp = {
     this.showToast('Welcome back, Dr. Ananya Sharma! Workspace connected.', 'success');
   },
 
-  handleRegisterSubmit() {
-    let isValid = true;
-    let firstInvalidField = null;
+  // ============================================================
+  // MULTI-STEP NGO REGISTRATION WIZARD METHODS
+  // ============================================================
+  setWizardStep(step) {
+    // step: 1..5, or 6 for completion state
+    PawBridgeStore.wizardStep = step;
 
-    const orgName = this.dom.regOrgName?.value.trim() || '';
-    const orgType = this.dom.regOrgType?.value || '';
-    const orgYear = parseInt(this.dom.regOrgYear?.value, 10);
-    const orgEmail = this.dom.regOrgEmail?.value.trim() || '';
-    const repName = this.dom.regRepName?.value.trim() || '';
-    const password = this.dom.regPassword?.value || '';
-    const confirmPassword = this.dom.regConfirmPassword?.value || '';
-    const termsChecked = this.dom.regTermsCheck?.checked;
-
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-    // Org Name
-    if (orgName.length < 3) {
-      this.dom.regOrgName?.classList.add('is-invalid');
-      this.dom.regOrgNameError?.classList.add('visible');
-      if (!firstInvalidField) firstInvalidField = this.dom.regOrgName;
-      isValid = false;
+    // Panes visibility
+    if (this.dom.wizardPanes) {
+      this.dom.wizardPanes.forEach(pane => pane.classList.remove('active'));
     }
 
-    // Org Type
-    if (!orgType) {
-      this.dom.regOrgType?.classList.add('is-invalid');
-      this.dom.regOrgTypeError?.classList.add('visible');
-      if (!firstInvalidField) firstInvalidField = this.dom.regOrgType;
-      isValid = false;
-    }
+    if (step === 6) {
+      // Completion state
+      const completionPane = document.getElementById('wizard-pane-completion');
+      if (completionPane) completionPane.classList.add('active');
+      if (this.dom.wizardFooterBar) this.dom.wizardFooterBar.style.display = 'none';
+      if (this.dom.stepperProgressFill) this.dom.stepperProgressFill.style.width = '100%';
+      if (this.dom.wizardStepCounter) this.dom.wizardStepCounter.textContent = 'Application Completed';
 
-    // Year Established
-    if (!orgYear || isNaN(orgYear) || orgYear < 1950 || orgYear > 2026) {
-      this.dom.regOrgYear?.classList.add('is-invalid');
-      this.dom.regOrgYearError?.classList.add('visible');
-      if (!firstInvalidField) firstInvalidField = this.dom.regOrgYear;
-      isValid = false;
-    }
-
-    // Contact Email
-    if (!orgEmail || !emailRegex.test(orgEmail)) {
-      this.dom.regOrgEmail?.classList.add('is-invalid');
-      this.dom.regOrgEmailError?.classList.add('visible');
-      if (!firstInvalidField) firstInvalidField = this.dom.regOrgEmail;
-      isValid = false;
-    }
-
-    // Representative Name
-    if (repName.length < 2) {
-      this.dom.regRepName?.classList.add('is-invalid');
-      this.dom.regRepNameError?.classList.add('visible');
-      if (!firstInvalidField) firstInvalidField = this.dom.regRepName;
-      isValid = false;
-    }
-
-    // Password
-    if (password.length < 8) {
-      this.dom.regPassword?.classList.add('is-invalid');
-      this.dom.regPasswordError?.classList.add('visible');
-      if (!firstInvalidField) firstInvalidField = this.dom.regPassword;
-      isValid = false;
-    }
-
-    // Confirm Password
-    if (!confirmPassword || confirmPassword !== password) {
-      this.dom.regConfirmPassword?.classList.add('is-invalid');
-      this.dom.regConfirmError?.classList.add('visible');
-      if (!firstInvalidField) firstInvalidField = this.dom.regConfirmPassword;
-      isValid = false;
-    }
-
-    // Terms declaration
-    if (!termsChecked) {
-      this.dom.regTermsError?.classList.add('visible');
-      isValid = false;
-    }
-
-    if (!isValid) {
-      if (firstInvalidField) firstInvalidField.focus();
-      this.showToast('Please fix the errors in registration form', 'alert');
+      if (this.dom.wizardStepNodes) {
+        this.dom.wizardStepNodes.forEach(node => {
+          node.classList.remove('active');
+          node.classList.add('completed');
+          const circle = node.querySelector('.step-circle');
+          if (circle) circle.textContent = '✓';
+        });
+      }
       return;
     }
 
-    // Register Organisation
-    PawBridgeStore.ngoInfo.name = orgName;
-    const ngoNameEl = document.querySelector('.ngo-name');
-    if (ngoNameEl) ngoNameEl.textContent = orgName;
+    // Normal steps 1 to 5
+    const activePane = document.getElementById(`wizard-pane-${step}`);
+    if (activePane) activePane.classList.add('active');
+    if (this.dom.wizardFooterBar) this.dom.wizardFooterBar.style.display = 'flex';
 
+    // Stepper track progress width
+    const percent = ((step - 1) / 4) * 100;
+    if (this.dom.stepperProgressFill) this.dom.stepperProgressFill.style.width = `${percent}%`;
+    if (this.dom.wizardStepCounter) this.dom.wizardStepCounter.textContent = `Step ${step} of 5`;
+
+    // Stepper nodes visual states
+    if (this.dom.wizardStepNodes) {
+      this.dom.wizardStepNodes.forEach(node => {
+        const nodeStep = parseInt(node.getAttribute('data-step'), 10);
+        const circle = node.querySelector('.step-circle');
+
+        if (nodeStep < step) {
+          node.classList.remove('active');
+          node.classList.add('completed');
+          if (circle) circle.textContent = '✓';
+        } else if (nodeStep === step) {
+          node.classList.add('active');
+          node.classList.remove('completed');
+          if (circle) circle.textContent = nodeStep;
+        } else {
+          node.classList.remove('active', 'completed');
+          if (circle) circle.textContent = nodeStep;
+        }
+      });
+    }
+
+    // Button Labels
+    if (this.dom.btnWizardBack) {
+      const backSpan = this.dom.btnWizardBack.querySelector('span');
+      if (backSpan) {
+        backSpan.textContent = step === 1 ? 'Return to Login' : 'Back';
+      }
+    }
+
+    if (this.dom.btnWizardContinueText) {
+      this.dom.btnWizardContinueText.textContent = step === 5 ? 'Submit Application & Register NGO' : 'Continue';
+    }
+
+    // If reaching review step 5, update review summary display
+    if (step === 5) {
+      this.updateReviewSummary();
+    }
+
+    // Scroll stage container to top
+    const stage = document.querySelector('.wizard-full-viewport');
+    if (stage) stage.scrollTop = 0;
+  },
+
+  validateStep(step) {
+    let isValid = true;
+    let firstInvalid = null;
+
+    if (step === 1) {
+      const orgName = this.dom.wizOrgName?.value.trim() || '';
+      const orgType = this.dom.wizOrgType?.value || '';
+      const orgRegno = this.dom.wizOrgRegno?.value.trim() || '';
+      const orgYear = parseInt(this.dom.wizOrgYear?.value, 10);
+      const capacity = parseInt(this.dom.wizKennelCapacity?.value, 10);
+
+      if (orgName.length < 3) {
+        this.dom.wizOrgName?.classList.add('is-invalid');
+        this.dom.wizOrgNameError?.classList.add('visible');
+        if (!firstInvalid) firstInvalid = this.dom.wizOrgName;
+        isValid = false;
+      }
+      if (!orgType) {
+        this.dom.wizOrgType?.classList.add('is-invalid');
+        this.dom.wizOrgTypeError?.classList.add('visible');
+        if (!firstInvalid) firstInvalid = this.dom.wizOrgType;
+        isValid = false;
+      }
+      if (orgRegno.length < 2) {
+        this.dom.wizOrgRegno?.classList.add('is-invalid');
+        this.dom.wizOrgRegnoError?.classList.add('visible');
+        if (!firstInvalid) firstInvalid = this.dom.wizOrgRegno;
+        isValid = false;
+      }
+      if (!orgYear || isNaN(orgYear) || orgYear < 1950 || orgYear > 2026) {
+        this.dom.wizOrgYear?.classList.add('is-invalid');
+        this.dom.wizOrgYearError?.classList.add('visible');
+        if (!firstInvalid) firstInvalid = this.dom.wizOrgYear;
+        isValid = false;
+      }
+      if (!capacity || isNaN(capacity) || capacity < 1) {
+        this.dom.wizKennelCapacity?.classList.add('is-invalid');
+        this.dom.wizKennelCapacityError?.classList.add('visible');
+        if (!firstInvalid) firstInvalid = this.dom.wizKennelCapacity;
+        isValid = false;
+      }
+    } else if (step === 2) {
+      const repName = this.dom.wizRepName?.value.trim() || '';
+      const repRole = this.dom.wizRepRole?.value.trim() || '';
+      const email = this.dom.wizContactEmail?.value.trim() || '';
+      const phone = this.dom.wizPhone?.value.trim() || '';
+      const helpline = this.dom.wizHelpline?.value.trim() || '';
+      const address = this.dom.wizAddress?.value.trim() || '';
+      const city = this.dom.wizCity?.value.trim() || '';
+      const pincode = this.dom.wizPincode?.value.trim() || '';
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+      if (repName.length < 2) {
+        this.dom.wizRepName?.classList.add('is-invalid');
+        this.dom.wizRepNameError?.classList.add('visible');
+        if (!firstInvalid) firstInvalid = this.dom.wizRepName;
+        isValid = false;
+      }
+      if (repRole.length < 2) {
+        this.dom.wizRepRole?.classList.add('is-invalid');
+        this.dom.wizRepRoleError?.classList.add('visible');
+        if (!firstInvalid) firstInvalid = this.dom.wizRepRole;
+        isValid = false;
+      }
+      if (!email || !emailRegex.test(email)) {
+        this.dom.wizContactEmail?.classList.add('is-invalid');
+        this.dom.wizContactEmailError?.classList.add('visible');
+        if (!firstInvalid) firstInvalid = this.dom.wizContactEmail;
+        isValid = false;
+      }
+      if (!phone || phone.length < 8) {
+        this.dom.wizPhone?.classList.add('is-invalid');
+        this.dom.wizPhoneError?.classList.add('visible');
+        if (!firstInvalid) firstInvalid = this.dom.wizPhone;
+        isValid = false;
+      }
+      if (!helpline || helpline.length < 5) {
+        this.dom.wizHelpline?.classList.add('is-invalid');
+        this.dom.wizHelplineError?.classList.add('visible');
+        if (!firstInvalid) firstInvalid = this.dom.wizHelpline;
+        isValid = false;
+      }
+      if (!address || address.length < 5) {
+        this.dom.wizAddress?.classList.add('is-invalid');
+        this.dom.wizAddressError?.classList.add('visible');
+        if (!firstInvalid) firstInvalid = this.dom.wizAddress;
+        isValid = false;
+      }
+      if (!city || city.length < 2) {
+        this.dom.wizCity?.classList.add('is-invalid');
+        this.dom.wizCityError?.classList.add('visible');
+        if (!firstInvalid) firstInvalid = this.dom.wizCity;
+        isValid = false;
+      }
+      if (!pincode || pincode.length < 5) {
+        this.dom.wizPincode?.classList.add('is-invalid');
+        this.dom.wizPincodeError?.classList.add('visible');
+        if (!firstInvalid) firstInvalid = this.dom.wizPincode;
+        isValid = false;
+      }
+    } else if (step === 3) {
+      // Step 3 Documents: sample verified docs attached, always passes
+      isValid = true;
+    } else if (step === 4) {
+      const mission = this.dom.wizMission?.value.trim() || '';
+      if (!mission || mission.length < 20) {
+        this.dom.wizMission?.classList.add('is-invalid');
+        this.dom.wizMissionError?.classList.add('visible');
+        if (!firstInvalid) firstInvalid = this.dom.wizMission;
+        isValid = false;
+      }
+    } else if (step === 5) {
+      const pwd = this.dom.wizMasterPwd?.value || '';
+      const confirmPwd = this.dom.wizConfirmPwd?.value || '';
+      const legalChecked = this.dom.wizLegalTerms?.checked;
+
+      if (!pwd || pwd.length < 8) {
+        this.dom.wizMasterPwd?.classList.add('is-invalid');
+        this.dom.wizMasterPwdError?.classList.add('visible');
+        if (!firstInvalid) firstInvalid = this.dom.wizMasterPwd;
+        isValid = false;
+      }
+      if (!confirmPwd || confirmPwd !== pwd) {
+        this.dom.wizConfirmPwd?.classList.add('is-invalid');
+        this.dom.wizConfirmPwdError?.classList.add('visible');
+        if (!firstInvalid) firstInvalid = this.dom.wizConfirmPwd;
+        isValid = false;
+      }
+      if (!legalChecked) {
+        this.dom.wizLegalTermsError?.classList.add('visible');
+        isValid = false;
+      }
+    }
+
+    if (!isValid) {
+      if (firstInvalid) firstInvalid.focus();
+      this.showToast('Please complete all required fields correctly to continue', 'alert');
+    }
+
+    return isValid;
+  },
+
+  advanceWizardStep() {
+    const current = PawBridgeStore.wizardStep || 1;
+    if (!this.validateStep(current)) return;
+
+    if (current === 5) {
+      // Final submission
+      const orgName = this.dom.wizOrgName?.value.trim() || 'Happy Tails Animal Sanctuary';
+      PawBridgeStore.ngoInfo.name = orgName;
+
+      // Update sidebar NGO badge
+      const ngoNameEls = document.querySelectorAll('.ngo-name');
+      ngoNameEls.forEach(el => el.textContent = orgName);
+
+      // Move to completion state
+      this.setWizardStep(6);
+      this.showToast(`🎉 Registration submitted successfully for ${orgName}!`, 'success');
+    } else {
+      this.setWizardStep(current + 1);
+    }
+  },
+
+  retreatWizardStep() {
+    const current = PawBridgeStore.wizardStep || 1;
+    if (current === 1) {
+      this.switchAuthMode('login');
+    } else if (current === 6) {
+      this.setWizardStep(5);
+    } else {
+      this.setWizardStep(current - 1);
+    }
+  },
+
+  jumpToWizardStep(stepNumber) {
+    if (stepNumber < (PawBridgeStore.wizardStep || 1)) {
+      this.setWizardStep(stepNumber);
+    } else {
+      if (this.validateStep(PawBridgeStore.wizardStep || 1)) {
+        this.setWizardStep(stepNumber);
+      }
+    }
+  },
+
+  saveWizardDraft() {
+    const timeStr = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    this.showToast(`✓ Registration draft saved successfully at ${timeStr}`, 'success');
+  },
+
+  updateReviewSummary() {
+    if (this.dom.revOrgName && this.dom.wizOrgName) {
+      this.dom.revOrgName.textContent = this.dom.wizOrgName.value || '—';
+    }
+    if (this.dom.revOrgType && this.dom.wizOrgType) {
+      this.dom.revOrgType.textContent = this.dom.wizOrgType.options[this.dom.wizOrgType.selectedIndex]?.text || this.dom.wizOrgType.value;
+    }
+    if (this.dom.revOrgRegno && this.dom.wizOrgRegno) {
+      this.dom.revOrgRegno.textContent = this.dom.wizOrgRegno.value || '—';
+    }
+    if (this.dom.revOrgYear && this.dom.wizOrgYear) {
+      this.dom.revOrgYear.textContent = this.dom.wizOrgYear.value || '—';
+    }
+    if (this.dom.revFacilityType && this.dom.wizFacilityType) {
+      this.dom.revFacilityType.textContent = this.dom.wizFacilityType.value || '—';
+    }
+    if (this.dom.revKennelCapacity && this.dom.wizKennelCapacity) {
+      this.dom.revKennelCapacity.textContent = `${this.dom.wizKennelCapacity.value} Bays`;
+    }
+
+    if (this.dom.revRepName && this.dom.wizRepName) {
+      this.dom.revRepName.textContent = this.dom.wizRepName.value || '—';
+    }
+    if (this.dom.revRepRole && this.dom.wizRepRole) {
+      this.dom.revRepRole.textContent = this.dom.wizRepRole.value || '—';
+    }
+    if (this.dom.revContactEmail && this.dom.wizContactEmail) {
+      this.dom.revContactEmail.textContent = this.dom.wizContactEmail.value || '—';
+    }
+    if (this.dom.revHelpline && this.dom.wizHelpline) {
+      this.dom.revHelpline.textContent = this.dom.wizHelpline.value || '—';
+    }
+    if (this.dom.revFullAddress) {
+      const addr = this.dom.wizAddress?.value || '';
+      const city = this.dom.wizCity?.value || '';
+      const state = this.dom.wizState?.value || '';
+      const pin = this.dom.wizPincode?.value || '';
+      this.dom.revFullAddress.textContent = `${addr}, ${city}, ${state} ${pin}`;
+    }
+  },
+
+  launchShelterFromWizard() {
     this.switchAuthMode('app');
     this.navigateTo('overview');
-    this.showToast(`🎉 Welcome to PawBridge, ${orgName}! Shelter workspace initialized.`, 'success');
+    this.showToast('🚀 Shelter operations workspace connected!', 'success');
   },
 
   openForgotPasswordModal() {
