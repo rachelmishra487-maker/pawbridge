@@ -28,6 +28,12 @@ const PawBridgeStore = {
     transparencyScore: '98.4%'
   },
 
+  // Rescue Records View State
+  rescueViewMode: 'hybrid', // 'hybrid' | 'grid'
+  rescueStatusTab: 'all',
+  rescueMedicalFilter: 'all',
+  rescueOutcomeFilter: 'all',
+
   // Realistic rescue cases with high quality, compassionate dog photography
   rescues: [
     {
@@ -44,6 +50,10 @@ const PawBridgeStore = {
       rescuer: 'Meera Sen (Citizen Volunteer)',
       triage: 'critical', // critical | surgery | quarantine | stable | foster | adopted
       triageLabel: 'ICU / Critical Care',
+      outcome: 'in_care',
+      outcomeLabel: 'In Shelter Treatment',
+      expenses: { spent: 6400, donor: 'Emergency Trauma Fund' },
+      rescueStory: 'Reported by local shopkeepers as a victim of hit-and-run at 08:30 AM. Found trapped under divider railing with open compound tibia fracture and heavy shock. Stabilized with Thomas splint on site.',
       condition: 'Compound tibia-fibula fracture from vehicular collision, severe shock',
       bay: 'ICU-03',
       ward: 'Ward A: Trauma ICU',
@@ -71,6 +81,10 @@ const PawBridgeStore = {
       rescuer: 'Field Ambulance Unit 1',
       triage: 'surgery',
       triageLabel: 'Post-Op Recovery',
+      outcome: 'foster',
+      outcomeLabel: 'Foster-to-Adopt Trial',
+      expenses: { spent: 8200, donor: 'Foster Angel Grant' },
+      rescueStory: 'Found abandoned tied to a park bench in heavy rain with bilateral hip dysplasia. Admitted for emergency femoral head ostectomy. Gentle and cooperative temperament during physical therapy.',
       condition: 'Post-femoral head ostectomy; sutures healing clean, passive physiotherapy initiated',
       bay: 'REC-02',
       ward: 'Ward C: Surgical Recovery',
@@ -98,6 +112,10 @@ const PawBridgeStore = {
       rescuer: 'Community Feeder Network',
       triage: 'stable',
       triageLabel: 'Rehabilitation / Stable',
+      outcome: 'released',
+      outcomeLabel: 'Community ABC Release',
+      expenses: { spent: 3500, donor: 'Community Feeders NCR' },
+      rescueStory: 'Sustained extensive contact burns from roadside garbage incineration. Community feeders alerted PawBridge SOS helpline. Underwent daily debridement and silver dressing with 80% tissue granulation achieved.',
       condition: 'Deep thermal burn injury now 80% granulated; healthy appetite, gentle leash temperament',
       bay: 'RUN-05',
       ward: 'Ward D: Open Social Runs',
@@ -125,6 +143,10 @@ const PawBridgeStore = {
       rescuer: 'Field Ambulance Unit 2',
       triage: 'quarantine',
       triageLabel: 'Puppy Quarantine',
+      outcome: 'in_care',
+      outcomeLabel: 'In Shelter Treatment',
+      expenses: { spent: 2800, donor: 'Puppy Emergency Fund' },
+      rescueStory: 'Rescued from stormwater culvert after heavy rain. Maternal abandonment confirmed. Initial hypothermia managed with warming blankets and continuous puppy glucose oral hydration.',
       condition: 'Severe hypothermia and dehydration; Parvo ELISA negative; deworming completed',
       bay: 'Q-03',
       ward: 'Ward B: Infectious Disease & Quarantine',
@@ -152,6 +174,10 @@ const PawBridgeStore = {
       rescuer: 'Highway Patrol Helpline',
       triage: 'foster',
       triageLabel: 'Medical Foster Trial',
+      outcome: 'adopted',
+      outcomeLabel: 'Adoption Finalized',
+      expenses: { spent: 4300, donor: 'Rhea Sengupta Family' },
+      rescueStory: 'Recovered from highway divider with infected corneal laceration. Successfully managed with ophthalmic drops and supportive antibiotic therapy. Cleared behavioral checks and finalized for adoption.',
       condition: 'Full recovery from corneal laceration; exceptional temperament, ready for permanent adoption',
       bay: 'FOS-01',
       ward: 'Ward E: Foster Transition',
@@ -179,6 +205,10 @@ const PawBridgeStore = {
       rescuer: 'Worker Union Volunteer',
       triage: 'stable',
       triageLabel: 'Senior Sanctuary Care',
+      outcome: 'sanctuary',
+      outcomeLabel: 'Permanent Sanctuary',
+      expenses: { spent: 9600, donor: 'Senior Dog Sanctuary Trust' },
+      rescueStory: 'Guard dog abandoned following factory decommissioning. Found dehydrated with chronic bilateral stifle osteoarthritis and allergic dermatitis. Now enjoying permanent palliative sanctuary care.',
       condition: 'Chronic osteoarthritis and skin dermatitis; responding well to Apoquel and joint supplements',
       bay: 'RUN-11',
       ward: 'Ward D: Open Social Runs',
@@ -191,6 +221,130 @@ const PawBridgeStore = {
       sterilized: true,
       rabiesVaccinated: true,
       legalStatus: 'Permanent Sanctuary Resident'
+    },
+    {
+      id: 'RC-1042',
+      name: 'Ruby',
+      tag: 'IND-DL-8744',
+      breed: 'Beagle Hound Cross',
+      age: '1.5 Years',
+      gender: 'Female',
+      weight: '11.8 kg',
+      intakeDate: '03 Oct 2026',
+      intakeTime: '01:15 PM',
+      intakeLocation: 'Najafgarh Rural By-Lane',
+      rescuer: 'Animal Protection Squad',
+      triage: 'stable',
+      triageLabel: 'Dermatology Rehab',
+      outcome: 'foster',
+      outcomeLabel: 'Foster-to-Adopt Trial',
+      expenses: { spent: 5100, donor: 'Anti-Breeding Campaign' },
+      rescueStory: 'Rescued from an unauthorized backyard breeder with full-body demodectic mange and severe anemia. Haircoat has regrown 90% after weekly medicated dips and high-protein diet.',
+      condition: 'Demodectic mange resolving; skin scraped negative; energetic and affectionate',
+      bay: 'REC-05',
+      ward: 'Ward C: Surgical Recovery',
+      carer: 'Dr. Ananya Sharma',
+      photoUrl: 'https://images.unsplash.com/photo-1537151608828-ea2b11777ee8?auto=format&fit=crop&w=600&q=80',
+      photoIntake: 'https://images.unsplash.com/photo-1537151608828-ea2b11777ee8?auto=format&fit=crop&w=600&q=80',
+      photoRecovery: 'https://images.unsplash.com/photo-1537151608828-ea2b11777ee8?auto=format&fit=crop&w=600&q=80',
+      vitals: { temp: '38.5 °C', hr: '88 bpm', mucous: 'Pink', hydration: 'Normal' },
+      medications: ['Nexgard Spectra monthly', 'Fish oil oral liquid'],
+      sterilized: true,
+      rabiesVaccinated: true,
+      legalStatus: 'Seized Welfare Case #AWBI-91'
+    },
+    {
+      id: 'RC-1041',
+      name: 'Rocky',
+      tag: 'IND-DL-8729',
+      breed: 'Indie Desi Hound',
+      age: '3.5 Years',
+      gender: 'Male',
+      weight: '18.6 kg',
+      intakeDate: '28 Sep 2026',
+      intakeTime: '08:40 AM',
+      intakeLocation: 'Mayapuri Industrial Yard',
+      rescuer: 'Feeder Helpline Team',
+      triage: 'stable',
+      triageLabel: 'Territory Released',
+      outcome: 'released',
+      outcomeLabel: 'Community ABC Released',
+      expenses: { spent: 3900, donor: 'ABC Sterilization Grant' },
+      rescueStory: 'Suffered severe bite puncture wounds in territorial dogfight. Admitted for wound flushing, drain placement, and surgical sterilization under the municipal ABC protocol. Fully healed.',
+      condition: 'Deep neck punctures healed; anti-rabies booster administered; released to home territory',
+      bay: 'RUN-06',
+      ward: 'Ward D: Open Social Runs',
+      carer: 'Staff Nurse Vikas',
+      photoUrl: 'https://images.unsplash.com/photo-1517849845537-4d257902454a?auto=format&fit=crop&w=600&q=80',
+      photoIntake: 'https://images.unsplash.com/photo-1517849845537-4d257902454a?auto=format&fit=crop&w=600&q=80',
+      photoRecovery: 'https://images.unsplash.com/photo-1517849845537-4d257902454a?auto=format&fit=crop&w=600&q=80',
+      vitals: { temp: '38.2 °C', hr: '80 bpm', mucous: 'Pink', hydration: 'Normal' },
+      medications: ['Amoxicillin-clavulanic acid completed'],
+      sterilized: true,
+      rabiesVaccinated: true,
+      legalStatus: 'ABC Rule 2023 Municipal Release'
+    },
+    {
+      id: 'RC-1040',
+      name: 'Kaalu',
+      tag: 'IND-DL-8711',
+      breed: 'Indie Black Labrador Mix',
+      age: '5 Years',
+      gender: 'Male',
+      weight: '21.0 kg',
+      intakeDate: '15 Sep 2026',
+      intakeTime: '06:20 PM',
+      intakeLocation: 'Dwarka Expressway Pillar 42',
+      rescuer: 'Dwarka Citizens SOS Helpline',
+      triage: 'stable',
+      triageLabel: 'Wheelchair Mobility Care',
+      outcome: 'sanctuary',
+      outcomeLabel: 'Permanent Sanctuary',
+      expenses: { spent: 14500, donor: 'Special Needs Wheelchair Fund' },
+      rescueStory: 'Hit by speeding vehicle causing T12-L1 spinal trauma and posterior paralysis. Fitted with a custom two-wheel mobility cart. Expressive, friendly, and thriving in the sanctuary paddock.',
+      condition: 'Paraplegic with excellent upper body strength; assisted bladder expression twice daily; uses wheelchair cart',
+      bay: 'RUN-08',
+      ward: 'Ward D: Open Social Runs',
+      carer: 'Dr. Ananya Sharma',
+      photoUrl: 'https://images.unsplash.com/photo-1587300003388-59208cc962cb?auto=format&fit=crop&w=600&q=80',
+      photoIntake: 'https://images.unsplash.com/photo-1587300003388-59208cc962cb?auto=format&fit=crop&w=600&q=80',
+      photoRecovery: 'https://images.unsplash.com/photo-1587300003388-59208cc962cb?auto=format&fit=crop&w=600&q=80',
+      vitals: { temp: '38.4 °C', hr: '84 bpm', mucous: 'Pink', hydration: 'Normal' },
+      medications: ['Neurobion Forte injection weekly', 'Cranberry extract for bladder health'],
+      sterilized: true,
+      rabiesVaccinated: true,
+      legalStatus: 'Permanent Sanctuary Lifelong Custody'
+    },
+    {
+      id: 'RC-1039',
+      name: 'Lucy',
+      tag: 'IND-DL-8698',
+      breed: 'Cocker Spaniel Cross',
+      age: '4 Years',
+      gender: 'Female',
+      weight: '12.4 kg',
+      intakeDate: '01 Sep 2026',
+      intakeTime: '03:10 PM',
+      intakeLocation: 'Ghaziabad Border Crossing',
+      rescuer: 'Anti-Cruelty Police Raid',
+      triage: 'foster',
+      triageLabel: 'Adoption Finalized',
+      outcome: 'adopted',
+      outcomeLabel: 'Adoption Finalized',
+      expenses: { spent: 7200, donor: 'Rescue Rehome Circle' },
+      rescueStory: 'Confiscated during illegal breeding crackdown. Treated for bilateral ear hematomas and dental tartar. Successfully adopted by a certified family in South Delhi after two-week trial.',
+      condition: 'Full clinical recovery; vaccinated, microchipped, spayed, and transitioned to permanent home',
+      bay: 'FOS-03',
+      ward: 'Ward E: Foster Transition',
+      carer: 'Dr. Rajesh Verma',
+      photoUrl: 'https://images.unsplash.com/photo-1517849845537-4d257902454a?auto=format&fit=crop&w=600&q=80',
+      photoIntake: 'https://images.unsplash.com/photo-1517849845537-4d257902454a?auto=format&fit=crop&w=600&q=80',
+      photoRecovery: 'https://images.unsplash.com/photo-1517849845537-4d257902454a?auto=format&fit=crop&w=600&q=80',
+      vitals: { temp: '38.3 °C', hr: '78 bpm', mucous: 'Pink', hydration: 'Normal' },
+      medications: ['Ear cleanser solution weekly'],
+      sterilized: true,
+      rabiesVaccinated: true,
+      legalStatus: 'Adoption Deed Registered #DL-AD-2026-19'
     }
   ],
 
@@ -600,9 +754,28 @@ const PawBridgeApp = {
 
       // Rescues Screen Elements
       rescueCardsGrid: document.getElementById('rescue-cards-grid'),
+      rescueHybridContainer: document.getElementById('rescue-hybrid-container'),
+      rescueHybridList: document.getElementById('rescue-hybrid-list'),
       rescueSearchField: document.getElementById('rescue-search-field'),
-      rescueFilterChips: document.querySelectorAll('.filter-chip-btn'),
+      rescueStatusTabsRow: document.getElementById('rescue-status-tabs-row'),
+      rescueFilterMedical: document.getElementById('rescue-filter-medical'),
+      rescueFilterOutcome: document.getElementById('rescue-filter-outcome'),
+      btnViewHybrid: document.getElementById('btn-view-hybrid'),
+      btnViewGrid: document.getElementById('btn-view-grid'),
+      btnResetRescueFilters: document.getElementById('btn-reset-rescue-filters'),
+      btnOpenAddRescueModal: document.getElementById('btn-open-add-rescue-modal'),
+      btnExportRescuesCsv: document.getElementById('btn-export-rescues-csv'),
       btnNewIntakeSecondary: document.getElementById('btn-new-intake-secondary'),
+
+      // Add / Edit Rescue Modal Elements
+      modalAddRescue: document.getElementById('modal-add-rescue'),
+      formAddRescue: document.getElementById('form-add-rescue'),
+      btnCloseAddRescueModal: document.getElementById('btn-close-add-rescue-modal'),
+      btnCancelAddRescueModal: document.getElementById('btn-cancel-add-rescue-modal'),
+      btnSaveDraftRescue: document.getElementById('btn-save-draft-rescue'),
+      btnPublishRescueUpdate: document.getElementById('btn-publish-rescue-update'),
+      btnDemoFillRescue: document.getElementById('btn-demo-fill-rescue'),
+      photoPresetsContainer: document.getElementById('photo-presets-container'),
 
       // Kennels Screen Elements
       bayGridContainer: document.getElementById('bay-grid-container'),
@@ -990,7 +1163,7 @@ const PawBridgeApp = {
       });
     }
 
-    // Rescue Filters & Search
+    // Rescue Filters, Status Tabs, Views & Search
     if (this.dom.rescueSearchField) {
       this.dom.rescueSearchField.addEventListener('input', (e) => {
         PawBridgeStore.searchQuery = e.target.value.toLowerCase().trim();
@@ -998,14 +1171,98 @@ const PawBridgeApp = {
       });
     }
 
-    this.dom.rescueFilterChips.forEach(chip => {
-      chip.addEventListener('click', () => {
-        this.dom.rescueFilterChips.forEach(c => c.classList.remove('active'));
-        chip.classList.add('active');
-        PawBridgeStore.filterStatus = chip.getAttribute('data-filter') || 'all';
+    if (this.dom.rescueStatusTabsRow) {
+      this.dom.rescueStatusTabsRow.querySelectorAll('.rescue-tab-chip').forEach(tab => {
+        tab.addEventListener('click', () => {
+          this.dom.rescueStatusTabsRow.querySelectorAll('.rescue-tab-chip').forEach(t => t.classList.remove('active'));
+          tab.classList.add('active');
+          PawBridgeStore.rescueStatusTab = tab.getAttribute('data-status-tab') || 'all';
+          this.renderRescuesGrid();
+        });
+      });
+    }
+
+    if (this.dom.rescueFilterMedical) {
+      this.dom.rescueFilterMedical.addEventListener('change', (e) => {
+        PawBridgeStore.rescueMedicalFilter = e.target.value;
         this.renderRescuesGrid();
       });
-    });
+    }
+
+    if (this.dom.rescueFilterOutcome) {
+      this.dom.rescueFilterOutcome.addEventListener('change', (e) => {
+        PawBridgeStore.rescueOutcomeFilter = e.target.value;
+        this.renderRescuesGrid();
+      });
+    }
+
+    if (this.dom.btnViewHybrid) {
+      this.dom.btnViewHybrid.addEventListener('click', () => {
+        PawBridgeStore.rescueViewMode = 'hybrid';
+        this.dom.btnViewHybrid.classList.add('active');
+        if (this.dom.btnViewGrid) this.dom.btnViewGrid.classList.remove('active');
+        this.renderRescuesGrid();
+      });
+    }
+
+    if (this.dom.btnViewGrid) {
+      this.dom.btnViewGrid.addEventListener('click', () => {
+        PawBridgeStore.rescueViewMode = 'grid';
+        this.dom.btnViewGrid.classList.add('active');
+        if (this.dom.btnViewHybrid) this.dom.btnViewHybrid.classList.remove('active');
+        this.renderRescuesGrid();
+      });
+    }
+
+    if (this.dom.btnResetRescueFilters) {
+      this.dom.btnResetRescueFilters.addEventListener('click', () => this.resetRescueFilters());
+    }
+
+    if (this.dom.btnExportRescuesCsv) {
+      this.dom.btnExportRescuesCsv.addEventListener('click', () => this.exportRescuesCsv());
+    }
+
+    // Add Rescue Modal Triggers
+    if (this.dom.btnOpenAddRescueModal) {
+      this.dom.btnOpenAddRescueModal.addEventListener('click', () => this.openAddRescueModal());
+    }
+    if (this.dom.btnOpenIntakeModal) {
+      this.dom.btnOpenIntakeModal.addEventListener('click', () => this.openAddRescueModal());
+    }
+    if (this.dom.btnNewIntakeSecondary) {
+      this.dom.btnNewIntakeSecondary.addEventListener('click', () => this.openAddRescueModal());
+    }
+    if (this.dom.btnCloseAddRescueModal) {
+      this.dom.btnCloseAddRescueModal.addEventListener('click', () => this.closeAddRescueModal());
+    }
+    if (this.dom.btnCancelAddRescueModal) {
+      this.dom.btnCancelAddRescueModal.addEventListener('click', () => this.closeAddRescueModal());
+    }
+    if (this.dom.btnDemoFillRescue) {
+      this.dom.btnDemoFillRescue.addEventListener('click', () => this.prefillDemoRescue());
+    }
+    if (this.dom.btnSaveDraftRescue) {
+      this.dom.btnSaveDraftRescue.addEventListener('click', () => this.saveRescueDraft());
+    }
+    if (this.dom.formAddRescue) {
+      this.dom.formAddRescue.addEventListener('submit', (e) => {
+        e.preventDefault();
+        this.publishRescueUpdate();
+      });
+    }
+
+    // Photo Preset Selector Chips in Add Rescue Modal
+    if (this.dom.photoPresetsContainer) {
+      this.dom.photoPresetsContainer.querySelectorAll('.photo-preset-chip').forEach(chip => {
+        chip.addEventListener('click', () => {
+          this.dom.photoPresetsContainer.querySelectorAll('.photo-preset-chip').forEach(c => c.classList.remove('selected'));
+          chip.classList.add('selected');
+          const photoUrl = chip.getAttribute('data-url');
+          const photoInput = document.getElementById('new-rescue-photo');
+          if (photoInput) photoInput.value = photoUrl;
+        });
+      });
+    }
 
     // Ward Tabs in Kennels
     this.dom.wardTabBtns.forEach(btn => {
@@ -1823,48 +2080,245 @@ const PawBridgeApp = {
   },
 
   // ============================================================
-  // SCREEN 2: RESCUES & INTAKE REGISTRY
+  // SCREEN 2: RESCUE & INTAKE REGISTRY (TABLE/CARD HYBRID & GRID)
   // ============================================================
   renderRescuesGrid() {
-    if (!this.dom.rescueCardsGrid) return;
+    const allRescues = PawBridgeStore.rescues;
 
-    let filtered = PawBridgeStore.rescues;
+    // Update dynamic tab counts
+    const tabCounts = {
+      all: allRescues.length,
+      in_care: allRescues.filter(r => r.outcome === 'in_care' || r.outcome === 'foster' || !r.outcome).length,
+      critical: allRescues.filter(r => r.triage === 'critical').length,
+      surgery: allRescues.filter(r => r.triage === 'surgery').length,
+      quarantine: allRescues.filter(r => r.triage === 'quarantine').length,
+      adopted: allRescues.filter(r => r.outcome === 'adopted').length,
+      released: allRescues.filter(r => r.outcome === 'released').length,
+      sanctuary: allRescues.filter(r => r.outcome === 'sanctuary').length
+    };
 
-    // Filter by triage status
-    if (PawBridgeStore.filterStatus !== 'all') {
-      filtered = filtered.filter(r => r.triage === PawBridgeStore.filterStatus);
+    const countAllEl = document.getElementById('tab-count-all');
+    const countInCareEl = document.getElementById('tab-count-in-care');
+    const countCriticalEl = document.getElementById('tab-count-critical');
+    const countSurgeryEl = document.getElementById('tab-count-surgery');
+    const countQuarantineEl = document.getElementById('tab-count-quarantine');
+    const countAdoptedEl = document.getElementById('tab-count-adopted');
+    const countReleasedEl = document.getElementById('tab-count-released');
+    const countSanctuaryEl = document.getElementById('tab-count-sanctuary');
+
+    if (countAllEl) countAllEl.textContent = tabCounts.all;
+    if (countInCareEl) countInCareEl.textContent = tabCounts.in_care;
+    if (countCriticalEl) countCriticalEl.textContent = tabCounts.critical;
+    if (countSurgeryEl) countSurgeryEl.textContent = tabCounts.surgery;
+    if (countQuarantineEl) countQuarantineEl.textContent = tabCounts.quarantine;
+    if (countAdoptedEl) countAdoptedEl.textContent = tabCounts.adopted;
+    if (countReleasedEl) countReleasedEl.textContent = tabCounts.released;
+    if (countSanctuaryEl) countSanctuaryEl.textContent = tabCounts.sanctuary;
+
+    let filtered = allRescues;
+
+    // Filter 1: Status Tab
+    const activeTab = PawBridgeStore.rescueStatusTab || 'all';
+    if (activeTab === 'in_care') {
+      filtered = filtered.filter(r => r.outcome === 'in_care' || r.outcome === 'foster' || !r.outcome);
+    } else if (activeTab === 'critical') {
+      filtered = filtered.filter(r => r.triage === 'critical');
+    } else if (activeTab === 'surgery') {
+      filtered = filtered.filter(r => r.triage === 'surgery');
+    } else if (activeTab === 'quarantine') {
+      filtered = filtered.filter(r => r.triage === 'quarantine');
+    } else if (activeTab === 'adopted') {
+      filtered = filtered.filter(r => r.outcome === 'adopted');
+    } else if (activeTab === 'released') {
+      filtered = filtered.filter(r => r.outcome === 'released');
+    } else if (activeTab === 'sanctuary') {
+      filtered = filtered.filter(r => r.outcome === 'sanctuary');
     }
 
-    // Search query filter
+    // Filter 2: Medical Status Select
+    const medFilter = PawBridgeStore.rescueMedicalFilter || 'all';
+    if (medFilter !== 'all') {
+      filtered = filtered.filter(r => r.triage === medFilter);
+    }
+
+    // Filter 3: Outcome Select
+    const outcomeFilter = PawBridgeStore.rescueOutcomeFilter || 'all';
+    if (outcomeFilter !== 'all') {
+      filtered = filtered.filter(r => (r.outcome || 'in_care') === outcomeFilter);
+    }
+
+    // Filter 4: Live Search Query
     if (PawBridgeStore.searchQuery) {
-      const q = PawBridgeStore.searchQuery;
-      filtered = filtered.filter(r => 
+      const q = PawBridgeStore.searchQuery.toLowerCase().trim();
+      filtered = filtered.filter(r =>
         r.name.toLowerCase().includes(q) ||
         r.id.toLowerCase().includes(q) ||
         r.tag.toLowerCase().includes(q) ||
         r.breed.toLowerCase().includes(q) ||
-        r.bay.toLowerCase().includes(q)
+        r.intakeLocation.toLowerCase().includes(q) ||
+        r.bay.toLowerCase().includes(q) ||
+        r.condition.toLowerCase().includes(q) ||
+        (r.carer && r.carer.toLowerCase().includes(q))
       );
     }
 
-    if (filtered.length === 0) {
-      this.dom.rescueCardsGrid.innerHTML = `
-        <div style="grid-column: 1 / -1; padding: 48px 24px; text-align: center; background: #FFFFFF; border-radius: 12px; border: 1px dashed var(--color-border);">
-          <div style="font-family: var(--font-heading); font-size: 20px; font-weight: 600; margin-bottom: 8px;">No rescue cases match this filter</div>
-          <p class="body-text-16 muted" style="margin-bottom: 16px;">Try adjusting your search criteria or triage category.</p>
-          <button class="btn-primary-olive" onclick="PawBridgeApp.resetRescueFilters()">Reset Filters</button>
-        </div>
-      `;
-      return;
-    }
+    const isHybridView = (PawBridgeStore.rescueViewMode || 'hybrid') === 'hybrid';
+    const hybridContainer = this.dom.rescueHybridContainer;
+    const hybridList = this.dom.rescueHybridList;
+    const gridContainer = this.dom.rescueCardsGrid;
 
-    this.dom.rescueCardsGrid.innerHTML = filtered.map(r => `
+    if (isHybridView) {
+      if (hybridContainer) hybridContainer.style.display = 'flex';
+      if (gridContainer) gridContainer.style.display = 'none';
+
+      if (hybridList) {
+        if (filtered.length === 0) {
+          hybridList.innerHTML = `
+            <div style="padding: 48px 24px; text-align: center; background: #FFFFFF; border-radius: 12px; border: 1px dashed var(--color-border); margin-top: 8px;">
+              <div style="font-family: var(--font-heading); font-size: 18px; font-weight: 600; margin-bottom: 6px;">No rescue records match this filter</div>
+              <p class="body-text-16 muted" style="font-size: 14px; margin-bottom: 16px;">Try adjusting your search criteria, medical status, or outcome category.</p>
+              <button type="button" class="btn-primary-olive" onclick="PawBridgeApp.resetRescueFilters()">Reset Filters</button>
+            </div>
+          `;
+        } else {
+          hybridList.innerHTML = filtered.map(r => this.generateHybridRow(r)).join('');
+        }
+      }
+    } else {
+      if (hybridContainer) hybridContainer.style.display = 'none';
+      if (gridContainer) {
+        gridContainer.style.display = 'grid';
+        if (filtered.length === 0) {
+          gridContainer.innerHTML = `
+            <div style="grid-column: 1 / -1; padding: 48px 24px; text-align: center; background: #FFFFFF; border-radius: 12px; border: 1px dashed var(--color-border);">
+              <div style="font-family: var(--font-heading); font-size: 18px; font-weight: 600; margin-bottom: 6px;">No rescue records match this filter</div>
+              <p class="body-text-16 muted" style="font-size: 14px; margin-bottom: 16px;">Try adjusting your search criteria or triage category.</p>
+              <button type="button" class="btn-primary-olive" onclick="PawBridgeApp.resetRescueFilters()">Reset Filters</button>
+            </div>
+          `;
+        } else {
+          gridContainer.innerHTML = filtered.map(r => this.generateCardDossier(r)).join('');
+        }
+      }
+    }
+  },
+
+  generateHybridRow(r) {
+    const outcomeClasses = {
+      in_care: 'in-care',
+      foster: 'foster',
+      adopted: 'adopted',
+      released: 'released',
+      sanctuary: 'sanctuary',
+      draft: 'draft'
+    };
+
+    const outcomeLabels = {
+      in_care: 'In Shelter Treatment',
+      foster: 'Foster-to-Adopt Trial',
+      adopted: 'Adoption Finalized',
+      released: 'Community Released',
+      sanctuary: 'Permanent Sanctuary',
+      draft: 'Draft Record'
+    };
+
+    const outcomeKey = r.outcome || 'in_care';
+    const spentAmount = r.expenses?.spent ? `₹${Number(r.expenses.spent).toLocaleString('en-IN')}` : '₹3,500';
+    const donorName = r.expenses?.donor || 'General Rescue Fund';
+
+    return `
+      <div class="rescue-hybrid-card-row" onclick="PawBridgeApp.openRescueDossier('${r.id}')">
+        <!-- 1. Patient & Case ID -->
+        <div class="hybrid-col-patient">
+          <img src="${r.photoUrl}" alt="${r.name}" class="hybrid-patient-thumb" />
+          <div class="hybrid-patient-info">
+            <div class="hybrid-dog-name">
+              <span>${r.name}</span>
+              ${r.sterilized ? '<span style="font-size: 10px; color: var(--color-olive); font-weight: normal;" title="Sterilized">✂</span>' : ''}
+            </div>
+            <div class="hybrid-dog-meta">${r.breed} • ${r.gender} (${r.age})</div>
+            <span class="hybrid-case-chip">${r.id} • ${r.tag}</span>
+          </div>
+        </div>
+
+        <!-- 2. Rescue Date & Location -->
+        <div class="hybrid-col-date-loc">
+          <div class="hybrid-date-text">${r.intakeDate}</div>
+          <div class="hybrid-loc-text" title="${r.intakeLocation}">📍 ${r.intakeLocation}</div>
+          <span style="font-size: 11px; color: var(--color-text-subtle);">Unit: ${r.rescuer.split('(')[0].trim()}</span>
+        </div>
+
+        <!-- 3. Medical Status & Presenting Condition -->
+        <div class="hybrid-col-medical">
+          <div>
+            <span class="status-pill ${r.triage}">${r.triageLabel || r.triage}</span>
+          </div>
+          <div class="hybrid-condition-snippet" title="${r.condition}">
+            ${r.condition}
+          </div>
+          ${r.vitals?.temp ? `<span style="font-size: 11px; color: var(--color-text-subtle);">🌡️ ${r.vitals.temp} • ${r.vitals.hr}</span>` : ''}
+        </div>
+
+        <!-- 4. Bay & Attending Vet -->
+        <div class="hybrid-col-carer-bay">
+          <div class="hybrid-bay-tag">🏠 ${r.bay}</div>
+          <div style="font-size: 11px; color: var(--color-text-subtle);">${r.ward ? r.ward.split(':')[0] : 'Ward'}</div>
+          <div class="hybrid-carer-text">👨‍⚕️ ${r.carer}</div>
+        </div>
+
+        <!-- 5. Expenses -->
+        <div class="hybrid-col-expenses">
+          <div class="hybrid-amount-spent">${spentAmount}</div>
+          <div class="hybrid-donor-label" title="${donorName}">Fund: ${donorName}</div>
+        </div>
+
+        <!-- 6. Outcome -->
+        <div class="hybrid-col-outcome">
+          <span class="outcome-pill ${outcomeClasses[outcomeKey] || 'in-care'}">
+            ${outcomeLabels[outcomeKey] || r.outcomeLabel || 'In Shelter Care'}
+          </span>
+          <span style="font-size: 11px; color: var(--color-text-subtle);">${r.legalStatus ? r.legalStatus.split('#')[0].trim() : 'Active Care'}</span>
+        </div>
+
+        <!-- 7. Actions -->
+        <div class="hybrid-col-actions" onclick="event.stopPropagation();">
+          <button type="button" class="btn-secondary-cream" style="padding: 5px 10px; font-size: 12px;" onclick="PawBridgeApp.openRescueDossier('${r.id}')" title="Inspect clinical dossier">
+            Dossier
+          </button>
+        </div>
+      </div>
+    `;
+  },
+
+  generateCardDossier(r) {
+    const outcomeClasses = {
+      in_care: 'in-care',
+      foster: 'foster',
+      adopted: 'adopted',
+      released: 'released',
+      sanctuary: 'sanctuary',
+      draft: 'draft'
+    };
+
+    const outcomeLabels = {
+      in_care: 'In Shelter Treatment',
+      foster: 'Foster-to-Adopt Trial',
+      adopted: 'Adoption Finalized',
+      released: 'Community Released',
+      sanctuary: 'Permanent Sanctuary',
+      draft: 'Draft Record'
+    };
+
+    const outcomeKey = r.outcome || 'in_care';
+    const spentAmount = r.expenses?.spent ? `₹${Number(r.expenses.spent).toLocaleString('en-IN')}` : '₹3,500';
+
+    return `
       <div class="rescue-dossier-card" onclick="PawBridgeApp.openRescueDossier('${r.id}')">
         <div class="card-photo-banner">
           <img src="${r.photoUrl}" alt="${r.name}" loading="lazy" />
           <div class="card-photo-badges">
             <span class="case-id-badge">${r.id}</span>
-            <span class="status-pill ${r.triage}">${r.triageLabel}</span>
+            <span class="status-pill ${r.triage}">${r.triageLabel || r.triage}</span>
           </div>
         </div>
 
@@ -1880,21 +2334,27 @@ const PawBridgeApp = {
 
           <div class="card-attributes-grid">
             <div class="attr-item">
+              <span class="attr-key">Rescue Location</span>
+              <span class="attr-val" style="font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${r.intakeLocation}</span>
+            </div>
+            <div class="attr-item">
               <span class="attr-key">Assigned Bay</span>
               <span class="attr-val">${r.bay}</span>
             </div>
             <div class="attr-item">
-              <span class="attr-key">Intake Date</span>
-              <span class="attr-val">${r.intakeDate}</span>
-            </div>
-            <div class="attr-item">
-              <span class="attr-key">Weight</span>
-              <span class="attr-val">${r.weight}</span>
+              <span class="attr-key">Expenses Spent</span>
+              <span class="attr-val" style="color: var(--color-olive);">${spentAmount}</span>
             </div>
             <div class="attr-item">
               <span class="attr-key">Lead Carer</span>
-              <span class="attr-val">${r.carer.split(' ')[1] || r.carer}</span>
+              <span class="attr-val">${r.carer ? (r.carer.split(' ')[1] || r.carer) : 'Staff'}</span>
             </div>
+          </div>
+
+          <div style="margin-top: 4px;">
+            <span class="outcome-pill ${outcomeClasses[outcomeKey] || 'in-care'}" style="font-size: 11px;">
+              ${outcomeLabels[outcomeKey] || r.outcomeLabel || 'In Shelter Care'}
+            </span>
           </div>
         </div>
 
@@ -1907,17 +2367,301 @@ const PawBridgeApp = {
           </span>
         </div>
       </div>
-    `).join('');
+    `;
   },
 
   resetRescueFilters() {
-    PawBridgeStore.filterStatus = 'all';
+    PawBridgeStore.rescueStatusTab = 'all';
+    PawBridgeStore.rescueMedicalFilter = 'all';
+    PawBridgeStore.rescueOutcomeFilter = 'all';
     PawBridgeStore.searchQuery = '';
+
     if (this.dom.rescueSearchField) this.dom.rescueSearchField.value = '';
-    this.dom.rescueFilterChips.forEach(c => {
-      c.classList.toggle('active', c.getAttribute('data-filter') === 'all');
-    });
+    if (this.dom.rescueFilterMedical) this.dom.rescueFilterMedical.value = 'all';
+    if (this.dom.rescueFilterOutcome) this.dom.rescueFilterOutcome.value = 'all';
+
+    if (this.dom.rescueStatusTabsRow) {
+      this.dom.rescueStatusTabsRow.querySelectorAll('.rescue-tab-chip').forEach(tab => {
+        tab.classList.toggle('active', tab.getAttribute('data-status-tab') === 'all');
+      });
+    }
+
     this.renderRescuesGrid();
+    this.showToast('Rescue records search and filters reset', 'success');
+  },
+
+  // ============================================================
+  // ADD RESCUE MODAL & LIFECYCLE ACTIONS
+  // ============================================================
+  openAddRescueModal(preselectedBay = '') {
+    if (this.dom.modalAddRescue) {
+      this.dom.modalAddRescue.classList.add('active');
+
+      // Populate default date and time if empty
+      const dateField = document.getElementById('new-rescue-date');
+      const timeField = document.getElementById('new-rescue-time');
+      const bayField = document.getElementById('new-rescue-bay');
+
+      if (dateField && !dateField.value) {
+        const today = new Date();
+        const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+        dateField.value = `${today.getDate()} ${months[today.getMonth()]} ${today.getFullYear()}`;
+      }
+
+      if (timeField && !timeField.value) {
+        timeField.value = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+      }
+
+      if (bayField && preselectedBay) {
+        bayField.value = preselectedBay;
+      }
+    }
+  },
+
+  closeAddRescueModal() {
+    if (this.dom.modalAddRescue) {
+      this.dom.modalAddRescue.classList.remove('active');
+    }
+  },
+
+  prefillDemoRescue() {
+    const fields = {
+      'new-rescue-name': 'Sultan',
+      'new-rescue-tag': 'IND-DL-8835',
+      'new-rescue-breed': 'Indie Mastiff Shepherd Mix',
+      'new-rescue-gender': 'Male',
+      'new-rescue-sterilized': 'false',
+      'new-rescue-age': '2 Years',
+      'new-rescue-weight': '24.2 kg',
+      'new-rescue-date': '29 Oct 2026',
+      'new-rescue-time': '10:30 AM',
+      'new-rescue-location': 'Sector 21 Metro Station Underpass, Dwarka',
+      'new-rescue-rescuer': 'Dwarka Patrol Helpline (Ambulance Unit 2)',
+      'new-rescue-legal': 'Police Panchnama #DL-528 filed',
+      'new-rescue-story': 'Reported by morning metro commuters after being pinned under construction scaffolding during storm. Sustained deep pelvic contusions, lacerations along right flank, and moderate shock. Field unit administered sedation, immobilized patient with vacuum mattress, and transferred immediately to PawBridge ICU.',
+      'new-rescue-photo': 'https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&w=600&q=80',
+      'new-rescue-recovery-photo': 'https://images.unsplash.com/photo-1517849845537-4d257902454a?auto=format&fit=crop&w=600&q=80',
+      'new-rescue-triage': 'critical',
+      'new-rescue-carer': 'Dr. Ananya Sharma',
+      'new-rescue-condition': 'Pelvic soft-tissue contusions with hematoma; right flank 8cm laceration debrided and sutured; vitals stabilizing under IV fluid resuscitation',
+      'new-rescue-meds': 'IV Ceftriaxone 1g, Meloxicam 0.2mg/kg, Tramadol IV, Ringer Lactate 500ml',
+      'new-rescue-vitals': 'Temp: 39.1 °C • HR: 124 bpm • Mucous: Pale pink • Hydration: 6% deficit',
+      'new-rescue-spent': '5400',
+      'new-rescue-donor': 'Emergency Trauma Fund',
+      'new-rescue-bay': 'ICU-03',
+      'new-rescue-outcome': 'in_care'
+    };
+
+    Object.keys(fields).forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.value = fields[id];
+    });
+
+    this.showToast('⚡ Prefilled form with realistic Delhi trauma rescue incident', 'success');
+  },
+
+  saveRescueDraft() {
+    const name = document.getElementById('new-rescue-name')?.value.trim() || 'Untitled Draft Rescue';
+    const breed = document.getElementById('new-rescue-breed')?.value.trim() || 'Indie Mix';
+    const location = document.getElementById('new-rescue-location')?.value.trim() || 'Shelter Intake Area';
+    const date = document.getElementById('new-rescue-date')?.value.trim() || 'Today';
+    const time = document.getElementById('new-rescue-time')?.value.trim() || 'Just now';
+    const condition = document.getElementById('new-rescue-condition')?.value.trim() || 'Draft clinical assessment pending review.';
+    const photo = document.getElementById('new-rescue-photo')?.value.trim() || 'https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&w=600&q=80';
+    const spent = Number(document.getElementById('new-rescue-spent')?.value) || 0;
+    const donor = document.getElementById('new-rescue-donor')?.value.trim() || 'Unallocated Draft';
+
+    const newId = `RC-${1049 + PawBridgeStore.rescues.length}`;
+    const draftRescue = {
+      id: newId,
+      name: `${name} (Draft)`,
+      tag: `IND-DL-${Math.floor(Math.random() * 8000 + 1000)}`,
+      breed,
+      age: document.getElementById('new-rescue-age')?.value.trim() || '1 Year',
+      gender: document.getElementById('new-rescue-gender')?.value || 'Male',
+      weight: document.getElementById('new-rescue-weight')?.value.trim() || '12 kg',
+      intakeDate: date,
+      intakeTime: time,
+      intakeLocation: location,
+      rescuer: document.getElementById('new-rescue-rescuer')?.value.trim() || 'Field Volunteer',
+      triage: 'stable',
+      triageLabel: 'Draft Staged',
+      outcome: 'draft',
+      outcomeLabel: 'Draft Record',
+      expenses: { spent, donor },
+      rescueStory: document.getElementById('new-rescue-story')?.value.trim() || 'Draft intake record saved without publishing.',
+      condition,
+      bay: 'REC-04',
+      ward: 'Ward C: Surgical Recovery',
+      carer: document.getElementById('new-rescue-carer')?.value.trim() || 'Pending Assignment',
+      photoUrl: photo,
+      photoIntake: photo,
+      photoRecovery: photo,
+      vitals: { temp: '38.5 °C', hr: '90 bpm', mucous: 'Normal', hydration: 'Normal' },
+      medications: ['Draft protocol pending clinical approval'],
+      sterilized: false,
+      rabiesVaccinated: false,
+      legalStatus: 'Draft Intake Pending Verification'
+    };
+
+    PawBridgeStore.rescues.unshift(draftRescue);
+    this.closeAddRescueModal();
+    if (this.dom.formAddRescue) this.dom.formAddRescue.reset();
+
+    this.render();
+    this.showToast(`✓ Saved draft rescue record for ${name} (${newId})`, 'success');
+  },
+
+  publishRescueUpdate() {
+    const name = document.getElementById('new-rescue-name')?.value.trim();
+    const breed = document.getElementById('new-rescue-breed')?.value.trim();
+    const location = document.getElementById('new-rescue-location')?.value.trim();
+    const condition = document.getElementById('new-rescue-condition')?.value.trim();
+
+    if (!name || !breed || !location || !condition) {
+      this.showToast('Please complete all required fields (Name, Breed, Location, Condition)', 'alert');
+      return;
+    }
+
+    const tag = document.getElementById('new-rescue-tag')?.value.trim() || `IND-DL-${Math.floor(Math.random() * 8000 + 1000)}`;
+    const age = document.getElementById('new-rescue-age')?.value.trim() || '1.5 Years';
+    const gender = document.getElementById('new-rescue-gender')?.value || 'Male';
+    const weight = document.getElementById('new-rescue-weight')?.value.trim() || '15.0 kg';
+    const date = document.getElementById('new-rescue-date')?.value.trim() || 'Today';
+    const time = document.getElementById('new-rescue-time')?.value.trim() || 'Just now';
+    const rescuer = document.getElementById('new-rescue-rescuer')?.value.trim() || 'Field Ambulance Unit 1';
+    const legal = document.getElementById('new-rescue-legal')?.value.trim() || 'Shelter Intake Custody Verified';
+    const story = document.getElementById('new-rescue-story')?.value.trim() || 'Direct rescue admission from field dispatch.';
+    const photo = document.getElementById('new-rescue-photo')?.value.trim() || 'https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&w=600&q=80';
+    const recoveryPhoto = document.getElementById('new-rescue-recovery-photo')?.value.trim() || photo;
+    const triage = document.getElementById('new-rescue-triage')?.value || 'stable';
+    const carer = document.getElementById('new-rescue-carer')?.value.trim() || 'Dr. Ananya Sharma';
+    const medsRaw = document.getElementById('new-rescue-meds')?.value.trim() || 'Standard antibiotic & anti-inflammatory course';
+    const vitalsRaw = document.getElementById('new-rescue-vitals')?.value.trim() || 'Temp: 38.6 °C • HR: 92 bpm • Normal hydration';
+    const spent = Number(document.getElementById('new-rescue-spent')?.value) || 3800;
+    const donor = document.getElementById('new-rescue-donor')?.value.trim() || 'General Rescue Fund';
+    const bay = document.getElementById('new-rescue-bay')?.value || 'REC-04';
+    const outcome = document.getElementById('new-rescue-outcome')?.value || 'in_care';
+    const sterilized = document.getElementById('new-rescue-sterilized')?.value === 'true';
+
+    const triageLabels = {
+      critical: 'ICU / Critical Care',
+      surgery: 'Post-Op Recovery',
+      quarantine: 'Puppy Quarantine',
+      stable: 'Rehabilitation / Stable',
+      foster: 'Medical Foster Trial'
+    };
+
+    const outcomeLabels = {
+      in_care: 'In Shelter Treatment',
+      foster: 'Foster-to-Adopt Trial',
+      adopted: 'Adoption Finalized',
+      released: 'Community ABC Released',
+      sanctuary: 'Permanent Sanctuary',
+      draft: 'Draft Record'
+    };
+
+    const wardMap = {
+      'ICU-01': 'Ward A: Trauma ICU', 'ICU-02': 'Ward A: Trauma ICU', 'ICU-03': 'Ward A: Trauma ICU',
+      'ICU-04': 'Ward A: Trauma ICU', 'ICU-05': 'Ward A: Trauma ICU', 'ICU-06': 'Ward A: Trauma ICU',
+      'Q-01': 'Ward B: Quarantine', 'Q-02': 'Ward B: Quarantine', 'Q-03': 'Ward B: Quarantine', 'Q-04': 'Ward B: Quarantine', 'Q-05': 'Ward B: Quarantine',
+      'REC-01': 'Ward C: Surgical Recovery', 'REC-02': 'Ward C: Surgical Recovery', 'REC-03': 'Ward C: Surgical Recovery', 'REC-04': 'Ward C: Surgical Recovery', 'REC-05': 'Ward C: Surgical Recovery',
+      'RUN-01': 'Ward D: Open Runs', 'RUN-02': 'Ward D: Open Runs', 'RUN-03': 'Ward D: Open Runs', 'RUN-05': 'Ward D: Open Runs', 'RUN-06': 'Ward D: Open Runs',
+      'FOS-01': 'Ward E: Foster Care', 'FOS-02': 'Ward E: Foster Care', 'FOS-03': 'Ward E: Foster Care'
+    };
+
+    const newId = `RC-${1049 + PawBridgeStore.rescues.length}`;
+
+    const newRescue = {
+      id: newId,
+      name,
+      tag,
+      breed,
+      age,
+      gender,
+      weight,
+      intakeDate: date,
+      intakeTime: time,
+      intakeLocation: location,
+      rescuer,
+      triage,
+      triageLabel: triageLabels[triage] || 'Stable',
+      outcome,
+      outcomeLabel: outcomeLabels[outcome] || 'In Shelter Care',
+      expenses: { spent, donor },
+      rescueStory: story,
+      condition,
+      bay,
+      ward: wardMap[bay] || 'Ward C: Surgical Recovery',
+      carer,
+      photoUrl: photo,
+      photoIntake: photo,
+      photoRecovery: recoveryPhoto,
+      vitals: { temp: '38.8 °C', hr: '110 bpm', mucous: 'Healthy pink', hydration: 'Normal' },
+      medications: medsRaw.split(',').map(m => m.trim()),
+      sterilized,
+      rabiesVaccinated: true,
+      legalStatus: legal
+    };
+
+    PawBridgeStore.rescues.unshift(newRescue);
+
+    // Update bay occupancy in store
+    const bayObj = PawBridgeStore.kennelBays.find(b => b.id === bay);
+    if (bayObj) {
+      bayObj.status = 'occupied';
+      bayObj.occupant = `${name} (${newId})`;
+      bayObj.photo = photo;
+    }
+
+    // Add live notification
+    PawBridgeStore.notifications.unshift({
+      id: `notif-${Date.now()}`,
+      title: `New Rescue Admitted: ${name}`,
+      text: `Case #${newId} admitted from ${location}. Assigned to Bay ${bay} under ${carer}.`,
+      time: 'Just now',
+      unread: true
+    });
+
+    this.closeAddRescueModal();
+    if (this.dom.formAddRescue) this.dom.formAddRescue.reset();
+
+    this.render();
+    this.showToast(`🎉 Rescue record published! Assigned Case ID: ${newId}`, 'success');
+  },
+
+  exportRescuesCsv() {
+    const rescues = PawBridgeStore.rescues;
+    const headers = ['Case ID', 'Name', 'Tag', 'Breed', 'Gender', 'Age', 'Weight', 'Intake Date', 'Intake Location', 'Triage Medical Status', 'Bay', 'Lead Carer', 'Expenses Spent (INR)', 'Donor Fund', 'Outcome'];
+
+    const rows = rescues.map(r => [
+      `"${r.id}"`,
+      `"${r.name}"`,
+      `"${r.tag}"`,
+      `"${r.breed}"`,
+      `"${r.gender}"`,
+      `"${r.age}"`,
+      `"${r.weight}"`,
+      `"${r.intakeDate}"`,
+      `"${r.intakeLocation.replace(/"/g, '""')}"`,
+      `"${r.triageLabel || r.triage}"`,
+      `"${r.bay}"`,
+      `"${r.carer}"`,
+      `"${r.expenses?.spent || 3500}"`,
+      `"${r.expenses?.donor || 'General'}"`,
+      `"${r.outcomeLabel || r.outcome || 'In Care'}"`
+    ]);
+
+    const csvContent = 'data:text/csv;charset=utf-8,' + [headers.join(','), ...rows.map(e => e.join(','))].join('\n');
+    const encodedUri = encodeURI(csvContent);
+    const link = document.createElement('a');
+    link.setAttribute('href', encodedUri);
+    link.setAttribute('download', `pawbridge_rescues_registry_${new Date().toISOString().split('T')[0]}.csv`);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+
+    this.showToast(`✓ Exported ${rescues.length} rescue records to CSV`, 'success');
   },
 
   // ============================================================

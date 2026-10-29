@@ -1340,37 +1340,124 @@
             <section class="screen-view" id="screen-rescues">
               <div class="screen-header-banner">
                 <div class="screen-header-left">
-                  <h1 class="page-title-36">Rescue & Intake Registry</h1>
-                  <p class="body-text-16 muted">Complete chain-of-custody, clinical admission records, and microchip database.</p>
+                  <h1 class="page-title-36">Rescue Records & Intake Registry</h1>
+                  <p class="body-text-16 muted">Complete chain-of-custody, clinical admission records, rescue stories, and outcome trajectories.</p>
                 </div>
-                <div class="screen-header-actions">
-                  <button type="button" class="btn-primary-olive" id="btn-new-intake-secondary">
+                <div class="screen-header-actions" style="display: flex; align-items: center; gap: 10px;">
+                  <button type="button" class="btn-secondary-cream" id="btn-export-rescues-csv" title="Export rescue records to CSV">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                    <span>Export CSV</span>
+                  </button>
+                  <button type="button" class="btn-primary-olive" id="btn-open-add-rescue-modal">
                     <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-                    Register New Intake
+                    <span>Add Rescue</span>
                   </button>
                 </div>
               </div>
 
-              <!-- Controls & Filter Chips -->
-              <div class="rescue-controls-bar">
-                <div class="filter-chips-row" style="margin-bottom: 0;">
-                  <button type="button" class="filter-chip-btn active" data-filter="all">All Rescues (42)</button>
-                  <button type="button" class="filter-chip-btn" data-filter="critical">ICU / Critical (6)</button>
-                  <button type="button" class="filter-chip-btn" data-filter="surgery">Post-Surgery (9)</button>
-                  <button type="button" class="filter-chip-btn" data-filter="quarantine">Quarantine (7)</button>
-                  <button type="button" class="filter-chip-btn" data-filter="stable">Rehabilitation (14)</button>
-                  <button type="button" class="filter-chip-btn" data-filter="foster">Foster Placement (6)</button>
+              <!-- Status Tabs Bar with Dynamic Counters -->
+              <div class="rescue-status-tabs-row" id="rescue-status-tabs-row">
+                <button type="button" class="rescue-tab-chip active" data-status-tab="all">
+                  <span>All Records</span>
+                  <span class="tab-count-badge" id="tab-count-all">42</span>
+                </button>
+                <button type="button" class="rescue-tab-chip" data-status-tab="in_care">
+                  <span>Active In-Care</span>
+                  <span class="tab-count-badge" id="tab-count-in-care">31</span>
+                </button>
+                <button type="button" class="rescue-tab-chip" data-status-tab="critical">
+                  <span>Critical / ICU</span>
+                  <span class="tab-count-badge" id="tab-count-critical">6</span>
+                </button>
+                <button type="button" class="rescue-tab-chip" data-status-tab="surgery">
+                  <span>Post-Surgery</span>
+                  <span class="tab-count-badge" id="tab-count-surgery">9</span>
+                </button>
+                <button type="button" class="rescue-tab-chip" data-status-tab="quarantine">
+                  <span>Quarantine</span>
+                  <span class="tab-count-badge" id="tab-count-quarantine">7</span>
+                </button>
+                <button type="button" class="rescue-tab-chip" data-status-tab="adopted">
+                  <span>Adopted</span>
+                  <span class="tab-count-badge" id="tab-count-adopted">5</span>
+                </button>
+                <button type="button" class="rescue-tab-chip" data-status-tab="released">
+                  <span>Community Released</span>
+                  <span class="tab-count-badge" id="tab-count-released">3</span>
+                </button>
+                <button type="button" class="rescue-tab-chip" data-status-tab="sanctuary">
+                  <span>Sanctuary</span>
+                  <span class="tab-count-badge" id="tab-count-sanctuary">2</span>
+                </button>
+              </div>
+
+              <!-- Advanced Search & Filter Controls -->
+              <div class="rescue-advanced-toolbar">
+                <div class="rescue-search-box" style="flex: 1; max-width: 380px;">
+                  <svg class="search-icon-left" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                  <input type="text" class="rescue-search-input" id="rescue-search-field" placeholder="Search case ID, dog name, location, breed, carer..." />
                 </div>
 
-                <div class="rescue-search-box">
-                  <svg class="search-icon-left" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-                  <input type="text" class="rescue-search-input" id="rescue-search-field" placeholder="Filter by name, case ID, bay..." />
+                <div class="rescue-filters-cluster">
+                  <!-- Medical Status Filter -->
+                  <select id="rescue-filter-medical" class="rescue-select-filter" aria-label="Filter by Medical Status">
+                    <option value="all">All Medical Statuses</option>
+                    <option value="critical">Critical / ICU</option>
+                    <option value="surgery">Post-Op Surgery</option>
+                    <option value="quarantine">Quarantine Isolation</option>
+                    <option value="stable">Stable Rehabilitation</option>
+                    <option value="foster">Foster Medical Care</option>
+                  </select>
+
+                  <!-- Outcome Filter -->
+                  <select id="rescue-filter-outcome" class="rescue-select-filter" aria-label="Filter by Outcome">
+                    <option value="all">All Outcomes</option>
+                    <option value="in_care">In Shelter Care</option>
+                    <option value="foster">Foster-to-Adopt Trial</option>
+                    <option value="adopted">Adoption Finalized</option>
+                    <option value="released">Community ABC Released</option>
+                    <option value="sanctuary">Permanent Sanctuary</option>
+                    <option value="draft">Draft Record</option>
+                  </select>
+
+                  <!-- View Mode Switcher: Hybrid Table vs Photo Grid -->
+                  <div class="rescue-view-switcher" role="group" aria-label="Rescue View Switcher">
+                    <button type="button" class="view-toggle-btn active" id="btn-view-hybrid" title="Clean Table/Card Hybrid View">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+                      <span>Table/Card Hybrid</span>
+                    </button>
+                    <button type="button" class="view-toggle-btn" id="btn-view-grid" title="Visual Photo Cards Grid">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+                      <span>Photo Cards</span>
+                    </button>
+                  </div>
+
+                  <button type="button" class="btn-secondary-cream" id="btn-reset-rescue-filters" style="font-size: 12px; padding: 6px 12px;" title="Reset all search and filter parameters">
+                    Reset
+                  </button>
                 </div>
               </div>
 
-              <!-- Grid of Rescue Cards -->
-              <div class="rescue-cards-grid" id="rescue-cards-grid">
-                <!-- Dynamically populated -->
+              <!-- VIEW 1: Clean Table/Card Hybrid View (Default) -->
+              <div class="rescue-hybrid-container" id="rescue-hybrid-container">
+                <div class="hybrid-table-header">
+                  <div>Patient & Case ID</div>
+                  <div>Rescue Date & Pickup</div>
+                  <div>Medical Status & Condition</div>
+                  <div>Bay & Attending Vet</div>
+                  <div>Expenses</div>
+                  <div>Outcome</div>
+                  <div style="text-align: right;">Action</div>
+                </div>
+
+                <div id="rescue-hybrid-list">
+                  <!-- Dynamically populated by app.js -->
+                </div>
+              </div>
+
+              <!-- VIEW 2: Photo Cards Grid View (Toggleable) -->
+              <div class="rescue-cards-grid" id="rescue-cards-grid" style="display: none;">
+                <!-- Dynamically populated by app.js -->
               </div>
             </section>
 
@@ -2192,6 +2279,272 @@
           <span>Affix Digital Signature & Issue Trust Seal</span>
         </button>
       </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       MODAL 7: ADD / EDIT RESCUE RECORD WITH FULL CLINICAL & STORY
+       ============================================================ -->
+  <div class="modal-overlay" id="modal-add-rescue" role="dialog" aria-modal="true" aria-labelledby="add-rescue-modal-title">
+    <div class="add-rescue-modal-window">
+      <div class="modal-header" style="background: #FAF8F2; border-bottom: 1px solid var(--color-border); padding: 18px 24px; position: sticky; top: 0; z-index: 10;">
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <div style="width: 36px; height: 36px; border-radius: 8px; background: var(--color-olive); color: #FFFFFF; display: flex; align-items: center; justify-content: center;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </div>
+          <div>
+            <h3 class="modal-title" id="add-rescue-modal-title" style="font-size: 18px; margin-bottom: 2px;">Register New Animal Rescue</h3>
+            <p style="font-size: 12px; color: var(--color-text-muted);">Chain-of-custody, clinical admission sheet, and rescue story dossier.</p>
+          </div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <button type="button" class="btn-secondary-cream" id="btn-demo-fill-rescue" style="font-size: 11px; padding: 4px 8px; background: #FFF9E6; border-color: #E5B95C; color: #8A6414;" title="Prefill with a realistic Delhi rescue incident">
+            ⚡ Quick Demo Fill
+          </button>
+          <button type="button" class="modal-close-btn" id="btn-close-add-rescue-modal" aria-label="Close modal">✕</button>
+        </div>
+      </div>
+
+      <form id="form-add-rescue">
+        <div class="modal-body" style="padding: 24px;">
+
+          <!-- SECTION 1: DOG DETAILS -->
+          <div class="form-section-card">
+            <div class="form-section-header">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--color-olive);"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+              <h4 class="form-section-title">1. Patient & Canine Profile</h4>
+            </div>
+
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label for="new-rescue-name" class="form-label">Dog Name / Call Name *</label>
+                <input type="text" id="new-rescue-name" class="form-input" placeholder="e.g. Leo, Bella, Sheru, Rocky" required />
+              </div>
+              <div class="form-group">
+                <label for="new-rescue-tag" class="form-label">Microchip / Ear-Notch Tag</label>
+                <input type="text" id="new-rescue-tag" class="form-input" placeholder="e.g. IND-DL-8824" />
+              </div>
+            </div>
+
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label for="new-rescue-breed" class="form-label">Breed / Visual Type *</label>
+                <input type="text" id="new-rescue-breed" class="form-input" placeholder="e.g. Indie / Desi Pariah, Lab Cross, Beagle Mix" required />
+              </div>
+              <div class="form-group">
+                <label for="new-rescue-gender" class="form-label">Gender & Reproductive Status *</label>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+                  <select id="new-rescue-gender" class="form-select">
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Unknown">Unknown</option>
+                  </select>
+                  <select id="new-rescue-sterilized" class="form-select">
+                    <option value="false">Unsterilized</option>
+                    <option value="true">Sterilized / Ear-Notched</option>
+                    <option value="pediatric">Pediatric / Pending</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label for="new-rescue-age" class="form-label">Estimated Age *</label>
+                <input type="text" id="new-rescue-age" class="form-input" placeholder="e.g. 6 Months, 2 Years, 7 Years (Senior)" required />
+              </div>
+              <div class="form-group">
+                <label for="new-rescue-weight" class="form-label">Weight (kg) *</label>
+                <input type="text" id="new-rescue-weight" class="form-input" placeholder="e.g. 14.5 kg" required />
+              </div>
+            </div>
+          </div>
+
+          <!-- SECTION 2: RESCUE STORY & INTAKE INCIDENT -->
+          <div class="form-section-card">
+            <div class="form-section-header">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--color-olive);"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <h4 class="form-section-title">2. Rescue Incident & Location Story</h4>
+            </div>
+
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label for="new-rescue-date" class="form-label">Rescue Date & Time *</label>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+                  <input type="text" id="new-rescue-date" class="form-input" placeholder="e.g. 29 Oct 2026" required />
+                  <input type="text" id="new-rescue-time" class="form-input" placeholder="e.g. 09:15 AM" required />
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="new-rescue-location" class="form-label">Pickup Location & Landmark *</label>
+                <input type="text" id="new-rescue-location" class="form-input" placeholder="e.g. Sector 14 Crossing Flyover, Dwarka" required />
+              </div>
+            </div>
+
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label for="new-rescue-rescuer" class="form-label">Rescuer / Ambulance Dispatch Unit *</label>
+                <input type="text" id="new-rescue-rescuer" class="form-input" placeholder="e.g. Field Ambulance Unit 1 (Driver Ramesh)" required />
+              </div>
+              <div class="form-group">
+                <label for="new-rescue-legal" class="form-label">Legal Panchnama / Custody Status</label>
+                <input type="text" id="new-rescue-legal" class="form-input" placeholder="e.g. Police Panchnama #DL-512 filed, Surrendered Abandonment" />
+              </div>
+            </div>
+
+            <div class="form-group" style="margin-bottom: 0;">
+              <label for="new-rescue-story" class="form-label">Rescue Narrative & Field Story *</label>
+              <textarea id="new-rescue-story" class="form-textarea" rows="3" placeholder="Describe the rescue incident, caller observations, environmental conditions, and how the animal was secured..." required></textarea>
+            </div>
+          </div>
+
+          <!-- SECTION 3: PHOTOS & VISUAL EVIDENCE -->
+          <div class="form-section-card">
+            <div class="form-section-header">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--color-olive);"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+              <h4 class="form-section-title">3. Visual Identification & Photos</h4>
+            </div>
+
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label for="new-rescue-photo" class="form-label">Primary Dog Photo URL *</label>
+                <input type="url" id="new-rescue-photo" class="form-input" placeholder="https://images.unsplash.com/..." required />
+                <span style="font-size: 11px; color: var(--color-text-subtle); margin-top: 4px; display: block;">Or click a preset photo:</span>
+                <div class="photo-presets-row" id="photo-presets-container">
+                  <div class="photo-preset-chip selected" data-url="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&w=600&q=80" title="Golden Indie Pup">
+                    <img src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&w=150&q=80" alt="Preset 1" />
+                  </div>
+                  <div class="photo-preset-chip" data-url="https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&w=600&q=80" title="Senior Indie Hound">
+                    <img src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&w=150&q=80" alt="Preset 2" />
+                  </div>
+                  <div class="photo-preset-chip" data-url="https://images.unsplash.com/photo-1587300003388-59208cc962cb?auto=format&fit=crop&w=600&q=80" title="Indie Shepherd">
+                    <img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?auto=format&fit=crop&w=150&q=80" alt="Preset 3" />
+                  </div>
+                  <div class="photo-preset-chip" data-url="https://images.unsplash.com/photo-1537151625747-768eb6cf92b2?auto=format&fit=crop&w=600&q=80" title="Lab Cross">
+                    <img src="https://images.unsplash.com/photo-1537151625747-768eb6cf92b2?auto=format&fit=crop&w=150&q=80" alt="Preset 4" />
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="new-rescue-recovery-photo" class="form-label">Recovery / Field Photo URL</label>
+                <input type="url" id="new-rescue-recovery-photo" class="form-input" placeholder="https://images.unsplash.com/..." />
+                <span style="font-size: 11px; color: var(--color-text-subtle); margin-top: 4px; display: block;">Clinical follow-up photo for adoption & donor updates.</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- SECTION 4: TREATMENT & CLINICAL PROTOCOL -->
+          <div class="form-section-card">
+            <div class="form-section-header">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--color-olive);"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+              <h4 class="form-section-title">4. Clinical Diagnosis & Treatment Plan</h4>
+            </div>
+
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label for="new-rescue-triage" class="form-label">Medical Status & Triage Level *</label>
+                <select id="new-rescue-triage" class="form-select">
+                  <option value="critical">Critical / ICU (Compound trauma, shock, active bleed)</option>
+                  <option value="surgery">Post-Surgery (Surgical repair / orthopedic fracture)</option>
+                  <option value="quarantine">Puppy Quarantine (Parvo/Distemper suspect, unweaned)</option>
+                  <option value="stable" selected>Rehabilitation / Stable (Granulating wounds, skin recovery)</option>
+                  <option value="foster">Medical Foster Trial (Behavioral / Special care)</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="new-rescue-carer" class="form-label">Attending Veterinarian / Lead Carer *</label>
+                <input type="text" id="new-rescue-carer" class="form-input" placeholder="e.g. Dr. Ananya Sharma, Nurse Vikas" required />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="new-rescue-condition" class="form-label">Presenting Clinical Condition *</label>
+              <textarea id="new-rescue-condition" class="form-textarea" rows="2" placeholder="Clinical assessment, fracture site, lacerations, trauma findings..." required></textarea>
+            </div>
+
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label for="new-rescue-meds" class="form-label">Initial Medications Prescribed</label>
+                <input type="text" id="new-rescue-meds" class="form-input" placeholder="e.g. IV Ceftriaxone 250mg, Meloxicam, Tramadol" />
+              </div>
+              <div class="form-group">
+                <label for="new-rescue-vitals" class="form-label">Initial Vitals Summary</label>
+                <input type="text" id="new-rescue-vitals" class="form-input" placeholder="e.g. Temp: 38.8 °C • HR: 110 bpm • Normal mucous" />
+              </div>
+            </div>
+          </div>
+
+          <!-- SECTION 5: EXPENSES & BUDGET -->
+          <div class="form-section-card">
+            <div class="form-section-header">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--color-olive);"><circle cx="12" cy="12" r="10"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><line x1="12" y1="6" x2="12" y2="8"/><line x1="12" y1="16" x2="12" y2="18"/></svg>
+              <h4 class="form-section-title">5. Treatment Expenses & Financial Allocation</h4>
+            </div>
+
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label for="new-rescue-spent" class="form-label">Initial Clinical & Surgical Expense (₹) *</label>
+                <input type="number" id="new-rescue-spent" class="form-input" placeholder="e.g. 4500" value="3800" required />
+              </div>
+              <div class="form-group">
+                <label for="new-rescue-donor" class="form-label">Sponsoring Donor / NGO Fund Grant</label>
+                <input type="text" id="new-rescue-donor" class="form-input" placeholder="e.g. Emergency Trauma Fund, Donor: Kabir Nair" value="General Rescue Fund" />
+              </div>
+            </div>
+          </div>
+
+          <!-- SECTION 6: WARD ASSIGNMENT & OUTCOME -->
+          <div class="form-section-card">
+            <div class="form-section-header">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--color-olive);"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+              <h4 class="form-section-title">6. Shelter Bay Assignment & Target Outcome</h4>
+            </div>
+
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label for="new-rescue-bay" class="form-label">Assigned Kennel Bay *</label>
+                <select id="new-rescue-bay" class="form-select">
+                  <option value="ICU-03">Bay ICU-03 (Ward A: Trauma ICU)</option>
+                  <option value="ICU-05">Bay ICU-05 (Ward A: Trauma ICU)</option>
+                  <option value="REC-04" selected>Bay REC-04 (Ward C: Surgical Recovery)</option>
+                  <option value="Q-05">Bay Q-05 (Ward B: Quarantine)</option>
+                  <option value="RUN-03">Bay RUN-03 (Ward D: Open Runs)</option>
+                  <option value="FOS-02">Bay FOS-02 (Ward E: Foster Care)</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="new-rescue-outcome" class="form-label">Current / Projected Outcome *</label>
+                <select id="new-rescue-outcome" class="form-select">
+                  <option value="in_care" selected>In Shelter Treatment (Active Medical Care)</option>
+                  <option value="foster">Foster-to-Adopt Trial (Family Assessment)</option>
+                  <option value="adopted">Adoption Finalized (Permanent Placement)</option>
+                  <option value="released">Community ABC Release (Sterilized & Vaccinated)</option>
+                  <option value="sanctuary">Permanent Sanctuary (Senior / Special Needs)</option>
+                  <option value="draft">Draft Staged (Pending Clinical Sign-off)</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="modal-footer" style="background: #FAF8F2; border-top: 1px solid var(--color-border); padding: 16px 24px; position: sticky; bottom: 0; z-index: 10;">
+          <button type="button" class="btn-secondary-cream" id="btn-cancel-add-rescue-modal">Cancel</button>
+          <div style="display: flex; gap: 8px;">
+            <button type="button" class="btn-secondary-cream" id="btn-save-draft-rescue">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+              <span>Save Draft</span>
+            </button>
+            <button type="submit" class="btn-primary-olive" id="btn-publish-rescue-update">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Publish Update</span>
+            </button>
+          </div>
+        </div>
+      </form>
     </div>
   </div>
 
