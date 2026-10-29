@@ -34,6 +34,276 @@ const PawBridgeStore = {
   rescueMedicalFilter: 'all',
   rescueOutcomeFilter: 'all',
 
+  // Support Requests View State & Filter
+  requestTab: 'all', // 'all' | 'active' | 'fulfilled' | 'closed'
+  requestCategory: 'all',
+  requestUrgency: 'all',
+  requestSearchQuery: '',
+  selectedRequestId: null,
+
+  // Shelter Support & Aid Requisitions Dataset
+  supportRequests: [
+    {
+      id: 'REQ-101',
+      title: 'Emergency Trauma Surgery & Orthopedic Implants for Hit-and-Run Case #RC-1048 (Leo)',
+      category: 'funding',
+      categoryLabel: 'Funding & Surgery Grants',
+      categoryIcon: '💰',
+      urgency: 'critical',
+      urgencyLabel: 'Critical / Emergency (< 48h)',
+      status: 'active',
+      statusLabel: 'Active Requisition',
+      targetVal: 85000,
+      currentVal: 58000,
+      targetDisplay: '₹85,000 for Surgical Reduction & Pins',
+      progressDisplay: '₹58,000 raised of ₹85,000 target',
+      percent: 68,
+      unit: '₹',
+      deadline: '2026-10-31',
+      deadlineDisplay: '31 Oct 2026 (3 days left)',
+      isUrgentDeadline: true,
+      linkedCase: 'Case #RC-1048 Leo (ICU-03)',
+      author: 'Dr. Ananya Sharma (Lead Vet)',
+      createdDate: '26 Oct 2026',
+      description: 'Open compound tibia-fibula fracture from vehicular collision. Requires titanium bone plates, fixator pins, 5 days continuous IV analgesics, and orthopedic operating theater time.',
+      photo: 'https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&w=600&q=80',
+      documents: [
+        { name: 'Vet_Trauma_Prescription_RC1048.pdf', size: '1.8 MB', authority: 'Apollo Vet Ortho Center', hash: 'SHA256: 8f10bc44...9921' },
+        { name: 'Titanium_Implants_Quotation.pdf', size: '840 KB', authority: 'Surgical Med Supplies', hash: 'SHA256: 3d12aa88...012a' }
+      ],
+      fulfillment: null
+    },
+    {
+      id: 'REQ-102',
+      title: '350 kg Gastrointestinal Puppy Starter Kibble & Milk Replacer for Yamuna Flood Litters',
+      category: 'food',
+      categoryLabel: 'Dog Food & Nutrition',
+      categoryIcon: '🥣',
+      urgency: 'critical',
+      urgencyLabel: 'Critical / Emergency (< 48h)',
+      status: 'active',
+      statusLabel: 'Active Requisition',
+      targetVal: 350,
+      currentVal: 220,
+      targetDisplay: '350 kg Starter Kibble + 40 Tins Milk Formula',
+      progressDisplay: '220 kg pledged of 350 kg target',
+      percent: 62,
+      unit: 'kg',
+      deadline: '2026-11-02',
+      deadlineDisplay: '02 Nov 2026 (5 days left)',
+      isUrgentDeadline: true,
+      linkedCase: 'Ward B: Puppy Quarantine (14 Orphaned Pups)',
+      author: 'Nurse Vikas (Diet Coordinator)',
+      createdDate: '25 Oct 2026',
+      description: '14 unweaned puppies rescued from flooded storm culverts in lowlands. Recovering from severe hypothermia; high-digestibility protein starter kibble and probiotic milk formula required to prevent gut stasis.',
+      photo: 'https://images.unsplash.com/photo-1591769225440-811ad7d6eab2?auto=format&fit=crop&w=600&q=80',
+      documents: [
+        { name: 'Puppy_Quarantine_Nutrition_Prescription.pdf', size: '1.2 MB', authority: 'PawBridge Clinical Diet Team', hash: 'SHA256: 77a1bc99...44fe' },
+        { name: 'Weekly_Feed_Depletion_Audit.pdf', size: '620 KB', authority: 'Shelter Stores Manager', hash: 'SHA256: b201ca77...1128' }
+      ],
+      fulfillment: null
+    },
+    {
+      id: 'REQ-103',
+      title: 'Cold-Chain Anti-Rabies Biologicals & Injectable Antibiotics Emergency Buffer',
+      category: 'medicines',
+      categoryLabel: 'Medicines & Consumables',
+      categoryIcon: '💊',
+      urgency: 'high',
+      urgencyLabel: 'High Priority (< 7 Days)',
+      status: 'active',
+      statusLabel: 'Active Requisition',
+      targetVal: 150,
+      currentVal: 90,
+      targetDisplay: '150 Doses Rabisin + 60 Vials Ceftriaxone 1g',
+      progressDisplay: '90 doses & 45 vials received of 150 target',
+      percent: 60,
+      unit: 'doses',
+      deadline: '2026-11-05',
+      deadlineDisplay: '05 Nov 2026 (8 days left)',
+      isUrgentDeadline: false,
+      linkedCase: 'Central Shelter Dispensary & Outreach Ambulance',
+      author: 'Dr. Rajesh Verma (Pharmacist)',
+      createdDate: '24 Oct 2026',
+      description: 'Critical reserve replenishment of rabies vaccines and broad-spectrum ceftriaxone ahead of the South Delhi municipal outreach drive. Stock is logged directly into the digital cold-chain vault.',
+      photo: 'https://images.unsplash.com/photo-1587300003388-59208cc962cb?auto=format&fit=crop&w=600&q=80',
+      documents: [
+        { name: 'Shelter_Pharmacy_Requisition_Order_Oct26.pdf', size: '2.4 MB', authority: 'Chief Pharmacist Sign-Off', hash: 'SHA256: 4410aa99...882c' }
+      ],
+      fulfillment: null
+    },
+    {
+      id: 'REQ-104',
+      title: 'High-Pressure Autoclave Sterilizer Unit (35L) for ABC Surgical Theater',
+      category: 'equipment',
+      categoryLabel: 'Medical Equipment',
+      categoryIcon: '🔬',
+      urgency: 'high',
+      urgencyLabel: 'High Priority (< 7 Days)',
+      status: 'active',
+      statusLabel: 'Active Requisition',
+      targetVal: 42000,
+      currentVal: 31500,
+      targetDisplay: '1 Stainless Steel Autoclave Unit (₹42,000)',
+      progressDisplay: '₹31,500 raised of ₹42,000 target',
+      percent: 75,
+      unit: '₹',
+      deadline: '2026-11-10',
+      deadlineDisplay: '10 Nov 2026 (13 days left)',
+      isUrgentDeadline: false,
+      linkedCase: 'Operating Theater 1 & Trauma Suite',
+      author: 'Dr. Ananya Sharma (Lead Vet)',
+      createdDate: '22 Oct 2026',
+      description: 'Our secondary autoclave heating element broke down, limiting surgical kit turnover to 10 packs/day. A new 35L stainless steel autoclave is required to safely meet daily AWBI sterilization quotas without cross-contamination.',
+      photo: 'https://images.unsplash.com/photo-1576201836106-db1758fd1c97?auto=format&fit=crop&w=600&q=80',
+      documents: [
+        { name: 'Surgical_Equipment_Proforma_Invoice.pdf', size: '1.5 MB', authority: 'BioMedics India Ltd.', hash: 'SHA256: 9912bc33...007f' },
+        { name: 'AWBI_Sterilization_Standards_Checklist.pdf', size: '980 KB', authority: 'AWBI Monitoring Panel', hash: 'SHA256: 1209ef44...9981' }
+      ],
+      fulfillment: null
+    },
+    {
+      id: 'REQ-105',
+      title: 'Emergency Patient Ambulance Hydraulic Stretcher Ramp Overhaul (Van DL-01)',
+      category: 'transport',
+      categoryLabel: 'Patient Transport & Fleet',
+      categoryIcon: '🚐',
+      urgency: 'routine',
+      urgencyLabel: 'Routine / Sustained',
+      status: 'fulfilled',
+      statusLabel: 'Fulfilled & Sealed',
+      targetVal: 24000,
+      currentVal: 24000,
+      targetDisplay: '₹24,000 / 1 Hydraulic Ramp Overhaul',
+      progressDisplay: '₹24,000 of ₹24,000 fulfilled (100%)',
+      percent: 100,
+      unit: '₹',
+      deadline: '2026-10-24',
+      deadlineDisplay: 'Completed 24 Oct 2026',
+      isUrgentDeadline: false,
+      linkedCase: 'Trauma Ambulance DL-01-A-4491',
+      author: 'Transport Lead Driver Ramesh',
+      createdDate: '18 Oct 2026',
+      description: 'Hydraulic lift valve overhaul completed to safely board recumbent spine injury canines without spinal deflection.',
+      photo: 'https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&w=600&q=80',
+      documents: [
+        { name: 'Ambulance_Mechanic_Jobcard_881.pdf', size: '1.1 MB', authority: 'Delhi Auto Hydraulics', hash: 'SHA256: a882bc11...6610' },
+        { name: 'Donation_Receipt_80G_Rotary.pdf', size: '720 KB', authority: 'Happy Tails Accounts Dept', hash: 'SHA256: 5519fe22...0019' }
+      ],
+      fulfillment: {
+        sponsor: 'Rotary Club Delhi Central',
+        date: '24 Oct 2026',
+        receiptNo: 'GIN-TR-9918',
+        deliveredVal: '₹24,000 (100% Direct Workshop Payment)',
+        allocation: 'Fleet Maintenance Bay • Ambulance DL-01-A-4491',
+        notes: 'Invoice paid directly to certified hydraulic workshop. Ramp load tested with 80kg weight and recertified.'
+      }
+    },
+    {
+      id: 'REQ-106',
+      title: 'Weekend Shelter Canine Socialization, Leash Training & Gentle Bathing Volunteers',
+      category: 'volunteers',
+      categoryLabel: 'Volunteers & Manpower',
+      categoryIcon: '🤝',
+      urgency: 'high',
+      urgencyLabel: 'High Priority (< 7 Days)',
+      status: 'active',
+      statusLabel: 'Active Requisition',
+      targetVal: 12,
+      currentVal: 8,
+      targetDisplay: '12 Adult Volunteers (Weekend Shift)',
+      progressDisplay: '8 of 12 volunteers confirmed',
+      percent: 66,
+      unit: 'volunteers',
+      deadline: '2026-10-31',
+      deadlineDisplay: '31 Oct 2026 (3 days left)',
+      isUrgentDeadline: true,
+      linkedCase: 'Ward D: Open Social Runs (28 Canines)',
+      author: 'Meera Sen (Volunteer Coordinator)',
+      createdDate: '24 Oct 2026',
+      description: 'Seeking compassionate dog-friendly volunteers to assist shelter attendants with positive reinforcement sensory walks, gentle herbal tick-baths, and brushing for hospitalized animals awaiting adoption.',
+      photo: 'https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=600&q=80',
+      documents: [
+        { name: 'Volunteer_Safety_Handbook_PawBridge.pdf', size: '3.1 MB', authority: 'PawBridge Welfare Council', hash: 'SHA256: c992a011...4401' },
+        { name: 'Shelter_Indemnity_Form_DL402.pdf', size: '420 KB', authority: 'Legal Trustee Board', hash: 'SHA256: 1109bc88...7719' }
+      ],
+      fulfillment: null
+    },
+    {
+      id: 'REQ-107',
+      title: 'Quiet, Ground-Floor Medical Foster Home for Post-Surgical Golden Mix Bella',
+      category: 'foster',
+      categoryLabel: 'Medical Foster Support',
+      categoryIcon: '🏡',
+      urgency: 'critical',
+      urgencyLabel: 'Critical / Emergency (< 48h)',
+      status: 'fulfilled',
+      statusLabel: 'Fulfilled & Placed',
+      targetVal: 1,
+      currentVal: 1,
+      targetDisplay: '1 Ground-Floor Foster Home (4 Weeks Duration)',
+      progressDisplay: '1 of 1 Placed (100%)',
+      percent: 100,
+      unit: 'homes',
+      deadline: '2026-10-26',
+      deadlineDisplay: 'Completed 26 Oct 2026',
+      isUrgentDeadline: false,
+      linkedCase: 'Case #RC-1047 Bella (Ward C Surgical Recovery)',
+      author: 'Rohit Verma (Adoption Desk)',
+      createdDate: '20 Oct 2026',
+      description: 'Bella underwent successful femoral head ostectomy surgery and needed a calm home environment without slippery tiles or steps for passive physical therapy.',
+      photo: 'https://images.unsplash.com/photo-1561037404-61cd46aa615b?auto=format&fit=crop&w=600&q=80',
+      documents: [
+        { name: 'Veterinary_Foster_Protocol_Orthopedic.pdf', size: '1.4 MB', authority: 'Chief Orthopedic Surgeon', hash: 'SHA256: 77a100bc...9912' },
+        { name: 'Signed_Foster_Custody_Deed_DL.pdf', size: '890 KB', authority: 'Legal Adoption Bureau', hash: 'SHA256: cc0119aa...5510' }
+      ],
+      fulfillment: {
+        sponsor: 'Foster Carer Rohini Saxena',
+        date: '26 Oct 2026',
+        receiptNo: 'FOS-DL-1102',
+        deliveredVal: '1 Dedicated Medical Foster Home (Chhatarpur)',
+        allocation: 'Home Care Transition • Case #RC-1047 Bella',
+        notes: 'Home inspection verified rubber matting and lawn access. Weekly vet check scheduled every Saturday.'
+      }
+    },
+    {
+      id: 'REQ-108',
+      title: 'Heavy-Duty Winter Tarpaulin Sheeting & Thermal Bedding for Outdoor Bays',
+      category: 'funding',
+      categoryLabel: 'Funding & Surgery Grants',
+      categoryIcon: '💰',
+      urgency: 'routine',
+      urgencyLabel: 'Routine / Sustained',
+      status: 'closed',
+      statusLabel: 'Closed & Archived',
+      targetVal: 18000,
+      currentVal: 0,
+      targetDisplay: '₹18,000 for 12 Heavy-Duty Tarpaulins',
+      progressDisplay: 'Archived into Annual Winterization Budget',
+      percent: 0,
+      unit: '₹',
+      deadline: '2026-10-15',
+      deadlineDisplay: 'Closed 15 Oct 2026',
+      isUrgentDeadline: false,
+      linkedCase: 'Ward D & Outer Social Paddock Runs',
+      author: 'Shelter Supervisor Vikas',
+      createdDate: '10 Oct 2026',
+      description: 'Pre-winter shelter weatherproofing requirement. Requisition closed as capital requirement was merged into the comprehensive institutional grant.',
+      photo: 'https://images.unsplash.com/photo-1537151625747-768eb6cf92b2?auto=format&fit=crop&w=600&q=80',
+      documents: [
+        { name: 'Winterization_Budget_Revision_2026.pdf', size: '1.6 MB', authority: 'Shelter Executive Committee', hash: 'SHA256: 339100aa...1100' }
+      ],
+      fulfillment: {
+        sponsor: 'Shelter Internal Capital Vault',
+        date: '15 Oct 2026',
+        receiptNo: 'ARCH-2026-04',
+        deliveredVal: 'Consolidated into Annual Capital Grant',
+        allocation: 'Shelter Infrastructure Budget FY 25-26',
+        notes: 'Closed without external public solicitation.'
+      }
+    }
+  ],
+
   // Realistic rescue cases with high quality, compassionate dog photography
   rescues: [
     {
@@ -1352,6 +1622,82 @@ const PawBridgeApp = {
       btnCloseAddImpactStoryModal: document.getElementById('btn-close-add-impact-story-modal'),
       btnCancelAddImpactStoryModal: document.getElementById('btn-cancel-add-impact-story-modal'),
 
+      // Support Requests Screen Elements
+      screenRequests: document.getElementById('screen-requests'),
+      requestsCardsGrid: document.getElementById('requests-cards-grid'),
+      requestsEmptyState: document.getElementById('requests-empty-state'),
+      requestsSearchInput: document.getElementById('requests-search-input'),
+      requestsFilterCategory: document.getElementById('requests-filter-category'),
+      requestsFilterUrgency: document.getElementById('requests-filter-urgency'),
+      requestsStatusTabsRow: document.getElementById('requests-status-tabs-row'),
+      btnResetRequestsFilters: document.getElementById('btn-reset-requests-filters'),
+      btnExportRequestsCsv: document.getElementById('btn-export-requests-csv'),
+      btnOpenCreateRequestModal: document.getElementById('btn-open-create-request-modal'),
+
+      // Counters & Summary
+      statActiveRequestsCount: document.getElementById('stat-active-requests-count'),
+      statFulfilledRequestsCount: document.getElementById('stat-fulfilled-requests-count'),
+      navCountRequests: document.getElementById('nav-count-requests'),
+      reqTabCountAll: document.getElementById('req-tab-count-all'),
+      reqTabCountActive: document.getElementById('req-tab-count-active'),
+      reqTabCountFulfilled: document.getElementById('req-tab-count-fulfilled'),
+      reqTabCountClosed: document.getElementById('req-tab-count-closed'),
+
+      // Create Request Modal Elements
+      modalCreateRequest: document.getElementById('modal-create-request'),
+      formCreateRequest: document.getElementById('form-create-request'),
+      btnCloseCreateRequestModal: document.getElementById('btn-close-create-request-modal'),
+      btnCancelCreateRequestModal: document.getElementById('btn-cancel-create-request-modal'),
+      btnSaveDraftRequest: document.getElementById('btn-save-draft-request'),
+      reqPhotoPresets: document.getElementById('req-photo-presets'),
+
+      // Edit Request Modal Elements
+      modalEditRequest: document.getElementById('modal-edit-request'),
+      formEditRequest: document.getElementById('form-edit-request'),
+      btnCloseEditRequestModal: document.getElementById('btn-close-edit-request-modal'),
+      btnCancelEditRequestModal: document.getElementById('btn-cancel-edit-request-modal'),
+      editReqId: document.getElementById('edit-req-id'),
+      editReqTitle: document.getElementById('edit-req-title'),
+      editReqCategory: document.getElementById('edit-req-category'),
+      editReqUrgency: document.getElementById('edit-req-urgency'),
+      editReqTargetLabel: document.getElementById('edit-req-target-label'),
+      editReqDeadline: document.getElementById('edit-req-deadline'),
+      editReqDesc: document.getElementById('edit-req-desc'),
+      editReqRevisionReason: document.getElementById('edit-req-revision-reason'),
+
+      // Mark Fulfilled Modal Elements
+      modalMarkFulfilled: document.getElementById('modal-mark-fulfilled'),
+      formMarkFulfilled: document.getElementById('form-mark-fulfilled'),
+      btnCloseMarkFulfilledModal: document.getElementById('btn-close-mark-fulfilled-modal'),
+      btnCancelMarkFulfilledModal: document.getElementById('btn-cancel-mark-fulfilled-modal'),
+      fulfillReqId: document.getElementById('fulfill-req-id'),
+      fulfillReqTitleDisplay: document.getElementById('fulfill-req-title-display'),
+      fulfillReqTargetDisplay: document.getElementById('fulfill-req-target-display'),
+      fulfillSponsor: document.getElementById('fulfill-sponsor'),
+      fulfillDate: document.getElementById('fulfill-date'),
+      fulfillReceiptNo: document.getElementById('fulfill-receipt-no'),
+      fulfillFinalVal: document.getElementById('fulfill-final-val'),
+      fulfillAllocation: document.getElementById('fulfill-allocation'),
+      fulfillNotes: document.getElementById('fulfill-notes'),
+
+      // Contribute Aid Modal Elements
+      modalContributeAid: document.getElementById('modal-contribute-aid'),
+      formContributeAid: document.getElementById('form-contribute-aid'),
+      btnCloseContributeModal: document.getElementById('btn-close-contribute-modal'),
+      btnCancelContributeModal: document.getElementById('btn-cancel-contribute-modal'),
+      pledgeReqId: document.getElementById('pledge-req-id'),
+      pledgeReqTitleDisplay: document.getElementById('pledge-req-title-display'),
+      pledgeReqCurrentDisplay: document.getElementById('pledge-req-current-display'),
+      pledgeContributor: document.getElementById('pledge-contributor'),
+      pledgeAmountVal: document.getElementById('pledge-amount-val'),
+      pledgeNotes: document.getElementById('pledge-notes'),
+
+      // View Document Modal Elements
+      modalViewRequestDoc: document.getElementById('modal-view-request-doc'),
+      viewDocModalBody: document.getElementById('view-doc-modal-body'),
+      btnCloseViewDocModal: document.getElementById('btn-close-view-doc-modal'),
+      btnDismissViewDocModal: document.getElementById('btn-dismiss-view-doc-modal'),
+
       // Toast Container
       toastContainer: document.getElementById('toast-container')
     };
@@ -1812,6 +2158,9 @@ const PawBridgeApp = {
 
     // Impact Reports & Statutory Disclosures Event Listeners
     this.bindImpactEvents();
+
+    // Support Requests Event Listeners
+    this.bindSupportRequestsEvents();
   },
 
   bindImpactEvents() {
@@ -1966,6 +2315,137 @@ const PawBridgeApp = {
         e.preventDefault();
         this.saveNewImpactStory();
       });
+    }
+  },
+
+  bindSupportRequestsEvents() {
+    // Status Tabs
+    if (this.dom.requestsStatusTabsRow) {
+      this.dom.requestsStatusTabsRow.querySelectorAll('.req-tab-chip').forEach(tab => {
+        tab.addEventListener('click', () => {
+          this.dom.requestsStatusTabsRow.querySelectorAll('.req-tab-chip').forEach(t => t.classList.remove('active'));
+          tab.classList.add('active');
+          PawBridgeStore.requestTab = tab.getAttribute('data-tab') || 'all';
+          this.renderSupportRequests();
+        });
+      });
+    }
+
+    // Search Field
+    if (this.dom.requestsSearchInput) {
+      this.dom.requestsSearchInput.addEventListener('input', (e) => {
+        PawBridgeStore.requestSearchQuery = e.target.value.toLowerCase().trim();
+        this.renderSupportRequests();
+      });
+    }
+
+    // Category Filter Dropdown
+    if (this.dom.requestsFilterCategory) {
+      this.dom.requestsFilterCategory.addEventListener('change', (e) => {
+        PawBridgeStore.requestCategory = e.target.value;
+        this.renderSupportRequests();
+      });
+    }
+
+    // Urgency Filter Dropdown
+    if (this.dom.requestsFilterUrgency) {
+      this.dom.requestsFilterUrgency.addEventListener('change', (e) => {
+        PawBridgeStore.requestUrgency = e.target.value;
+        this.renderSupportRequests();
+      });
+    }
+
+    // Reset Filters Button
+    if (this.dom.btnResetRequestsFilters) {
+      this.dom.btnResetRequestsFilters.addEventListener('click', () => this.resetRequestsFilters());
+    }
+
+    // Export CSV
+    if (this.dom.btnExportRequestsCsv) {
+      this.dom.btnExportRequestsCsv.addEventListener('click', () => this.exportRequestsCsv());
+    }
+
+    // Create Request Modal Triggers, Preset Chips & Submit
+    if (this.dom.btnOpenCreateRequestModal) {
+      this.dom.btnOpenCreateRequestModal.addEventListener('click', () => this.openCreateRequestModal());
+    }
+    if (this.dom.btnCloseCreateRequestModal) {
+      this.dom.btnCloseCreateRequestModal.addEventListener('click', () => this.closeCreateRequestModal());
+    }
+    if (this.dom.btnCancelCreateRequestModal) {
+      this.dom.btnCancelCreateRequestModal.addEventListener('click', () => this.closeCreateRequestModal());
+    }
+    if (this.dom.btnSaveDraftRequest) {
+      this.dom.btnSaveDraftRequest.addEventListener('click', () => this.saveDraftSupportRequest());
+    }
+    if (this.dom.formCreateRequest) {
+      this.dom.formCreateRequest.addEventListener('submit', (e) => {
+        e.preventDefault();
+        this.saveNewSupportRequest();
+      });
+    }
+
+    // Photo preset chips in create modal
+    if (this.dom.reqPhotoPresets) {
+      this.dom.reqPhotoPresets.querySelectorAll('.photo-preset-chip').forEach(chip => {
+        chip.addEventListener('click', () => {
+          this.dom.reqPhotoPresets.querySelectorAll('.photo-preset-chip').forEach(c => c.classList.remove('selected'));
+          chip.classList.add('selected');
+          const url = chip.getAttribute('data-url');
+          const input = document.getElementById('new-req-photo');
+          if (input) input.value = url;
+        });
+      });
+    }
+
+    // Edit Request Modal Close & Submit
+    if (this.dom.btnCloseEditRequestModal) {
+      this.dom.btnCloseEditRequestModal.addEventListener('click', () => this.closeEditRequestModal());
+    }
+    if (this.dom.btnCancelEditRequestModal) {
+      this.dom.btnCancelEditRequestModal.addEventListener('click', () => this.closeEditRequestModal());
+    }
+    if (this.dom.formEditRequest) {
+      this.dom.formEditRequest.addEventListener('submit', (e) => {
+        e.preventDefault();
+        this.saveEditedSupportRequest();
+      });
+    }
+
+    // Mark Fulfilled Modal Close & Submit
+    if (this.dom.btnCloseMarkFulfilledModal) {
+      this.dom.btnCloseMarkFulfilledModal.addEventListener('click', () => this.closeMarkFulfilledModal());
+    }
+    if (this.dom.btnCancelMarkFulfilledModal) {
+      this.dom.btnCancelMarkFulfilledModal.addEventListener('click', () => this.closeMarkFulfilledModal());
+    }
+    if (this.dom.formMarkFulfilled) {
+      this.dom.formMarkFulfilled.addEventListener('submit', (e) => {
+        e.preventDefault();
+        this.confirmMarkFulfilled();
+      });
+    }
+
+    // Contribute Aid Modal Close & Submit
+    if (this.dom.btnCloseContributeModal) {
+      this.dom.btnCloseContributeModal.addEventListener('click', () => this.closeContributeAidModal());
+    }
+    if (this.dom.btnCancelContributeModal) {
+      this.dom.btnCancelContributeModal.addEventListener('click', () => this.closeContributeAidModal());
+    }
+    if (this.dom.formContributeAid) {
+      this.dom.formContributeAid.addEventListener('submit', (e) => {
+        e.preventDefault();
+        this.submitContributeAid();
+      });
+    }
+
+    // View Doc Modal Close
+    if (this.dom.btnCloseViewDocModal) {
+      this.dom.btnCloseViewDocModal.addEventListener('click', () => this.closeViewDocModal());
+    }
+    if (this.dom.btnDismissViewDocModal) {
+      this.dom.btnDismissViewDocModal.addEventListener('click', () => this.closeViewDocModal());
     }
   },
 
@@ -2459,6 +2939,7 @@ const PawBridgeApp = {
       verification: { section: 'Governance', title: 'Document Verification & Audit' },
       compliance: { section: 'Governance', title: 'Compliance & Document Vault' },
       impact: { section: 'Governance & Trust', title: 'Impact Reports & Statutory Outcomes' },
+      requests: { section: 'Programs & Logistics', title: 'Shelter Support & Aid Requisitions' },
       inventory: { section: 'Logistics', title: 'Medical Supplies & Feed' }
     };
 
@@ -2499,6 +2980,9 @@ const PawBridgeApp = {
       case 'impact':
         this.renderImpactScreen();
         break;
+      case 'requests':
+        this.renderSupportRequests();
+        break;
       case 'inventory':
         this.renderInventoryTable();
         break;
@@ -2515,6 +2999,7 @@ const PawBridgeApp = {
     this.renderVerificationScreen();
     this.renderComplianceGrid();
     this.renderImpactScreen();
+    this.renderSupportRequests();
     this.renderInventoryTable();
     this.renderNotifications();
   },
@@ -5101,6 +5586,629 @@ const PawBridgeApp = {
     if (this.dom.formAddImpactStory) this.dom.formAddImpactStory.reset();
     this.renderImpactUpdates();
     this.showToast(`✓ Impact update "${title}" published to public feed`, 'success');
+  },
+
+  // ============================================================
+  // SCREEN 10: SUPPORT & AID REQUISITIONS CONTROLLER
+  // ============================================================
+  renderSupportRequests() {
+    if (!this.dom.requestsCardsGrid) return;
+
+    const allRequests = PawBridgeStore.supportRequests || [];
+    const activeTab = PawBridgeStore.requestTab || 'all';
+    const activeCategory = PawBridgeStore.requestCategory || 'all';
+    const activeUrgency = PawBridgeStore.requestUrgency || 'all';
+    const query = PawBridgeStore.requestSearchQuery || '';
+
+    // Update Counts
+    const countAll = allRequests.length;
+    const countActive = allRequests.filter(r => r.status === 'active').length;
+    const countFulfilled = allRequests.filter(r => r.status === 'fulfilled').length;
+    const countClosed = allRequests.filter(r => r.status === 'closed').length;
+
+    if (this.dom.reqTabCountAll) this.dom.reqTabCountAll.textContent = countAll;
+    if (this.dom.reqTabCountActive) this.dom.reqTabCountActive.textContent = countActive;
+    if (this.dom.reqTabCountFulfilled) this.dom.reqTabCountFulfilled.textContent = countFulfilled;
+    if (this.dom.reqTabCountClosed) this.dom.reqTabCountClosed.textContent = countClosed;
+
+    if (this.dom.statActiveRequestsCount) this.dom.statActiveRequestsCount.textContent = countActive;
+    if (this.dom.statFulfilledRequestsCount) this.dom.statFulfilledRequestsCount.textContent = countFulfilled;
+    if (this.dom.navCountRequests) this.dom.navCountRequests.textContent = `${countActive} Active`;
+
+    // Filter Items
+    let filtered = allRequests.filter(r => {
+      // Status Tab filter
+      if (activeTab === 'active' && r.status !== 'active') return false;
+      if (activeTab === 'fulfilled' && r.status !== 'fulfilled') return false;
+      if (activeTab === 'closed' && r.status !== 'closed') return false;
+
+      // Category filter
+      if (activeCategory !== 'all' && r.category !== activeCategory) return false;
+
+      // Urgency filter
+      if (activeUrgency !== 'all' && r.urgency !== activeUrgency) return false;
+
+      // Search query
+      if (query) {
+        const matchTitle = r.title.toLowerCase().includes(query);
+        const matchDesc = r.description.toLowerCase().includes(query);
+        const matchLinked = r.linkedCase && r.linkedCase.toLowerCase().includes(query);
+        const matchAuthor = r.author.toLowerCase().includes(query);
+        const matchTarget = r.targetDisplay.toLowerCase().includes(query);
+        return matchTitle || matchDesc || matchLinked || matchAuthor || matchTarget;
+      }
+
+      return true;
+    });
+
+    if (filtered.length === 0) {
+      this.dom.requestsCardsGrid.style.display = 'none';
+      if (this.dom.requestsEmptyState) this.dom.requestsEmptyState.style.display = 'flex';
+      return;
+    }
+
+    this.dom.requestsCardsGrid.style.display = 'flex';
+    if (this.dom.requestsEmptyState) this.dom.requestsEmptyState.style.display = 'none';
+
+    this.dom.requestsCardsGrid.innerHTML = filtered.map(r => this.generateRequestCard(r)).join('');
+  },
+
+  generateRequestCard(r) {
+    const isFulfilled = r.status === 'fulfilled';
+    const isClosed = r.status === 'closed';
+    const isActive = r.status === 'active';
+
+    // Status pill
+    let statusPillHtml = '';
+    if (isActive) {
+      statusPillHtml = `<span class="status-pill active"><span class="status-live-pulse" style="width:6px; height:6px;"></span> Active Aid Request</span>`;
+    } else if (isFulfilled) {
+      statusPillHtml = `<span class="status-pill fulfilled">✓ Fulfilled & Verified</span>`;
+    } else {
+      statusPillHtml = `<span class="status-pill closed">Closed / Archived</span>`;
+    }
+
+    // Urgency pill
+    const urgencyLabels = {
+      critical: '🚨 Critical / Emergency (< 48h)',
+      high: '⚡ High Priority (< 7 Days)',
+      routine: '📋 Routine Operational Need'
+    };
+    const urgencyHtml = `<span class="urgency-pill ${r.urgency}">${urgencyLabels[r.urgency] || r.urgency}</span>`;
+
+    // Category tag
+    const categoryHtml = `<span class="category-tag ${r.category}">${r.categoryIcon} ${r.categoryLabel}</span>`;
+
+    // Deadline pill
+    let deadlineHtml = '';
+    if (isFulfilled) {
+      deadlineHtml = `<span class="deadline-pill" style="color: #2E6B28; background: #F3F7F0; border-color: #C8DEC2;">✓ Fulfilled on ${r.fulfillment?.date || r.deadline}</span>`;
+    } else if (isClosed) {
+      deadlineHtml = `<span class="deadline-pill">Closed ${r.deadline}</span>`;
+    } else {
+      deadlineHtml = `<span class="deadline-pill ${r.isUrgentDeadline ? 'urgent' : ''}"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> ${r.deadlineDisplay}</span>`;
+    }
+
+    // Progress bar percent
+    const percentClamped = Math.min(100, Math.max(0, r.percent || 0));
+
+    // Supporting docs pills
+    const docsHtml = (r.documents && r.documents.length > 0)
+      ? r.documents.map(d => `
+          <button type="button" class="doc-pill-chip" onclick="PawBridgeApp.viewRequestDocument('${d.name}', '${r.id}')" title="Click to view verified proof document and cryptographic seal">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg>
+            <span>${d.name} (${d.size})</span>
+          </button>
+        `).join('')
+      : '<span style="font-size: 11px; color: var(--color-text-subtle);">Direct shelter requisition (No external quote required)</span>';
+
+    // Fulfillment Stamp Banner
+    let fulfillmentBannerHtml = '';
+    if (isFulfilled && r.fulfillment) {
+      fulfillmentBannerHtml = `
+        <div class="fulfillment-stamp-banner">
+          <div class="fulfillment-stamp-left">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Goods Inward Verified: Sponsored by ${r.fulfillment.sponsor} • Disbursed to: ${r.fulfillment.allocation}</span>
+          </div>
+          <span class="fulfillment-receipt-tag">${r.fulfillment.receiptNo}</span>
+        </div>
+      `;
+    }
+
+    // Actions
+    let actionButtonsHtml = '';
+    if (isActive) {
+      actionButtonsHtml = `
+        <button type="button" class="btn-secondary-cream" style="font-size: 12px; padding: 6px 12px;" onclick="PawBridgeApp.openEditRequestModal('${r.id}')" title="Edit figures, deadline, or description">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+          <span>Edit</span>
+        </button>
+        <button type="button" class="btn-secondary-cream" style="font-size: 12px; padding: 6px 12px;" onclick="PawBridgeApp.openContributeAidModal('${r.id}')" title="Record donor aid, kibble delivery, or volunteer confirmation">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          <span>Record Aid</span>
+        </button>
+        <button type="button" class="btn-primary-olive" style="font-size: 12px; padding: 6px 14px;" onclick="PawBridgeApp.openMarkFulfilledModal('${r.id}')" title="Record receipt & mark fulfilled">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          <span>Mark as Fulfilled</span>
+        </button>
+      `;
+    } else if (isFulfilled) {
+      actionButtonsHtml = `
+        <button type="button" class="btn-secondary-cream" style="font-size: 12px; padding: 6px 12px;" onclick="PawBridgeApp.viewTransparencyReceipt('${r.id}')">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          <span>View Inward Receipt</span>
+        </button>
+        <button type="button" class="btn-secondary-cream" style="font-size: 12px; padding: 6px 12px;" onclick="PawBridgeApp.openEditRequestModal('${r.id}')">
+          <span>Edit Notes</span>
+        </button>
+      `;
+    } else {
+      actionButtonsHtml = `
+        <button type="button" class="btn-secondary-cream" style="font-size: 12px; padding: 6px 12px;" onclick="PawBridgeApp.reopenSupportRequest('${r.id}')">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1" 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>
+          <span>Re-Open Requisition</span>
+        </button>
+      `;
+    }
+
+    return `
+      <div class="request-card ${isFulfilled ? 'fulfilled' : ''} ${isClosed ? 'closed' : ''}" id="card-${r.id}">
+        <!-- Top Badges Row -->
+        <div class="request-card-top">
+          <div class="request-badges-left">
+            ${categoryHtml}
+            ${urgencyHtml}
+            ${statusPillHtml}
+          </div>
+          <div class="request-badges-right">
+            ${deadlineHtml}
+          </div>
+        </div>
+
+        <!-- Main Body -->
+        <div class="request-card-body">
+          <div class="request-photo-thumb">
+            <img src="${r.photo}" alt="${r.title}" loading="lazy" />
+          </div>
+
+          <div class="request-main-content">
+            <div class="request-title-row">
+              <h3 class="request-title">${r.title}</h3>
+              ${r.linkedCase ? `<span class="patient-case-chip"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>${r.linkedCase}</span>` : ''}
+            </div>
+
+            <p class="request-desc">${r.description}</p>
+
+            <!-- Target & Progress Strip -->
+            <div class="request-target-strip">
+              <div class="target-header-line">
+                <span class="target-val-label">
+                  <strong>Target:</strong> ${r.targetDisplay}
+                </span>
+                <span class="target-percent-badge">
+                  ${r.progressDisplay} (${percentClamped}%)
+                </span>
+              </div>
+              <div class="request-progress-bar">
+                <div class="request-progress-fill ${percentClamped >= 100 ? 'full' : ''}" style="width: ${percentClamped}%;"></div>
+              </div>
+            </div>
+
+            <!-- Supporting Documents -->
+            <div class="supporting-docs-row">
+              <span class="supporting-docs-label">Supporting Evidence:</span>
+              ${docsHtml}
+            </div>
+
+            ${fulfillmentBannerHtml}
+          </div>
+        </div>
+
+        <!-- Footer Actions Row -->
+        <div class="request-card-footer">
+          <div class="request-footer-left">
+            <span>Posted: <strong>${r.createdDate}</strong></span>
+            <span>•</span>
+            <span>Requested by: <strong>${r.author}</strong></span>
+          </div>
+          <div class="request-footer-actions">
+            ${actionButtonsHtml}
+          </div>
+        </div>
+      </div>
+    `;
+  },
+
+  resetRequestsFilters() {
+    PawBridgeStore.requestTab = 'all';
+    PawBridgeStore.requestCategory = 'all';
+    PawBridgeStore.requestUrgency = 'all';
+    PawBridgeStore.requestSearchQuery = '';
+
+    if (this.dom.requestsSearchInput) this.dom.requestsSearchInput.value = '';
+    if (this.dom.requestsFilterCategory) this.dom.requestsFilterCategory.value = 'all';
+    if (this.dom.requestsFilterUrgency) this.dom.requestsFilterUrgency.value = 'all';
+
+    if (this.dom.requestsStatusTabsRow) {
+      this.dom.requestsStatusTabsRow.querySelectorAll('.req-tab-chip').forEach(t => t.classList.remove('active'));
+      const allTab = this.dom.requestsStatusTabsRow.querySelector('[data-tab="all"]');
+      if (allTab) allTab.classList.add('active');
+    }
+
+    this.renderSupportRequests();
+    this.showToast('Reset all support request filters', 'success');
+  },
+
+  exportRequestsCsv() {
+    const list = PawBridgeStore.supportRequests || [];
+    const headers = ['Request ID', 'Title', 'Category', 'Urgency', 'Status', 'Target Goal', 'Progress Amount', 'Percent Fulfilled', 'Deadline', 'Linked Patient/Ward', 'Author', 'Created Date'];
+    const rows = list.map(r => [
+      `"${r.id}"`,
+      `"${r.title.replace(/"/g, '""')}"`,
+      `"${r.categoryLabel}"`,
+      `"${r.urgency}"`,
+      `"${r.status}"`,
+      `"${r.targetDisplay.replace(/"/g, '""')}"`,
+      `"${r.currentVal}"`,
+      `"${r.percent}%"`,
+      `"${r.deadline}"`,
+      `"${(r.linkedCase || '').replace(/"/g, '""')}"`,
+      `"${r.author}"`,
+      `"${r.createdDate}"`
+    ]);
+
+    const csvContent = 'data:text/csv;charset=utf-8,' + [headers.join(','), ...rows.map(e => e.join(','))].join('\n');
+    const encodedUri = encodeURI(csvContent);
+    const link = document.createElement('a');
+    link.setAttribute('href', encodedUri);
+    link.setAttribute('download', `PawBridge_Support_Requisitions_${new Date().toISOString().slice(0, 10)}.csv`);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    this.showToast('Downloaded support requisitions CSV ledger', 'success');
+  },
+
+  // Create Request Modal Handlers
+  openCreateRequestModal() {
+    if (this.dom.modalCreateRequest) {
+      this.dom.modalCreateRequest.classList.add('active');
+    }
+  },
+
+  closeCreateRequestModal() {
+    if (this.dom.modalCreateRequest) {
+      this.dom.modalCreateRequest.classList.remove('active');
+    }
+  },
+
+  saveDraftSupportRequest() {
+    const title = document.getElementById('new-req-title')?.value.trim();
+    if (!title) {
+      this.showToast('Please enter at least a title to save a draft requisition', 'alert');
+      return;
+    }
+    this.closeCreateRequestModal();
+    this.showToast(`Draft requisition "${title}" saved to local shelter storage`, 'success');
+  },
+
+  saveNewSupportRequest() {
+    const title = document.getElementById('new-req-title')?.value.trim();
+    const category = document.getElementById('new-req-category')?.value || 'funding';
+    const urgency = document.getElementById('new-req-urgency')?.value || 'critical';
+    const targetLabel = document.getElementById('new-req-target-label')?.value.trim() || '₹50,000';
+    const deadline = document.getElementById('new-req-deadline')?.value || '2026-11-05';
+    const linkedCase = document.getElementById('new-req-linked-case')?.value.trim() || 'General Shelter Hospital';
+    const attendingVet = document.getElementById('new-req-attending-vet')?.value.trim() || 'Dr. Ananya Sharma';
+    const desc = document.getElementById('new-req-desc')?.value.trim() || 'Shelter clinical support requirement.';
+    const photo = document.getElementById('new-req-photo')?.value.trim() || 'https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&w=600&q=80';
+    const docName = document.getElementById('new-req-doc')?.value.trim() || 'Clinical_Requisition_Order.pdf';
+
+    const categoryMeta = {
+      funding: { label: 'Funding & Surgery Grants', icon: '💰' },
+      food: { label: 'Dog Food & Nutrition', icon: '🥣' },
+      medicines: { label: 'Medicines & Consumables', icon: '💊' },
+      equipment: { label: 'Medical Equipment', icon: '🔬' },
+      transport: { label: 'Patient Transport & Fleet', icon: '🚐' },
+      volunteers: { label: 'Volunteers & Manpower', icon: '🤝' },
+      foster: { label: 'Medical Foster Support', icon: '🏡' }
+    };
+
+    const newId = `REQ-${100 + PawBridgeStore.supportRequests.length + 1}`;
+    const todayStr = new Date().toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
+    const formattedDeadline = new Date(deadline).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
+
+    const newReq = {
+      id: newId,
+      title,
+      category,
+      categoryLabel: categoryMeta[category].label,
+      categoryIcon: categoryMeta[category].icon,
+      urgency,
+      urgencyLabel: urgency === 'critical' ? 'Critical / Emergency (< 48h)' : (urgency === 'high' ? 'High Priority (< 7 Days)' : 'Routine Operational Need'),
+      status: 'active',
+      statusLabel: 'Active Requisition',
+      targetVal: 100,
+      currentVal: 0,
+      targetDisplay: targetLabel,
+      progressDisplay: `0 of ${targetLabel} pledged`,
+      percent: 0,
+      unit: '',
+      deadline,
+      deadlineDisplay: `${formattedDeadline} (Active)`,
+      isUrgentDeadline: urgency === 'critical',
+      linkedCase,
+      author: attendingVet,
+      createdDate: todayStr,
+      description: desc,
+      photo,
+      documents: [
+        { name: docName, size: '1.4 MB', authority: attendingVet, hash: `SHA256: ${Math.random().toString(16).substring(2, 10)}...${Math.random().toString(16).substring(2, 6)}` }
+      ],
+      fulfillment: null
+    };
+
+    PawBridgeStore.supportRequests.unshift(newReq);
+
+    this.closeCreateRequestModal();
+    if (this.dom.formCreateRequest) this.dom.formCreateRequest.reset();
+    this.renderSupportRequests();
+    this.showToast(`🎉 Support request "${title}" published successfully!`, 'success');
+  },
+
+  // Edit Request Modal Handlers
+  openEditRequestModal(requestId) {
+    const r = PawBridgeStore.supportRequests.find(item => item.id === requestId);
+    if (!r) return;
+
+    PawBridgeStore.selectedRequestId = requestId;
+
+    if (this.dom.editReqId) this.dom.editReqId.value = r.id;
+    if (this.dom.editReqTitle) this.dom.editReqTitle.value = r.title;
+    if (this.dom.editReqCategory) this.dom.editReqCategory.value = r.category;
+    if (this.dom.editReqUrgency) this.dom.editReqUrgency.value = r.urgency;
+    if (this.dom.editReqTargetLabel) this.dom.editReqTargetLabel.value = r.targetDisplay;
+    if (this.dom.editReqDeadline) this.dom.editReqDeadline.value = r.deadline;
+    if (this.dom.editReqDesc) this.dom.editReqDesc.value = r.description;
+
+    if (this.dom.modalEditRequest) {
+      this.dom.modalEditRequest.classList.add('active');
+    }
+  },
+
+  closeEditRequestModal() {
+    if (this.dom.modalEditRequest) {
+      this.dom.modalEditRequest.classList.remove('active');
+    }
+  },
+
+  saveEditedSupportRequest() {
+    const id = this.dom.editReqId?.value || PawBridgeStore.selectedRequestId;
+    const r = PawBridgeStore.supportRequests.find(item => item.id === id);
+    if (!r) return;
+
+    r.title = this.dom.editReqTitle?.value.trim() || r.title;
+    r.category = this.dom.editReqCategory?.value || r.category;
+    r.urgency = this.dom.editReqUrgency?.value || r.urgency;
+    r.targetDisplay = this.dom.editReqTargetLabel?.value.trim() || r.targetDisplay;
+    r.deadline = this.dom.editReqDeadline?.value || r.deadline;
+    r.description = this.dom.editReqDesc?.value.trim() || r.description;
+
+    const formattedDeadline = new Date(r.deadline).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
+    r.deadlineDisplay = `${formattedDeadline}`;
+
+    this.closeEditRequestModal();
+    this.renderSupportRequests();
+    this.showToast(`✓ Requisition "${r.title}" updated`, 'success');
+  },
+
+  // Mark Fulfilled Modal Handlers
+  openMarkFulfilledModal(requestId) {
+    const r = PawBridgeStore.supportRequests.find(item => item.id === requestId);
+    if (!r) return;
+
+    PawBridgeStore.selectedRequestId = requestId;
+
+    if (this.dom.fulfillReqId) this.dom.fulfillReqId.value = r.id;
+    if (this.dom.fulfillReqTitleDisplay) this.dom.fulfillReqTitleDisplay.textContent = r.title;
+    if (this.dom.fulfillReqTargetDisplay) this.dom.fulfillReqTargetDisplay.textContent = `Target: ${r.targetDisplay}`;
+    if (this.dom.fulfillFinalVal) this.dom.fulfillFinalVal.value = r.targetDisplay;
+    if (this.dom.fulfillDate) this.dom.fulfillDate.value = new Date().toISOString().slice(0, 10);
+    if (this.dom.fulfillReceiptNo) this.dom.fulfillReceiptNo.value = `GIN-${new Date().getFullYear()}-${Math.floor(Math.random() * 800 + 100)}`;
+
+    if (this.dom.modalMarkFulfilled) {
+      this.dom.modalMarkFulfilled.classList.add('active');
+    }
+  },
+
+  closeMarkFulfilledModal() {
+    if (this.dom.modalMarkFulfilled) {
+      this.dom.modalMarkFulfilled.classList.remove('active');
+    }
+  },
+
+  confirmMarkFulfilled() {
+    const id = this.dom.fulfillReqId?.value || PawBridgeStore.selectedRequestId;
+    const r = PawBridgeStore.supportRequests.find(item => item.id === id);
+    if (!r) return;
+
+    const sponsor = this.dom.fulfillSponsor?.value.trim() || 'Verified Aid Partner';
+    const dateInput = this.dom.fulfillDate?.value || new Date().toISOString().slice(0, 10);
+    const receiptNo = this.dom.fulfillReceiptNo?.value.trim() || 'GIN-2026-885';
+    const finalVal = this.dom.fulfillFinalVal?.value.trim() || r.targetDisplay;
+    const allocation = this.dom.fulfillAllocation?.value.trim() || 'Allocated to Shelter Animal Care';
+    const notes = this.dom.fulfillNotes?.value.trim() || 'Goods Inward inspected and verified in full.';
+
+    const formattedDate = new Date(dateInput).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
+
+    r.status = 'fulfilled';
+    r.statusLabel = 'Fulfilled & Sealed';
+    r.percent = 100;
+    r.progressDisplay = `${finalVal} (100% Fulfilled)`;
+    r.fulfillment = {
+      sponsor,
+      date: formattedDate,
+      receiptNo,
+      deliveredVal: finalVal,
+      allocation,
+      notes
+    };
+
+    this.closeMarkFulfilledModal();
+    this.renderSupportRequests();
+    this.showToast(`🎉 Requisition "${r.title}" marked as FULFILLED! Receipt ${receiptNo} logged.`, 'success');
+  },
+
+  // Contribute Aid Modal Handlers
+  openContributeAidModal(requestId) {
+    const r = PawBridgeStore.supportRequests.find(item => item.id === requestId);
+    if (!r) return;
+
+    PawBridgeStore.selectedRequestId = requestId;
+
+    if (this.dom.pledgeReqId) this.dom.pledgeReqId.value = r.id;
+    if (this.dom.pledgeReqTitleDisplay) this.dom.pledgeReqTitleDisplay.textContent = r.title;
+    if (this.dom.pledgeReqCurrentDisplay) this.dom.pledgeReqCurrentDisplay.textContent = `Current Progress: ${r.progressDisplay} (${r.percent}%)`;
+
+    if (this.dom.modalContributeAid) {
+      this.dom.modalContributeAid.classList.add('active');
+    }
+  },
+
+  closeContributeAidModal() {
+    if (this.dom.modalContributeAid) {
+      this.dom.modalContributeAid.classList.remove('active');
+    }
+  },
+
+  submitContributeAid() {
+    const id = this.dom.pledgeReqId?.value || PawBridgeStore.selectedRequestId;
+    const r = PawBridgeStore.supportRequests.find(item => item.id === id);
+    if (!r) return;
+
+    const donor = this.dom.pledgeContributor?.value.trim() || 'Community Benefactor';
+    const amountVal = parseInt(this.dom.pledgeAmountVal?.value || 0, 10);
+
+    if (amountVal <= 0) {
+      this.showToast('Please enter a positive pledge amount or quantity', 'alert');
+      return;
+    }
+
+    r.currentVal = (r.currentVal || 0) + amountVal;
+    if (r.targetVal > 0) {
+      r.percent = Math.min(100, Math.round((r.currentVal / r.targetVal) * 100));
+    } else {
+      r.percent = Math.min(100, (r.percent || 0) + 20);
+    }
+
+    if (r.unit === '₹') {
+      r.progressDisplay = `₹${r.currentVal.toLocaleString()} raised of ₹${r.targetVal.toLocaleString()}`;
+    } else if (r.unit) {
+      r.progressDisplay = `${r.currentVal} ${r.unit} received of ${r.targetVal} ${r.unit}`;
+    } else {
+      r.progressDisplay = `${r.percent}% fulfilled`;
+    }
+
+    this.closeContributeAidModal();
+    if (this.dom.formContributeAid) this.dom.formContributeAid.reset();
+
+    // Check if target reached
+    if (r.percent >= 100) {
+      this.renderSupportRequests();
+      this.showToast(`🎯 Goal reached 100% for "${r.title}"! Please verify receipt.`, 'success');
+      setTimeout(() => this.openMarkFulfilledModal(r.id), 400);
+    } else {
+      this.renderSupportRequests();
+      this.showToast(`✓ Aid contribution of ${amountVal} recorded from ${donor}`, 'success');
+    }
+  },
+
+  viewRequestDocument(docName, reqId) {
+    const r = PawBridgeStore.supportRequests.find(item => item.id === reqId);
+    const doc = r ? (r.documents || []).find(d => d.name === docName) : null;
+
+    if (!doc || !this.dom.viewDocModalBody) return;
+
+    this.dom.viewDocModalBody.innerHTML = `
+      <div style="background: #FAF8F2; border: 1px solid var(--color-border); border-radius: 8px; padding: 14px; margin-bottom: 16px;">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 6px;">
+          <div>
+            <span class="label-13 uppercase" style="color: var(--color-text-subtle);">Verified Document</span>
+            <h4 style="font-family: var(--font-heading); font-size: 16px; font-weight: 700; color: var(--color-text-dark); margin-top: 2px;">${doc.name}</h4>
+          </div>
+          <span class="report-badge verified">✓ Verified Authenticity</span>
+        </div>
+        <div style="font-size: 12px; color: var(--color-text-muted); line-height: 18px;">
+          <div><strong>Requisition:</strong> ${r ? r.title : 'Shelter Aid Request'}</div>
+          <div><strong>Authority / Issuer:</strong> ${doc.authority}</div>
+          <div><strong>File Size:</strong> ${doc.size}</div>
+          <div><strong>Cryptographic Hash:</strong> <span style="font-family: monospace;">${doc.hash}</span></div>
+        </div>
+      </div>
+
+      <div style="border: 1px dashed var(--color-border); border-radius: 8px; padding: 18px; text-align: center; background: #FFFFFF; font-size: 13px; color: var(--color-text-dark); line-height: 20px;">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="color: var(--color-olive); margin-bottom: 8px;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><path d="M12 18v-6"/><path d="M9 15l3 3 3-3"/></svg>
+        <div><strong>Previewing Attested Verification Record</strong></div>
+        <p style="font-size: 12px; color: var(--color-text-muted); margin-top: 4px;">
+          This document verifies the clinical justification, supplier quotation, or veterinary dosage protocol. All disbursements are audit-locked and registered under Happy Tails Sanctuary Trust AWBI Compliance #DL-402.
+        </p>
+      </div>
+    `;
+
+    if (this.dom.modalViewRequestDoc) {
+      this.dom.modalViewRequestDoc.classList.add('active');
+    }
+  },
+
+  viewTransparencyReceipt(reqId) {
+    const r = PawBridgeStore.supportRequests.find(item => item.id === reqId);
+    if (!r || !r.fulfillment || !this.dom.viewDocModalBody) return;
+
+    this.dom.viewDocModalBody.innerHTML = `
+      <div style="background: #F3F7F0; border: 1px solid #C8DEC2; border-radius: 8px; padding: 16px; margin-bottom: 16px;">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px;">
+          <div>
+            <span class="label-13 uppercase" style="color: var(--color-olive-dark); font-weight: 700;">Statutory Goods Inward Note</span>
+            <h4 style="font-family: var(--font-heading); font-size: 18px; font-weight: 700; color: var(--color-text-dark); margin-top: 2px;">${r.fulfillment.receiptNo}</h4>
+          </div>
+          <span class="report-badge verified">✓ 100% Fulfilled & Audited</span>
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; font-size: 12px; color: var(--color-text-dark); line-height: 18px;">
+          <div><strong>Sponsor / Donor:</strong> ${r.fulfillment.sponsor}</div>
+          <div><strong>Date Received:</strong> ${r.fulfillment.date}</div>
+          <div><strong>Delivered Value / Qty:</strong> ${r.fulfillment.deliveredVal}</div>
+          <div><strong>Shelter Beneficiary:</strong> ${r.fulfillment.allocation}</div>
+        </div>
+      </div>
+
+      <div style="background: #FAF8F2; border: 1px solid var(--color-border); border-radius: 8px; padding: 14px; font-size: 12px; line-height: 18px;">
+        <strong>Audit Verification Note:</strong>
+        <p style="color: var(--color-text-muted); margin-top: 4px;">${r.fulfillment.notes}</p>
+        <div style="font-family: monospace; font-size: 11px; color: var(--color-text-subtle); margin-top: 8px;">
+          Attestation Hash: SHA256: 9b10cc77fa00124b88e1009a
+        </div>
+      </div>
+    `;
+
+    if (this.dom.modalViewRequestDoc) {
+      this.dom.modalViewRequestDoc.classList.add('active');
+    }
+  },
+
+  reopenSupportRequest(reqId) {
+    const r = PawBridgeStore.supportRequests.find(item => item.id === reqId);
+    if (!r) return;
+
+    r.status = 'active';
+    r.statusLabel = 'Active Requisition';
+    this.renderSupportRequests();
+    this.showToast(`Re-opened requisition "${r.title}" to active status`, 'success');
+  },
+
+  closeViewDocModal() {
+    if (this.dom.modalViewRequestDoc) {
+      this.dom.modalViewRequestDoc.classList.remove('active');
+    }
   },
 
   // ============================================================
