@@ -1014,6 +1014,13 @@
               <!-- GROUP 3: GOVERNANCE & TRUST -->
               <div class="nav-section-group">
                 <div class="nav-section-title">Trust & Governance</div>
+                <button type="button" class="nav-item-btn" data-screen="impact">
+                  <div class="nav-item-left">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg>
+                    <span>Impact Reports</span>
+                  </div>
+                  <span class="nav-badge-pill" style="background: var(--color-pale-green); color: var(--color-olive-dark);">Audited</span>
+                </button>
                 <button type="button" class="nav-item-btn" data-screen="verification">
                   <div class="nav-item-left">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><path d="M9 15l2 2 4-4"/></svg>
@@ -1953,6 +1960,418 @@
               </div>
             </section>
 
+            <!-- ------------------------------------------------------------
+                 SCREEN 9: IMPACT REPORTS & STATUTORY METRICS
+                 ------------------------------------------------------------ -->
+            <section class="screen-view" id="screen-impact">
+              <!-- Screen Header Banner -->
+              <div class="screen-header-banner">
+                <div class="screen-header-left">
+                  <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 4px;">
+                    <h1 class="page-title-36" style="margin-bottom: 0;">Impact Reports & Animal Outcomes</h1>
+                    <span class="report-audit-pill reported" id="impact-header-status-pill">Organisation-Reported • Desk Review Pending</span>
+                  </div>
+                  <p class="body-text-16 muted">Statutory animal welfare throughput, veterinary clinical recovery indices, and verified community outcomes.</p>
+                </div>
+                <div class="screen-header-actions" style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+                  <button type="button" class="btn-secondary-cream" id="btn-open-edit-figures-modal" title="Edit figures for active reporting period">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+                    <span>Edit Figures</span>
+                  </button>
+                  <button type="button" class="btn-secondary-cream" id="btn-open-upload-evidence-modal" title="Upload verification documents">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                    <span>Upload Evidence</span>
+                  </button>
+                  <button type="button" class="btn-primary-olive" id="btn-open-add-period-modal" title="Create new reporting period">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                    <span>Add Reporting Period</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Mandatory Gatekeeping Safeguard Notice -->
+              <div class="impact-safeguard-banner" id="impact-safeguard-banner">
+                <div class="impact-safeguard-left">
+                  <div class="impact-safeguard-icon">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                  </div>
+                  <div>
+                    <div class="impact-safeguard-title">
+                      <span>Data Scrutiny Disclosure: All Figures Labelled Organisation-Reported</span>
+                      <span class="impact-shield-tag">Statutory Transparency Protocol</span>
+                    </div>
+                    <p class="impact-safeguard-desc">
+                      PawBridge compliance policy mandates that all animal intake, clinical treatment, and rehoming figures remain tagged as <strong>Organisation-Reported</strong> until formally reviewed by an independent statutory auditor or AWBI monitoring inspector. Historical periods (e.g. FY 2024–25) carrying certified chartered accountant sign-off are locked and verified.
+                    </p>
+                  </div>
+                </div>
+                <div class="impact-safeguard-right">
+                  <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 8px;">
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                      <span style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 700; color: var(--color-text-subtle);">Period Status:</span>
+                      <span class="report-badge reported" id="impact-period-audit-badge">Organisation-Reported (Unverified)</span>
+                    </div>
+                    <button type="button" class="btn-secondary-cream" id="btn-sim-period-audit" style="font-size: 11px; padding: 5px 10px; background: #FFFFFF;" title="Simulate third-party auditor review and sign-off">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                      <span id="btn-sim-audit-text">Simulate Auditor Sign-Off</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Date Filters & Reporting Period Toolbar -->
+              <div class="impact-toolbar-card">
+                <div class="impact-toolbar-row">
+                  <!-- Period Select Dropdown -->
+                  <div class="impact-filter-group">
+                    <label for="impact-period-select" class="form-label" style="font-size: 12px; margin-bottom: 4px;">Reporting Period</label>
+                    <div class="select-with-icon">
+                      <select id="impact-period-select" class="form-select" style="min-width: 250px; font-weight: 600; color: var(--color-text-dark); background-color: #FFFFFF;">
+                        <!-- Populated dynamically -->
+                      </select>
+                    </div>
+                  </div>
+
+                  <!-- Quick Period Chips -->
+                  <div class="impact-quick-periods">
+                    <span class="label-13" style="color: var(--color-text-subtle); margin-right: 4px;">Quick Select:</span>
+                    <button type="button" class="period-chip-btn active" data-period="fy-2025-26">Current FY 2025–26</button>
+                    <button type="button" class="period-chip-btn" data-period="q3-2026">Q3 2026</button>
+                    <button type="button" class="period-chip-btn" data-period="q2-2026">Q2 2026</button>
+                    <button type="button" class="period-chip-btn" data-period="fy-2024-25">FY 2024–25 (Audited)</button>
+                  </div>
+
+                  <!-- Custom Date Range -->
+                  <div class="impact-custom-dates">
+                    <div class="date-input-wrap">
+                      <span class="date-label">From:</span>
+                      <input type="date" id="impact-date-start" class="date-field" value="2025-04-01" />
+                    </div>
+                    <div class="date-input-wrap">
+                      <span class="date-label">To:</span>
+                      <input type="date" id="impact-date-end" class="date-field" value="2026-10-28" />
+                    </div>
+                    <button type="button" class="btn-secondary-cream" id="btn-apply-custom-dates" style="padding: 6px 12px; font-size: 12px;">
+                      Apply Range
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Sub-bar: Active Period Metadata & Disclosures -->
+                <div class="impact-meta-subbar">
+                  <div class="meta-subbar-left">
+                    <span class="meta-dot"></span>
+                    <span id="impact-period-meta-tag">Period: <strong>01 Apr 2025 – 28 Oct 2026</strong> • Last synchronized <strong>28 Oct 2026 by Dr. Ananya Sharma</strong></span>
+                  </div>
+                  <div class="meta-subbar-right">
+                    <span class="meta-note" id="impact-period-audit-note">Audit Scrutiny: Pending Annual Audit by External Chartered Accountants</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 4 Primary Statistic Cards Grid -->
+              <div class="impact-stats-grid">
+                <!-- Card 1: Animals Rescued -->
+                <div class="impact-stat-card">
+                  <div class="stat-card-header">
+                    <div class="stat-card-title-group">
+                      <span class="stat-card-eyebrow">Intake & Field SOS</span>
+                      <h3 class="stat-card-title">Animals Rescued</h3>
+                    </div>
+                    <button type="button" class="stat-edit-btn" id="btn-edit-rescued" title="Edit Rescued Count">
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+                      <span>Edit</span>
+                    </button>
+                  </div>
+
+                  <div class="stat-card-main">
+                    <div class="stat-card-number" id="impact-stat-rescued">1,428</div>
+                    <div class="stat-card-badge-row">
+                      <span class="report-badge reported" id="impact-badge-rescued">Organisation-reported</span>
+                      <span class="trend-pill positive">▲ +14.2%</span>
+                    </div>
+                  </div>
+
+                  <p class="stat-card-desc">Total canine admissions, ambulance trauma pickups, and community distress interventions.</p>
+
+                  <div class="stat-card-footer">
+                    <div class="stat-micro-breakdown" id="impact-rescued-breakdown">
+                      <span><strong>1,180</strong> Street Indies</span>
+                      <span>•</span>
+                      <span><strong>248</strong> Abandoned Breeds</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Card 2: Animals Treated -->
+                <div class="impact-stat-card">
+                  <div class="stat-card-header">
+                    <div class="stat-card-title-group">
+                      <span class="stat-card-eyebrow">Clinical Care & Surgeries</span>
+                      <h3 class="stat-card-title">Animals Treated</h3>
+                    </div>
+                    <button type="button" class="stat-edit-btn" id="btn-edit-treated" title="Edit Treated Count">
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+                      <span>Edit</span>
+                    </button>
+                  </div>
+
+                  <div class="stat-card-main">
+                    <div class="stat-card-number" id="impact-stat-treated">1,382</div>
+                    <div class="stat-card-badge-row">
+                      <span class="report-badge reported" id="impact-badge-treated">Organisation-reported</span>
+                      <span class="trend-pill neutral">96.8% intake rate</span>
+                    </div>
+                  </div>
+
+                  <p class="stat-card-desc">Inpatient hospital care, trauma surgeries, wound debridement, and daily antibiotic rounds.</p>
+
+                  <div class="stat-card-footer">
+                    <div class="stat-micro-breakdown" id="impact-treated-breakdown">
+                      <span><strong>412</strong> Orthopedic</span>
+                      <span>•</span>
+                      <span><strong>580</strong> Medical/OPD</span>
+                      <span>•</span>
+                      <span><strong>390</strong> ABC</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Card 3: Animals Rehabilitated -->
+                <div class="impact-stat-card">
+                  <div class="stat-card-header">
+                    <div class="stat-card-title-group">
+                      <span class="stat-card-eyebrow">Recovery & Healing Index</span>
+                      <h3 class="stat-card-title">Animals Rehabilitated</h3>
+                    </div>
+                    <button type="button" class="stat-edit-btn" id="btn-edit-rehabbed" title="Edit Rehabilitated Count">
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+                      <span>Edit</span>
+                    </button>
+                  </div>
+
+                  <div class="stat-card-main">
+                    <div class="stat-card-number" id="impact-stat-rehabbed">1,195</div>
+                    <div class="stat-card-badge-row">
+                      <span class="report-badge reported" id="impact-badge-rehabbed">Organisation-reported</span>
+                      <span class="trend-pill positive">83.7% healed</span>
+                    </div>
+                  </div>
+
+                  <p class="stat-card-desc">Fully stabilized patients meeting clinical discharge protocols with zero premature discharge.</p>
+
+                  <div class="stat-card-footer">
+                    <div class="stat-micro-breakdown" id="impact-rehabbed-breakdown">
+                      <span>Avg Stay: <strong>24 Days</strong></span>
+                      <span>•</span>
+                      <span><strong>0%</strong> Premature Release</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Card 4: Animals Adopted -->
+                <div class="impact-stat-card">
+                  <div class="stat-card-header">
+                    <div class="stat-card-title-group">
+                      <span class="stat-card-eyebrow">Rehoming & Sanctuary</span>
+                      <h3 class="stat-card-title">Animals Adopted</h3>
+                    </div>
+                    <button type="button" class="stat-edit-btn" id="btn-edit-adopted" title="Edit Adopted Count">
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+                      <span>Edit</span>
+                    </button>
+                  </div>
+
+                  <div class="stat-card-main">
+                    <div class="stat-card-number" id="impact-stat-adopted">342</div>
+                    <div class="stat-card-badge-row">
+                      <span class="report-badge reported" id="impact-badge-adopted">Organisation-reported</span>
+                      <span class="trend-pill positive">▲ +22.0%</span>
+                    </div>
+                  </div>
+
+                  <p class="stat-card-desc">Legally executed adoption deeds with home checks and lifelong sanctuary hospice care.</p>
+
+                  <div class="stat-card-footer">
+                    <div class="stat-micro-breakdown" id="impact-adopted-breakdown">
+                      <span><strong>318</strong> Family Homes</span>
+                      <span>•</span>
+                      <span><strong>24</strong> Permanent Sanctuary</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Secondary Impact Transparency Bar -->
+              <div class="impact-summary-strip">
+                <div class="summary-metric-item">
+                  <span class="summary-label">ABC Sterilizations (AWBI Rules):</span>
+                  <strong class="summary-value" id="impact-stat-abc">618 Canines</strong>
+                  <span class="report-badge reported small">Organisation-reported</span>
+                </div>
+                <div class="summary-metric-item">
+                  <span class="summary-label">Community Dogs Released (ABC):</span>
+                  <strong class="summary-value" id="impact-stat-released">853 Canines</strong>
+                  <span class="report-badge reported small">Organisation-reported</span>
+                </div>
+                <div class="summary-metric-item">
+                  <span class="summary-label">Severe Trauma Mortality Rate:</span>
+                  <strong class="summary-value" id="impact-stat-mortality">3.2%</strong>
+                  <span class="report-badge reported small">Organisation-reported</span>
+                </div>
+                <div class="summary-metric-item">
+                  <span class="summary-label">Statutory Audit Gate:</span>
+                  <strong class="summary-value" style="color: var(--color-olive); font-size: 13px;" id="impact-stat-lock">Pending Review</strong>
+                </div>
+              </div>
+
+              <!-- Monthly Activity Chart Card -->
+              <div class="impact-chart-card" id="impact-monthly-chart-card">
+                <div class="chart-card-header">
+                  <div>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                      <h2 class="section-heading-24" style="margin-bottom: 2px;">Monthly Activity & Animal Throughput</h2>
+                      <span class="report-badge reported" style="font-size: 10px; padding: 2px 7px;">Organisation-reported</span>
+                    </div>
+                    <span class="label-13" style="color: var(--color-text-muted);">12-month trend of shelter admissions, veterinary surgeries, healing completions, and rehoming</span>
+                  </div>
+
+                  <!-- Series Visibility Toggles -->
+                  <div class="chart-series-toggles">
+                    <button type="button" class="chart-series-btn active" data-series="all">
+                      <span class="series-bullet all"></span>
+                      <span>All Metrics</span>
+                    </button>
+                    <button type="button" class="chart-series-btn" data-series="rescues">
+                      <span class="series-bullet rescues"></span>
+                      <span>Rescues</span>
+                    </button>
+                    <button type="button" class="chart-series-btn" data-series="treated">
+                      <span class="series-bullet treated"></span>
+                      <span>Treated</span>
+                    </button>
+                    <button type="button" class="chart-series-btn" data-series="rehabbed">
+                      <span class="series-bullet rehabbed"></span>
+                      <span>Rehabilitated</span>
+                    </button>
+                    <button type="button" class="chart-series-btn" data-series="adopted">
+                      <span class="series-bullet adopted"></span>
+                      <span>Adopted</span>
+                    </button>
+                  </div>
+                </div>
+
+                <!-- SVG Chart Wrap -->
+                <div class="chart-svg-wrap" id="impact-chart-svg-wrap">
+                  <!-- Dynamically rendered SVG chart with tooltips -->
+                </div>
+
+                <!-- Chart Footer with Legend & Transparency Disclaimer -->
+                <div class="chart-card-footer">
+                  <div class="chart-legend">
+                    <div class="legend-item">
+                      <span class="legend-swatch" style="background: #536747;"></span>
+                      <span>Animals Rescued (Olive)</span>
+                    </div>
+                    <div class="legend-item">
+                      <span class="legend-swatch" style="background: #E5B95C;"></span>
+                      <span>Animals Treated (Gold)</span>
+                    </div>
+                    <div class="legend-item">
+                      <span class="legend-swatch" style="background: #8CA77F;"></span>
+                      <span>Animals Rehabilitated (Pale Green)</span>
+                    </div>
+                    <div class="legend-item">
+                      <span class="legend-swatch" style="background: #D98B70;"></span>
+                      <span>Animals Adopted (Terracotta)</span>
+                    </div>
+                  </div>
+                  <div class="chart-disclaimer-note">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+                    <span>All monthly totals compiled from internal shelter case logs. Labelled organisation-reported until annual CA audit.</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Two-Column Layout: Recent Impact Updates & Supporting Evidence -->
+              <div class="impact-two-column-layout">
+                <!-- Left Column: Recent Impact Updates -->
+                <div class="impact-column-left">
+                  <div class="card-surface" style="padding: 24px; height: 100%;">
+                    <div class="card-header-row" style="margin-bottom: 20px;">
+                      <div>
+                        <div style="display: flex; align-items: center; gap: 8px;">
+                          <h2 class="section-heading-24">Recent Impact Updates & Milestones</h2>
+                          <span class="metric-badge olive" id="impact-updates-count-badge">4 Updates</span>
+                        </div>
+                        <span class="label-13" style="color: var(--color-text-muted);">Verified case recoveries, field community drives, and adoption handovers</span>
+                      </div>
+                      <button type="button" class="btn-secondary-cream" id="btn-open-add-impact-story-modal" style="font-size: 13px; padding: 7px 12px;">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                        <span>Post Impact Story</span>
+                      </button>
+                    </div>
+
+                    <!-- Updates List Container -->
+                    <div class="impact-updates-list" id="impact-updates-list">
+                      <!-- Dynamically rendered -->
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Right Column: Supporting Evidence & Audit Trail -->
+                <div class="impact-column-right">
+                  <!-- Evidence Card -->
+                  <div class="card-surface" style="padding: 24px; margin-bottom: 20px;">
+                    <div class="card-header-row" style="margin-bottom: 14px;">
+                      <div>
+                        <div style="display: flex; align-items: center; gap: 8px;">
+                          <h2 class="section-heading-24" style="font-size: 20px;">Supporting Evidence & Documents</h2>
+                          <span class="metric-badge gold" id="impact-evidence-count-badge">4 Documents</span>
+                        </div>
+                        <span class="label-13" style="color: var(--color-text-muted);">Veterinary logs, municipal ABC certificates, and audit reports</span>
+                      </div>
+                      <button type="button" class="btn-secondary-cream" id="btn-open-upload-evidence-modal-sec" style="font-size: 12px; padding: 6px 10px;">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                        <span>Upload File</span>
+                      </button>
+                    </div>
+
+                    <!-- Evidence Category Filters -->
+                    <div class="evidence-category-tabs" id="evidence-filter-tabs">
+                      <button type="button" class="evidence-tab active" data-category="all">All Evidence</button>
+                      <button type="button" class="evidence-tab" data-category="veterinary">Clinical Logs</button>
+                      <button type="button" class="evidence-tab" data-category="sterilization">ABC Certificates</button>
+                      <button type="button" class="evidence-tab" data-category="adoption">Adoption Deeds</button>
+                      <button type="button" class="evidence-tab" data-category="audit">Audit Reports</button>
+                    </div>
+
+                    <!-- Evidence Documents List -->
+                    <div class="evidence-docs-list" id="impact-evidence-list">
+                      <!-- Dynamically rendered -->
+                    </div>
+                  </div>
+
+                  <!-- Audit Trail & Revision History Card -->
+                  <div class="card-surface" style="padding: 24px;">
+                    <div class="card-header-row" style="margin-bottom: 12px;">
+                      <div>
+                        <h3 style="font-family: var(--font-heading); font-size: 17px; font-weight: 700; color: var(--color-text-dark); margin-bottom: 2px;">
+                          Figure Revision Audit Trail
+                        </h3>
+                        <span class="label-13" style="color: var(--color-text-muted);">Cryptographic log of figure adjustments and justification reasons</span>
+                      </div>
+                      <span class="status-pill stable" style="font-size: 11px;">Immutable Log</span>
+                    </div>
+
+                    <div class="revision-history-list" id="impact-revision-history">
+                      <!-- Dynamically populated from active period revision history -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
           </div><!-- END .screen-scroll-container -->
 
         </div><!-- END .app-main-viewport -->
@@ -2543,6 +2962,377 @@
               <span>Publish Update</span>
             </button>
           </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       MODAL: ADD REPORTING PERIOD
+       ============================================================ -->
+  <div class="modal-overlay" id="modal-add-period" role="dialog" aria-modal="true" aria-labelledby="add-period-modal-title">
+    <div class="modal-window" style="max-width: 640px;">
+      <div class="modal-header">
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--color-olive);"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          <h3 class="modal-title" id="add-period-modal-title">Add New Reporting Period</h3>
+        </div>
+        <button type="button" class="modal-close-btn" id="btn-close-add-period-modal" aria-label="Close modal">✕</button>
+      </div>
+
+      <form id="form-add-period">
+        <div class="modal-body">
+          <div class="form-section-card" style="margin-bottom: 16px; background: #FAF8F2;">
+            <p style="font-size: 13px; color: var(--color-text-muted); line-height: 1.5; margin: 0;">
+              Create an official reporting cycle for statutory disclosures. All figures logged will be published with the mandatory <strong>Organisation-Reported</strong> badge until reviewed by an external auditor.
+            </p>
+          </div>
+
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label for="new-period-title" class="form-label">Period Name / Title *</label>
+              <input type="text" id="new-period-title" class="form-input" placeholder="e.g. Q4 2026-27 (Jan–Mar 2027)" required />
+            </div>
+
+            <div class="form-group">
+              <label for="new-period-type" class="form-label">Reporting Cycle Type *</label>
+              <select id="new-period-type" class="form-select" required>
+                <option value="quarterly" selected>Quarterly Disclosure (3 Months)</option>
+                <option value="annual">Annual Fiscal Year (12 Months)</option>
+                <option value="monthly">Monthly Intake Summary (1 Month)</option>
+                <option value="drive">Special ABC / Vaccination Drive</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label for="new-period-start" class="form-label">Period Start Date *</label>
+              <input type="date" id="new-period-start" class="form-input" value="2027-01-01" required />
+            </div>
+            <div class="form-group">
+              <label for="new-period-end" class="form-label">Period End Date *</label>
+              <input type="date" id="new-period-end" class="form-input" value="2027-03-31" required />
+            </div>
+          </div>
+
+          <div style="margin: 16px 0 8px 0;">
+            <strong style="font-size: 13px; font-weight: 700; color: var(--color-text-dark); text-transform: uppercase; letter-spacing: 0.5px;">Initial Reported Figures</strong>
+          </div>
+
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label for="new-period-rescued" class="form-label">Animals Rescued *</label>
+              <input type="number" id="new-period-rescued" class="form-input" placeholder="e.g. 150" min="0" value="160" required />
+            </div>
+            <div class="form-group">
+              <label for="new-period-treated" class="form-label">Animals Treated *</label>
+              <input type="number" id="new-period-treated" class="form-input" placeholder="e.g. 145" min="0" value="152" required />
+            </div>
+          </div>
+
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label for="new-period-rehabbed" class="form-label">Animals Rehabilitated *</label>
+              <input type="number" id="new-period-rehabbed" class="form-input" placeholder="e.g. 120" min="0" value="130" required />
+            </div>
+            <div class="form-group">
+              <label for="new-period-adopted" class="form-label">Animals Adopted *</label>
+              <input type="number" id="new-period-adopted" class="form-input" placeholder="e.g. 35" min="0" value="40" required />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="new-period-notes" class="form-label">Methodology & Verification Notes</label>
+            <textarea id="new-period-notes" class="form-textarea" rows="2" placeholder="e.g. Reconciled with physical OPD casualty register, ambulance GPS logs, and sterilization records..."></textarea>
+          </div>
+
+          <div style="background: #F3F7F0; border: 1px solid #D3DFCE; border-radius: 8px; padding: 12px 14px; margin-top: 10px;">
+            <label class="custom-checkbox-wrap" style="align-items: flex-start;">
+              <input type="checkbox" id="chk-period-attest" checked required style="margin-top: 2px;" />
+              <span style="font-size: 12px; line-height: 18px; color: var(--color-olive-dark);">
+                I confirm on behalf of the shelter administration that these counts represent genuine animal welfare cases and will remain labelled <strong>Organisation-Reported</strong> until audited.
+              </span>
+            </label>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn-secondary-cream" id="btn-cancel-add-period-modal">Cancel</button>
+          <button type="submit" class="btn-primary-olive" id="btn-submit-add-period">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Create Reporting Period</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       MODAL: EDIT REPORTED FIGURES & AUDIT REVISION LOG
+       ============================================================ -->
+  <div class="modal-overlay" id="modal-edit-figures" role="dialog" aria-modal="true" aria-labelledby="edit-figures-modal-title">
+    <div class="modal-window" style="max-width: 660px;">
+      <div class="modal-header">
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--color-olive);"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+          <h3 class="modal-title" id="edit-figures-modal-title">Edit Reported Figures</h3>
+        </div>
+        <button type="button" class="modal-close-btn" id="btn-close-edit-figures-modal" aria-label="Close modal">✕</button>
+      </div>
+
+      <form id="form-edit-figures">
+        <div class="modal-body">
+          <div style="background: #FAF8F2; border: 1px solid var(--color-border); border-radius: 8px; padding: 12px 16px; margin-bottom: 16px; display: flex; align-items: center; justify-content: space-between;">
+            <div>
+              <span class="label-13" style="text-transform: uppercase; color: var(--color-text-subtle);">Active Period</span>
+              <div style="font-family: var(--font-heading); font-size: 16px; font-weight: 700; color: var(--color-text-dark);" id="edit-figures-active-period-name">
+                FY 2025–26 (YTD Current)
+              </div>
+            </div>
+            <span class="report-badge reported" id="edit-figures-active-status">Organisation-Reported</span>
+          </div>
+
+          <div style="background: #FFF8E7; border: 1px solid #E5B95C; border-radius: 8px; padding: 10px 14px; margin-bottom: 18px; font-size: 12px; color: #8A6517; display: flex; align-items: flex-start; gap: 8px;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink: 0; margin-top: 1px;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            <span>
+              <strong>Audit Scrutiny Policy:</strong> Adjusting these figures will log an immutable entry in the shelter revision audit trail. All updated numbers will remain branded <strong>Organisation-Reported (Revised)</strong>.
+            </span>
+          </div>
+
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label for="edit-fig-rescued" class="form-label">Animals Rescued *</label>
+              <input type="number" id="edit-fig-rescued" class="form-input" min="0" required />
+              <span style="font-size: 11px; color: var(--color-text-subtle); margin-top: 2px; display: block;">Total intake admissions & pickups</span>
+            </div>
+
+            <div class="form-group">
+              <label for="edit-fig-treated" class="form-label">Animals Treated *</label>
+              <input type="number" id="edit-fig-treated" class="form-input" min="0" required />
+              <span style="font-size: 11px; color: var(--color-text-subtle); margin-top: 2px; display: block;">Surgical, trauma & inpatient OPD</span>
+            </div>
+          </div>
+
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label for="edit-fig-rehabbed" class="form-label">Animals Rehabilitated *</label>
+              <input type="number" id="edit-fig-rehabbed" class="form-input" min="0" required />
+              <span style="font-size: 11px; color: var(--color-text-subtle); margin-top: 2px; display: block;">Full clinical recovery completions</span>
+            </div>
+
+            <div class="form-group">
+              <label for="edit-fig-adopted" class="form-label">Animals Adopted *</label>
+              <input type="number" id="edit-fig-adopted" class="form-input" min="0" required />
+              <span style="font-size: 11px; color: var(--color-text-subtle); margin-top: 2px; display: block;">Permanent adoptions & foster handovers</span>
+            </div>
+          </div>
+
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label for="edit-fig-abc" class="form-label">ABC Sterilizations (AWBI Rules)</label>
+              <input type="number" id="edit-fig-abc" class="form-input" min="0" />
+            </div>
+
+            <div class="form-group">
+              <label for="edit-fig-released" class="form-label">Community ABC Released</label>
+              <input type="number" id="edit-fig-released" class="form-input" min="0" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="edit-fig-reason-preset" class="form-label">Revision Justification Reason *</label>
+            <select id="edit-fig-reason-preset" class="form-select" required>
+              <option value="Reconciliation with late physical OPD daily register entries" selected>Reconciliation with late physical OPD daily register entries</option>
+              <option value="External veterinary specialist surgical case records reconciled">External veterinary specialist surgical case records reconciled</option>
+              <option value="Correction of duplicate emergency field ambulance incident log">Correction of duplicate emergency field ambulance incident log</option>
+              <option value="Municipal Corporation ABC monitoring committee log alignment">Municipal Corporation ABC monitoring committee log alignment</option>
+              <option value="Quarterly desk scrutiny audit preliminary adjustment">Quarterly desk scrutiny audit preliminary adjustment</option>
+              <option value="Other administrative adjustment">Other administrative adjustment (specified below)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="edit-fig-notes" class="form-label">Revision Details / Sign-Off Note</label>
+            <input type="text" id="edit-fig-notes" class="form-input" placeholder="e.g. Checked against physical OPD register Book 14, pages 88–94 signed by Dr. Ananya Sharma" />
+          </div>
+
+          <div style="background: #F3F7F0; border: 1px solid #D3DFCE; border-radius: 8px; padding: 12px 14px; margin-top: 10px;">
+            <label class="custom-checkbox-wrap" style="align-items: flex-start;">
+              <input type="checkbox" id="chk-edit-fig-attest" checked required style="margin-top: 2px;" />
+              <span style="font-size: 12px; line-height: 18px; color: var(--color-olive-dark);">
+                I certify under penalty of administrative de-registration that these figures reflect actual verified animal admissions and care delivered by the organisation.
+              </span>
+            </label>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn-secondary-cream" id="btn-cancel-edit-figures-modal">Cancel</button>
+          <button type="submit" class="btn-primary-olive" id="btn-save-edit-figures">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Save Figures & Log Audit</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       MODAL: UPLOAD SUPPORTING EVIDENCE & VERIFICATION PROOF
+       ============================================================ -->
+  <div class="modal-overlay" id="modal-upload-evidence" role="dialog" aria-modal="true" aria-labelledby="upload-evidence-modal-title">
+    <div class="modal-window" style="max-width: 660px;">
+      <div class="modal-header">
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--color-olive);"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+          <h3 class="modal-title" id="upload-evidence-modal-title">Upload Supporting Evidence Document</h3>
+        </div>
+        <button type="button" class="modal-close-btn" id="btn-close-upload-evidence-modal" aria-label="Close modal">✕</button>
+      </div>
+
+      <form id="form-upload-evidence">
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="evidence-doc-title" class="form-label">Document Title / Name *</label>
+            <input type="text" id="evidence-doc-title" class="form-input" placeholder="e.g. Daily Veterinary OPD Treatment Register (Oct 2026)" required />
+          </div>
+
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label for="evidence-category-select" class="form-label">Evidence Category *</label>
+              <select id="evidence-category-select" class="form-select" required>
+                <option value="veterinary" selected>Veterinary Clinical Register / OPD Log</option>
+                <option value="sterilization">AWBI / Municipal ABC Sterilization Certificate</option>
+                <option value="adoption">Adoption Legal Deed & Microchip Registry</option>
+                <option value="audit">Independent CA Statutory Audit Report</option>
+                <option value="panchnama">Ambulance SOS & Police Panchnama Log</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="evidence-period-select" class="form-label">Associated Reporting Period *</label>
+              <select id="evidence-period-select" class="form-select" required>
+                <!-- Populated dynamically -->
+              </select>
+            </div>
+          </div>
+
+          <!-- Drag and Drop Upload Zone -->
+          <div class="form-group">
+            <label class="form-label">Document File (PDF, XLSX, or High-Res Scans) *</label>
+            <div class="file-dropzone-box" id="evidence-dropzone" style="border: 2px dashed var(--color-border); border-radius: 10px; padding: 24px 20px; text-align: center; background: #FAF8F2; cursor: pointer; transition: all var(--transition-fast);">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="color: var(--color-olive); margin-bottom: 8px;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
+              <div style="font-size: 13px; font-weight: 600; color: var(--color-text-dark); margin-bottom: 2px;" id="dropzone-file-name">
+                Click to browse or drop file here
+              </div>
+              <div style="font-size: 11px; color: var(--color-text-subtle);">
+                Accepts PDF, XLSX, DOCX, ZIP (Up to 25 MB). Cryptographic SHA-256 seal generated on upload.
+              </div>
+              <input type="file" id="evidence-file-input" style="display: none;" accept=".pdf,.xlsx,.csv,.doc,.docx,.zip,.jpg,.png" />
+            </div>
+          </div>
+
+          <!-- Upload Progress & Checksum Simulation Bar -->
+          <div id="evidence-upload-progress-wrap" style="display: none; background: #FAF8F2; border: 1px solid var(--color-border); border-radius: 8px; padding: 12px 14px; margin-bottom: 16px;">
+            <div style="display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 6px;">
+              <span style="font-weight: 600; color: var(--color-text-dark);" id="evidence-progress-status">Uploading & Generating Cryptographic Hash...</span>
+              <span style="font-weight: 700; color: var(--color-olive);" id="evidence-progress-percent">100%</span>
+            </div>
+            <div style="height: 6px; background: #E8EDE3; border-radius: 3px; overflow: hidden; margin-bottom: 8px;">
+              <div id="evidence-progress-bar-fill" style="width: 100%; height: 100%; background: var(--color-olive); transition: width 0.3s ease;"></div>
+            </div>
+            <div style="font-family: monospace; font-size: 11px; color: var(--color-text-muted);" id="evidence-checksum-preview">
+              SHA-256: d8f2a9e104b988f0012c4b77a1e0...
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="evidence-doc-desc" class="form-label">Description of Evidence & Scope</label>
+            <textarea id="evidence-doc-desc" class="form-textarea" rows="2" placeholder="e.g. Scanned physical register pages containing admissions #1240–#1428, signed by lead veterinarian..."></textarea>
+          </div>
+
+          <div style="background: #F3F7F0; border: 1px solid #D3DFCE; border-radius: 8px; padding: 12px 14px;">
+            <label class="custom-checkbox-wrap" style="align-items: flex-start;">
+              <input type="checkbox" id="chk-evidence-attest" checked required style="margin-top: 2px;" />
+              <span style="font-size: 12px; line-height: 18px; color: var(--color-olive-dark);">
+                I certify that this evidence document corresponds directly to the reported figures and contains authentic shelter entries.
+              </span>
+            </label>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn-secondary-cream" id="btn-cancel-upload-evidence-modal">Cancel</button>
+          <button type="submit" class="btn-primary-olive" id="btn-submit-upload-evidence">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Upload Document & Sign</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       MODAL: POST RECENT IMPACT UPDATE / MILESTONE
+       ============================================================ -->
+  <div class="modal-overlay" id="modal-add-impact-story" role="dialog" aria-modal="true" aria-labelledby="add-impact-story-title">
+    <div class="modal-window" style="max-width: 640px;">
+      <div class="modal-header">
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--color-olive);"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          <h3 class="modal-title" id="add-impact-story-title">Post Recent Impact Milestone</h3>
+        </div>
+        <button type="button" class="modal-close-btn" id="btn-close-add-impact-story-modal" aria-label="Close modal">✕</button>
+      </div>
+
+      <form id="form-add-impact-story">
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="impact-story-title" class="form-label">Headline / Title *</label>
+            <input type="text" id="impact-story-title" class="form-input" placeholder="e.g. Case #RC-1048: Leo Completed Orthopedic Recovery & Handed to Adopter" required />
+          </div>
+
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label for="impact-story-category" class="form-label">Program Category *</label>
+              <select id="impact-story-category" class="form-select" required>
+                <option value="Orthopedic Rehabilitation" selected>Orthopedic Rehabilitation</option>
+                <option value="Animal Birth Control (ABC)">Animal Birth Control (ABC)</option>
+                <option value="Foster Placement">Foster Placement</option>
+                <option value="Disaster SOS">Disaster SOS / Emergency Rescue</option>
+                <option value="Adoption Finalization">Permanent Adoption Finalization</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="impact-story-date" class="form-label">Date *</label>
+              <input type="date" id="impact-story-date" class="form-input" value="2026-10-28" required />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="impact-story-metrics" class="form-label">Highlight Outcome Metrics *</label>
+            <input type="text" id="impact-story-metrics" class="form-input" placeholder="e.g. 38 Days in ICU • ₹6,400 Treatment Fund • 1 Life Saved" required />
+          </div>
+
+          <div class="form-group">
+            <label for="impact-story-photo" class="form-label">Photo URL *</label>
+            <input type="url" id="impact-story-photo" class="form-input" value="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&w=600&q=80" required />
+          </div>
+
+          <div class="form-group">
+            <label for="impact-story-summary" class="form-label">Narrative Story / Impact Summary *</label>
+            <textarea id="impact-story-summary" class="form-textarea" rows="3" placeholder="Describe the rescue intervention, veterinary milestones, and verified outcome for the animal..." required></textarea>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn-secondary-cream" id="btn-cancel-add-impact-story-modal">Cancel</button>
+          <button type="submit" class="btn-primary-olive" id="btn-submit-add-impact-story">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Publish Impact Story</span>
+          </button>
         </div>
       </form>
     </div>

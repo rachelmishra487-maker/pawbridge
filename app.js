@@ -692,7 +692,283 @@ const PawBridgeStore = {
     { id: 'notif-2', title: 'Medication Round Due', text: 'Midday medication round begins at 01:00 PM (4 patients pending).', time: '1h ago', unread: true },
     { id: 'notif-3', title: 'Antibiotic Inventory Alert', text: 'Ceftriaxone Inj stock dropped below minimum threshold (18 left).', time: '2h ago', unread: true },
     { id: 'notif-4', title: 'Adoption Home Check Cleared', text: 'Home check for Rhea Sengupta (Applicant #app-1) approved.', time: 'Yesterday', unread: false }
-  ]
+  ],
+
+  // Impact Reports & Statutory State
+  impactState: {
+    activePeriodId: 'fy-2025-26',
+    activeSeries: 'all', // 'all' | 'rescues' | 'treated' | 'rehabbed' | 'adopted'
+    activeEvidenceCategory: 'all',
+    customDateStart: '2025-04-01',
+    customDateEnd: '2026-10-28',
+    periods: [
+      {
+        id: 'fy-2025-26',
+        title: 'FY 2025–26 (YTD Current)',
+        type: 'annual',
+        dateRange: '01 Apr 2025 – 28 Oct 2026',
+        startDate: '2025-04-01',
+        endDate: '2026-10-28',
+        status: 'reported', // 'reported' | 'verified'
+        statusLabel: 'Organisation-Reported (Unverified)',
+        auditNote: 'Audit Scrutiny: Pending Annual Statutory Audit by External Chartered Accountants',
+        figures: {
+          rescued: 1428,
+          treated: 1382,
+          rehabilitated: 1195,
+          adopted: 342,
+          abcSterilized: 618,
+          communityReleased: 853,
+          mortalityRate: '3.2%'
+        },
+        breakdowns: {
+          rescued: '1,180 Street Indies • 248 Abandoned Pedigrees',
+          treated: '412 Ortho/Trauma • 580 Medical/OPD • 390 ABC',
+          rehabbed: 'Avg Stay: 24 Days • 0% Premature Release',
+          adopted: '318 Domestic Homes • 24 Permanent Sanctuary'
+        },
+        trends: {
+          rescued: '▲ +14.2%',
+          treated: '96.8% intake rate',
+          rehabbed: '83.7% healed',
+          adopted: '▲ +22.0%'
+        },
+        lastUpdated: '28 Oct 2026 by Dr. Ananya Sharma',
+        revisionHistory: [
+          { date: '28 Oct 2026', user: 'Dr. Ananya Sharma (Lead Vet)', note: 'Reconciled October casualty intake from physical OPD registers.' },
+          { date: '30 Sep 2026', user: 'R. Mehta (Shelter Admin)', note: 'Q2 closing figures synchronized with ambulance GPS field logs.' }
+        ]
+      },
+      {
+        id: 'q3-2026',
+        title: 'Q3 2026 (Oct–Dec 2026)',
+        type: 'quarterly',
+        dateRange: '01 Oct 2026 – 31 Dec 2026',
+        startDate: '2026-10-01',
+        endDate: '2026-12-31',
+        status: 'reported',
+        statusLabel: 'Organisation-Reported (Unverified)',
+        auditNote: 'Audit Scrutiny: Mid-quarter shelter intake records • Desk scrutiny active',
+        figures: {
+          rescued: 184,
+          treated: 176,
+          rehabilitated: 148,
+          adopted: 46,
+          abcSterilized: 88,
+          communityReleased: 102,
+          mortalityRate: '2.7%'
+        },
+        breakdowns: {
+          rescued: '154 Street Indies • 30 Abandoned Breeds',
+          treated: '48 Trauma Surgeries • 76 OPD • 52 ABC',
+          rehabbed: 'Avg Stay: 19 Days • 0% Premature Release',
+          adopted: '42 Family Adoptions • 4 Long-Term Sanctuary'
+        },
+        trends: {
+          rescued: '▲ +8.5%',
+          treated: '95.6% intake rate',
+          rehabbed: '84.1% healed',
+          adopted: '▲ +15.0%'
+        },
+        lastUpdated: '28 Oct 2026 by Dr. Ananya Sharma',
+        revisionHistory: [
+          { date: '28 Oct 2026', user: 'Dr. Ananya Sharma', note: 'Mid-quarter log sync and ICU discharge updates.' }
+        ]
+      },
+      {
+        id: 'q2-2026',
+        title: 'Q2 2026 (Jul–Sep 2026)',
+        type: 'quarterly',
+        dateRange: '01 Jul 2026 – 30 Sep 2026',
+        startDate: '2026-07-01',
+        endDate: '2026-09-30',
+        status: 'reported',
+        statusLabel: 'Organisation-Reported (Desk Review)',
+        auditNote: 'Audit Scrutiny: Municipal ABC log verification under desk review by AWBI officer',
+        figures: {
+          rescued: 492,
+          treated: 476,
+          rehabilitated: 414,
+          adopted: 117,
+          abcSterilized: 210,
+          communityReleased: 284,
+          mortalityRate: '3.4%'
+        },
+        breakdowns: {
+          rescued: '410 Street Indies • 82 Abandoned Breeds',
+          treated: '136 Ortho • 190 Medical • 150 ABC',
+          rehabbed: 'Avg Stay: 26 Days • 100% Protocol Compliance',
+          adopted: '110 Family Homes • 7 Sanctuary'
+        },
+        trends: {
+          rescued: '▲ +11.0%',
+          treated: '96.7% intake rate',
+          rehabbed: '86.9% healed',
+          adopted: '▲ +18.4%'
+        },
+        lastUpdated: '05 Oct 2026 by Dr. Rajesh Verma',
+        revisionHistory: [
+          { date: '05 Oct 2026', user: 'Dr. Rajesh Verma', note: 'Finalized Q2 closing dossier and Municipal ABC cross-checks.' }
+        ]
+      },
+      {
+        id: 'fy-2024-25',
+        title: 'FY 2024–25 (Audited Final)',
+        type: 'annual',
+        dateRange: '01 Apr 2024 – 31 Mar 2025',
+        startDate: '2024-04-01',
+        endDate: '2025-03-31',
+        status: 'verified',
+        statusLabel: 'Audited & Verified (CA Certified)',
+        auditNote: 'Audit Scrutiny: Statutorily Verified & Certified by Mehra & Kapadia LLP, Chartered Accountants',
+        figures: {
+          rescued: 1892,
+          treated: 1840,
+          rehabilitated: 1560,
+          adopted: 418,
+          abcSterilized: 920,
+          communityReleased: 1142,
+          mortalityRate: '3.8%'
+        },
+        breakdowns: {
+          rescued: '1,580 Street Indies • 312 Pedigree Surrenders',
+          treated: '560 Orthopedic • 740 OPD • 540 ABC Surgeries',
+          rehabbed: 'Avg Stay: 25 Days • Audited Medical Discharge',
+          adopted: '394 Family Homes • 24 Permanent Sanctuary'
+        },
+        trends: {
+          rescued: 'Benchmark Year',
+          treated: '97.2% intake rate',
+          rehabbed: '84.8% healed',
+          adopted: 'Benchmark Year'
+        },
+        lastUpdated: '15 Jun 2025 by Mehra & Kapadia LLP',
+        revisionHistory: [
+          { date: '15 Jun 2025', user: 'Mehra & Kapadia LLP (Auditors)', note: 'Statutory audit completed and certified without qualification.' }
+        ]
+      }
+    ],
+
+    // Monthly activity throughput
+    monthlyActivity: [
+      { month: 'Nov 25', rescues: 115, treated: 110, rehabbed: 96, adopted: 28 },
+      { month: 'Dec 25', rescues: 128, treated: 122, rehabbed: 104, adopted: 34 },
+      { month: 'Jan 26', rescues: 142, treated: 136, rehabbed: 118, adopted: 31 },
+      { month: 'Feb 26', rescues: 120, treated: 118, rehabbed: 102, adopted: 29 },
+      { month: 'Mar 26', rescues: 135, treated: 130, rehabbed: 114, adopted: 38 },
+      { month: 'Apr 26', rescues: 148, treated: 144, rehabbed: 125, adopted: 36 },
+      { month: 'May 26', rescues: 162, treated: 158, rehabbed: 138, adopted: 42 },
+      { month: 'Jun 26', rescues: 154, treated: 150, rehabbed: 130, adopted: 35 },
+      { month: 'Jul 26', rescues: 170, treated: 164, rehabbed: 144, adopted: 40 },
+      { month: 'Aug 26', rescues: 165, treated: 160, rehabbed: 140, adopted: 38 },
+      { month: 'Sep 26', rescues: 158, treated: 152, rehabbed: 134, adopted: 39 },
+      { month: 'Oct 26', rescues: 184, treated: 176, rehabbed: 148, adopted: 46 }
+    ],
+
+    // Recent impact updates
+    impactUpdates: [
+      {
+        id: 'iu-1',
+        title: 'Case #RC-1048: Leo Overcame Compound Fracture & Finalized for Rehoming',
+        date: '28 Oct 2026',
+        category: 'Orthopedic Rehabilitation',
+        summary: 'After 38 days in Trauma ICU-03, Indie pup Leo underwent open surgical reduction, splint removal, and complete tissue granulation. Now fully cleared and handed over to verified adoptive parents.',
+        photo: 'https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&w=600&q=80',
+        metrics: '38 Days in ICU • ₹6,400 Treatment Fund • 1 Life Saved'
+      },
+      {
+        id: 'iu-2',
+        title: 'South Delhi ABC Outreach: 180 Community Canines Sterilized and Vaccinated',
+        date: '22 Oct 2026',
+        category: 'Animal Birth Control (ABC)',
+        summary: 'Conducted a 5-day community humane outreach across Chhatarpur and Mehrauli sectors. 180 street dogs received laparoscopic sterilization, Rabies vaccination, and right-ear notch per AWBI guidelines.',
+        photo: 'https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&w=600&q=80',
+        metrics: '180 Dogs Sterilized • 100% Post-op Recovery • Panchnama Logged'
+      },
+      {
+        id: 'iu-3',
+        title: 'Bella Discharged from Surgical Bay REC-02 to Dedicated Medical Foster',
+        date: '16 Oct 2026',
+        category: 'Foster Placement',
+        summary: 'Femoral head ostectomy surgical incision completely healed. Gentle Golden mix Bella transitioned from clinic ward to experienced foster parent Rohini Saxena for hydrotherapy and rehoming.',
+        photo: 'https://images.unsplash.com/photo-1561037404-61cd46aa615b?auto=format&fit=crop&w=600&q=80',
+        metrics: '14 Days Recovery • Sutures Cleared • Foster Signed'
+      },
+      {
+        id: 'iu-4',
+        title: 'Emergency Flood SOS: 14 Stranded Pups Rescued from Yamuna Riverbanks',
+        date: '08 Oct 2026',
+        category: 'Disaster SOS',
+        summary: 'PawBridge Ambulance Units 1 and 2 responded to flash flooding distress alerts. 14 hypothermic pups extracted, admitted to Quarantine Bay Q-03, stabilized, and vaccinated.',
+        photo: 'https://images.unsplash.com/photo-1591769225440-811ad7d6eab2?auto=format&fit=crop&w=600&q=80',
+        metrics: '14 Pups Saved • 0 Casualties • 100% Negative Parvo Screen'
+      }
+    ],
+
+    // Supporting evidence documents
+    evidenceDocs: [
+      {
+        id: 'ev-1',
+        title: 'Daily Veterinary Inpatient & Casualty Register (Oct 2026)',
+        periodId: 'q3-2026',
+        category: 'veterinary',
+        categoryLabel: 'Veterinary OPD Register',
+        fileName: 'HappyTails_OPD_Casualty_Oct2026.pdf',
+        fileSize: '4.8 MB',
+        uploadDate: '28 Oct 2026',
+        uploadedBy: 'Dr. Ananya Sharma (Lead Vet)',
+        status: 'reported',
+        statusLabel: 'Organisation-Reported (Pending Audit)',
+        checksum: 'SHA-256: d8f2a9e104b988f0012c4b77a1e0...9921',
+        description: 'Physical OPD intake logs, temperature charts, attending vet signatures, and daily drug dispensation sheets.'
+      },
+      {
+        id: 'ev-2',
+        title: 'Municipal Corporation ABC Sterilization & Ear-Notch Certificate Log',
+        periodId: 'q2-2026',
+        category: 'sterilization',
+        categoryLabel: 'AWBI ABC Certificate',
+        fileName: 'MCD_ABC_Sterilization_Q2_2026.pdf',
+        fileSize: '3.2 MB',
+        uploadDate: '04 Oct 2026',
+        uploadedBy: 'Dr. Rajesh Verma',
+        status: 'reported',
+        statusLabel: 'Organisation-Reported (Desk Review)',
+        checksum: 'SHA-256: 4e91bc772188fa0014e210bc9901...331a',
+        description: 'Government municipal monitoring committee counter-signed summary of 210 street dogs sterilized.'
+      },
+      {
+        id: 'ev-3',
+        title: 'Adoption Custody Deeds & Microchip Registry (Jul–Sep 2026)',
+        periodId: 'q2-2026',
+        category: 'adoption',
+        categoryLabel: 'Adoption Legal Deeds',
+        fileName: 'Adoption_Deeds_Q2_Rehomed.pdf',
+        fileSize: '8.1 MB',
+        uploadDate: '02 Oct 2026',
+        uploadedBy: 'Adoption Desk Lead',
+        status: 'verified',
+        statusLabel: 'Audited & Verified',
+        checksum: 'SHA-256: a12c0098f413bc77821041ee8902...77fe',
+        description: '112 Signed statutory adoption agreements with adopter government photo IDs and microchip records.'
+      },
+      {
+        id: 'ev-4',
+        title: 'Annual Statutory Audit Report FY 2024–25 (CA Certified)',
+        periodId: 'fy-2024-25',
+        category: 'audit',
+        categoryLabel: 'Independent Audit Report',
+        fileName: 'Chartered_Accountant_Statutory_Audit_2024_25.pdf',
+        fileSize: '6.4 MB',
+        uploadDate: '15 Jun 2025',
+        uploadedBy: 'Mehra & Kapadia LLP',
+        status: 'verified',
+        statusLabel: 'Statutorily Verified & Sealed',
+        checksum: 'SHA-256: 9b88220194bc0013ca981042aa12...004d',
+        description: 'Independent external audit certifying 1,892 animal rescues, hospital expenditures, and 12A/80G books.'
+      }
+    ]
+  }
 };
 
 // ============================================================
@@ -974,6 +1250,107 @@ const PawBridgeApp = {
       btnCloseDossierModal: document.getElementById('btn-close-dossier-modal'),
       dossierModalContent: document.getElementById('dossier-modal-content'),
       dossierTabs: document.querySelectorAll('.dossier-tab-btn'),
+
+      // Impact Reports Screen Elements
+      screenImpact: document.getElementById('screen-impact'),
+      impactPeriodSelect: document.getElementById('impact-period-select'),
+      impactPeriodAuditBadge: document.getElementById('impact-period-audit-badge'),
+      impactHeaderStatusPill: document.getElementById('impact-header-status-pill'),
+      impactSafeguardBanner: document.getElementById('impact-safeguard-banner'),
+      btnSimPeriodAudit: document.getElementById('btn-sim-period-audit'),
+      btnSimAuditText: document.getElementById('btn-sim-audit-text'),
+      periodChipBtns: document.querySelectorAll('.period-chip-btn'),
+      impactDateStart: document.getElementById('impact-date-start'),
+      impactDateEnd: document.getElementById('impact-date-end'),
+      btnApplyCustomDates: document.getElementById('btn-apply-custom-dates'),
+      impactPeriodMetaTag: document.getElementById('impact-period-meta-tag'),
+      impactPeriodAuditNote: document.getElementById('impact-period-audit-note'),
+
+      // Impact Stat Display & Edit Buttons
+      impactStatRescued: document.getElementById('impact-stat-rescued'),
+      impactBadgeRescued: document.getElementById('impact-badge-rescued'),
+      impactRescuedBreakdown: document.getElementById('impact-rescued-breakdown'),
+      btnEditRescued: document.getElementById('btn-edit-rescued'),
+
+      impactStatTreated: document.getElementById('impact-stat-treated'),
+      impactBadgeTreated: document.getElementById('impact-badge-treated'),
+      impactTreatedBreakdown: document.getElementById('impact-treated-breakdown'),
+      btnEditTreated: document.getElementById('btn-edit-treated'),
+
+      impactStatRehabbed: document.getElementById('impact-stat-rehabbed'),
+      impactBadgeRehabbed: document.getElementById('impact-badge-rehabbed'),
+      impactRehabbedBreakdown: document.getElementById('impact-rehabbed-breakdown'),
+      btnEditRehabbed: document.getElementById('btn-edit-rehabbed'),
+
+      impactStatAdopted: document.getElementById('impact-stat-adopted'),
+      impactBadgeAdopted: document.getElementById('impact-badge-adopted'),
+      impactAdoptedBreakdown: document.getElementById('impact-adopted-breakdown'),
+      btnEditAdopted: document.getElementById('btn-edit-adopted'),
+
+      impactStatAbc: document.getElementById('impact-stat-abc'),
+      impactStatReleased: document.getElementById('impact-stat-released'),
+      impactStatMortality: document.getElementById('impact-stat-mortality'),
+      impactStatLock: document.getElementById('impact-stat-lock'),
+
+      // Monthly Chart Elements
+      impactChartSvgWrap: document.getElementById('impact-chart-svg-wrap'),
+      chartSeriesBtns: document.querySelectorAll('.chart-series-btn'),
+
+      // Impact Updates List & Post Button
+      impactUpdatesList: document.getElementById('impact-updates-list'),
+      impactUpdatesCountBadge: document.getElementById('impact-updates-count-badge'),
+      btnOpenAddImpactStoryModal: document.getElementById('btn-open-add-impact-story-modal'),
+
+      // Evidence Documents List & Upload Buttons
+      impactEvidenceList: document.getElementById('impact-evidence-list'),
+      impactEvidenceCountBadge: document.getElementById('impact-evidence-count-badge'),
+      evidenceFilterTabs: document.querySelectorAll('.evidence-tab'),
+      btnOpenUploadEvidenceModal: document.getElementById('btn-open-upload-evidence-modal'),
+      btnOpenUploadEvidenceModalSec: document.getElementById('btn-open-upload-evidence-modal-sec'),
+
+      // Revision History
+      impactRevisionHistory: document.getElementById('impact-revision-history'),
+
+      // Modals
+      btnOpenAddPeriodModal: document.getElementById('btn-open-add-period-modal'),
+      modalAddPeriod: document.getElementById('modal-add-period'),
+      formAddPeriod: document.getElementById('form-add-period'),
+      btnCloseAddPeriodModal: document.getElementById('btn-close-add-period-modal'),
+      btnCancelAddPeriodModal: document.getElementById('btn-cancel-add-period-modal'),
+
+      btnOpenEditFiguresModal: document.getElementById('btn-open-edit-figures-modal'),
+      modalEditFigures: document.getElementById('modal-edit-figures'),
+      formEditFigures: document.getElementById('form-edit-figures'),
+      btnCloseEditFiguresModal: document.getElementById('btn-close-edit-figures-modal'),
+      btnCancelEditFiguresModal: document.getElementById('btn-cancel-edit-figures-modal'),
+      editFiguresActivePeriodName: document.getElementById('edit-figures-active-period-name'),
+      editFiguresActiveStatus: document.getElementById('edit-figures-active-status'),
+      editFigRescued: document.getElementById('edit-fig-rescued'),
+      editFigTreated: document.getElementById('edit-fig-treated'),
+      editFigRehabbed: document.getElementById('edit-fig-rehabbed'),
+      editFigAdopted: document.getElementById('edit-fig-adopted'),
+      editFigAbc: document.getElementById('edit-fig-abc'),
+      editFigReleased: document.getElementById('edit-fig-released'),
+      editFigReasonPreset: document.getElementById('edit-fig-reason-preset'),
+      editFigNotes: document.getElementById('edit-fig-notes'),
+
+      modalUploadEvidence: document.getElementById('modal-upload-evidence'),
+      formUploadEvidence: document.getElementById('form-upload-evidence'),
+      btnCloseUploadEvidenceModal: document.getElementById('btn-close-upload-evidence-modal'),
+      btnCancelUploadEvidenceModal: document.getElementById('btn-cancel-upload-evidence-modal'),
+      evidencePeriodSelect: document.getElementById('evidence-period-select'),
+      evidenceDropzone: document.getElementById('evidence-dropzone'),
+      evidenceFileInput: document.getElementById('evidence-file-input'),
+      dropzoneFileName: document.getElementById('dropzone-file-name'),
+      evidenceUploadProgressWrap: document.getElementById('evidence-upload-progress-wrap'),
+      evidenceDocTitle: document.getElementById('evidence-doc-title'),
+      evidenceCategorySelect: document.getElementById('evidence-category-select'),
+      evidenceDocDesc: document.getElementById('evidence-doc-desc'),
+
+      modalAddImpactStory: document.getElementById('modal-add-impact-story'),
+      formAddImpactStory: document.getElementById('form-add-impact-story'),
+      btnCloseAddImpactStoryModal: document.getElementById('btn-close-add-impact-story-modal'),
+      btnCancelAddImpactStoryModal: document.getElementById('btn-cancel-add-impact-story-modal'),
 
       // Toast Container
       toastContainer: document.getElementById('toast-container')
@@ -1431,6 +1808,164 @@ const PawBridgeApp = {
     }
     if (this.dom.btnConfirmFinalApproval) {
       this.dom.btnConfirmFinalApproval.addEventListener('click', () => this.confirmFinalApproval());
+    }
+
+    // Impact Reports & Statutory Disclosures Event Listeners
+    this.bindImpactEvents();
+  },
+
+  bindImpactEvents() {
+    // Period Dropdown Selector
+    if (this.dom.impactPeriodSelect) {
+      this.dom.impactPeriodSelect.addEventListener('change', (e) => {
+        this.switchImpactPeriod(e.target.value);
+      });
+    }
+
+    // Quick Period Chips
+    this.dom.periodChipBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const periodId = btn.getAttribute('data-period');
+        if (periodId) this.switchImpactPeriod(periodId);
+      });
+    });
+
+    // Custom Date Range
+    if (this.dom.btnApplyCustomDates) {
+      this.dom.btnApplyCustomDates.addEventListener('click', () => {
+        const start = this.dom.impactDateStart?.value;
+        const end = this.dom.impactDateEnd?.value;
+        if (start && end) {
+          PawBridgeStore.impactState.customDateStart = start;
+          PawBridgeStore.impactState.customDateEnd = end;
+          if (this.dom.impactPeriodMetaTag) {
+            this.dom.impactPeriodMetaTag.innerHTML = `Custom Range: <strong>${start} – ${end}</strong> • Synchronized from daily shelter logs`;
+          }
+          this.showToast(`Applied custom date range: ${start} to ${end}`, 'success');
+        }
+      });
+    }
+
+    // Simulate Auditor Review / Sign-Off Toggle
+    if (this.dom.btnSimPeriodAudit) {
+      this.dom.btnSimPeriodAudit.addEventListener('click', () => {
+        this.togglePeriodAuditStatus();
+      });
+    }
+
+    // Monthly Chart Series Toggles
+    this.dom.chartSeriesBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        this.dom.chartSeriesBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        PawBridgeStore.impactState.activeSeries = btn.getAttribute('data-series') || 'all';
+        this.renderMonthlyChart();
+      });
+    });
+
+    // Evidence Category Tabs
+    this.dom.evidenceFilterTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        this.dom.evidenceFilterTabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        PawBridgeStore.impactState.activeEvidenceCategory = tab.getAttribute('data-category') || 'all';
+        this.renderEvidenceDocs();
+      });
+    });
+
+    // Edit Figures Modal Openers
+    [
+      this.dom.btnOpenEditFiguresModal,
+      this.dom.btnEditRescued,
+      this.dom.btnEditTreated,
+      this.dom.btnEditRehabbed,
+      this.dom.btnEditAdopted
+    ].forEach(btn => {
+      if (btn) btn.addEventListener('click', () => this.openEditFiguresModal());
+    });
+
+    // Edit Figures Modal Close & Submit
+    if (this.dom.btnCloseEditFiguresModal) {
+      this.dom.btnCloseEditFiguresModal.addEventListener('click', () => this.closeEditFiguresModal());
+    }
+    if (this.dom.btnCancelEditFiguresModal) {
+      this.dom.btnCancelEditFiguresModal.addEventListener('click', () => this.closeEditFiguresModal());
+    }
+    if (this.dom.formEditFigures) {
+      this.dom.formEditFigures.addEventListener('submit', (e) => {
+        e.preventDefault();
+        this.savePeriodFigures();
+      });
+    }
+
+    // Add Reporting Period Modal Openers, Close & Submit
+    if (this.dom.btnOpenAddPeriodModal) {
+      this.dom.btnOpenAddPeriodModal.addEventListener('click', () => this.openAddPeriodModal());
+    }
+    if (this.dom.btnCloseAddPeriodModal) {
+      this.dom.btnCloseAddPeriodModal.addEventListener('click', () => this.closeAddPeriodModal());
+    }
+    if (this.dom.btnCancelAddPeriodModal) {
+      this.dom.btnCancelAddPeriodModal.addEventListener('click', () => this.closeAddPeriodModal());
+    }
+    if (this.dom.formAddPeriod) {
+      this.dom.formAddPeriod.addEventListener('submit', (e) => {
+        e.preventDefault();
+        this.saveNewReportingPeriod();
+      });
+    }
+
+    // Upload Evidence Modal Openers, Dropzone, Close & Submit
+    [this.dom.btnOpenUploadEvidenceModal, this.dom.btnOpenUploadEvidenceModalSec].forEach(btn => {
+      if (btn) btn.addEventListener('click', () => this.openUploadEvidenceModal());
+    });
+
+    if (this.dom.evidenceDropzone && this.dom.evidenceFileInput) {
+      this.dom.evidenceDropzone.addEventListener('click', () => {
+        this.dom.evidenceFileInput.click();
+      });
+
+      this.dom.evidenceFileInput.addEventListener('change', (e) => {
+        const file = e.target.files[0];
+        if (file) {
+          if (this.dom.dropzoneFileName) {
+            this.dom.dropzoneFileName.textContent = `✓ Selected: ${file.name} (${(file.size / (1024 * 1024)).toFixed(1)} MB)`;
+          }
+          if (this.dom.evidenceUploadProgressWrap) {
+            this.dom.evidenceUploadProgressWrap.style.display = 'block';
+          }
+        }
+      });
+    }
+
+    if (this.dom.btnCloseUploadEvidenceModal) {
+      this.dom.btnCloseUploadEvidenceModal.addEventListener('click', () => this.closeUploadEvidenceModal());
+    }
+    if (this.dom.btnCancelUploadEvidenceModal) {
+      this.dom.btnCancelUploadEvidenceModal.addEventListener('click', () => this.closeUploadEvidenceModal());
+    }
+    if (this.dom.formUploadEvidence) {
+      this.dom.formUploadEvidence.addEventListener('submit', (e) => {
+        e.preventDefault();
+        this.saveEvidenceUpload();
+      });
+    }
+
+    // Add Impact Story Modal Openers, Close & Submit
+    if (this.dom.btnOpenAddImpactStoryModal) {
+      this.dom.btnOpenAddImpactStoryModal.addEventListener('click', () => this.openAddImpactStoryModal());
+    }
+    if (this.dom.btnCloseAddImpactStoryModal) {
+      this.dom.btnCloseAddImpactStoryModal.addEventListener('click', () => this.closeAddImpactStoryModal());
+    }
+    if (this.dom.btnCancelAddImpactStoryModal) {
+      this.dom.btnCancelAddImpactStoryModal.addEventListener('click', () => this.closeAddImpactStoryModal());
+    }
+    if (this.dom.formAddImpactStory) {
+      this.dom.formAddImpactStory.addEventListener('submit', (e) => {
+        e.preventDefault();
+        this.saveNewImpactStory();
+      });
     }
   },
 
@@ -1923,6 +2458,7 @@ const PawBridgeApp = {
       dispatch: { section: 'Logistics', title: 'Ambulance & Field Dispatch' },
       verification: { section: 'Governance', title: 'Document Verification & Audit' },
       compliance: { section: 'Governance', title: 'Compliance & Document Vault' },
+      impact: { section: 'Governance & Trust', title: 'Impact Reports & Statutory Outcomes' },
       inventory: { section: 'Logistics', title: 'Medical Supplies & Feed' }
     };
 
@@ -1960,6 +2496,9 @@ const PawBridgeApp = {
       case 'compliance':
         this.renderComplianceGrid();
         break;
+      case 'impact':
+        this.renderImpactScreen();
+        break;
       case 'inventory':
         this.renderInventoryTable();
         break;
@@ -1975,6 +2514,7 @@ const PawBridgeApp = {
     this.renderDispatchIncidents();
     this.renderVerificationScreen();
     this.renderComplianceGrid();
+    this.renderImpactScreen();
     this.renderInventoryTable();
     this.renderNotifications();
   },
@@ -3960,6 +4500,607 @@ const PawBridgeApp = {
     } else {
       this.openRescueDossier(r.id);
     }
+  },
+
+  // ============================================================
+  // SCREEN 9: IMPACT REPORTS & STATUTORY OUTCOMES CONTROLLER
+  // ============================================================
+  switchImpactPeriod(periodId) {
+    PawBridgeStore.impactState.activePeriodId = periodId;
+    if (this.dom.impactPeriodSelect) {
+      this.dom.impactPeriodSelect.value = periodId;
+    }
+    this.dom.periodChipBtns.forEach(btn => {
+      btn.classList.toggle('active', btn.getAttribute('data-period') === periodId);
+    });
+    this.renderImpactScreen();
+    const period = PawBridgeStore.impactState.periods.find(p => p.id === periodId);
+    if (period) {
+      this.showToast(`Active reporting period: ${period.title}`, 'success');
+    }
+  },
+
+  togglePeriodAuditStatus() {
+    const period = PawBridgeStore.impactState.periods.find(p => p.id === PawBridgeStore.impactState.activePeriodId);
+    if (!period) return;
+
+    if (period.status === 'reported') {
+      period.status = 'verified';
+      period.statusLabel = 'Audited & Verified (CA Certified)';
+      period.auditNote = 'Statutorily Verified & Audited by External Chartered Accountants';
+      period.revisionHistory.unshift({
+        date: new Date().toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }),
+        user: 'External Statutory Auditor (CA Panel)',
+        note: 'Desk review completed. All reported intake, clinical, and rehoming records certified.'
+      });
+      this.showToast(`✓ Period ${period.title} statutorily verified & locked by independent audit!`, 'success');
+    } else {
+      period.status = 'reported';
+      period.statusLabel = 'Organisation-Reported (Unverified)';
+      period.auditNote = 'Audit Scrutiny: Self-reported shelter intake • Third-party desk scrutiny active';
+      period.revisionHistory.unshift({
+        date: new Date().toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }),
+        user: 'Dr. Ananya Sharma (Lead Vet)',
+        note: 'Reverted audit seal for subsequent clinical figure amendments.'
+      });
+      this.showToast(`Reverted ${period.title} to Organisation-Reported status`, 'alert');
+    }
+
+    this.renderImpactScreen();
+  },
+
+  renderImpactScreen() {
+    this.renderImpactPeriodSelect();
+    this.renderImpactStats();
+    this.renderMonthlyChart();
+    this.renderImpactUpdates();
+    this.renderEvidenceDocs();
+    this.renderRevisionHistory();
+  },
+
+  renderImpactPeriodSelect() {
+    if (!this.dom.impactPeriodSelect) return;
+    this.dom.impactPeriodSelect.innerHTML = PawBridgeStore.impactState.periods.map(p => `
+      <option value="${p.id}" ${p.id === PawBridgeStore.impactState.activePeriodId ? 'selected' : ''}>
+        ${p.title} • ${p.status === 'verified' ? '✓ Audited' : 'Organisation-Reported'}
+      </option>
+    `).join('');
+
+    // Also update evidence upload modal period dropdown
+    if (this.dom.evidencePeriodSelect) {
+      this.dom.evidencePeriodSelect.innerHTML = PawBridgeStore.impactState.periods.map(p => `
+        <option value="${p.id}" ${p.id === PawBridgeStore.impactState.activePeriodId ? 'selected' : ''}>
+          ${p.title}
+        </option>
+      `).join('');
+    }
+  },
+
+  renderImpactStats() {
+    const period = PawBridgeStore.impactState.periods.find(p => p.id === PawBridgeStore.impactState.activePeriodId) || PawBridgeStore.impactState.periods[0];
+    if (!period) return;
+
+    const isVerified = period.status === 'verified';
+
+    // Numbers
+    if (this.dom.impactStatRescued) this.dom.impactStatRescued.textContent = period.figures.rescued.toLocaleString();
+    if (this.dom.impactStatTreated) this.dom.impactStatTreated.textContent = period.figures.treated.toLocaleString();
+    if (this.dom.impactStatRehabbed) this.dom.impactStatRehabbed.textContent = period.figures.rehabilitated.toLocaleString();
+    if (this.dom.impactStatAdopted) this.dom.impactStatAdopted.textContent = period.figures.adopted.toLocaleString();
+
+    // Mandatory Transparency Badges: Label all numbers as organisation-reported until reviewed
+    const badgeText = isVerified ? '✓ Audited & Verified' : 'Organisation-reported';
+    const badgeClass = isVerified ? 'report-badge verified' : 'report-badge reported';
+
+    ['impactBadgeRescued', 'impactBadgeTreated', 'impactBadgeRehabbed', 'impactBadgeAdopted'].forEach(badgeKey => {
+      const el = this.dom[badgeKey];
+      if (el) {
+        el.className = badgeClass;
+        el.textContent = badgeText;
+      }
+    });
+
+    // Micro-breakdowns
+    if (this.dom.impactRescuedBreakdown && period.breakdowns) this.dom.impactRescuedBreakdown.innerHTML = period.breakdowns.rescued;
+    if (this.dom.impactTreatedBreakdown && period.breakdowns) this.dom.impactTreatedBreakdown.innerHTML = period.breakdowns.treated;
+    if (this.dom.impactRehabbedBreakdown && period.breakdowns) this.dom.impactRehabbedBreakdown.innerHTML = period.breakdowns.rehabbed;
+    if (this.dom.impactAdoptedBreakdown && period.breakdowns) this.dom.impactAdoptedBreakdown.innerHTML = period.breakdowns.adopted;
+
+    // Secondary Summary Strip
+    if (this.dom.impactStatAbc) this.dom.impactStatAbc.textContent = `${period.figures.abcSterilized.toLocaleString()} Canines`;
+    if (this.dom.impactStatReleased) this.dom.impactStatReleased.textContent = `${period.figures.communityReleased.toLocaleString()} Canines`;
+    if (this.dom.impactStatMortality) this.dom.impactStatMortality.textContent = period.figures.mortalityRate;
+    if (this.dom.impactStatLock) {
+      this.dom.impactStatLock.textContent = isVerified ? '✓ Audited & Locked' : 'Organisation-Reported';
+      this.dom.impactStatLock.style.color = isVerified ? '#2E6B28' : 'var(--color-terracotta)';
+    }
+
+    // Top status pill & Safeguard banner
+    if (this.dom.impactHeaderStatusPill) {
+      this.dom.impactHeaderStatusPill.className = `report-audit-pill ${isVerified ? 'verified' : 'reported'}`;
+      this.dom.impactHeaderStatusPill.textContent = isVerified ? '✓ Audited & Statutorily Sealed' : 'Organisation-Reported • Desk Review Pending';
+    }
+
+    if (this.dom.impactPeriodAuditBadge) {
+      this.dom.impactPeriodAuditBadge.className = `report-badge ${isVerified ? 'verified' : 'reported'}`;
+      this.dom.impactPeriodAuditBadge.textContent = isVerified ? '✓ Audited & Verified (CA Certified)' : 'Organisation-Reported (Unverified)';
+    }
+
+    if (this.dom.btnSimAuditText) {
+      this.dom.btnSimAuditText.textContent = isVerified ? 'Revert to Unverified' : 'Simulate Auditor Sign-Off';
+    }
+
+    if (this.dom.impactSafeguardBanner) {
+      this.dom.impactSafeguardBanner.classList.toggle('audited', isVerified);
+    }
+
+    if (this.dom.impactPeriodMetaTag) {
+      this.dom.impactPeriodMetaTag.innerHTML = `Period: <strong>${period.dateRange}</strong> • Last updated <strong>${period.lastUpdated}</strong>`;
+    }
+
+    if (this.dom.impactPeriodAuditNote) {
+      this.dom.impactPeriodAuditNote.textContent = period.auditNote;
+    }
+  },
+
+  renderMonthlyChart() {
+    if (!this.dom.impactChartSvgWrap) return;
+
+    const data = PawBridgeStore.impactState.monthlyActivity;
+    const series = PawBridgeStore.impactState.activeSeries; // 'all' | 'rescues' | 'treated' | 'rehabbed' | 'adopted'
+
+    // Chart dimensions
+    const width = 920;
+    const height = 230;
+    const padLeft = 45;
+    const padRight = 20;
+    const padTop = 20;
+    const padBottom = 35;
+    const chartW = width - padLeft - padRight;
+    const chartH = height - padTop - padBottom;
+    const maxVal = 200;
+
+    // Y-axis grid levels: 0, 50, 100, 150, 200
+    const gridLevels = [0, 50, 100, 150, 200];
+    let gridLinesSvg = '';
+    gridLevels.forEach(val => {
+      const y = padTop + chartH - (val / maxVal) * chartH;
+      gridLinesSvg += `
+        <line x1="${padLeft}" y1="${y}" x2="${width - padRight}" y2="${y}" stroke="#E2DDD1" stroke-dasharray="${val === 0 ? 'none' : '3,3'}" stroke-width="${val === 0 ? '1.5' : '1'}" />
+        <text x="${padLeft - 8}" y="${y + 4}" font-size="11" font-family="Inter, sans-serif" fill="#88978A" text-anchor="end">${val}</text>
+      `;
+    });
+
+    // Month bars
+    const colWidth = chartW / data.length;
+    let barsSvg = '';
+
+    data.forEach((d, i) => {
+      const colX = padLeft + (i * colWidth);
+      const centerX = colX + (colWidth / 2);
+
+      // Month label
+      const monthLabel = `
+        <text x="${centerX}" y="${height - 12}" font-size="11" font-family="Inter, sans-serif" fill="#5F6D61" font-weight="500" text-anchor="middle">${d.month}</text>
+      `;
+
+      let monthBars = '';
+
+      if (series === 'all') {
+        // 4 bars grouped
+        const barW = 8.5;
+        const barGap = 2;
+        const totalGroupW = (4 * barW) + (3 * barGap);
+        const startX = centerX - (totalGroupW / 2);
+
+        const seriesList = [
+          { key: 'rescues', val: d.rescues, color: '#536747' },
+          { key: 'treated', val: d.treated, color: '#E5B95C' },
+          { key: 'rehabbed', val: d.rehabbed, color: '#8CA77F' },
+          { key: 'adopted', val: d.adopted, color: '#D98B70' }
+        ];
+
+        seriesList.forEach((s, sIdx) => {
+          const barH = (s.val / maxVal) * chartH;
+          const barX = startX + (sIdx * (barW + barGap));
+          const barY = padTop + chartH - barH;
+          monthBars += `
+            <rect class="chart-bar-rect" x="${barX}" y="${barY}" width="${barW}" height="${barH}" fill="${s.color}" rx="2" ry="2" data-month="${d.month}" data-val="${s.val}" data-series="${s.key}">
+              <title>${d.month} • ${s.key.toUpperCase()}: ${s.val} (Organisation-reported)</title>
+            </rect>
+          `;
+        });
+      } else {
+        // Single series active
+        const val = d[series];
+        const barW = 28;
+        const barH = (val / maxVal) * chartH;
+        const barX = centerX - (barW / 2);
+        const barY = padTop + chartH - barH;
+        const colors = {
+          rescues: '#536747',
+          treated: '#E5B95C',
+          rehabbed: '#8CA77F',
+          adopted: '#D98B70'
+        };
+        const color = colors[series] || '#536747';
+
+        monthBars += `
+          <rect class="chart-bar-rect" x="${barX}" y="${barY}" width="${barW}" height="${barH}" fill="${color}" rx="3" ry="3" data-month="${d.month}" data-val="${val}" data-series="${series}">
+            <title>${d.month} • ${series.toUpperCase()}: ${val} (Organisation-reported)</title>
+          </rect>
+          <text x="${centerX}" y="${barY - 5}" font-size="10" font-family="Inter, sans-serif" font-weight="600" fill="#29352B" text-anchor="middle">${val}</text>
+        `;
+      }
+
+      // Invisible hover column target for tooltip
+      const hitBox = `
+        <rect x="${colX}" y="${padTop}" width="${colWidth}" height="${chartH}" fill="transparent" class="chart-col-hitbox" data-idx="${i}" style="cursor: pointer;">
+          <title>${d.month}: ${d.rescues} Rescues, ${d.treated} Treated, ${d.rehabbed} Rehabbed, ${d.adopted} Adopted (Organisation-reported)</title>
+        </rect>
+      `;
+
+      barsSvg += monthBars + monthLabel + hitBox;
+    });
+
+    this.dom.impactChartSvgWrap.innerHTML = `
+      <svg viewBox="0 0 ${width} ${height}" preserveAspectRatio="xMidYMid meet" role="img" aria-label="12-Month Animal Operations Chart">
+        ${gridLinesSvg}
+        ${barsSvg}
+      </svg>
+    `;
+  },
+
+  renderImpactUpdates() {
+    if (!this.dom.impactUpdatesList) return;
+
+    const updates = PawBridgeStore.impactState.impactUpdates;
+    if (this.dom.impactUpdatesCountBadge) {
+      this.dom.impactUpdatesCountBadge.textContent = `${updates.length} Updates`;
+    }
+
+    this.dom.impactUpdatesList.innerHTML = updates.map(u => `
+      <div class="impact-update-card">
+        <div class="update-photo-wrap">
+          <img src="${u.photo}" alt="${u.title}" loading="lazy" />
+        </div>
+        <div class="update-content">
+          <div>
+            <div class="update-header">
+              <h4 class="update-title">${u.title}</h4>
+              <span class="update-date">${u.date}</span>
+            </div>
+            <p class="update-summary">${u.summary}</p>
+          </div>
+          <div class="update-footer">
+            <span class="update-metrics-badge">${u.metrics}</span>
+            <span class="report-badge reported small">Organisation-reported</span>
+          </div>
+        </div>
+      </div>
+    `).join('');
+  },
+
+  renderEvidenceDocs() {
+    if (!this.dom.impactEvidenceList) return;
+
+    const category = PawBridgeStore.impactState.activeEvidenceCategory;
+    let docs = PawBridgeStore.impactState.evidenceDocs;
+
+    if (category !== 'all') {
+      docs = docs.filter(d => d.category === category);
+    }
+
+    if (this.dom.impactEvidenceCountBadge) {
+      this.dom.impactEvidenceCountBadge.textContent = `${docs.length} Documents`;
+    }
+
+    if (docs.length === 0) {
+      this.dom.impactEvidenceList.innerHTML = `
+        <div style="padding: 24px; text-align: center; color: var(--color-text-muted); font-size: 13px;">
+          No evidence documents uploaded in this category. Click <strong>Upload File</strong> above to attach verifiable logs.
+        </div>
+      `;
+      return;
+    }
+
+    this.dom.impactEvidenceList.innerHTML = docs.map(d => `
+      <div class="evidence-item-card">
+        <div class="evidence-card-top">
+          <strong class="evidence-title">${d.title}</strong>
+          <span class="report-badge ${d.status === 'verified' ? 'verified' : 'reported'} small">${d.status === 'verified' ? '✓ Audited' : 'Organisation-reported'}</span>
+        </div>
+        <div class="evidence-meta-row">
+          <span>📄 ${d.fileName}</span>
+          <span>•</span>
+          <span>${d.fileSize}</span>
+          <span>•</span>
+          <span>Uploaded ${d.uploadDate}</span>
+        </div>
+        <p style="font-size: 11px; line-height: 16px; color: var(--color-text-muted); margin-bottom: 8px;">
+          ${d.description}
+        </p>
+        <div class="evidence-card-bottom">
+          <span class="checksum-tag" title="Cryptographic SHA-256 Hash">${d.checksum}</span>
+          <button type="button" class="btn-file-action" onclick="PawBridgeApp.previewEvidenceDoc('${d.id}')">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            <span>View Proof</span>
+          </button>
+        </div>
+      </div>
+    `).join('');
+  },
+
+  previewEvidenceDoc(docId) {
+    const doc = PawBridgeStore.impactState.evidenceDocs.find(d => d.id === docId);
+    if (doc) {
+      alert(`[Verifiable Evidence Proof]\n\nDocument: ${doc.title}\nCategory: ${doc.categoryLabel}\nFile: ${doc.fileName} (${doc.fileSize})\nUpload Date: ${doc.uploadDate} by ${doc.uploadedBy}\nCryptographic Checksum: ${doc.checksum}\n\nStatus: ${doc.status === 'verified' ? 'Verified by External Statutory Auditor' : 'Self-Reported by Shelter Administration (Pending Desk Scrutiny)'}\n\nScope: ${doc.description}`);
+    }
+  },
+
+  renderRevisionHistory() {
+    if (!this.dom.impactRevisionHistory) return;
+
+    const period = PawBridgeStore.impactState.periods.find(p => p.id === PawBridgeStore.impactState.activePeriodId) || PawBridgeStore.impactState.periods[0];
+    const history = period.revisionHistory || [];
+
+    if (history.length === 0) {
+      this.dom.impactRevisionHistory.innerHTML = `
+        <div style="font-size: 12px; color: var(--color-text-muted); padding: 8px 0;">No revisions recorded for this period.</div>
+      `;
+      return;
+    }
+
+    this.dom.impactRevisionHistory.innerHTML = history.map(item => `
+      <div class="revision-history-item">
+        <div class="rev-date-user">
+          <strong>${item.user}</strong>
+          <span>${item.date}</span>
+        </div>
+        <div class="rev-note">${item.note}</div>
+      </div>
+    `).join('');
+  },
+
+  // Edit Figures Modal
+  openEditFiguresModal() {
+    const period = PawBridgeStore.impactState.periods.find(p => p.id === PawBridgeStore.impactState.activePeriodId);
+    if (!period) return;
+
+    if (this.dom.editFiguresActivePeriodName) this.dom.editFiguresActivePeriodName.textContent = period.title;
+    if (this.dom.editFiguresActiveStatus) {
+      this.dom.editFiguresActiveStatus.textContent = period.status === 'verified' ? '✓ Audited & Verified' : 'Organisation-Reported';
+      this.dom.editFiguresActiveStatus.className = `report-badge ${period.status === 'verified' ? 'verified' : 'reported'}`;
+    }
+
+    if (this.dom.editFigRescued) this.dom.editFigRescued.value = period.figures.rescued;
+    if (this.dom.editFigTreated) this.dom.editFigTreated.value = period.figures.treated;
+    if (this.dom.editFigRehabbed) this.dom.editFigRehabbed.value = period.figures.rehabilitated;
+    if (this.dom.editFigAdopted) this.dom.editFigAdopted.value = period.figures.adopted;
+    if (this.dom.editFigAbc) this.dom.editFigAbc.value = period.figures.abcSterilized;
+    if (this.dom.editFigReleased) this.dom.editFigReleased.value = period.figures.communityReleased;
+
+    if (this.dom.modalEditFigures) {
+      this.dom.modalEditFigures.classList.add('active');
+    }
+  },
+
+  closeEditFiguresModal() {
+    if (this.dom.modalEditFigures) {
+      this.dom.modalEditFigures.classList.remove('active');
+    }
+  },
+
+  savePeriodFigures() {
+    const period = PawBridgeStore.impactState.periods.find(p => p.id === PawBridgeStore.impactState.activePeriodId);
+    if (!period) return;
+
+    const rescued = parseInt(this.dom.editFigRescued?.value || period.figures.rescued, 10);
+    const treated = parseInt(this.dom.editFigTreated?.value || period.figures.treated, 10);
+    const rehabbed = parseInt(this.dom.editFigRehabbed?.value || period.figures.rehabilitated, 10);
+    const adopted = parseInt(this.dom.editFigAdopted?.value || period.figures.adopted, 10);
+    const abc = parseInt(this.dom.editFigAbc?.value || period.figures.abcSterilized, 10);
+    const released = parseInt(this.dom.editFigReleased?.value || period.figures.communityReleased, 10);
+    const reasonPreset = this.dom.editFigReasonPreset?.value || 'Administrative figure revision';
+    const notes = this.dom.editFigNotes?.value.trim() || '';
+
+    // Update numbers
+    period.figures.rescued = rescued;
+    period.figures.treated = treated;
+    period.figures.rehabilitated = rehabbed;
+    period.figures.adopted = adopted;
+    period.figures.abcSterilized = abc;
+    period.figures.communityReleased = released;
+
+    // Label as organisation-reported (unverified until audit)
+    period.status = 'reported';
+    period.statusLabel = 'Organisation-Reported (Revised)';
+    const todayStr = new Date().toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
+    period.lastUpdated = `${todayStr} by Dr. Ananya Sharma`;
+
+    // Append to revision history
+    const logNote = notes ? `${reasonPreset} (${notes})` : reasonPreset;
+    period.revisionHistory.unshift({
+      date: todayStr,
+      user: 'Dr. Ananya Sharma (Lead Vet)',
+      note: `Revised counts: ${rescued} Rescued, ${treated} Treated, ${rehabbed} Rehabbed, ${adopted} Adopted. Reason: ${logNote}`
+    });
+
+    this.closeEditFiguresModal();
+    this.renderImpactScreen();
+    this.showToast(`✓ Figures updated for ${period.title} & logged in audit history`, 'success');
+  },
+
+  // Add Reporting Period Modal
+  openAddPeriodModal() {
+    if (this.dom.modalAddPeriod) {
+      this.dom.modalAddPeriod.classList.add('active');
+    }
+  },
+
+  closeAddPeriodModal() {
+    if (this.dom.modalAddPeriod) {
+      this.dom.modalAddPeriod.classList.remove('active');
+    }
+  },
+
+  saveNewReportingPeriod() {
+    const title = document.getElementById('new-period-title')?.value.trim() || 'New Reporting Cycle';
+    const type = document.getElementById('new-period-type')?.value || 'quarterly';
+    const start = document.getElementById('new-period-start')?.value || '2027-01-01';
+    const end = document.getElementById('new-period-end')?.value || '2027-03-31';
+    const rescued = parseInt(document.getElementById('new-period-rescued')?.value || 0, 10);
+    const treated = parseInt(document.getElementById('new-period-treated')?.value || 0, 10);
+    const rehabbed = parseInt(document.getElementById('new-period-rehabbed')?.value || 0, 10);
+    const adopted = parseInt(document.getElementById('new-period-adopted')?.value || 0, 10);
+    const notes = document.getElementById('new-period-notes')?.value.trim() || 'Initial period baseline setup';
+
+    const newPeriodId = `period-${Date.now()}`;
+    const todayStr = new Date().toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
+
+    const newPeriod = {
+      id: newPeriodId,
+      title,
+      type,
+      dateRange: `${start} – ${end}`,
+      startDate: start,
+      endDate: end,
+      status: 'reported',
+      statusLabel: 'Organisation-Reported (Unverified)',
+      auditNote: 'Audit Scrutiny: Self-reported shelter intake • Third-party desk scrutiny active',
+      figures: {
+        rescued,
+        treated,
+        rehabilitated: rehabbed,
+        adopted,
+        abcSterilized: Math.round(rescued * 0.4),
+        communityReleased: Math.round(rehabbed * 0.7),
+        mortalityRate: '2.5%'
+      },
+      breakdowns: {
+        rescued: `${Math.round(rescued * 0.85)} Street Indies • ${Math.round(rescued * 0.15)} Abandoned Breeds`,
+        treated: `${Math.round(treated * 0.3)} Ortho • ${Math.round(treated * 0.45)} OPD • ${Math.round(treated * 0.25)} ABC`,
+        rehabbed: 'Avg Stay: 21 Days • Protocol Compliant',
+        adopted: `${Math.round(adopted * 0.9)} Family Homes • ${Math.round(adopted * 0.1)} Sanctuary`
+      },
+      lastUpdated: `${todayStr} by Shelter Administration`,
+      revisionHistory: [
+        { date: todayStr, user: 'Dr. Ananya Sharma', note: `Created reporting period with initial counts. Methodology: ${notes}` }
+      ]
+    };
+
+    PawBridgeStore.impactState.periods.push(newPeriod);
+    PawBridgeStore.impactState.activePeriodId = newPeriodId;
+
+    this.closeAddPeriodModal();
+    if (this.dom.formAddPeriod) this.dom.formAddPeriod.reset();
+    this.renderImpactScreen();
+    this.showToast(`🎉 Reporting period "${title}" created and activated!`, 'success');
+  },
+
+  // Upload Evidence Modal
+  openUploadEvidenceModal() {
+    this.renderImpactPeriodSelect();
+    if (this.dom.evidenceUploadProgressWrap) {
+      this.dom.evidenceUploadProgressWrap.style.display = 'none';
+    }
+    if (this.dom.dropzoneFileName) {
+      this.dom.dropzoneFileName.textContent = 'Click to browse or drop file here';
+    }
+    if (this.dom.modalUploadEvidence) {
+      this.dom.modalUploadEvidence.classList.add('active');
+    }
+  },
+
+  closeUploadEvidenceModal() {
+    if (this.dom.modalUploadEvidence) {
+      this.dom.modalUploadEvidence.classList.remove('active');
+    }
+  },
+
+  saveEvidenceUpload() {
+    const title = this.dom.evidenceDocTitle?.value.trim() || 'Verifiable Intake Proof';
+    const category = this.dom.evidenceCategorySelect?.value || 'veterinary';
+    const periodId = this.dom.evidencePeriodSelect?.value || PawBridgeStore.impactState.activePeriodId;
+    const desc = this.dom.evidenceDocDesc?.value.trim() || 'Attested clinical case logs and registration registers.';
+    const file = this.dom.evidenceFileInput?.files[0];
+    const fileName = file ? file.name : `evidence_log_${Date.now().toString().slice(-4)}.pdf`;
+    const fileSize = file ? `${(file.size / (1024 * 1024)).toFixed(1)} MB` : '3.6 MB';
+
+    const categoryLabels = {
+      veterinary: 'Veterinary Clinical Register',
+      sterilization: 'AWBI ABC Sterilization Certificate',
+      adoption: 'Adoption Legal Deed',
+      audit: 'Independent Statutory Audit Report',
+      panchnama: 'Ambulance SOS & Panchnama Log'
+    };
+
+    const hashSample = `SHA-256: ${Math.random().toString(16).substring(2, 10)}${Math.random().toString(16).substring(2, 10)}...${Math.random().toString(16).substring(2, 6)}`;
+    const todayStr = new Date().toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
+
+    const newDoc = {
+      id: `ev-${Date.now()}`,
+      title,
+      periodId,
+      category,
+      categoryLabel: categoryLabels[category] || 'Supporting Evidence',
+      fileName,
+      fileSize,
+      uploadDate: todayStr,
+      uploadedBy: 'Dr. Ananya Sharma (Lead Vet)',
+      status: 'reported',
+      statusLabel: 'Organisation-Reported (Pending Audit)',
+      checksum: hashSample,
+      description: desc
+    };
+
+    PawBridgeStore.impactState.evidenceDocs.unshift(newDoc);
+
+    this.closeUploadEvidenceModal();
+    if (this.dom.formUploadEvidence) this.dom.formUploadEvidence.reset();
+    this.renderEvidenceDocs();
+    this.showToast(`✓ Document "${title}" uploaded & sealed with cryptographic checksum`, 'success');
+  },
+
+  // Add Impact Story Modal
+  openAddImpactStoryModal() {
+    if (this.dom.modalAddImpactStory) {
+      this.dom.modalAddImpactStory.classList.add('active');
+    }
+  },
+
+  closeAddImpactStoryModal() {
+    if (this.dom.modalAddImpactStory) {
+      this.dom.modalAddImpactStory.classList.remove('active');
+    }
+  },
+
+  saveNewImpactStory() {
+    const title = document.getElementById('impact-story-title')?.value.trim() || 'New Milestone Handover';
+    const category = document.getElementById('impact-story-category')?.value || 'Orthopedic Rehabilitation';
+    const dateInput = document.getElementById('impact-story-date')?.value || '2026-10-28';
+    const metrics = document.getElementById('impact-story-metrics')?.value.trim() || '1 Life Saved • Healed';
+    const photo = document.getElementById('impact-story-photo')?.value.trim() || 'https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&w=600&q=80';
+    const summary = document.getElementById('impact-story-summary')?.value.trim() || 'Successful rehabilitation outcome delivered under PawBridge clinical protocol.';
+
+    const formattedDate = new Date(dateInput).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
+
+    const newStory = {
+      id: `iu-${Date.now()}`,
+      title,
+      date: formattedDate,
+      category,
+      summary,
+      photo,
+      metrics
+    };
+
+    PawBridgeStore.impactState.impactUpdates.unshift(newStory);
+
+    this.closeAddImpactStoryModal();
+    if (this.dom.formAddImpactStory) this.dom.formAddImpactStory.reset();
+    this.renderImpactUpdates();
+    this.showToast(`✓ Impact update "${title}" published to public feed`, 'success');
   },
 
   // ============================================================
