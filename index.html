@@ -51,6 +51,9 @@
         <button type="button" class="proto-toggle-btn" id="btn-nav-register" title="NGO Registration Screen">
           📝 Register NGO
         </button>
+        <button type="button" class="proto-toggle-btn" id="btn-nav-profile" title="Public NGO Profile Screen">
+          🌐 Public Profile
+        </button>
       </div>
 
       <div class="proto-btn-group" role="group" aria-label="Desktop Display Mode">
@@ -867,9 +870,12 @@
                   </div>
                 </div>
 
-                <div style="display: flex; gap: 14px; width: 100%; justify-content: center;">
+                <div style="display: flex; gap: 14px; width: 100%; justify-content: center; flex-wrap: wrap;">
                   <button type="button" class="btn-primary-olive" id="btn-launch-shelter-workspace" style="padding: 12px 28px; font-size: 15px;">
                     Launch Shelter Workspace Now →
+                  </button>
+                  <button type="button" class="btn-secondary-cream" id="btn-wizard-goto-verification" style="padding: 12px 22px; font-size: 14px;">
+                    🛡️ Go to Document Verification
                   </button>
                   <button type="button" class="btn-secondary-cream" onclick="window.print()" style="padding: 12px 20px;">
                     Download Dossier (PDF)
@@ -1043,6 +1049,13 @@
                   </div>
                   <span class="nav-badge-pill" style="background: var(--color-pale-green); color: var(--color-pale-green-text);">100% Valid</span>
                 </button>
+                <button type="button" class="nav-item-btn" data-screen="profile" id="nav-btn-public-profile">
+                  <div class="nav-item-left">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                    <span>Public Profile</span>
+                  </div>
+                  <span class="nav-badge-pill" style="background: var(--color-pale-green); color: var(--color-olive-dark);">Live ↗</span>
+                </button>
               </div>
             </nav>
           </div>
@@ -1116,6 +1129,12 @@
                   <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
                 </svg>
                 <span class="notification-count-badge" id="notif-count-badge">3</span>
+              </button>
+
+              <!-- Public Profile Button -->
+              <button type="button" class="btn-secondary-cream" id="btn-header-view-profile" style="font-size: 13px; padding: 7px 12px; display: flex; align-items: center; gap: 6px;" title="View Live Public NGO Profile">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                <span>Public Profile ↗</span>
               </button>
 
               <!-- Primary Olive Button -->
@@ -2566,6 +2585,1116 @@
 
       </div><!-- END .app-layout-root -->
 
+      <!-- ============================================================
+           SCREEN: PUBLIC-FACING NGO PROFILE (DESKTOP LAYOUT 1440 × 1024)
+           ============================================================ -->
+      <section class="public-profile-root" id="view-public-profile" style="display: none;">
+        <!-- Public Top Navigation Header Bar -->
+        <header class="public-top-header">
+          <div class="public-header-left">
+            <div class="public-brand-seal">
+              <svg width="22" height="22" viewBox="0 0 32 32" fill="none">
+                <path d="M4 25C8 14 16 8 28 8" stroke="#536747" stroke-width="2.8" stroke-linecap="round"/>
+                <path d="M4 25C10 25 18 20 28 8" stroke="#E5B95C" stroke-width="2" stroke-linecap="round" stroke-dasharray="2 3"/>
+                <circle cx="12" cy="11" r="2.2" fill="#536747"/>
+                <circle cx="18" cy="10" r="2.2" fill="#536747"/>
+                <circle cx="23" cy="14" r="1.8" fill="#E5B95C"/>
+                <circle cx="8" cy="15" r="1.8" fill="#536747"/>
+                <ellipse cx="15" cy="17" rx="3.2" ry="2.8" fill="#536747"/>
+              </svg>
+            </div>
+            <div>
+              <div style="font-family: var(--font-heading); font-size: 15px; font-weight: 700; color: var(--color-text-dark); line-height: 1.1;">
+                PawBridge Verified NGO Registry
+              </div>
+              <div style="font-size: 11px; color: var(--color-text-muted); display: flex; align-items: center; gap: 5px;">
+                <span class="status-live-pulse" style="width: 6px; height: 6px; background: #2E6B28;"></span>
+                <span>Active Public Registry • Verified Non-Profit Profile</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Anchor Navigation Links -->
+          <nav class="public-nav-links" aria-label="Public Profile Sections">
+            <a href="#pub-about" class="pub-nav-link active">About & Mission</a>
+            <a href="#pub-impact" class="pub-nav-link">Audited Impact</a>
+            <a href="#pub-credentials" class="pub-nav-link">Public Credentials</a>
+            <a href="#pub-history" class="pub-nav-link">Rescue Journey</a>
+            <a href="#pub-cases" class="pub-nav-link">Recent Patients</a>
+            <a href="#pub-needs" class="pub-nav-link">Current Needs</a>
+          </nav>
+
+          <!-- Public Header CTAs -->
+          <div class="public-header-actions">
+            <button type="button" class="btn-secondary-cream" id="btn-pub-switch-admin" title="Return to Internal Shelter Workspace" style="font-size: 12px; padding: 7px 11px; gap: 5px;">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>
+              <span>Shelter OS ⚙️</span>
+            </button>
+
+            <button type="button" class="btn-secondary-cream" id="btn-pub-open-share" title="Share NGO Profile" style="font-size: 12px; padding: 7px 11px; gap: 5px;">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+              <span>Share</span>
+            </button>
+
+            <button type="button" class="btn-secondary-cream" id="btn-pub-open-contact" title="Contact Shelter Desk" style="font-size: 12px; padding: 7px 11px; gap: 5px;">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <span>Contact</span>
+            </button>
+
+            <button type="button" class="btn-secondary-cream" id="btn-pub-open-volunteer" title="Register as Volunteer or Foster" style="font-size: 12px; padding: 7px 12px; gap: 5px; font-weight: 600;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              <span>Volunteer</span>
+            </button>
+
+            <button type="button" class="btn-primary-olive" id="btn-pub-open-donate" title="Make a Tax-Deductible Donation" style="font-size: 13px; padding: 7px 15px; gap: 6px;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+              <span>Donate</span>
+            </button>
+          </div>
+        </header>
+
+        <!-- Public Profile Scroll Area -->
+        <div class="public-profile-scroll-container" id="public-profile-scroll-container">
+
+          <!-- HERO SECTION -->
+          <div class="pub-hero-banner" id="pub-about">
+            <div class="pub-hero-cover-wrap">
+              <img src="https://images.unsplash.com/photo-1548767797-d8c844163c4c?auto=format&fit=crop&w=1600&q=85" alt="Shelter recovery garden and animal care campus" class="pub-hero-cover-img" />
+              <div class="pub-hero-cover-gradient"></div>
+              <div class="pub-hero-badge-tag">
+                <span class="status-live-pulse" style="width: 7px; height: 7px; background: #536747;"></span>
+                <span>Active Non-Profit Shelter Campus • 45 Recovery Bays</span>
+              </div>
+            </div>
+
+            <!-- Profile Info Card Bar -->
+            <div class="pub-profile-header-card">
+              <div class="pub-profile-card-top">
+                <div class="pub-avatar-block">
+                  <div class="pub-avatar-wrap">
+                    <img src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&w=240&q=80" alt="Happy Tails Animal Sanctuary Logo Seal" class="pub-avatar-img" />
+                    <div class="pub-avatar-check" title="PawBridge Verified Tier-1 Shelter">✓</div>
+                  </div>
+                  <div class="pub-profile-titles">
+                    <div class="pub-verification-strip">
+                      <span class="pub-badge-verified">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 12 15 16 10"/></svg>
+                        <span>PawBridge Verified Tier-1 NGO</span>
+                      </span>
+                      <span class="pub-badge-statutory">AWBI: DL-402/2021</span>
+                      <span class="pub-badge-statutory">Trust Reg: DL/2018/01923</span>
+                      <span class="pub-badge-tax">80G & 12A Certified • 50% Tax Relief</span>
+                    </div>
+
+                    <h1 class="pub-org-name" id="pub-org-name">Happy Tails Animal Sanctuary</h1>
+                    <p class="pub-org-meta">
+                      <span>📍 Chhatarpur, New Delhi, India</span>
+                      <span>•</span>
+                      <span>Est. 2018</span>
+                      <span>•</span>
+                      <span>Full Trauma Hospital & Animal Shelter</span>
+                    </p>
+                  </div>
+                </div>
+
+                <!-- Profile Top Actions -->
+                <div class="pub-hero-actions">
+                  <button type="button" class="btn-primary-olive" id="btn-hero-donate" style="padding: 10px 20px; font-size: 14px; gap: 8px;">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                    <span>Donate to Shelter</span>
+                  </button>
+                  <button type="button" class="btn-secondary-cream" id="btn-hero-volunteer" style="padding: 10px 18px; font-size: 14px; gap: 7px;">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+                    <span>Volunteer</span>
+                  </button>
+                  <button type="button" class="btn-secondary-cream" id="btn-hero-contact" style="padding: 10px 18px; font-size: 14px; gap: 7px;">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    <span>Contact</span>
+                  </button>
+                  <button type="button" class="btn-secondary-cream btn-icon-only" id="btn-hero-share" title="Share Profile" style="padding: 10px 12px;">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Statutory Transparency & Privacy Guarantee Banner -->
+              <div class="pub-safeguard-banner">
+                <div class="pub-safeguard-left">
+                  <div class="pub-safeguard-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><circle cx="12" cy="11" r="3"/></svg>
+                  </div>
+                  <div>
+                    <strong style="color: var(--color-olive-dark); font-size: 13px; font-weight: 700;">PawBridge Statutory Authenticity & Data Privacy Commitment</strong>
+                    <p style="margin: 2px 0 0 0; font-size: 12px; color: var(--color-text-muted); line-height: 1.5;">
+                      Happy Tails Animal Sanctuary is audited annually under PawBridge Tier-1 governance standards. All public credentials and exemption orders are cross-referenced with government registries. <strong>In accordance with privacy and security safeguards, personal identification files of trustees and personal phone numbers of staff are strictly withheld from public download.</strong> All medical impact figures are reconciled with shelter hospital admission registers.
+                    </p>
+                  </div>
+                </div>
+                <div class="pub-safeguard-badge">
+                  <span>Audit Seal: PB-AUD-2026-DL89</span>
+                  <span class="pub-seal-pill">Verified Active</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SECTION 1: MISSION & SHELTER CAPABILITIES -->
+          <section class="pub-content-section" style="padding-top: 24px;">
+            <div class="pub-section-header">
+              <div>
+                <span class="pub-section-kicker">Operational Scope</span>
+                <h2 class="section-heading-24">Mission & Shelter Infrastructure</h2>
+              </div>
+              <div class="pub-operating-hours-pill">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                <span>Shelter Visiting Hours: Mon–Sat 10:00 AM – 5:00 PM (Prior Appointment)</span>
+              </div>
+            </div>
+
+            <!-- Mission Lead Block -->
+            <div class="pub-mission-card">
+              <div class="pub-mission-quote-mark">“</div>
+              <div class="pub-mission-text-wrap">
+                <p class="pub-mission-lead" id="pub-mission-text">
+                  Dedicated to the humane rescue, surgical trauma rehabilitation, and sterilization of street dogs across Delhi NCR since 2018. We operate a 24/7 trauma emergency ward, cold-chain rabies vaccination outreach, and high-standard foster-to-adopt placements with complete statutory transparency and clinical dignity.
+                </p>
+                <div class="pub-mission-footer">
+                  <div class="pub-mission-lead-person">
+                    <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=120&q=80" alt="Dr. Ananya Sharma" class="pub-lead-avatar" />
+                    <div>
+                      <strong style="font-size: 13px; color: var(--color-text-dark);">Dr. Ananya Sharma, BVSc & AH</strong>
+                      <span style="display: block; font-size: 11px; color: var(--color-text-muted);">Managing Trustee & Lead Surgeon • VCI Reg #DL-1492</span>
+                    </div>
+                  </div>
+                  <div class="pub-mission-tag">
+                    <span style="color: var(--color-olive); font-weight: 600;">100% Non-Euthanasia Sanctuary</span>
+                    <span style="font-size: 11px; color: var(--color-text-subtle);">Except incurable terminal trauma under strict veterinary board review</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 6 Infrastructure Capability Cards -->
+            <div class="pub-capabilities-grid">
+              <div class="pub-cap-card">
+                <div class="pub-cap-icon-box">🏥</div>
+                <div>
+                  <h4 class="pub-cap-title">24/7 Trauma OT & Intensive Care</h4>
+                  <p class="pub-cap-desc">Equipped with gaseous anesthesia, class-B autoclave sterilization, continuous vital monitoring, and bone plating for road traffic hit-and-run survivors.</p>
+                  <span class="pub-cap-stat">6 Active ICU Bays</span>
+                </div>
+              </div>
+
+              <div class="pub-cap-card">
+                <div class="pub-cap-icon-box">🚐</div>
+                <div>
+                  <h4 class="pub-cap-title">Animal Ambulance Fleet</h4>
+                  <p class="pub-cap-desc">Two dedicated rescue vehicles with hydraulic stretchers, field trauma triage oxygen, and GPS telemetry for emergency highway rescues across Delhi NCR.</p>
+                  <span class="pub-cap-stat">2 Ambulances Active</span>
+                </div>
+              </div>
+
+              <div class="pub-cap-card">
+                <div class="pub-cap-icon-box">🥣</div>
+                <div>
+                  <h4 class="pub-cap-title">Puppy & Flood Relief Quarantine</h4>
+                  <p class="pub-cap-desc">Specialized climate-controlled neonatal ward with digestive starter nutrition and veterinary isolation bays for orphaned litter survival.</p>
+                  <span class="pub-cap-stat">Ward B: 14 Pups in Care</span>
+                </div>
+              </div>
+
+              <div class="pub-cap-card">
+                <div class="pub-cap-icon-box">💉</div>
+                <div>
+                  <h4 class="pub-cap-title">Cold-Chain Rabies Biologicals</h4>
+                  <p class="pub-cap-desc">Digital temperature-monitored vaccine cold room ensuring 100% biological potency for high-volume anti-rabies street canine drives.</p>
+                  <span class="pub-cap-stat">5,600+ Vaccinated</span>
+                </div>
+              </div>
+
+              <div class="pub-cap-card">
+                <div class="pub-cap-icon-box">🏡</div>
+                <div>
+                  <h4 class="pub-cap-title">Supervised Foster Network</h4>
+                  <p class="pub-cap-desc">Over 40 vetted volunteer foster homes providing gentle post-surgical rehabilitation and social enrichment before permanent rehoming.</p>
+                  <span class="pub-cap-stat">40+ Active Foster Homes</span>
+                </div>
+              </div>
+
+              <div class="pub-cap-card">
+                <div class="pub-cap-icon-box">🔬</div>
+                <div>
+                  <h4 class="pub-cap-title">In-House Diagnostic Lab</h4>
+                  <p class="pub-cap-desc">Immediate blood smear microscopy, hematology CBC profiling, and infectious antigen test kits for rapid pathogen detection within 15 minutes.</p>
+                  <span class="pub-cap-stat">Daily On-Site Pathology</span>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- SECTION 2: AUDITED IMPACT STATISTICS -->
+          <section class="pub-content-section" id="pub-impact">
+            <div class="pub-section-header">
+              <div>
+                <span class="pub-section-kicker">Transparent Accountability</span>
+                <h2 class="section-heading-24">Audited Impact Statistics</h2>
+              </div>
+              <!-- Disclosure Legend -->
+              <div class="pub-disclosure-legend">
+                <span class="pub-legend-item">
+                  <span class="pub-dot-audited"></span>
+                  <strong>Audited Record:</strong> Verified against hospital registers & microchip filings
+                </span>
+                <span class="pub-legend-item">
+                  <span class="pub-dot-reported"></span>
+                  <strong>Organisation-Reported:</strong> Shelter self-report awaiting annual audit
+                </span>
+              </div>
+            </div>
+
+            <div class="pub-stats-grid">
+              <!-- Stat 1 -->
+              <div class="pub-stat-card">
+                <div class="pub-stat-badge audited" title="Reconciled with Municipal and Hospital Intake registers">
+                  ✓ Audited Record
+                </div>
+                <div class="pub-stat-number" id="pub-stat-rescued">3,420+</div>
+                <div class="pub-stat-label">Street Animals Rescued</div>
+                <p class="pub-stat-note">Lifetime cumulative trauma & distress admissions since October 2018 establishment.</p>
+                <div class="pub-stat-footer">
+                  <span>Source: Shelter Intake Register Vol 1–8</span>
+                </div>
+              </div>
+
+              <!-- Stat 2 -->
+              <div class="pub-stat-card">
+                <div class="pub-stat-badge audited" title="Verified against veterinary surgical theater logs">
+                  ✓ Audited Record
+                </div>
+                <div class="pub-stat-number" id="pub-stat-surgeries">842</div>
+                <div class="pub-stat-label">Major Trauma Surgeries</div>
+                <p class="pub-stat-note">Orthopedic plate reductions, amputations, and soft-tissue emergency surgical interventions.</p>
+                <div class="pub-stat-footer">
+                  <span>Source: OT Clinical Dosing & Surgical Log</span>
+                </div>
+              </div>
+
+              <!-- Stat 3 -->
+              <div class="pub-stat-card">
+                <div class="pub-stat-badge audited" title="Verified against Municipal Health Dept Batch Numbers">
+                  ✓ Audited Record
+                </div>
+                <div class="pub-stat-number" id="pub-stat-vaccines">5,600+</div>
+                <div class="pub-stat-label">Anti-Rabies Doses Delivered</div>
+                <p class="pub-stat-note">Street-level vaccine biologicals administered across Delhi NCR to build herd immunity.</p>
+                <div class="pub-stat-footer">
+                  <span>Source: Delhi Animal Health Batch Dispatches</span>
+                </div>
+              </div>
+
+              <!-- Stat 4 -->
+              <div class="pub-stat-card">
+                <div class="pub-stat-badge audited" title="Reconciled with microchip ownership transfer certificates">
+                  ✓ Audited Record
+                </div>
+                <div class="pub-stat-number" id="pub-stat-adoptions">412</div>
+                <div class="pub-stat-label">Verified Dog Adoptions</div>
+                <p class="pub-stat-note">Rehomed under legally binding PawBridge adoption contracts with lifetime follow-up.</p>
+                <div class="pub-stat-footer">
+                  <span>Source: PawBridge National Pet Registry</span>
+                </div>
+              </div>
+
+              <!-- Stat 5 -->
+              <div class="pub-stat-card">
+                <div class="pub-stat-badge reported" title="Self-reported by NGO; scheduled for annual audit cycle">
+                  ⚠️ Organisation-Reported
+                </div>
+                <div class="pub-stat-number" id="pub-stat-foster">185</div>
+                <div class="pub-stat-label">Medical Foster Placements</div>
+                <p class="pub-stat-note">Home foster rehabilitation placements logged by shelter coordinators for post-op recovery.</p>
+                <div class="pub-stat-footer">
+                  <span>Subject to FY27 Annual Compliance Audit</span>
+                </div>
+              </div>
+
+              <!-- Stat 6 -->
+              <div class="pub-stat-card">
+                <div class="pub-stat-badge audited" title="Verified through veterinary discharge registers">
+                  ✓ Audited Record
+                </div>
+                <div class="pub-stat-number" id="pub-stat-recovery">94.2%</div>
+                <div class="pub-stat-label">Trauma Recovery Rate</div>
+                <p class="pub-stat-note">Percentage of admitted trauma patients successfully stabilized, healed, and rehomed/released.</p>
+                <div class="pub-stat-footer">
+                  <span>Source: Inpatient Clinical Audit 2024–2026</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="pub-disclaimer-card">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--color-olive); flex-shrink: 0;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+              <span>
+                <strong>Statutory Accounting Standard:</strong> Figures marked <em>Audited Record</em> are verified directly against stamped case registers, veterinary surgeon signatures, and microchip certificates. Self-reported metrics are disclosed transparently to maintain 100% public donor integrity until final auditor certification.
+              </span>
+            </div>
+          </section>
+
+          <!-- SECTION 3: UPLOADED PUBLIC CREDENTIALS & PRIVACY VAULT -->
+          <section class="pub-content-section" id="pub-credentials">
+            <div class="pub-section-header">
+              <div>
+                <span class="pub-section-kicker">Statutory Transparency</span>
+                <h2 class="section-heading-24">Uploaded Public Credentials & Compliance Dossier</h2>
+              </div>
+              <div class="pub-security-seal-badge">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                <span>Cryptographically Sealed by PawBridge Compliance Desk</span>
+              </div>
+            </div>
+
+            <!-- Privacy Redaction Disclaimer Banner -->
+            <div class="pub-privacy-banner">
+              <div class="pub-privacy-badge-icon">🔒</div>
+              <div>
+                <strong style="color: #29352B; font-size: 13px;">Data Protection & Identity Protection Guarantee</strong>
+                <p style="font-size: 12px; color: var(--color-text-muted); margin: 2px 0 0 0; line-height: 1.5;">
+                  To protect animal welfare trustees and veterinarians from cyber fraud, identity theft, and personal harassment, <strong>private documents (including individual PAN cards, bank cancelled cheques, and private trustee residence proofs) are strictly redacted and withheld from public download</strong>. These confidential records were verified in camera by certified PawBridge legal auditors. Only statutory public registration and tax exemption certificates are published below.
+                </p>
+              </div>
+            </div>
+
+            <!-- Credentials Grid (Verified vs Self-Reported vs Redacted) -->
+            <div class="pub-credentials-grid">
+
+              <!-- Credential 1: Trust Deed -->
+              <div class="pub-credential-card verified-card">
+                <div class="pub-cred-header">
+                  <div class="pub-cred-type-badge verified">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 12 15 16 10"/></svg>
+                    <span>Government-Verified Document</span>
+                  </div>
+                  <span class="pub-cred-date">Verified Oct 2026</span>
+                </div>
+
+                <div class="pub-cred-body">
+                  <div class="pub-cred-icon">📜</div>
+                  <h4 class="pub-cred-title">Trust Registration Deed & Society Incorporation</h4>
+                  <p class="pub-cred-desc">Registered under Societies Registration Act XXI of 1860 with Government of NCT Delhi. Certified non-profit animal sanctuary charter.</p>
+                  
+                  <div class="pub-cred-meta-table">
+                    <div class="pub-cred-meta-row">
+                      <span>Registration ID:</span>
+                      <strong>DL/2018/****923 (Masked for Security)</strong>
+                    </div>
+                    <div class="pub-cred-meta-row">
+                      <span>Issuing Authority:</span>
+                      <span>Sub-Registrar of Societies, Govt of NCT Delhi</span>
+                    </div>
+                    <div class="pub-cred-meta-row">
+                      <span>Auditor Hash:</span>
+                      <code>SHA256: 8a93bf81e7d0...9b31</code>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="pub-cred-footer">
+                  <button type="button" class="btn-cred-view" onclick="PawBridgeApp.viewPublicDocument('society_reg_deed')">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                    <span>Inspect Public Certificate</span>
+                  </button>
+                  <span class="pub-cred-status-tag">Auditor Cleared</span>
+                </div>
+              </div>
+
+              <!-- Credential 2: Section 80G & 12A -->
+              <div class="pub-credential-card verified-card">
+                <div class="pub-cred-header">
+                  <div class="pub-cred-type-badge verified">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 12 15 16 10"/></svg>
+                    <span>Tax Exemption Order</span>
+                  </div>
+                  <span class="pub-cred-date">Valid Thru 2028</span>
+                </div>
+
+                <div class="pub-cred-body">
+                  <div class="pub-cred-icon">⚖️</div>
+                  <h4 class="pub-cred-title">Section 12A & 80G Tax Exemption (Form 10AC)</h4>
+                  <p class="pub-cred-desc">Conferred under Indian Income Tax Act 1961. Enables 50% tax deduction for Indian citizen donations with digital tax receipt issuance.</p>
+                  
+                  <div class="pub-cred-meta-table">
+                    <div class="pub-cred-meta-row">
+                      <span>Order URN:</span>
+                      <strong>CIT(EXEMP)/DELHI/****3381</strong>
+                    </div>
+                    <div class="pub-cred-meta-row">
+                      <span>Issuing Authority:</span>
+                      <span>Commissioner of Income Tax (Exemptions), Delhi</span>
+                    </div>
+                    <div class="pub-cred-meta-row">
+                      <span>Auditor Hash:</span>
+                      <code>SHA256: d472aa10fc83...01fa</code>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="pub-cred-footer">
+                  <button type="button" class="btn-cred-view" onclick="PawBridgeApp.viewPublicDocument('form_10ac_80g')">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                    <span>Inspect 80G Order</span>
+                  </button>
+                  <span class="pub-cred-status-tag">50% Tax Relief</span>
+                </div>
+              </div>
+
+              <!-- Credential 3: AWBI Recognition -->
+              <div class="pub-credential-card verified-card">
+                <div class="pub-cred-header">
+                  <div class="pub-cred-type-badge verified">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 12 15 16 10"/></svg>
+                    <span>Statutory Animal Board</span>
+                  </div>
+                  <span class="pub-cred-date">Active Certification</span>
+                </div>
+
+                <div class="pub-cred-body">
+                  <div class="pub-cred-icon">🐾</div>
+                  <h4 class="pub-cred-title">Animal Welfare Board of India (AWBI) Recognition</h4>
+                  <p class="pub-cred-desc">Official shelter accreditation under Ministry of Fisheries, Animal Husbandry & Dairying for clinical veterinary and rescue standards.</p>
+                  
+                  <div class="pub-cred-meta-table">
+                    <div class="pub-cred-meta-row">
+                      <span>AWBI Reg Number:</span>
+                      <strong>AWBI/2021/DL-402</strong>
+                    </div>
+                    <div class="pub-cred-meta-row">
+                      <span>Issuing Authority:</span>
+                      <span>Animal Welfare Board of India, Govt of India</span>
+                    </div>
+                    <div class="pub-cred-meta-row">
+                      <span>Auditor Hash:</span>
+                      <code>SHA256: ee0488f21901...7712</code>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="pub-cred-footer">
+                  <button type="button" class="btn-cred-view" onclick="PawBridgeApp.viewPublicDocument('awbi_recognition')">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                    <span>Inspect AWBI License</span>
+                  </button>
+                  <span class="pub-cred-status-tag">Verified Shelter</span>
+                </div>
+              </div>
+
+              <!-- Credential 4: Independent CA Audit Summary -->
+              <div class="pub-credential-card verified-card">
+                <div class="pub-cred-header">
+                  <div class="pub-cred-type-badge verified">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 12 15 16 10"/></svg>
+                    <span>Audited Financial Return</span>
+                  </div>
+                  <span class="pub-cred-date">FY 2025–26</span>
+                </div>
+
+                <div class="pub-cred-body">
+                  <div class="pub-cred-icon">📊</div>
+                  <h4 class="pub-cred-title">Independent CA Balance Sheet & Utilization Return</h4>
+                  <p class="pub-cred-desc">Statutory disclosure certifying that 91.4% of all public contributions are directly utilized for veterinary medicines, food, and animal rescue.</p>
+                  
+                  <div class="pub-cred-meta-table">
+                    <div class="pub-cred-meta-row">
+                      <span>Audit Firm:</span>
+                      <span>M/s Bhasin & Co. Chartered Accountants</span>
+                    </div>
+                    <div class="pub-cred-meta-row">
+                      <span>Utilization Ratio:</span>
+                      <strong>91.4% Direct Animal Welfare (Audited)</strong>
+                    </div>
+                    <div class="pub-cred-meta-row">
+                      <span>Auditor Hash:</span>
+                      <code>SHA256: 12ab990144f2...cc45</code>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="pub-cred-footer">
+                  <button type="button" class="btn-cred-view" onclick="PawBridgeApp.viewPublicDocument('ca_audit_summary')">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                    <span>Inspect Financial Abstract</span>
+                  </button>
+                  <span class="pub-cred-status-tag">91.4% Program Spend</span>
+                </div>
+              </div>
+
+              <!-- Credential 5: Self-Reported Dossier (Clearly Distinguished!) -->
+              <div class="pub-credential-card self-reported-card">
+                <div class="pub-cred-header">
+                  <div class="pub-cred-type-badge reported">
+                    <span>⚠️ Self-Reported Submission</span>
+                  </div>
+                  <span class="pub-cred-date">Q3 2026</span>
+                </div>
+
+                <div class="pub-cred-body">
+                  <div class="pub-cred-icon">📋</div>
+                  <h4 class="pub-cred-title">Community Sterilization & Outreach Self-Report</h4>
+                  <p class="pub-cred-desc">Quarterly internal operational log submitted by shelter field staff. Numbers are reported by the organisation pending statutory municipal reconciliation.</p>
+                  
+                  <div class="pub-cred-meta-table">
+                    <div class="pub-cred-meta-row">
+                      <span>Submission Status:</span>
+                      <strong style="color: #9A6700;">Organisation-Reported (Uncertified)</strong>
+                    </div>
+                    <div class="pub-cred-meta-row">
+                      <span>Scheduled Audit:</span>
+                      <span>Next Q4 Annual Verification Window</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="pub-cred-footer">
+                  <button type="button" class="btn-cred-view secondary" onclick="PawBridgeApp.viewPublicDocument('abc_self_report')">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                    <span>View Self-Report Log</span>
+                  </button>
+                  <span class="pub-cred-status-tag self-reported-tag">Pending Audit</span>
+                </div>
+              </div>
+
+              <!-- Credential 6: Redacted Private Record (Data Privacy Protection!) -->
+              <div class="pub-credential-card redacted-card">
+                <div class="pub-cred-header">
+                  <div class="pub-cred-type-badge redacted">
+                    <span>🔒 Confidential Private Document</span>
+                  </div>
+                  <span class="pub-cred-date">Privacy Redacted</span>
+                </div>
+
+                <div class="pub-cred-body">
+                  <div class="pub-cred-icon">🛡️</div>
+                  <h4 class="pub-cred-title">Trustee Personal PAN & Bank Mandate Records</h4>
+                  <p class="pub-cred-desc">Personal identity documents and internal banking records are permanently redacted from public download to safeguard against cyber fraud, per PawBridge Privacy Guidelines.</p>
+                  
+                  <div class="pub-cred-meta-table">
+                    <div class="pub-cred-meta-row">
+                      <span>Verification State:</span>
+                      <strong style="color: #2E6B28;">Verified In-Camera by Lead Auditor</strong>
+                    </div>
+                    <div class="pub-cred-meta-row">
+                      <span>Public Access:</span>
+                      <span style="color: #C0442C;">Strictly Withheld for Privacy Law</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="pub-cred-footer">
+                  <span class="pub-redaction-notice">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                    <span>Files Secured in Auditor Escrow</span>
+                  </span>
+                  <span class="pub-cred-status-tag redacted-tag">Redacted</span>
+                </div>
+              </div>
+
+            </div>
+          </section>
+
+          <!-- SECTION 4: RESCUE HISTORY & MILESTONE TIMELINE -->
+          <section class="pub-content-section" id="pub-history">
+            <div class="pub-section-header">
+              <div>
+                <span class="pub-section-kicker">Operational Track Record</span>
+                <h2 class="section-heading-24">Rescue History & Sanctuary Milestones (2018–2026)</h2>
+              </div>
+              <div class="pub-operating-hours-pill">
+                <span>8 Years of Continuous Street Animal Rescue in Delhi NCR</span>
+              </div>
+            </div>
+
+            <!-- Interactive Timeline -->
+            <div class="pub-timeline-container">
+
+              <!-- Milestone 1 -->
+              <div class="pub-timeline-item">
+                <div class="pub-timeline-marker">
+                  <span class="pub-marker-dot"></span>
+                  <span class="pub-marker-year">2018</span>
+                </div>
+                <div class="pub-timeline-content">
+                  <div class="pub-timeline-header">
+                    <h3 class="pub-timeline-title">Founding of Happy Tails in South Delhi</h3>
+                    <span class="pub-timeline-badge">Sanctuary Inception</span>
+                  </div>
+                  <p class="pub-timeline-text">
+                    Founded as a 4-bay emergency foster collective by Dr. Ananya Sharma after treating critically injured hit-and-run street dogs without clinical shelter access. Established formal charitable trust registration under Delhi Society Registration Act XXI.
+                  </p>
+                  <div class="pub-timeline-meta-chips">
+                    <span class="timeline-chip">Initial 4 Bays</span>
+                    <span class="timeline-chip">128 Rescues in Year 1</span>
+                    <span class="timeline-chip">Community Foster Base</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Milestone 2 -->
+              <div class="pub-timeline-item">
+                <div class="pub-timeline-marker">
+                  <span class="pub-marker-dot"></span>
+                  <span class="pub-marker-year">2020</span>
+                </div>
+                <div class="pub-timeline-content">
+                  <div class="pub-timeline-header">
+                    <h3 class="pub-timeline-title">Permanent Campus & Hospital OT Commissioned</h3>
+                    <span class="pub-timeline-badge">Facility Expansion</span>
+                  </div>
+                  <p class="pub-timeline-text">
+                    Acquired a dedicated 1-acre shelter campus in Chhatarpur, expanding capacity to 24 permanent inpatient bays. Built a dedicated surgical operating room with autoclave sterilization, gaseous anesthesia, and isolated infectious disease quarantine bays.
+                  </p>
+                  <div class="pub-timeline-meta-chips">
+                    <span class="timeline-chip">Surgical Theater OT</span>
+                    <span class="timeline-chip">24 Active Recovery Bays</span>
+                    <span class="timeline-chip">Infectious Isolation Ward</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Milestone 3 -->
+              <div class="pub-timeline-item">
+                <div class="pub-timeline-marker">
+                  <span class="pub-marker-dot"></span>
+                  <span class="pub-marker-year">2022</span>
+                </div>
+                <div class="pub-timeline-content">
+                  <div class="pub-timeline-header">
+                    <h3 class="pub-timeline-title">24/7 Mobile Ambulance & Mass Rabies Eradication</h3>
+                    <span class="pub-timeline-badge">Emergency Fleet</span>
+                  </div>
+                  <p class="pub-timeline-text">
+                    Deployed our first custom animal ambulance equipped with hydraulic stretcher mechanism and oxygen triage unit. Launched the Delhi NCR Rabies Outreach program, administering cold-chain biologicals to over 2,500 street dogs in high-density community zones.
+                  </p>
+                  <div class="pub-timeline-meta-chips">
+                    <span class="timeline-chip">Ambulance DL-01-A-4491</span>
+                    <span class="timeline-chip">2,500+ Rabies Doses</span>
+                    <span class="timeline-chip">24/7 Emergency Dispatch</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Milestone 4 -->
+              <div class="pub-timeline-item">
+                <div class="pub-timeline-marker">
+                  <span class="pub-marker-dot"></span>
+                  <span class="pub-marker-year">2024</span>
+                </div>
+                <div class="pub-timeline-content">
+                  <div class="pub-timeline-header">
+                    <h3 class="pub-timeline-title">Yamuna Monsoon Flood Emergency Relief</h3>
+                    <span class="pub-timeline-badge">Disaster Response</span>
+                  </div>
+                  <p class="pub-timeline-text">
+                    Conducted a 12-day continuous rescue mission during extreme monsoon culvert flooding. Rescued and rehabilitated 148 stranded animals and unweaned litters from floodwaters, opening temporary neonatal incubators and digestive nutrition bays.
+                  </p>
+                  <div class="pub-timeline-meta-chips">
+                    <span class="timeline-chip">148 Animals Rescued</span>
+                    <span class="timeline-chip">12-Day River Mission</span>
+                    <span class="timeline-chip">Neonatal Recovery Bay</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Milestone 5 -->
+              <div class="pub-timeline-item">
+                <div class="pub-timeline-marker current">
+                  <span class="pub-marker-dot current"></span>
+                  <span class="pub-marker-year current">2026</span>
+                </div>
+                <div class="pub-timeline-content current">
+                  <div class="pub-timeline-header">
+                    <h3 class="pub-timeline-title">PawBridge Unified Operations OS & Tier-1 Certification</h3>
+                    <span class="pub-timeline-badge current">Present Milestone</span>
+                  </div>
+                  <p class="pub-timeline-text">
+                    Integrated all shelter triage, electronic medical charts, daily medication rounds, and Goods Inward accounting into PawBridge OS. Surpassed 3,420 lifetime rescues with a 98.4% independent transparency score and zero un-reconciled expenditures.
+                  </p>
+                  <div class="pub-timeline-meta-chips">
+                    <span class="timeline-chip current">3,420+ Rescues</span>
+                    <span class="timeline-chip current">45 Active Bays</span>
+                    <span class="timeline-chip current">98.4% Transparency Score</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </section>
+
+          <!-- SECTION 5: RECENT RESCUE PATIENTS & MEDICAL JOURNEYS -->
+          <section class="pub-content-section" id="pub-cases">
+            <div class="pub-section-header">
+              <div>
+                <span class="pub-section-kicker">Clinical Cases in Care</span>
+                <h2 class="section-heading-24">Recent Patients & Medical Journeys</h2>
+              </div>
+              <button type="button" class="btn-secondary-cream" id="btn-pub-view-all-cases" style="font-size: 13px; padding: 7px 14px;">
+                <span>View Full Rescue Registry (3,420+)</span>
+              </button>
+            </div>
+
+            <div class="pub-cases-grid" id="pub-cases-grid">
+              <!-- Patient 1: Leo -->
+              <div class="pub-patient-card">
+                <div class="pub-patient-photo-wrap">
+                  <img src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&w=600&q=80" alt="Rescued dog Leo" class="pub-patient-img" />
+                  <span class="pub-patient-badge-outcome rehab">Rehabilitated / Physical Therapy</span>
+                  <span class="pub-patient-case-id">#RC-1048</span>
+                </div>
+                <div class="pub-patient-body">
+                  <div class="pub-patient-top">
+                    <div>
+                      <h3 class="pub-patient-name">Leo</h3>
+                      <span class="pub-patient-breed">Desi Mix • Male • 2 Years</span>
+                    </div>
+                    <span class="pub-patient-intake-date">Admitted 24 Oct 2026</span>
+                  </div>
+                  <p class="pub-patient-story">
+                    Sustained a severe vehicular hit-and-run compound tibia-fibula fracture in Mehrauli. Underwent 3.5-hour surgical plate reduction by Dr. Sharma. Bone healing at 85% with daily gentle physical therapy.
+                  </p>
+                  <div class="pub-patient-vitals">
+                    <div class="pub-vital-chip">
+                      <span class="vital-label">Attending Vet:</span>
+                      <strong>Dr. Ananya Sharma</strong>
+                    </div>
+                    <div class="pub-vital-chip">
+                      <span class="vital-label">Current Ward:</span>
+                      <strong>ICU-03 Recovery Bay</strong>
+                    </div>
+                  </div>
+                </div>
+                <div class="pub-patient-footer">
+                  <button type="button" class="btn-secondary-cream" onclick="PawBridgeApp.openPublicCaseJourney('RC-1048')" style="width: 100%; font-size: 12px; font-weight: 600;">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                    <span>Inspect Medical Journey & Records</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Patient 2: Bella -->
+              <div class="pub-patient-card">
+                <div class="pub-patient-photo-wrap">
+                  <img src="https://images.unsplash.com/photo-1561037404-61cd46aa615b?auto=format&fit=crop&w=600&q=80" alt="Rescued dog Bella" class="pub-patient-img" />
+                  <span class="pub-patient-badge-outcome foster">In Supervised Medical Foster</span>
+                  <span class="pub-patient-case-id">#RC-1049</span>
+                </div>
+                <div class="pub-patient-body">
+                  <div class="pub-patient-top">
+                    <div>
+                      <h3 class="pub-patient-name">Bella</h3>
+                      <span class="pub-patient-breed">Desi Indie • Female • 1.5 Years</span>
+                    </div>
+                    <span class="pub-patient-intake-date">Admitted 22 Oct 2026</span>
+                  </div>
+                  <p class="pub-patient-story">
+                    Rescued from a storm drain with deep septic tissue necrosis on right forepaw. Stabilized under IV antibiotics; currently placed in an approved medical foster home for quiet recuperation.
+                  </p>
+                  <div class="pub-patient-vitals">
+                    <div class="pub-vital-chip">
+                      <span class="vital-label">Attending Vet:</span>
+                      <strong>Dr. Rajiv Nanda</strong>
+                    </div>
+                    <div class="pub-vital-chip">
+                      <span class="vital-label">Current Location:</span>
+                      <strong>Vetted Medical Foster (South Ext)</strong>
+                    </div>
+                  </div>
+                </div>
+                <div class="pub-patient-footer">
+                  <button type="button" class="btn-secondary-cream" onclick="PawBridgeApp.openPublicCaseJourney('RC-1049')" style="width: 100%; font-size: 12px; font-weight: 600;">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                    <span>Inspect Medical Journey & Records</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Patient 3: Bruno -->
+              <div class="pub-patient-card">
+                <div class="pub-patient-photo-wrap">
+                  <img src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&w=600&q=80" alt="Rescued dog Bruno" class="pub-patient-img" />
+                  <span class="pub-patient-badge-outcome ready">Healed & Ready for Adoption</span>
+                  <span class="pub-patient-case-id">#RC-1050</span>
+                </div>
+                <div class="pub-patient-body">
+                  <div class="pub-patient-top">
+                    <div>
+                      <h3 class="pub-patient-name">Bruno</h3>
+                      <span class="pub-patient-breed">Labrador-Desi Cross • Male • 3 Years</span>
+                    </div>
+                    <span class="pub-patient-intake-date">Admitted 10 Oct 2026</span>
+                  </div>
+                  <p class="pub-patient-story">
+                    Admitted with severe 80% body demodicosis and extreme starvation. Completed medicated sulfur immersion baths, high-omega diet, and microchipped. Vibrant, gentle, and seeking a forever family.
+                  </p>
+                  <div class="pub-patient-vitals">
+                    <div class="pub-vital-chip">
+                      <span class="vital-label">Attending Vet:</span>
+                      <strong>Dr. Ananya Sharma</strong>
+                    </div>
+                    <div class="pub-vital-chip">
+                      <span class="vital-label">Current Ward:</span>
+                      <strong>Adoption Kennel Bay A-04</strong>
+                    </div>
+                  </div>
+                </div>
+                <div class="pub-patient-footer">
+                  <button type="button" class="btn-secondary-cream" onclick="PawBridgeApp.openPublicCaseJourney('RC-1050')" style="width: 100%; font-size: 12px; font-weight: 600;">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                    <span>Inspect Medical Journey & Records</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Patient 4: Toby & Culvert Litters -->
+              <div class="pub-patient-card">
+                <div class="pub-patient-photo-wrap">
+                  <img src="https://images.unsplash.com/photo-1591769225440-811ad7d6eab2?auto=format&fit=crop&w=600&q=80" alt="Puppy litter Toby" class="pub-patient-img" />
+                  <span class="pub-patient-badge-outcome care">Puppy Nutrition Care</span>
+                  <span class="pub-patient-case-id">#RC-1051</span>
+                </div>
+                <div class="pub-patient-body">
+                  <div class="pub-patient-top">
+                    <div>
+                      <h3 class="pub-patient-name">Toby & Litter (14 Pups)</h3>
+                      <span class="pub-patient-breed">Indie Puppies • 8 Weeks Old</span>
+                    </div>
+                    <span class="pub-patient-intake-date">Admitted 18 Oct 2026</span>
+                  </div>
+                  <p class="pub-patient-story">
+                    Rescued from storm drain flooding in Yamuna lowlands. Successfully nursed through hypothermia with digestive starter kibble and probiotic milk formula. Vaccinated with 1st DHPPi dose.
+                  </p>
+                  <div class="pub-patient-vitals">
+                    <div class="pub-vital-chip">
+                      <span class="vital-label">Attending Vet:</span>
+                      <strong>Nurse Vikas & Dr. Sharma</strong>
+                    </div>
+                    <div class="pub-vital-chip">
+                      <span class="vital-label">Current Ward:</span>
+                      <strong>Ward B Quarantine Bay 02</strong>
+                    </div>
+                  </div>
+                </div>
+                <div class="pub-patient-footer">
+                  <button type="button" class="btn-secondary-cream" onclick="PawBridgeApp.openPublicCaseJourney('RC-1051')" style="width: 100%; font-size: 12px; font-weight: 600;">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                    <span>Inspect Medical Journey & Records</span>
+                  </button>
+                </div>
+              </div>
+
+            </div>
+          </section>
+
+          <!-- SECTION 6: CURRENT SUPPORT NEEDS (LIVE REQUISITIONS) -->
+          <section class="pub-content-section" id="pub-needs">
+            <div class="pub-section-header">
+              <div>
+                <span class="pub-section-kicker">Transparent Aid Requisitions</span>
+                <h2 class="section-heading-24">Current Support Needs & Operational Deficits</h2>
+              </div>
+              <div class="pub-tax-deduct-pill">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                <span>All Donations Eligible for 50% Section 80G Tax Exemption</span>
+              </div>
+            </div>
+
+            <!-- Transparency Link Note -->
+            <div class="pub-needs-safeguard-banner">
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--color-olive);"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+                <span style="font-size: 12px; color: var(--color-text-dark);">
+                  <strong>Zero-Leakage Assurance:</strong> Every requisition below is linked directly to an admitted patient case ID or shelter bay. All received aid generates a verified Goods Inward Note (GIN) published to the public registry.
+                </span>
+              </div>
+            </div>
+
+            <!-- Dynamic Live Needs Grid -->
+            <div class="pub-needs-grid" id="pub-needs-grid">
+              <!-- Dynamically populated from PawBridgeStore.supportRequests -->
+            </div>
+          </section>
+
+          <!-- SECTION 7: SAFE PUBLIC CONTACT & PHYSICAL LOCATION -->
+          <section class="pub-content-section" id="pub-contact-section" style="padding-bottom: 48px;">
+            <div class="pub-contact-card-frame">
+              <div class="pub-contact-left">
+                <span class="pub-section-kicker">Reach the Sanctuary</span>
+                <h2 class="section-heading-24" style="margin-bottom: 8px;">Official Shelter Desk & Visit Coordinates</h2>
+                <p style="font-size: 14px; color: var(--color-text-muted); line-height: 1.5; margin-bottom: 20px;">
+                  We welcome adopters, verified volunteers, and well-wishers to our shelter campus. To protect our animals from crowd distress and ensure sterile surgical theater safety, in-person visits are conducted by prior appointment.
+                </p>
+
+                <div class="pub-contact-details-list">
+                  <div class="pub-contact-row">
+                    <div class="pub-contact-row-icon">📍</div>
+                    <div>
+                      <strong style="font-size: 13px; color: var(--color-text-dark);">Physical Sanctuary Campus</strong>
+                      <span style="display: block; font-size: 13px; color: var(--color-text-muted);">Plot 12, Farm Road, Near Asola Wildlife Boundary, Chhatarpur, New Delhi 110074</span>
+                    </div>
+                  </div>
+
+                  <div class="pub-contact-row">
+                    <div class="pub-contact-row-icon">🚨</div>
+                    <div>
+                      <strong style="font-size: 13px; color: var(--color-text-dark);">24/7 Field Rescue Helpline (Delhi NCR)</strong>
+                      <span style="display: block; font-size: 14px; font-weight: 700; color: var(--color-olive);">+91 98110 02233 (Central Operations Desk)</span>
+                      <span style="font-size: 11px; color: var(--color-text-subtle);">Direct ambulance telemetry and distress intake dispatch</span>
+                    </div>
+                  </div>
+
+                  <div class="pub-contact-row">
+                    <div class="pub-contact-row-icon">✉️</div>
+                    <div>
+                      <strong style="font-size: 13px; color: var(--color-text-dark);">Official Electronic Correspondence</strong>
+                      <span style="display: block; font-size: 13px; color: var(--color-text-muted);">contact@happytails.org • adoptions@happytails.org</span>
+                    </div>
+                  </div>
+
+                  <div class="pub-contact-row">
+                    <div class="pub-contact-row-icon">🛡️</div>
+                    <div>
+                      <strong style="font-size: 13px; color: var(--color-text-dark);">Personal Data Protection Policy</strong>
+                      <span style="display: block; font-size: 12px; color: var(--color-text-subtle); line-height: 1.4;">
+                        To safeguard our female veterinary staff and trustees from harassment and unsolicited solicitation, personal mobile numbers and home residences are strictly confidential. All inquiries are answered promptly through the central desk.
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                <div style="display: flex; gap: 10px; margin-top: 24px; flex-wrap: wrap;">
+                  <button type="button" class="btn-primary-olive" id="btn-contact-inquiry-cta" style="padding: 9px 16px; font-size: 13px;">
+                    Send Secure Inquiry
+                  </button>
+                  <button type="button" class="btn-secondary-cream" id="btn-contact-volunteer-cta" style="padding: 9px 16px; font-size: 13px;">
+                    Register as Volunteer
+                  </button>
+                  <button type="button" class="btn-secondary-cream" id="btn-contact-directions-cta" style="padding: 9px 16px; font-size: 13px;">
+                    🗺️ Get Campus Map
+                  </button>
+                </div>
+              </div>
+
+              <!-- Quick Inquiry Form -->
+              <div class="pub-contact-right">
+                <div class="pub-inquiry-box">
+                  <h3 style="font-family: var(--font-heading); font-size: 18px; font-weight: 700; color: var(--color-text-dark); margin: 0 0 6px 0;">
+                    Send an Official Message
+                  </h3>
+                  <p style="font-size: 12px; color: var(--color-text-muted); margin: 0 0 16px 0;">
+                    Your inquiry is encrypted and delivered directly to the shelter management team.
+                  </p>
+
+                  <form id="form-pub-quick-contact" novalidate>
+                    <div class="form-group" style="margin-bottom: 12px;">
+                      <label for="pub-quick-name" class="form-label" style="font-size: 12px;">Your Full Name *</label>
+                      <input type="text" id="pub-quick-name" class="form-input" placeholder="e.g. Priyanshu Mehta" required style="font-size: 13px; padding: 8px 12px;" />
+                    </div>
+
+                    <div class="form-grid-2" style="margin-bottom: 12px; gap: 10px;">
+                      <div class="form-group">
+                        <label for="pub-quick-email" class="form-label" style="font-size: 12px;">Email Address *</label>
+                        <input type="email" id="pub-quick-email" class="form-input" placeholder="e.g. priyanshu@gmail.com" required style="font-size: 13px; padding: 8px 12px;" />
+                      </div>
+                      <div class="form-group">
+                        <label for="pub-quick-topic" class="form-label" style="font-size: 12px;">Inquiry Topic *</label>
+                        <select id="pub-quick-topic" class="form-select" required style="font-size: 13px; padding: 8px 12px;">
+                          <option value="adoption">Adoption & Foster Inquiry</option>
+                          <option value="donation">Donation & 80G Receipt</option>
+                          <option value="volunteer">Volunteer Program</option>
+                          <option value="rescue">Report an Injured Animal</option>
+                          <option value="csr">Corporate CSR & Grants</option>
+                          <option value="other">General Inquiries</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div class="form-group" style="margin-bottom: 14px;">
+                      <label for="pub-quick-message" class="form-label" style="font-size: 12px;">Message Details *</label>
+                      <textarea id="pub-quick-message" class="form-textarea" rows="3" placeholder="Tell us how we can help or which dog patient you are inquiring about..." required style="font-size: 13px; padding: 8px 12px;"></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-primary-olive" style="width: 100%; justify-content: center; padding: 10px; font-size: 13px;">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                      <span>Submit Secure Inquiry</span>
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- PUBLIC FOOTER -->
+          <footer class="pub-footer">
+            <div class="pub-footer-top">
+              <div class="pub-footer-brand">
+                <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px;">
+                  <div class="public-brand-seal" style="width: 28px; height: 28px;">
+                    <svg width="18" height="18" viewBox="0 0 32 32" fill="none">
+                      <path d="M4 25C8 14 16 8 28 8" stroke="#536747" stroke-width="2.8" stroke-linecap="round"/>
+                      <ellipse cx="15" cy="17" rx="3.2" ry="2.8" fill="#536747"/>
+                    </svg>
+                  </div>
+                  <strong style="font-family: var(--font-heading); font-size: 15px; color: var(--color-text-dark);">Happy Tails Animal Sanctuary</strong>
+                </div>
+                <p style="font-size: 12px; color: var(--color-text-muted); line-height: 1.5; margin: 0 0 10px 0; max-width: 480px;">
+                  Registered Non-Profit Animal Welfare Trust • AWBI Reg #AWBI/2021/DL-402 • Trust Deed Reg #DL/2018/01923. Dedicated to emergency trauma rescue, cold-chain rabies vaccination, and foster rehabilitation in Delhi NCR.
+                </p>
+                <div style="font-size: 11px; color: var(--color-text-subtle);">
+                  Donations are 50% tax-exempt under Section 80G of the Indian Income Tax Act 1961.
+                </div>
+              </div>
+
+              <div class="pub-footer-links-grid">
+                <div>
+                  <div class="pub-footer-col-title">Sanctuary</div>
+                  <a href="#pub-about" class="pub-footer-link">About Mission</a>
+                  <a href="#pub-history" class="pub-footer-link">Rescue Journey</a>
+                  <a href="#pub-cases" class="pub-footer-link">Patient Records</a>
+                  <a href="#pub-contact-section" class="pub-footer-link">Campus Map</a>
+                </div>
+
+                <div>
+                  <div class="pub-footer-col-title">Transparency</div>
+                  <a href="#pub-credentials" class="pub-footer-link">Verified Documents</a>
+                  <a href="#pub-impact" class="pub-footer-link">Audited Statistics</a>
+                  <a href="#pub-credentials" class="pub-footer-link">80G Certificate</a>
+                  <a href="#pub-credentials" class="pub-footer-link">Privacy Policy</a>
+                </div>
+
+                <div>
+                  <div class="pub-footer-col-title">Get Involved</div>
+                  <a href="javascript:void(0)" onclick="PawBridgeApp.openPublicDonateModal()" class="pub-footer-link">Donate Aid</a>
+                  <a href="javascript:void(0)" onclick="PawBridgeApp.openPublicVolunteerModal()" class="pub-footer-link">Volunteer Program</a>
+                  <a href="javascript:void(0)" onclick="PawBridgeApp.openPublicShareModal()" class="pub-footer-link">Share Profile</a>
+                  <a href="javascript:void(0)" onclick="PawBridgeApp.switchAuthMode('app')" class="pub-footer-link" style="color: var(--color-olive); font-weight: 600;">Shelter OS Portal ↗</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="pub-footer-bottom">
+              <div>
+                © 2018–2026 Happy Tails Animal Sanctuary. Verified by PawBridge NGO Operations Platform.
+              </div>
+              <div style="display: flex; gap: 16px;">
+                <span>Verified Tier-1 Registry</span>
+                <span>•</span>
+                <span>Audit Ref: PB-AUD-2026-DL89</span>
+                <span>•</span>
+                <a href="#view-public-profile" style="color: var(--color-olive); font-weight: 600;">Back to top ↑</a>
+              </div>
+            </div>
+          </footer>
+
+        </div><!-- END .public-profile-scroll-container -->
+      </section><!-- END #view-public-profile -->
+
     </div><!-- END .desktop-window-frame -->
   </main>
 
@@ -3889,6 +5018,329 @@
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
           <span>Print Proof Document</span>
         </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       MODAL: PUBLIC DONATION & 80G RECEIPT
+       ============================================================ -->
+  <div class="modal-overlay" id="modal-public-donate" role="dialog" aria-modal="true" aria-labelledby="public-donate-title">
+    <div class="modal-window" style="max-width: 620px;">
+      <div class="modal-header">
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="color: var(--color-olive);"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          <div>
+            <h3 class="modal-title" id="public-donate-title">Support Happy Tails Animal Sanctuary</h3>
+            <span style="font-size: 11px; color: var(--color-text-muted);">Direct clinical aid for rescued street dogs • 50% Section 80G Tax Exemption</span>
+          </div>
+        </div>
+        <button type="button" class="modal-close-btn" id="btn-close-public-donate" aria-label="Close modal">✕</button>
+      </div>
+
+      <form id="form-public-donate" novalidate>
+        <div class="modal-body">
+          <!-- Suggested Donation Tiers -->
+          <div class="form-group" style="margin-bottom: 12px;">
+            <label class="form-label">Select Contribution Tier</label>
+            <div class="donate-tiers-grid" id="donate-tiers-grid">
+              <div class="donate-tier-chip active" data-amount="1000">
+                <div class="donate-tier-val">₹1,000</div>
+                <div class="donate-tier-desc">Puppy Starter Feed</div>
+              </div>
+              <div class="donate-tier-chip" data-amount="2500">
+                <div class="donate-tier-val">₹2,500</div>
+                <div class="donate-tier-desc">10 Rabies Vaccines</div>
+              </div>
+              <div class="donate-tier-chip" data-amount="5000">
+                <div class="donate-tier-val">₹5,000</div>
+                <div class="donate-tier-desc">Trauma Wound Care</div>
+              </div>
+              <div class="donate-tier-chip" data-amount="15000">
+                <div class="donate-tier-val">₹15,000</div>
+                <div class="donate-tier-desc">Orthopedic Surgery</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group" style="margin-bottom: 16px;">
+            <label for="pub-donate-amount" class="form-label">Custom Contribution Amount (₹) *</label>
+            <div class="input-with-action">
+              <span style="position: absolute; left: 12px; top: 50%; transform: translateY(-50%); font-weight: 600; color: var(--color-text-muted);">₹</span>
+              <input type="number" id="pub-donate-amount" class="form-input" style="padding-left: 28px;" value="1000" min="100" step="100" required />
+            </div>
+          </div>
+
+          <!-- Section 80G Tax Exemption Banner -->
+          <div style="background: #FAF7F0; border: 1px solid #E8E0CF; border-radius: 8px; padding: 10px 14px; margin-bottom: 16px; display: flex; align-items: center; justify-content: space-between;">
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <span style="font-size: 16px;">📜</span>
+              <span style="font-size: 12px; color: var(--color-text-dark);">
+                <strong>Section 80G Tax Exemption:</strong> Indian donors get 50% tax deduction under Form 10AC URN CIT(EXEMP)/DELHI/****3381.
+              </span>
+            </div>
+          </div>
+
+          <div class="form-grid-2" style="margin-bottom: 12px;">
+            <div class="form-group">
+              <label for="pub-donor-name" class="form-label">Full Name *</label>
+              <input type="text" id="pub-donor-name" class="form-input" placeholder="e.g. Vikram Malhotra" value="Vikram Malhotra" required />
+            </div>
+            <div class="form-group">
+              <label for="pub-donor-email" class="form-label">Email for Tax Receipt *</label>
+              <input type="email" id="pub-donor-email" class="form-input" placeholder="e.g. vikram@gmail.com" value="vikram.malhotra@example.com" required />
+            </div>
+          </div>
+
+          <div class="form-grid-2" style="margin-bottom: 12px;">
+            <div class="form-group">
+              <label for="pub-donor-pan" class="form-label">PAN Number (for 80G Certificate)</label>
+              <input type="text" id="pub-donor-pan" class="form-input" placeholder="e.g. ABCDE1234F" value="ABCDE1234F" style="text-transform: uppercase;" />
+            </div>
+            <div class="form-group">
+              <label for="pub-donor-phone" class="form-label">Mobile Number</label>
+              <input type="tel" id="pub-donor-phone" class="form-input" placeholder="e.g. 98110 98765" value="98110 98765" />
+            </div>
+          </div>
+
+          <div class="form-group" style="margin-bottom: 12px;">
+            <label class="form-label">Payment Channel</label>
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px;">
+              <label class="chip-checkbox-label checked" style="justify-content: center; padding: 10px;">
+                <input type="radio" name="pub-pay-method" value="upi" checked />
+                <span style="font-size: 12px; font-weight: 600;">⚡ Instant UPI</span>
+              </label>
+              <label class="chip-checkbox-label" style="justify-content: center; padding: 10px;">
+                <input type="radio" name="pub-pay-method" value="card" />
+                <span style="font-size: 12px; font-weight: 600;">💳 Debit / Credit</span>
+              </label>
+              <label class="chip-checkbox-label" style="justify-content: center; padding: 10px;">
+                <input type="radio" name="pub-pay-method" value="netbanking" />
+                <span style="font-size: 12px; font-weight: 600;">🏦 Net Banking</span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn-secondary-cream" id="btn-cancel-public-donate">Cancel</button>
+          <button type="submit" class="btn-primary-olive" id="btn-submit-public-donate">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Complete Contribution & Generate 80G</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       MODAL: PUBLIC VOLUNTEER & FOSTER APPLICATION
+       ============================================================ -->
+  <div class="modal-overlay" id="modal-public-volunteer" role="dialog" aria-modal="true" aria-labelledby="public-volunteer-title">
+    <div class="modal-window" style="max-width: 680px;">
+      <div class="modal-header">
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--color-olive);"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          <h3 class="modal-title" id="public-volunteer-title">Volunteer & Foster Registration</h3>
+        </div>
+        <button type="button" class="modal-close-btn" id="btn-close-public-volunteer" aria-label="Close modal">✕</button>
+      </div>
+
+      <form id="form-public-volunteer" novalidate>
+        <div class="modal-body">
+          <p style="font-size: 13px; color: var(--color-text-muted); margin: 0 0 16px 0;">
+            Thank you for stepping forward! Happy Tails relies on dedicated animal lovers for kennel enrichment, emergency ambulance assistance, and loving foster homes.
+          </p>
+
+          <div class="form-grid-2" style="margin-bottom: 12px;">
+            <div class="form-group">
+              <label for="vol-name" class="form-label">Full Name *</label>
+              <input type="text" id="vol-name" class="form-input" placeholder="e.g. Radhika Sen" required />
+            </div>
+            <div class="form-group">
+              <label for="vol-email" class="form-label">Email Address *</label>
+              <input type="email" id="vol-email" class="form-input" placeholder="e.g. radhika@gmail.com" required />
+            </div>
+          </div>
+
+          <div class="form-grid-2" style="margin-bottom: 12px;">
+            <div class="form-group">
+              <label for="vol-phone" class="form-label">Mobile Contact Number *</label>
+              <input type="tel" id="vol-phone" class="form-input" placeholder="e.g. 98110 55442" required />
+            </div>
+            <div class="form-group">
+              <label for="vol-locality" class="form-label">Neighborhood / City Area *</label>
+              <input type="text" id="vol-locality" class="form-input" placeholder="e.g. Vasant Kunj / Saket, New Delhi" required />
+            </div>
+          </div>
+
+          <div class="form-group" style="margin-bottom: 12px;">
+            <label for="vol-role" class="form-label">Preferred Volunteer Program *</label>
+            <select id="vol-role" class="form-select" required>
+              <option value="kennel" selected>🐕 Weekend Kennel Walking & Socialization</option>
+              <option value="foster">🏡 Medical Foster Home (Quiet Post-Op Care)</option>
+              <option value="ambulance">🚐 Emergency Ambulance Rescue Assistant</option>
+              <option value="clinic">💉 Shelter Veterinary Clinic Volunteer</option>
+              <option value="adoptions">📸 Adoption Outreach & Pet Photography</option>
+            </select>
+          </div>
+
+          <div class="form-group" style="margin-bottom: 12px;">
+            <label for="vol-experience" class="form-label">Prior Dog or Animal Rescue Experience</label>
+            <textarea id="vol-experience" class="form-textarea" rows="2" placeholder="Briefly share any previous experience with street dogs, pet companionship, or shelter volunteering..."></textarea>
+          </div>
+
+          <div style="background: #F3F7F0; border: 1px solid #D3DFCE; border-radius: 8px; padding: 10px 14px;">
+            <label class="custom-checkbox-wrap" style="align-items: flex-start;">
+              <input type="checkbox" id="chk-vol-attest" checked required style="margin-top: 2px;" />
+              <span style="font-size: 12px; color: var(--color-olive-dark);">
+                I confirm that I will follow all shelter safety and hygiene protocols and attend an orientation session prior to animal interaction.
+              </span>
+            </label>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn-secondary-cream" id="btn-cancel-public-volunteer">Cancel</button>
+          <button type="submit" class="btn-primary-olive" id="btn-submit-public-volunteer">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Submit Volunteer Application</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       MODAL: PUBLIC SHARE PROFILE
+       ============================================================ -->
+  <div class="modal-overlay" id="modal-public-share" role="dialog" aria-modal="true" aria-labelledby="public-share-title">
+    <div class="modal-window" style="max-width: 520px;">
+      <div class="modal-header">
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--color-olive);"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+          <h3 class="modal-title" id="public-share-title">Share Happy Tails Verified Registry</h3>
+        </div>
+        <button type="button" class="modal-close-btn" id="btn-close-public-share" aria-label="Close modal">✕</button>
+      </div>
+
+      <div class="modal-body">
+        <p style="font-size: 13px; color: var(--color-text-muted); margin: 0 0 16px 0;">
+          Share Happy Tails Animal Sanctuary's audited profile to help find loving homes, mobilize emergency support, and increase transparency.
+        </p>
+
+        <div class="form-group" style="margin-bottom: 16px;">
+          <label for="share-url-input" class="form-label">Verified Registry Link</label>
+          <div style="display: flex; gap: 8px;">
+            <input type="text" id="share-url-input" class="form-input" value="https://pawbridge.org/public/happy-tails-sanctuary" readonly />
+            <button type="button" class="btn-primary-olive" id="btn-copy-share-url" style="flex-shrink: 0;">
+              Copy Link
+            </button>
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 16px;">
+          <button type="button" class="btn-secondary-cream" id="btn-share-whatsapp" style="justify-content: center; font-size: 12px; padding: 10px;">
+            💬 WhatsApp
+          </button>
+          <button type="button" class="btn-secondary-cream" id="btn-share-twitter" style="justify-content: center; font-size: 12px; padding: 10px;">
+            🐦 Twitter / X
+          </button>
+          <button type="button" class="btn-secondary-cream" id="btn-share-email" style="justify-content: center; font-size: 12px; padding: 10px;">
+            ✉️ Email
+          </button>
+        </div>
+
+        <!-- Verified Badge QR Preview -->
+        <div style="background: var(--color-cream-surface); border: 1px solid var(--color-border); border-radius: 8px; padding: 12px; text-align: center;">
+          <div style="font-size: 12px; font-weight: 600; color: var(--color-text-dark); margin-bottom: 4px;">PawBridge Verified QR Trust Card</div>
+          <div style="font-size: 11px; color: var(--color-text-muted); margin-bottom: 10px;">Suitable for clinic noticeboards, adoption kiosks, and donation counters.</div>
+          <button type="button" class="btn-secondary-cream" id="btn-download-qr-card" style="font-size: 12px; margin: 0 auto;">
+            ⬇️ Download Printable QR Card (PDF)
+          </button>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn-secondary-cream" id="btn-dismiss-public-share">Done</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       MODAL: PUBLIC PATIENT CASE JOURNEY DOSSIER
+       ============================================================ -->
+  <div class="modal-overlay" id="modal-public-case-journey" role="dialog" aria-modal="true" aria-labelledby="case-journey-title">
+    <div class="modal-window" style="max-width: 680px;">
+      <div class="modal-header">
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--color-olive);"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><path d="M9 15l2 2 4-4"/></svg>
+          <h3 class="modal-title" id="case-journey-title">Medical Journey & Clinical Dossier</h3>
+        </div>
+        <button type="button" class="modal-close-btn" id="btn-close-case-journey" aria-label="Close modal">✕</button>
+      </div>
+
+      <div class="modal-body" id="case-journey-modal-body">
+        <!-- Dynamically rendered by PawBridgeApp.openPublicCaseJourney(caseId) -->
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn-secondary-cream" id="btn-dismiss-case-journey">Close</button>
+        <button type="button" class="btn-primary-olive" onclick="window.print()">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+          <span>Print Case Dossier</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       MODAL: PUBLIC CREDENTIAL / DOCUMENT INSPECTOR
+       ============================================================ -->
+  <div class="modal-overlay" id="modal-public-doc-inspector" role="dialog" aria-modal="true" aria-labelledby="pub-doc-title">
+    <div class="modal-window" style="max-width: 640px;">
+      <div class="modal-header">
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--color-olive);"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          <h3 class="modal-title" id="pub-doc-title">Public Credential Verification</h3>
+        </div>
+        <button type="button" class="modal-close-btn" id="btn-close-pub-doc" aria-label="Close modal">✕</button>
+      </div>
+
+      <div class="modal-body" id="pub-doc-modal-body">
+        <!-- Dynamically rendered by PawBridgeApp.viewPublicDocument(docKey) -->
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn-secondary-cream" id="btn-dismiss-pub-doc">Close</button>
+        <button type="button" class="btn-primary-olive" onclick="window.print()">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+          <span>Print Verification Certificate</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       MODAL: UNIVERSAL CONFIRMATION DIALOG
+       ============================================================ -->
+  <div class="modal-overlay" id="modal-generic-confirm" role="dialog" aria-modal="true" aria-labelledby="confirm-dialog-title">
+    <div class="modal-window modal-confirm-window">
+      <div class="modal-body" style="padding: 28px 24px;">
+        <div class="confirm-icon-wrap warning" id="confirm-dialog-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        </div>
+        <h3 class="confirm-title" id="confirm-dialog-title">Please Confirm Action</h3>
+        <p class="confirm-message" id="confirm-dialog-msg">Are you sure you want to proceed with this operation?</p>
+
+        <div class="confirm-actions-row">
+          <button type="button" class="btn-secondary-cream" id="btn-confirm-cancel" style="min-width: 100px;">
+            Cancel
+          </button>
+          <button type="button" class="btn-primary-olive" id="btn-confirm-proceed" style="min-width: 120px;">
+            Proceed
+          </button>
+        </div>
       </div>
     </div>
   </div>

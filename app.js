@@ -1266,14 +1266,56 @@ const PawBridgeApp = {
 
       // Top Screen / View Switchers
       btnNavApp: document.getElementById('btn-nav-app'),
+      btnNavVerification: document.getElementById('btn-nav-verification'),
       btnNavLogin: document.getElementById('btn-nav-login'),
       btnNavRegister: document.getElementById('btn-nav-register'),
+      btnNavProfile: document.getElementById('btn-nav-profile'),
       chromeAddressText: document.getElementById('chrome-address-text'),
 
       // Main Layout Root & Auth Views
       viewAppMain: document.getElementById('view-app-main'),
       viewAuthLogin: document.getElementById('view-auth-login'),
       viewAuthRegister: document.getElementById('view-auth-register'),
+      viewPublicProfile: document.getElementById('view-public-profile'),
+      btnHeaderViewProfile: document.getElementById('btn-header-view-profile'),
+      btnPubSwitchAdmin: document.getElementById('btn-pub-switch-admin'),
+      btnWizardGotoVerification: document.getElementById('btn-wizard-goto-verification'),
+
+      // Public Profile Modals
+      modalPublicDonate: document.getElementById('modal-public-donate'),
+      formPublicDonate: document.getElementById('form-public-donate'),
+      btnClosePublicDonate: document.getElementById('btn-close-public-donate'),
+      btnCancelPublicDonate: document.getElementById('btn-cancel-public-donate'),
+      pubDonateAmount: document.getElementById('pub-donate-amount'),
+      donateTiersGrid: document.getElementById('donate-tiers-grid'),
+
+      modalPublicVolunteer: document.getElementById('modal-public-volunteer'),
+      formPublicVolunteer: document.getElementById('form-public-volunteer'),
+      btnClosePublicVolunteer: document.getElementById('btn-close-public-volunteer'),
+      btnCancelPublicVolunteer: document.getElementById('btn-cancel-public-volunteer'),
+
+      modalPublicShare: document.getElementById('modal-public-share'),
+      btnClosePublicShare: document.getElementById('btn-close-public-share'),
+      btnDismissPublicShare: document.getElementById('btn-dismiss-public-share'),
+      btnCopyShareUrl: document.getElementById('btn-copy-share-url'),
+      shareUrlInput: document.getElementById('share-url-input'),
+
+      modalPublicCaseJourney: document.getElementById('modal-public-case-journey'),
+      btnCloseCaseJourney: document.getElementById('btn-close-case-journey'),
+      btnDismissCaseJourney: document.getElementById('btn-dismiss-case-journey'),
+      caseJourneyModalBody: document.getElementById('case-journey-modal-body'),
+
+      modalPublicDocInspector: document.getElementById('modal-public-doc-inspector'),
+      btnClosePubDoc: document.getElementById('btn-close-pub-doc'),
+      btnDismissPubDoc: document.getElementById('btn-dismiss-pub-doc'),
+      pubDocModalBody: document.getElementById('pub-doc-modal-body'),
+
+      modalGenericConfirm: document.getElementById('modal-generic-confirm'),
+      confirmDialogTitle: document.getElementById('confirm-dialog-title'),
+      confirmDialogMsg: document.getElementById('confirm-dialog-msg'),
+      confirmDialogIcon: document.getElementById('confirm-dialog-icon'),
+      btnConfirmCancel: document.getElementById('btn-confirm-cancel'),
+      btnConfirmProceed: document.getElementById('btn-confirm-proceed'),
 
       // Navigation Buttons
       navItems: document.querySelectorAll('.nav-item-btn'),
@@ -1728,10 +1770,26 @@ const PawBridgeApp = {
     if (this.dom.btnNavRegister) {
       this.dom.btnNavRegister.addEventListener('click', () => this.switchAuthMode('register'));
     }
+    if (this.dom.btnNavProfile) {
+      this.dom.btnNavProfile.addEventListener('click', () => this.switchAuthMode('profile'));
+    }
     if (this.dom.btnNavVerification) {
       this.dom.btnNavVerification.addEventListener('click', () => {
         this.switchAuthMode('app');
         this.navigateTo('verification');
+      });
+    }
+    if (this.dom.btnHeaderViewProfile) {
+      this.dom.btnHeaderViewProfile.addEventListener('click', () => this.switchAuthMode('profile'));
+    }
+    if (this.dom.btnPubSwitchAdmin) {
+      this.dom.btnPubSwitchAdmin.addEventListener('click', () => this.switchAuthMode('app'));
+    }
+    if (this.dom.btnWizardGotoVerification) {
+      this.dom.btnWizardGotoVerification.addEventListener('click', () => {
+        this.switchAuthMode('app');
+        this.navigateTo('verification');
+        this.showToast('Navigated to Document Verification & Audit Desk', 'success');
       });
     }
 
@@ -2447,6 +2505,9 @@ const PawBridgeApp = {
     if (this.dom.btnDismissViewDocModal) {
       this.dom.btnDismissViewDocModal.addEventListener('click', () => this.closeViewDocModal());
     }
+
+    // Public Profile & Trust Action Event Listeners
+    this.bindPublicProfileEvents();
   },
 
   setupShortcuts() {
@@ -2466,18 +2527,20 @@ const PawBridgeApp = {
   // AUTHENTICATION MODES & FLOW SWITCHING
   // ============================================================
   switchAuthMode(mode) {
-    // mode: 'app' | 'login' | 'register'
+    // mode: 'app' | 'login' | 'register' | 'profile'
     PawBridgeStore.authMode = mode;
 
     // Reset visibility of all views
     if (this.dom.viewAppMain) this.dom.viewAppMain.style.display = mode === 'app' ? 'flex' : 'none';
     if (this.dom.viewAuthLogin) this.dom.viewAuthLogin.style.display = mode === 'login' ? 'flex' : 'none';
     if (this.dom.viewAuthRegister) this.dom.viewAuthRegister.style.display = mode === 'register' ? 'flex' : 'none';
+    if (this.dom.viewPublicProfile) this.dom.viewPublicProfile.style.display = mode === 'profile' ? 'flex' : 'none';
 
     // Update Top Navigation Switcher Pills
     if (this.dom.btnNavApp) this.dom.btnNavApp.classList.toggle('active', mode === 'app');
     if (this.dom.btnNavLogin) this.dom.btnNavLogin.classList.toggle('active', mode === 'login');
     if (this.dom.btnNavRegister) this.dom.btnNavRegister.classList.toggle('active', mode === 'register');
+    if (this.dom.btnNavProfile) this.dom.btnNavProfile.classList.toggle('active', mode === 'profile');
 
     // Update Chrome URL bar text
     if (this.dom.chromeAddressText) {
@@ -2485,9 +2548,29 @@ const PawBridgeApp = {
         this.dom.chromeAddressText.textContent = 'https://pawbridge.org/app/auth/login';
       } else if (mode === 'register') {
         this.dom.chromeAddressText.textContent = 'https://pawbridge.org/app/auth/register';
+      } else if (mode === 'profile') {
+        this.dom.chromeAddressText.textContent = 'https://pawbridge.org/public/happy-tails-sanctuary';
       } else {
-        this.dom.chromeAddressText.textContent = 'https://pawbridge.org/app/operations/shelter-triage';
+        const urlMap = {
+          overview: 'https://pawbridge.org/app/operations/shelter-triage',
+          rescues: 'https://pawbridge.org/app/operations/rescue-registry',
+          kennels: 'https://pawbridge.org/app/shelter/kennel-matrix',
+          clinical: 'https://pawbridge.org/app/clinical/veterinary-rounds',
+          adoptions: 'https://pawbridge.org/app/programs/adoptions-kanban',
+          dispatch: 'https://pawbridge.org/app/logistics/ambulance-dispatch',
+          inventory: 'https://pawbridge.org/app/logistics/medical-supplies',
+          requests: 'https://pawbridge.org/app/programs/support-requests',
+          impact: 'https://pawbridge.org/app/governance/impact-reports',
+          verification: 'https://pawbridge.org/app/governance/document-verification',
+          compliance: 'https://pawbridge.org/app/governance/compliance-vault'
+        };
+        this.dom.chromeAddressText.textContent = urlMap[PawBridgeStore.activeScreen] || 'https://pawbridge.org/app/operations/shelter-triage';
       }
+    }
+
+    // When switching to profile, render dynamic components
+    if (mode === 'profile') {
+      this.renderPublicProfile();
     }
 
     // Scroll to top of window frame
@@ -2908,6 +2991,11 @@ const PawBridgeApp = {
   // NAVIGATION & VIEW SWITCHING
   // ============================================================
   navigateTo(screenId) {
+    if (screenId === 'profile') {
+      this.switchAuthMode('profile');
+      return;
+    }
+
     PawBridgeStore.activeScreen = screenId;
 
     // Update Sidebar state
@@ -2940,12 +3028,33 @@ const PawBridgeApp = {
       compliance: { section: 'Governance', title: 'Compliance & Document Vault' },
       impact: { section: 'Governance & Trust', title: 'Impact Reports & Statutory Outcomes' },
       requests: { section: 'Programs & Logistics', title: 'Shelter Support & Aid Requisitions' },
-      inventory: { section: 'Logistics', title: 'Medical Supplies & Feed' }
+      inventory: { section: 'Logistics', title: 'Medical Supplies & Feed' },
+      profile: { section: 'Public Registry', title: 'Public NGO Profile & Transparency Registry' }
     };
 
     const meta = screenMeta[screenId] || { section: 'PawBridge', title: 'Operations OS' };
     if (this.dom.headerBreadcrumbContext) this.dom.headerBreadcrumbContext.textContent = meta.section;
     if (this.dom.headerContextTitle) this.dom.headerContextTitle.textContent = meta.title;
+
+    // Update Chrome URL bar text
+    if (this.dom.chromeAddressText && PawBridgeStore.authMode === 'app') {
+      const urlMap = {
+        overview: 'https://pawbridge.org/app/operations/shelter-triage',
+        rescues: 'https://pawbridge.org/app/operations/rescue-registry',
+        kennels: 'https://pawbridge.org/app/shelter/kennel-matrix',
+        clinical: 'https://pawbridge.org/app/clinical/veterinary-rounds',
+        adoptions: 'https://pawbridge.org/app/programs/adoptions-kanban',
+        dispatch: 'https://pawbridge.org/app/logistics/ambulance-dispatch',
+        inventory: 'https://pawbridge.org/app/logistics/medical-supplies',
+        requests: 'https://pawbridge.org/app/programs/support-requests',
+        impact: 'https://pawbridge.org/app/governance/impact-reports',
+        verification: 'https://pawbridge.org/app/governance/document-verification',
+        compliance: 'https://pawbridge.org/app/governance/compliance-vault'
+      };
+      if (urlMap[screenId]) {
+        this.dom.chromeAddressText.textContent = urlMap[screenId];
+      }
+    }
 
     // Trigger re-render of active screen
     this.renderScreen(screenId);
@@ -2986,6 +3095,9 @@ const PawBridgeApp = {
       case 'inventory':
         this.renderInventoryTable();
         break;
+      case 'profile':
+        this.renderPublicProfile();
+        break;
     }
   },
 
@@ -3001,6 +3113,7 @@ const PawBridgeApp = {
     this.renderImpactScreen();
     this.renderSupportRequests();
     this.renderInventoryTable();
+    this.renderPublicProfile();
     this.renderNotifications();
   },
 
@@ -6208,6 +6321,715 @@ const PawBridgeApp = {
   closeViewDocModal() {
     if (this.dom.modalViewRequestDoc) {
       this.dom.modalViewRequestDoc.classList.remove('active');
+    }
+  },
+
+  // ============================================================
+  // PUBLIC NGO PROFILE CONTROLLER & TRUST ACTIONS
+  // ============================================================
+  bindPublicProfileEvents() {
+    // Header & Hero CTA Buttons
+    const btnPubOpenDonate = document.getElementById('btn-pub-open-donate');
+    if (btnPubOpenDonate) btnPubOpenDonate.addEventListener('click', () => this.openPublicDonateModal());
+
+    const btnHeroDonate = document.getElementById('btn-hero-donate');
+    if (btnHeroDonate) btnHeroDonate.addEventListener('click', () => this.openPublicDonateModal());
+
+    const btnPubOpenVolunteer = document.getElementById('btn-pub-open-volunteer');
+    if (btnPubOpenVolunteer) btnPubOpenVolunteer.addEventListener('click', () => this.openPublicVolunteerModal());
+
+    const btnHeroVolunteer = document.getElementById('btn-hero-volunteer');
+    if (btnHeroVolunteer) btnHeroVolunteer.addEventListener('click', () => this.openPublicVolunteerModal());
+
+    const btnPubOpenShare = document.getElementById('btn-pub-open-share');
+    if (btnPubOpenShare) btnPubOpenShare.addEventListener('click', () => this.openPublicShareModal());
+
+    const btnHeroShare = document.getElementById('btn-hero-share');
+    if (btnHeroShare) btnHeroShare.addEventListener('click', () => this.openPublicShareModal());
+
+    const btnPubOpenContact = document.getElementById('btn-pub-open-contact');
+    if (btnPubOpenContact) {
+      btnPubOpenContact.addEventListener('click', () => {
+        const target = document.getElementById('pub-contact-section');
+        if (target) target.scrollIntoView({ behavior: 'smooth' });
+      });
+    }
+
+    const btnHeroContact = document.getElementById('btn-hero-contact');
+    if (btnHeroContact) {
+      btnHeroContact.addEventListener('click', () => {
+        const target = document.getElementById('pub-contact-section');
+        if (target) target.scrollIntoView({ behavior: 'smooth' });
+      });
+    }
+
+    const btnContactInquiryCta = document.getElementById('btn-contact-inquiry-cta');
+    if (btnContactInquiryCta) {
+      btnContactInquiryCta.addEventListener('click', () => {
+        const inp = document.getElementById('pub-quick-name');
+        if (inp) inp.focus();
+      });
+    }
+
+    const btnContactVolunteerCta = document.getElementById('btn-contact-volunteer-cta');
+    if (btnContactVolunteerCta) {
+      btnContactVolunteerCta.addEventListener('click', () => this.openPublicVolunteerModal());
+    }
+
+    const btnContactDirectionsCta = document.getElementById('btn-contact-directions-cta');
+    if (btnContactDirectionsCta) {
+      btnContactDirectionsCta.addEventListener('click', () => {
+        this.showToast('📍 Campus Directions: Plot 12, Farm Road, Chhatarpur (Open Mon-Sat 10 AM - 5 PM by appointment)', 'success');
+      });
+    }
+
+    const btnPubViewAllCases = document.getElementById('btn-pub-view-all-cases');
+    if (btnPubViewAllCases) {
+      btnPubViewAllCases.addEventListener('click', () => {
+        this.switchAuthMode('app');
+        this.navigateTo('rescues');
+      });
+    }
+
+    // Donation Modal Events
+    if (this.dom.btnClosePublicDonate) {
+      this.dom.btnClosePublicDonate.addEventListener('click', () => this.closePublicDonateModal());
+    }
+    if (this.dom.btnCancelPublicDonate) {
+      this.dom.btnCancelPublicDonate.addEventListener('click', () => this.closePublicDonateModal());
+    }
+    if (this.dom.formPublicDonate) {
+      this.dom.formPublicDonate.addEventListener('submit', (e) => {
+        e.preventDefault();
+        this.handlePublicDonateSubmit(e);
+      });
+    }
+
+    // Donation Tiers Selector
+    if (this.dom.donateTiersGrid) {
+      this.dom.donateTiersGrid.addEventListener('click', (e) => {
+        const chip = e.target.closest('.donate-tier-chip');
+        if (!chip) return;
+        const amt = chip.getAttribute('data-amount');
+        if (this.dom.pubDonateAmount) this.dom.pubDonateAmount.value = amt;
+
+        this.dom.donateTiersGrid.querySelectorAll('.donate-tier-chip').forEach(c => c.classList.remove('active'));
+        chip.classList.add('active');
+      });
+    }
+
+    if (this.dom.pubDonateAmount) {
+      this.dom.pubDonateAmount.addEventListener('input', (e) => {
+        const val = e.target.value;
+        if (this.dom.donateTiersGrid) {
+          this.dom.donateTiersGrid.querySelectorAll('.donate-tier-chip').forEach(chip => {
+            chip.classList.toggle('active', chip.getAttribute('data-amount') === val);
+          });
+        }
+      });
+    }
+
+    // Volunteer Modal Events
+    if (this.dom.btnClosePublicVolunteer) {
+      this.dom.btnClosePublicVolunteer.addEventListener('click', () => this.closePublicVolunteerModal());
+    }
+    if (this.dom.btnCancelPublicVolunteer) {
+      this.dom.btnCancelPublicVolunteer.addEventListener('click', () => this.closePublicVolunteerModal());
+    }
+    if (this.dom.formPublicVolunteer) {
+      this.dom.formPublicVolunteer.addEventListener('submit', (e) => {
+        e.preventDefault();
+        this.handlePublicVolunteerSubmit(e);
+      });
+    }
+
+    // Share Modal Events
+    if (this.dom.btnClosePublicShare) {
+      this.dom.btnClosePublicShare.addEventListener('click', () => this.closePublicShareModal());
+    }
+    if (this.dom.btnDismissPublicShare) {
+      this.dom.btnDismissPublicShare.addEventListener('click', () => this.closePublicShareModal());
+    }
+    if (this.dom.btnCopyShareUrl) {
+      this.dom.btnCopyShareUrl.addEventListener('click', () => this.copyShareUrl());
+    }
+
+    const btnShareWhatsapp = document.getElementById('btn-share-whatsapp');
+    if (btnShareWhatsapp) {
+      btnShareWhatsapp.addEventListener('click', () => {
+        const text = encodeURIComponent('Check out Happy Tails Animal Sanctuary on PawBridge Verified Registry: https://pawbridge.org/public/happy-tails-sanctuary');
+        window.open(`https://wa.me/?text=${text}`, '_blank');
+      });
+    }
+
+    const btnShareTwitter = document.getElementById('btn-share-twitter');
+    if (btnShareTwitter) {
+      btnShareTwitter.addEventListener('click', () => {
+        const text = encodeURIComponent('Verified Animal Welfare Shelter: Happy Tails Sanctuary • Audited Impact & 80G Tax Relief on PawBridge:');
+        const url = encodeURIComponent('https://pawbridge.org/public/happy-tails-sanctuary');
+        window.open(`https://twitter.com/intent/tweet?text=${text}&url=${url}`, '_blank');
+      });
+    }
+
+    const btnShareEmail = document.getElementById('btn-share-email');
+    if (btnShareEmail) {
+      btnShareEmail.addEventListener('click', () => {
+        const sub = encodeURIComponent('Happy Tails Animal Sanctuary - PawBridge Verified Non-Profit');
+        const body = encodeURIComponent('Inspect Happy Tails Animal Sanctuary verified credentials, hospital facilities, and emergency aid requisitions here: https://pawbridge.org/public/happy-tails-sanctuary');
+        window.location.href = `mailto:?subject=${sub}&body=${body}`;
+      });
+    }
+
+    const btnDownloadQr = document.getElementById('btn-download-qr-card');
+    if (btnDownloadQr) {
+      btnDownloadQr.addEventListener('click', () => {
+        this.showToast('📥 Downloading high-resolution PawBridge Verified Trust Badge QR card (PDF)...', 'success');
+        setTimeout(() => window.print(), 300);
+      });
+    }
+
+    // Patient Case Journey Modal Events
+    if (this.dom.btnCloseCaseJourney) {
+      this.dom.btnCloseCaseJourney.addEventListener('click', () => this.closePublicCaseJourney());
+    }
+    if (this.dom.btnDismissCaseJourney) {
+      this.dom.btnDismissCaseJourney.addEventListener('click', () => this.closePublicCaseJourney());
+    }
+
+    // Public Doc Inspector Modal Events
+    if (this.dom.btnClosePubDoc) {
+      this.dom.btnClosePubDoc.addEventListener('click', () => this.closePublicDocInspector());
+    }
+    if (this.dom.btnDismissPubDoc) {
+      this.dom.btnDismissPubDoc.addEventListener('click', () => this.closePublicDocInspector());
+    }
+
+    // Quick Contact Form
+    const formPubContact = document.getElementById('form-pub-quick-contact');
+    if (formPubContact) {
+      formPubContact.addEventListener('submit', (e) => {
+        e.preventDefault();
+        this.handlePublicQuickContactSubmit(e);
+      });
+    }
+
+    // Generic Confirm Modal Cancel
+    if (this.dom.btnConfirmCancel) {
+      this.dom.btnConfirmCancel.addEventListener('click', () => {
+        if (this.dom.modalGenericConfirm) this.dom.modalGenericConfirm.classList.remove('active');
+      });
+    }
+
+    // Public Nav Anchor Smooth Scroll
+    const pubNavLinks = document.querySelectorAll('.pub-nav-link');
+    pubNavLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        const targetId = link.getAttribute('href');
+        if (targetId && targetId.startsWith('#')) {
+          e.preventDefault();
+          const targetEl = document.querySelector(targetId);
+          if (targetEl) {
+            targetEl.scrollIntoView({ behavior: 'smooth' });
+            pubNavLinks.forEach(l => l.classList.remove('active'));
+            link.classList.add('active');
+          }
+        }
+      });
+    });
+  },
+
+  renderPublicProfile() {
+    const orgNameEl = document.getElementById('pub-org-name');
+    if (orgNameEl) orgNameEl.textContent = PawBridgeStore.ngoInfo?.name || 'Happy Tails Animal Sanctuary';
+
+    // Populate Live Support Needs
+    const gridEl = document.getElementById('pub-needs-grid');
+    if (!gridEl) return;
+
+    const activeReqs = PawBridgeStore.supportRequests.filter(r => r.status === 'active');
+    if (activeReqs.length === 0) {
+      gridEl.innerHTML = `
+        <div style="grid-column: 1 / -1; background: #FFFFFF; border: 1px dashed var(--color-border); border-radius: 10px; padding: 36px; text-align: center;">
+          <div style="font-size: 28px; margin-bottom: 8px;">🎉</div>
+          <h4 style="font-family: var(--font-heading); font-size: 16px; font-weight: 700; color: var(--color-text-dark); margin-bottom: 4px;">All Operational Requisitions Fulfilled</h4>
+          <p style="font-size: 13px; color: var(--color-text-muted); margin: 0;">The shelter currently has zero unfulfilled critical deficits. You may still contribute general clinical emergency aid below.</p>
+        </div>
+      `;
+      return;
+    }
+
+    gridEl.innerHTML = activeReqs.map(r => `
+      <div class="pub-need-card">
+        <div class="pub-need-card-header">
+          <div>
+            <div style="display: flex; align-items: center; gap: 6px; margin-bottom: 6px;">
+              <span class="category-tag ${r.category}" style="font-size: 11px; padding: 2px 7px;">
+                ${r.categoryIcon} ${r.categoryLabel}
+              </span>
+              <span class="urgency-pill ${r.urgency}" style="font-size: 10px; padding: 2px 6px;">
+                ${r.urgency === 'critical' ? '🚨 Urgent < 48h' : r.urgency === 'high' ? '⚡ High' : 'Routine'}
+              </span>
+            </div>
+            <h4 class="pub-need-title">${r.title}</h4>
+            <span class="pub-need-linked-case">📍 Linked: ${r.linkedCase}</span>
+          </div>
+        </div>
+
+        <div class="pub-need-body">
+          <p class="pub-need-desc">${r.description}</p>
+          
+          <div class="pub-need-progress-wrap">
+            <div class="pub-need-progress-label">
+              <span>Progress: <strong>${r.progressDisplay}</strong></span>
+              <span style="color: var(--color-olive-dark);">${r.percent}%</span>
+            </div>
+            <div class="request-progress-bar" style="height: 7px;">
+              <div class="request-progress-fill" style="width: ${r.percent}%;"></div>
+            </div>
+          </div>
+
+          <div style="font-size: 11px; color: var(--color-text-subtle); display: flex; align-items: center; gap: 4px;">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <span>Target Deadline: ${r.deadlineDisplay}</span>
+          </div>
+        </div>
+
+        <div class="pub-need-footer">
+          <button type="button" class="btn-cred-view" onclick="PawBridgeApp.viewRequestDocument('${r.documents?.[0]?.name || 'Vet_Prescription.pdf'}', '${r.id}')" title="Inspect clinical evidence">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            <span>Inspect Evidence</span>
+          </button>
+
+          <button type="button" class="btn-primary-olive" onclick="PawBridgeApp.openPublicDonateModal('${r.id}')" style="font-size: 12px; padding: 6px 14px; gap: 5px;">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            <span>Contribute Aid</span>
+          </button>
+        </div>
+      </div>
+    `).join('');
+  },
+
+  openPublicDonateModal(reqId = null) {
+    PawBridgeStore.activePublicDonateReqId = reqId;
+
+    const titleEl = document.getElementById('public-donate-title');
+    if (reqId) {
+      const r = PawBridgeStore.supportRequests.find(item => item.id === reqId);
+      if (r && titleEl) {
+        titleEl.textContent = `Contribute to ${r.linkedCase}`;
+      }
+    } else if (titleEl) {
+      titleEl.textContent = 'Support Happy Tails Animal Sanctuary';
+    }
+
+    if (this.dom.modalPublicDonate) {
+      this.dom.modalPublicDonate.classList.add('active');
+      if (this.dom.pubDonateAmount) this.dom.pubDonateAmount.focus();
+    }
+  },
+
+  closePublicDonateModal() {
+    if (this.dom.modalPublicDonate) {
+      this.dom.modalPublicDonate.classList.remove('active');
+    }
+    PawBridgeStore.activePublicDonateReqId = null;
+  },
+
+  handlePublicDonateSubmit(e) {
+    const amtInput = document.getElementById('pub-donate-amount');
+    const nameInput = document.getElementById('pub-donor-name');
+    const emailInput = document.getElementById('pub-donor-email');
+    const panInput = document.getElementById('pub-donor-pan');
+    const submitBtn = document.getElementById('btn-submit-public-donate');
+
+    const amt = parseInt(amtInput?.value, 10) || 0;
+    const name = nameInput?.value.trim() || '';
+    const email = emailInput?.value.trim() || '';
+    const pan = panInput?.value.trim().toUpperCase() || 'NOT_PROVIDED';
+
+    if (amt < 100) {
+      this.showToast('Please enter a minimum contribution of ₹100', 'alert');
+      return;
+    }
+    if (!name || !email) {
+      this.showToast('Please provide your name and email for 80G tax receipt issuance', 'alert');
+      return;
+    }
+
+    if (submitBtn) {
+      submitBtn.classList.add('btn-is-loading');
+      submitBtn.disabled = true;
+    }
+
+    setTimeout(() => {
+      if (submitBtn) {
+        submitBtn.classList.remove('btn-is-loading');
+        submitBtn.disabled = false;
+      }
+
+      // Update linked requisition if applicable
+      const reqId = PawBridgeStore.activePublicDonateReqId;
+      if (reqId) {
+        const r = PawBridgeStore.supportRequests.find(item => item.id === reqId);
+        if (r) {
+          r.currentVal += amt;
+          r.percent = Math.min(100, Math.round((r.currentVal / r.targetVal) * 100));
+          if (r.unit === '₹') {
+            r.progressDisplay = `₹${r.currentVal.toLocaleString('en-IN')} raised of ₹${r.targetVal.toLocaleString('en-IN')} target`;
+          } else {
+            r.progressDisplay = `${r.currentVal} ${r.unit} received of ${r.targetVal} ${r.unit} target`;
+          }
+          if (r.percent >= 100) {
+            r.status = 'fulfilled';
+            r.statusLabel = '100% Fulfilled';
+            r.fulfillment = {
+              sponsor: `${name} (Public Aid)`,
+              date: new Date().toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }),
+              receiptNo: `GIN-2026-PB${Math.floor(Math.random() * 800 + 100)}`,
+              deliveredVal: `₹${r.currentVal.toLocaleString('en-IN')}`,
+              allocation: r.linkedCase,
+              notes: 'Reconciled via PawBridge Section 80G digital gateway.'
+            };
+          }
+        }
+      }
+
+      const receiptId = `PB-80G-2026-${Math.floor(Math.random() * 8999 + 1000)}`;
+      this.closePublicDonateModal();
+      this.showToast(`🎉 Tax-deductible donation of ₹${amt.toLocaleString('en-IN')} confirmed! Digital receipt ${receiptId} issued to ${email}`, 'success');
+
+      this.renderPublicProfile();
+      this.renderSupportRequests();
+      this.renderOverview();
+    }, 600);
+  },
+
+  openPublicVolunteerModal() {
+    if (this.dom.modalPublicVolunteer) {
+      this.dom.modalPublicVolunteer.classList.add('active');
+      const nameInput = document.getElementById('vol-name');
+      if (nameInput) nameInput.focus();
+    }
+  },
+
+  closePublicVolunteerModal() {
+    if (this.dom.modalPublicVolunteer) {
+      this.dom.modalPublicVolunteer.classList.remove('active');
+    }
+  },
+
+  handlePublicVolunteerSubmit(e) {
+    const name = document.getElementById('vol-name')?.value.trim();
+    const phone = document.getElementById('vol-phone')?.value.trim();
+    const email = document.getElementById('vol-email')?.value.trim();
+    const role = document.getElementById('vol-role')?.value;
+
+    if (!name || !phone || !email) {
+      this.showToast('Please fill all required volunteer contact details', 'alert');
+      return;
+    }
+
+    const ticketNo = `VOL-2026-${Math.floor(Math.random() * 800 + 100)}`;
+    this.closePublicVolunteerModal();
+    this.showToast(`📋 Volunteer application received (Ticket #${ticketNo})! Shelter coordinator will contact you.`, 'success');
+  },
+
+  openPublicShareModal() {
+    if (this.dom.modalPublicShare) {
+      this.dom.modalPublicShare.classList.add('active');
+    }
+  },
+
+  closePublicShareModal() {
+    if (this.dom.modalPublicShare) {
+      this.dom.modalPublicShare.classList.remove('active');
+    }
+  },
+
+  copyShareUrl() {
+    const input = document.getElementById('share-url-input');
+    if (input) {
+      input.select();
+      navigator.clipboard?.writeText(input.value);
+      this.showToast('📋 Verified shelter registry link copied to clipboard!', 'success');
+    }
+  },
+
+  openPublicCaseJourney(caseId) {
+    const caseData = {
+      'RC-1048': {
+        name: 'Leo',
+        id: '#RC-1048',
+        breed: 'Desi / Indie Mix • Male • 2 Years',
+        photo: 'https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&w=600&q=80',
+        date: '24 Oct 2026',
+        location: 'Mehrauli-Badarpur Highway, Delhi',
+        ward: 'ICU-03 Trauma Recovery Bay',
+        vet: 'Dr. Ananya Sharma, BVSc & AH (Lead Vet)',
+        microchip: '985 141 002 918 201',
+        status: 'Rehabilitated / Physical Therapy',
+        story: 'Leo was admitted with an open compound fracture of the right tibia and fibula following a vehicular hit-and-run on the highway. Emergency trauma stabilization was performed immediately.',
+        timeline: [
+          { time: '24 Oct 2026 14:15', title: 'Admitted in Shock', desc: 'IV crystalloids, multimodal analgesia, and wound debridement under sterile field.' },
+          { time: '25 Oct 2026 09:30', title: 'Orthopedic Surgery Completed', desc: '3.5-hour surgical plate reduction with 6-hole titanium dynamic compression plate.' },
+          { time: '27 Oct 2026 11:00', title: 'Post-Op Callus Formation', desc: 'Post-operative radiographs verify anatomic bone alignment. Commenced passive range-of-motion therapy.' },
+          { time: '28 Oct 2026 16:00', title: 'Weight-Bearing Rehabilitation', desc: 'Bearing 60% body weight on limb. Eating well with normal clinical vitals.' }
+        ]
+      },
+      'RC-1049': {
+        name: 'Bella',
+        id: '#RC-1049',
+        breed: 'Desi Indie • Female • 1.5 Years',
+        photo: 'https://images.unsplash.com/photo-1561037404-61cd46aa615b?auto=format&fit=crop&w=600&q=80',
+        date: '22 Oct 2026',
+        location: 'South Extension Storm Drain',
+        ward: 'Supervised Medical Foster (South Ext)',
+        vet: 'Dr. Rajiv Nanda, BVSc',
+        microchip: '985 141 002 918 202',
+        status: 'In Supervised Medical Foster',
+        story: 'Rescued from deep storm drain culvert with acute septic tissue necrosis on forepaw. Stabilized with targeted antibiotics and moved to quiet home foster care.',
+        timeline: [
+          { time: '22 Oct 2026 18:30', title: 'Culvert Rescue Intake', desc: 'Severe hypothermia and septic puncture wounds on paw pad. Cleaned under local block.' },
+          { time: '24 Oct 2026 10:00', title: 'Infection Controlled', desc: 'Wound granulated well under silver sulfadiazine dressing and oral cephalosporin.' },
+          { time: '26 Oct 2026 15:00', title: 'Placed in Foster Care', desc: 'Transferred to approved medical foster family for 6-week quiet rehabilitation.' }
+        ]
+      },
+      'RC-1050': {
+        name: 'Bruno',
+        id: '#RC-1050',
+        breed: 'Labrador-Desi Cross • Male • 3 Years',
+        photo: 'https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&w=600&q=80',
+        date: '10 Oct 2026',
+        location: 'Okhla Industrial Area',
+        ward: 'Adoption Bay A-04',
+        vet: 'Dr. Ananya Sharma',
+        microchip: '985 141 002 918 203',
+        status: 'Healed & Ready for Adoption',
+        story: 'Abandoned with severe generalized demodectic mange covering 80% body surface and acute emaciation. Fully healed with glistening fur and playful demeanor.',
+        timeline: [
+          { time: '10 Oct 2026', title: 'Severe Dermatitis Intake', desc: 'Skin scrapings positive for Demodex canis. Commenced isoxazoline therapy & sulfur baths.' },
+          { time: '18 Oct 2026', title: 'Skin Epithelial Healing', desc: 'Secondary bacterial pyoderma completely resolved. Gained 4.2 kg weight.' },
+          { time: '27 Oct 2026', title: 'Certified Fit for Adoption', desc: 'Negative scrapings. Neutered, microchipped, fully vaccinated with rabies & DHPPi.' }
+        ]
+      },
+      'RC-1051': {
+        name: 'Toby & Culvert Litters',
+        id: '#RC-1051',
+        breed: 'Indie Puppies • 8 Weeks Old (14 Pups)',
+        photo: 'https://images.unsplash.com/photo-1591769225440-811ad7d6eab2?auto=format&fit=crop&w=600&q=80',
+        date: '18 Oct 2026',
+        location: 'Yamuna Flood Plains Lowlands',
+        ward: 'Ward B: Quarantine Neonatal Bay',
+        vet: 'Nurse Vikas & Dr. Sharma',
+        microchip: 'Litter Group Chip #985-002-LIT',
+        status: 'Puppy Starter Nutrition Care',
+        story: '14 unweaned puppies rescued from inundated storm culverts during Yamuna monsoon floods. Successfully stabilized through neonatal incubators and digestive formula.',
+        timeline: [
+          { time: '18 Oct 2026', title: 'Flood Emergency Intake', desc: 'Hypothermic body temp 97.4°F. Warmed with heating pads and fed warm probiotic milk.' },
+          { time: '22 Oct 2026', title: 'Starter Kibble Weaning', desc: 'Transitioned successfully to gastrointestinal puppy starter kibble.' },
+          { time: '28 Oct 2026', title: 'Primary Immunization', desc: '1st DHPPi vaccine administered. Active, alert, and gaining steady weight.' }
+        ]
+      }
+    };
+
+    const c = caseData[caseId] || caseData['RC-1048'];
+    const bodyEl = document.getElementById('case-journey-modal-body');
+    if (!bodyEl) return;
+
+    bodyEl.innerHTML = `
+      <div style="display: grid; grid-template-columns: 200px 1fr; gap: 20px; margin-bottom: 20px;">
+        <div style="height: 180px; border-radius: 10px; overflow: hidden; border: 1px solid var(--color-border);">
+          <img src="${c.photo}" alt="${c.name}" style="width: 100%; height: 100%; object-fit: cover;" />
+        </div>
+        <div>
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 4px;">
+            <div>
+              <h3 style="font-family: var(--font-heading); font-size: 22px; font-weight: 700; color: var(--color-text-dark); margin: 0;">${c.name}</h3>
+              <span style="font-size: 12px; color: var(--color-text-muted);">${c.breed}</span>
+            </div>
+            <span class="status-pill verified" style="font-size: 11px;">${c.id}</span>
+          </div>
+          <div style="background: var(--color-cream-surface); border: 1px solid var(--color-border-subtle); border-radius: 8px; padding: 10px 12px; margin: 10px 0; font-size: 12px; display: grid; grid-template-columns: 1fr 1fr; gap: 6px;">
+            <div><strong>Admitted:</strong> ${c.date}</div>
+            <div><strong>Location:</strong> ${c.location}</div>
+            <div><strong>Attending Vet:</strong> ${c.vet}</div>
+            <div><strong>Ward:</strong> ${c.ward}</div>
+            <div style="grid-column: span 2;"><strong>Microchip ID:</strong> <code>${c.microchip}</code></div>
+          </div>
+          <p style="font-size: 13px; line-height: 1.5; color: var(--color-text-muted); margin: 0;">${c.story}</p>
+        </div>
+      </div>
+
+      <div style="border-top: 1px solid var(--color-border-subtle); padding-top: 16px;">
+        <h4 style="font-family: var(--font-heading); font-size: 15px; font-weight: 700; color: var(--color-text-dark); margin: 0 0 12px 0;">
+          Verified Clinical Event Chronology
+        </h4>
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+          ${c.timeline.map(t => `
+            <div style="display: flex; gap: 12px; align-items: flex-start;">
+              <span style="color: var(--color-olive); font-weight: 700; font-size: 14px; margin-top: 2px;">●</span>
+              <div style="flex: 1; background: #FFFFFF; border: 1px solid var(--color-border); border-radius: 8px; padding: 10px 14px;">
+                <div style="display: flex; justify-content: space-between; margin-bottom: 2px;">
+                  <strong style="font-size: 13px; color: var(--color-text-dark);">${t.title}</strong>
+                  <span style="font-size: 11px; color: var(--color-text-subtle);">${t.time}</span>
+                </div>
+                <p style="font-size: 12px; color: var(--color-text-muted); margin: 0; line-height: 1.45;">${t.desc}</p>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    `;
+
+    if (this.dom.modalPublicCaseJourney) {
+      this.dom.modalPublicCaseJourney.classList.add('active');
+    }
+  },
+
+  closePublicCaseJourney() {
+    if (this.dom.modalPublicCaseJourney) {
+      this.dom.modalPublicCaseJourney.classList.remove('active');
+    }
+  },
+
+  viewPublicDocument(docKey) {
+    const docs = {
+      society_reg_deed: {
+        title: 'Trust Registration Deed & Society Incorporation',
+        issuer: 'Sub-Registrar of Societies, Govt of NCT Delhi',
+        regId: 'DL/2018/****923 (Masked for Security)',
+        date: '14 Oct 2018 (Verified Active 2026)',
+        hash: 'SHA256: 8a93bf81e7d042bb88a109923847f9b31',
+        auditor: 'Adv. Vikramaditya Sen (Senior Legal Auditor)',
+        type: 'Verified Statutory Document',
+        notes: 'Charter documents authenticated against NCT Delhi gazette records. Registered entity name, trust objectives, and governing body confirmed.'
+      },
+      form_10ac_80g: {
+        title: 'Section 12A & 80G Tax Exemption (Form 10AC)',
+        issuer: 'Commissioner of Income Tax (Exemptions), New Delhi',
+        regId: 'CIT(EXEMP)/DELHI/****3381',
+        date: 'Valid AY 2024–2029',
+        hash: 'SHA256: d472aa10fc831190bc7710aa984701fa',
+        auditor: 'CA R. K. Bhasin (Statutory Auditor)',
+        type: 'Approved Income Tax Order',
+        notes: 'Indian citizen contributions eligible for 50% tax deduction under Section 80G of Income Tax Act 1961. Digital certificates auto-generated.'
+      },
+      awbi_recognition: {
+        title: 'Animal Welfare Board of India (AWBI) Recognition',
+        issuer: 'Animal Welfare Board of India, Ministry of Fisheries & Animal Husbandry',
+        regId: 'AWBI/2021/DL-402',
+        date: 'Renewed June 2025 (Valid to 2028)',
+        hash: 'SHA256: ee0488f21901ab880199447712ee991a',
+        auditor: 'PawBridge National NGO Review Desk',
+        type: 'Accredited Animal Welfare Organization',
+        notes: 'Verified compliance with Prevention of Cruelty to Animals Act 1960 and Animal Birth Control (Dogs) Rules.'
+      },
+      ca_audit_summary: {
+        title: 'Audited Financial Statements & Utilization Return (FY 2025–26)',
+        issuer: 'M/s Bhasin & Co. Chartered Accountants',
+        regId: 'FRN 014920N / CA Reg #089124',
+        date: 'Audited 30 June 2026',
+        hash: 'SHA256: 12ab990144f2887cdd102944cc45aa01',
+        auditor: 'CA Rajesh Bhasin, FCA',
+        type: 'Independent Financial Audit',
+        notes: '91.4% of total public expenditure allocated to medical treatments, veterinary staffing, and shelter nutrition. Administrative overhead at 8.6%.'
+      },
+      abc_self_report: {
+        title: 'Community Sterilization & Outreach Self-Report (Q3 2026)',
+        issuer: 'Happy Tails Operations Desk (Self-Reported Submission)',
+        regId: 'INT-SR-2026-Q3',
+        date: 'Submitted 15 Oct 2026',
+        hash: 'SHA256: 77a1bb90cf1244e881029471182490cc',
+        auditor: 'Pending Next Municipal Audit Cycle',
+        type: 'Organisation-Reported Submission',
+        notes: 'Self-reported quarterly internal operational log submitted by shelter field team. Disclosed transparently as uncertified until municipal reconciliation.'
+      }
+    };
+
+    const d = docs[docKey] || docs.society_reg_deed;
+    const bodyEl = document.getElementById('pub-doc-modal-body');
+    if (!bodyEl) return;
+
+    bodyEl.innerHTML = `
+      <div style="background: ${docKey === 'abc_self_report' ? '#FFF7E6' : '#F3F7F0'}; border: 1px solid ${docKey === 'abc_self_report' ? '#FFE0A3' : '#C8DEC2'}; border-radius: 8px; padding: 16px; margin-bottom: 16px;">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px;">
+          <div>
+            <span class="label-13 uppercase" style="color: ${docKey === 'abc_self_report' ? '#9A6700' : 'var(--color-olive-dark)'}; font-weight: 700;">${d.type}</span>
+            <h4 style="font-family: var(--font-heading); font-size: 18px; font-weight: 700; color: var(--color-text-dark); margin: 2px 0 0 0;">${d.title}</h4>
+          </div>
+          <span class="status-pill ${docKey === 'abc_self_report' ? 'quarantine' : 'verified'}">${docKey === 'abc_self_report' ? '⚠️ Self-Reported' : '✓ Verified Active'}</span>
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; font-size: 12px; color: var(--color-text-dark); margin-top: 10px;">
+          <div><strong>Authority:</strong> ${d.issuer}</div>
+          <div><strong>Registration / Order ID:</strong> ${d.regId}</div>
+          <div><strong>Validity / Date:</strong> ${d.date}</div>
+          <div><strong>Reviewing Auditor:</strong> ${d.auditor}</div>
+        </div>
+      </div>
+
+      <div style="background: var(--color-cream-surface); border: 1px solid var(--color-border); border-radius: 8px; padding: 12px 14px; margin-bottom: 16px;">
+        <span style="font-size: 11px; text-transform: uppercase; font-weight: 700; color: var(--color-text-muted);">Auditor Summary & Verification Rationale</span>
+        <p style="font-size: 13px; color: var(--color-text-dark); line-height: 1.5; margin: 4px 0 0 0;">${d.notes}</p>
+      </div>
+
+      <div style="background: #FAF8F2; border: 1px dashed var(--color-border); border-radius: 6px; padding: 10px 12px; font-family: monospace; font-size: 11px; color: var(--color-text-muted); display: flex; justify-content: space-between; align-items: center;">
+        <span>Cryptographic Audit Seal: ${d.hash}</span>
+        <span style="color: var(--color-olive); font-weight: 600;">PawBridge Ledger</span>
+      </div>
+    `;
+
+    if (this.dom.modalPublicDocInspector) {
+      this.dom.modalPublicDocInspector.classList.add('active');
+    }
+  },
+
+  closePublicDocInspector() {
+    if (this.dom.modalPublicDocInspector) {
+      this.dom.modalPublicDocInspector.classList.remove('active');
+    }
+  },
+
+  handlePublicQuickContactSubmit(e) {
+    const name = document.getElementById('pub-quick-name')?.value.trim();
+    const email = document.getElementById('pub-quick-email')?.value.trim();
+    const topic = document.getElementById('pub-quick-topic')?.value;
+    const msg = document.getElementById('pub-quick-message')?.value.trim();
+
+    if (!name || !email || !msg) {
+      this.showToast('Please fill all required message fields', 'alert');
+      return;
+    }
+
+    const form = document.getElementById('form-pub-quick-contact');
+    if (form) form.reset();
+
+    this.showToast(`✉️ Inquiry received from ${name}. Operations desk will reply to ${email} within 24 hours.`, 'success');
+  },
+
+  openConfirmDialog({ title, message, iconType = 'warning', confirmText = 'Proceed', cancelText = 'Cancel', onConfirm }) {
+    if (this.dom.confirmDialogTitle) this.dom.confirmDialogTitle.textContent = title;
+    if (this.dom.confirmDialogMsg) this.dom.confirmDialogMsg.textContent = message;
+    if (this.dom.btnConfirmProceed) this.dom.btnConfirmProceed.textContent = confirmText;
+    if (this.dom.btnConfirmCancel) this.dom.btnConfirmCancel.textContent = cancelText;
+
+    if (this.dom.confirmDialogIcon) {
+      this.dom.confirmDialogIcon.className = `confirm-icon-wrap ${iconType}`;
+    }
+
+    if (this.dom.btnConfirmProceed) {
+      // Clone to remove previous event listeners cleanly
+      const newBtn = this.dom.btnConfirmProceed.cloneNode(true);
+      this.dom.btnConfirmProceed.parentNode.replaceChild(newBtn, this.dom.btnConfirmProceed);
+      this.dom.btnConfirmProceed = newBtn;
+
+      this.dom.btnConfirmProceed.addEventListener('click', () => {
+        if (this.dom.modalGenericConfirm) this.dom.modalGenericConfirm.classList.remove('active');
+        if (typeof onConfirm === 'function') onConfirm();
+      });
+    }
+
+    if (this.dom.modalGenericConfirm) {
+      this.dom.modalGenericConfirm.classList.add('active');
     }
   },
 
