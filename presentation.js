@@ -51,12 +51,12 @@ const DeckState = {
     { num: '29', title: 'Changes to Make Before Hi-Fi Design', section: 'SECTION 06: USABILITY TESTING', desc: 'Prioritized design revision backlog (High, Med, Low) before visual styling commits' },
 
     // SECTION 07: VISUAL IDENTITY & UI DESIGN SYSTEM
-    { num: '30', title: 'Brand Foundation & Essence', section: 'SECTION 07: DESIGN SYSTEM', desc: 'Logo construction, architectural bridge arc, purpose & identity keywords' },
-    { num: '31', title: 'Brand Personality & Pillars', section: 'SECTION 07: DESIGN SYSTEM', desc: 'Trustworthy, compassionate, transparent & community-led foundation' },
-    { num: '32', title: 'Harmonious Colour Palette', section: 'SECTION 07: DESIGN SYSTEM', desc: 'Olive Green, Warm Cream, Dark Green, Terracotta & Soft Gold harmonious system' },
-    { num: '33', title: 'Typography System', section: 'SECTION 07: DESIGN SYSTEM', desc: 'DM Sans & Inter pairing, hierarchy scales, and line heights' },
-    { num: '34', title: 'Visual Identity in Real Application', section: 'SECTION 07: DESIGN SYSTEM', desc: 'Desktop & mobile UI components: NGO verification, rescue records, and support requests' },
-    { num: '35', title: 'UI Design System Guidelines', section: 'SECTION 07: DESIGN SYSTEM', desc: '8pt spatial grid, accessibility tokens, and sensitive document vault ethics' },
+    { num: '30', title: 'Brand Foundation & Editable Project Identity', section: 'SECTION 07: DESIGN SYSTEM', desc: 'Brand concept, bridge arc logo, and live editable project name & tagline with persistent sync' },
+    { num: '31', title: 'Harmonious Colour Palette & HEX Codes', section: 'SECTION 07: DESIGN SYSTEM', desc: '7 brand color tokens (#536747, #29352B, #F7F3E9, etc.), contrast ratios & copyable CSS tokens' },
+    { num: '32', title: 'Typography Hierarchy & Modular Scale', section: 'SECTION 07: DESIGN SYSTEM', desc: 'DM Sans (headings) & Inter (body/UI) scale specifications, weights & line heights' },
+    { num: '33', title: 'Buttons, Inputs & 6 Component States', section: 'SECTION 07: DESIGN SYSTEM', desc: 'Primary/secondary buttons, input fields, and 6 states: default, hover, active, disabled, error, success' },
+    { num: '34', title: 'Navigation Components, Cards & Statuses', section: 'SECTION 07: DESIGN SYSTEM', desc: 'Desktop topbar, tabs, breadcrumbs, filter chips, 3 card types & status badges' },
+    { num: '35', title: 'Icon Style, 8pt Grid & System Guidelines', section: 'SECTION 07: DESIGN SYSTEM', desc: '24px monoline rounded icons, 8pt spatial grid ruler & accessibility/vault privacy guidelines' },
   ]
 };
 
@@ -233,6 +233,7 @@ function showToast(message) {
 
 // Initialize editable fields with LocalStorage persistence
 function initEditableFields() {
+  // 1. Cover Page Academic Details
   const facultyInput = document.getElementById('faculty-name-input');
   const dateInput = document.getElementById('submission-date-input');
 
@@ -263,6 +264,60 @@ function initEditableFields() {
       showToast('✓ Submission date auto-saved');
     });
   }
+
+  // 2. Section 07 Brand Project Name & Tagline
+  const projectNameInput = document.getElementById('brand-project-name');
+  const projectTaglineInput = document.getElementById('brand-project-tagline');
+
+  const savedProjectName = localStorage.getItem('uedp5_project_name');
+  const savedProjectTagline = localStorage.getItem('uedp5_project_tagline');
+
+  if (savedProjectName && projectNameInput) {
+    projectNameInput.value = savedProjectName;
+    updateProjectNameAcrossDeck(savedProjectName);
+  }
+  if (savedProjectTagline && projectTaglineInput) {
+    projectTaglineInput.value = savedProjectTagline;
+    updateProjectTaglineAcrossDeck(savedProjectTagline);
+  }
+
+  if (projectNameInput) {
+    projectNameInput.addEventListener('input', (e) => {
+      localStorage.setItem('uedp5_project_name', e.target.value);
+      updateProjectNameAcrossDeck(e.target.value);
+    });
+    projectNameInput.addEventListener('change', () => {
+      showToast('✓ Project name auto-saved');
+    });
+  }
+
+  if (projectTaglineInput) {
+    projectTaglineInput.addEventListener('input', (e) => {
+      localStorage.setItem('uedp5_project_tagline', e.target.value);
+      updateProjectTaglineAcrossDeck(e.target.value);
+    });
+    projectTaglineInput.addEventListener('change', () => {
+      showToast('✓ Project tagline auto-saved');
+    });
+  }
+}
+
+function updateProjectNameAcrossDeck(name) {
+  if (!name) return;
+  document.querySelectorAll('.brand-logo-name').forEach(el => {
+    el.textContent = name;
+  });
+  document.querySelectorAll('.brand-title').forEach(el => {
+    el.textContent = `${name} • UEDP-5 Deck`;
+  });
+}
+
+function updateProjectTaglineAcrossDeck(tagline) {
+  if (!tagline) return;
+  const cleanTagline = tagline.replace(/^“|”$/g, '').trim();
+  document.querySelectorAll('.brand-tagline').forEach(el => {
+    el.textContent = `“${cleanTagline}”`;
+  });
 }
 
 // Event Listeners

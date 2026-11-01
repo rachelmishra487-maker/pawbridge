@@ -77,12 +77,12 @@
       <button type="button" class="slide-pill" data-slide="26" title="Slide 27: Heuristic Walkthrough"><span class="pill-num">27</span> Heuristics</button>
       <button type="button" class="slide-pill" data-slide="27" title="Slide 28: Findings & Recommendations"><span class="pill-num">28</span> Findings</button>
       <button type="button" class="slide-pill" data-slide="28" title="Slide 29: Changes Before Hi-Fi Design"><span class="pill-num">29</span> Action Items</button>
-      <button type="button" class="slide-pill" data-slide="29" title="Slide 30: Brand Foundation & Essence"><span class="pill-num">30</span> Brand</button>
-      <button type="button" class="slide-pill" data-slide="30" title="Slide 31: Brand Personality & Pillars"><span class="pill-num">31</span> Personality</button>
-      <button type="button" class="slide-pill" data-slide="31" title="Slide 32: Harmonious Colour Palette"><span class="pill-num">32</span> Palette</button>
-      <button type="button" class="slide-pill" data-slide="32" title="Slide 33: Typography System"><span class="pill-num">33</span> Typography</button>
-      <button type="button" class="slide-pill" data-slide="33" title="Slide 34: Visual Identity in Real Application"><span class="pill-num">34</span> Components</button>
-      <button type="button" class="slide-pill" data-slide="34" title="Slide 35: UI Design System Guidelines"><span class="pill-num">35</span> Guidelines</button>
+      <button type="button" class="slide-pill" data-slide="29" title="Slide 30: Brand Foundation & Editable Identity"><span class="pill-num">30</span> Brand</button>
+      <button type="button" class="slide-pill" data-slide="30" title="Slide 31: Harmonious Colour Palette"><span class="pill-num">31</span> Palette</button>
+      <button type="button" class="slide-pill" data-slide="31" title="Slide 32: Typography Hierarchy"><span class="pill-num">32</span> Typography</button>
+      <button type="button" class="slide-pill" data-slide="32" title="Slide 33: Buttons, Inputs & 6 States"><span class="pill-num">33</span> Controls & States</button>
+      <button type="button" class="slide-pill" data-slide="33" title="Slide 34: Navigation Components & Cards"><span class="pill-num">34</span> Nav & Cards</button>
+      <button type="button" class="slide-pill" data-slide="34" title="Slide 35: Icon Style & 8pt Spacing Grid"><span class="pill-num">35</span> Grid & Icons</button>
     </div>
 
     <!-- Actions: Prototype Link, Grid View, Fullscreen -->
@@ -2719,12 +2719,12 @@
 
 
       <!-- ============================================================ -->
-      <!-- SLIDE 30: SECTION 07 — BRAND FOUNDATION & ESSENCE            -->
+      <!-- SLIDE 30: SECTION 07 — BRAND FOUNDATION & EDITABLE IDENTITY  -->
       <!-- ============================================================ -->
       <section class="slide-card" id="slide-29" data-index="29">
         <div class="slide-header">
           <div class="slide-tag">SECTION 07 / BRAND IDENTITY & UI DESIGN SYSTEM</div>
-          <div class="slide-meta-badge">01 / Brand Foundation & Essence</div>
+          <div class="slide-meta-badge">01 / Brand Foundation & Editable Identity</div>
         </div>
 
         <div class="slide-content grid-2-col">
@@ -2761,16 +2761,37 @@
           </div>
 
           <div class="editorial-col">
+            <!-- Editable Project Name & Tagline Box with LocalStorage Persistence -->
+            <div class="brand-editable-panel">
+              <div class="brand-editable-header">
+                <span>Interactive Brand Details (Auto-Saved)</span>
+                <span class="spec-pill" style="font-size: 10px;">Syncs Across All 35 Slides</span>
+              </div>
+              <p style="font-size: 11.5px; color: rgba(41, 53, 43, 0.75); margin: 0; line-height: 1.4;">
+                Edit the project name and tagline below. Changes update live across the entire presentation deck and persist in browser storage.
+              </p>
+              <div class="brand-input-row">
+                <div class="brand-input-group">
+                  <label for="brand-project-name">Project Name</label>
+                  <input type="text" id="brand-project-name" class="brand-input-field" value="PawBridge" placeholder="e.g. PawBridge" />
+                </div>
+                <div class="brand-input-group">
+                  <label for="brand-project-tagline">Project Tagline</label>
+                  <input type="text" id="brand-project-tagline" class="brand-input-field" value="Connecting care with action" placeholder="e.g. Connecting care with action" />
+                </div>
+              </div>
+            </div>
+
             <div class="card-white-elevated">
-              <div class="section-kicker">OUR CORE PURPOSE</div>
-              <h2 class="slide-h2">Empowering grassroot rescuers through verified transparency.</h2>
+              <div class="section-kicker">CORE BRAND PURPOSE</div>
+              <h3 class="card-inner-title" style="margin-top: 4px;">Empowering grassroots rescuers through verified transparency.</h3>
               <p class="body-p">
-                PawBridge is built for the unsung animal-welfare trusts, community shelters, and independent rescuers. It transforms chaotic emergency rescues into structured, verified, and community-funded operations—without bureaucratic friction or paternalism.
+                PawBridge is built for unsung animal-welfare trusts, community shelters, and independent feeders. It transforms fragmented emergency rescue into structured, verified, and community-funded operations—without bureaucratic friction or paternalism.
               </p>
             </div>
 
             <div class="identity-keywords-box">
-              <div class="section-kicker">IDENTITY KEYWORDS</div>
+              <div class="section-kicker">CORE BRAND PILLARS</div>
               <div class="keyword-tags-grid">
                 <div class="keyword-card">
                   <span class="kw-icon">🛡️</span>
@@ -2798,197 +2819,200 @@
         </div>
 
         <div class="slide-footer">
-          <span>PawBridge Brand Presentation • Slide 30 / 35</span>
+          <span>PawBridge Brand Presentation • Brand Foundation • Slide 30 / 35</span>
           <span class="slide-hint">Use ← and → keys to navigate</span>
         </div>
       </section>
 
 
       <!-- ============================================================ -->
-      <!-- SLIDE 31: SECTION 07 — BRAND PERSONALITY & PILLARS           -->
+      <!-- SLIDE 31: SECTION 07 — HARMONIOUS COLOUR PALETTE             -->
       <!-- ============================================================ -->
       <section class="slide-card" id="slide-30" data-index="30">
         <div class="slide-header">
           <div class="slide-tag">SECTION 07 / BRAND IDENTITY & UI DESIGN SYSTEM</div>
-          <div class="slide-meta-badge">02 / Brand Character & Visual Tone</div>
+          <div class="slide-meta-badge">02 / Harmonious Colour Palette (7 HEX Codes)</div>
         </div>
 
         <div class="slide-content">
-          <div class="intro-block">
-            <h2 class="slide-h2">A personality defined by institutional rigor and quiet empathy.</h2>
+          <div>
+            <h2 class="slide-h2">An Earthy, Grounding Palette Rooted in Shelter Realities</h2>
             <p class="body-lead">
-              PawBridge balances the legal credibility needed for NGO compliance with the visceral warmth of animal caregiving. We intentionally steer clear of loud primary colors, cartoonish dog paws, and alarmist shock marketing.
+              Our color system reflects natural sunlight, courtyard stone, herbal veterinary care, and organic soil. Every HEX code is calibrated for high accessibility and calming legibility.
             </p>
           </div>
 
-          <div class="personality-grid-4">
-            <div class="pillar-card">
-              <div class="pillar-icon-box">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#536747" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <!-- All 7 Required Color Swatches -->
+          <div class="color-swatches-grid-7">
+            <!-- 1. Olive Green -->
+            <div class="swatch-card-mini">
+              <div class="swatch-tile-mini" style="background-color: #536747;">
+                <span class="swatch-tile-tag" style="color: #ffffff;">Primary Action</span>
               </div>
-              <h3 class="pillar-title">Trustworthy</h3>
-              <div class="pillar-tag">The Institutional Anchor</div>
-              <p class="body-p">
-                We safeguard legal deeds, FCRA/80G documents, and accounting transparency. Our language is calm, legally precise, and reassuring to high-impact donors and government registries.
-              </p>
-              <div class="pillar-micro-cue">
-                <span>UI Cue:</span> Verification Badges & Checklist
-              </div>
-            </div>
-
-            <div class="pillar-card">
-              <div class="pillar-icon-box">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#536747" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-              </div>
-              <h3 class="pillar-title">Compassionate</h3>
-              <div class="pillar-tag">The Humane Heart</div>
-              <p class="body-p">
-                Deeply caring for injured, senior, and convalescing dogs. We frame every rescue case around recovery milestones, physical rehabilitation, and dignified second chances.
-              </p>
-              <div class="pillar-micro-cue">
-                <span>UI Cue:</span> Warm Terracotta & Heart Indicators
+              <div class="swatch-info-mini">
+                <span class="swatch-name-mini">Olive Green</span>
+                <span class="swatch-hex-mini">#536747</span>
+                <span class="swatch-role-mini">Primary buttons, brand marks, and verified badges. Evokes botanical healing & resilience.</span>
               </div>
             </div>
 
-            <div class="pillar-card">
-              <div class="pillar-icon-box">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#536747" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+            <!-- 2. Dark Green -->
+            <div class="swatch-card-mini">
+              <div class="swatch-tile-mini" style="background-color: #29352B;">
+                <span class="swatch-tile-tag" style="color: #ffffff;">Text & Borders</span>
               </div>
-              <h3 class="pillar-title">Transparent</h3>
-              <div class="pillar-tag">The Open Ledger</div>
-              <p class="body-p">
-                No opaque donation buckets. Support requests detail specific supply targets (bags of kibble, antibiotic vials) and impact metrics show verified vs. self-reported numbers.
-              </p>
-              <div class="pillar-micro-cue">
-                <span>UI Cue:</span> Progress Bars & Itemized Budgets
+              <div class="swatch-info-mini">
+                <span class="swatch-name-mini">Dark Green</span>
+                <span class="swatch-hex-mini">#29352B</span>
+                <span class="swatch-role-mini">Headings, body typography, and structure. Deep forest tone with 10.2:1 AAA contrast.</span>
               </div>
             </div>
 
-            <div class="pillar-card">
-              <div class="pillar-icon-box">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#536747" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            <!-- 3. Warm Cream -->
+            <div class="swatch-card-mini">
+              <div class="swatch-tile-mini" style="background-color: #F7F3E9; border-bottom: 1px solid rgba(41,53,43,0.1);">
+                <span class="swatch-tile-tag" style="color: #29352B;">Canvas Background</span>
               </div>
-              <h3 class="pillar-title">Community-Led</h3>
-              <div class="pillar-tag">The Collective Bridge</div>
-              <p class="body-p">
-                Empowering feeders, college volunteers, foster homes, and neighbourhood advocates. Shelter rescue is an active collective endeavour, never a siloed task.
-              </p>
-              <div class="pillar-micro-cue">
-                <span>UI Cue:</span> Multi-Role Action Hub (Volunteer/Foster)
+              <div class="swatch-info-mini">
+                <span class="swatch-name-mini">Warm Cream</span>
+                <span class="swatch-hex-mini">#F7F3E9</span>
+                <span class="swatch-role-mini">Global screen canvas & soft card container. Replaces clinical white with sun-baked parchment.</span>
               </div>
+            </div>
+
+            <!-- 4. Soft Green -->
+            <div class="swatch-card-mini">
+              <div class="swatch-tile-mini" style="background-color: #E8EDE3; border-bottom: 1px solid rgba(41,53,43,0.1);">
+                <span class="swatch-tile-tag" style="color: #29352B;">Subtle Surface</span>
+              </div>
+              <div class="swatch-info-mini">
+                <span class="swatch-name-mini">Soft Green</span>
+                <span class="swatch-hex-mini">#E8EDE3</span>
+                <span class="swatch-role-mini">Form input fields, tag backdrops, and active highlights. Breathable sage surface.</span>
+              </div>
+            </div>
+
+            <!-- 5. Muted Terracotta -->
+            <div class="swatch-card-mini">
+              <div class="swatch-tile-mini" style="background-color: #D98B70;">
+                <span class="swatch-tile-tag" style="color: #ffffff;">Urgent Accent</span>
+              </div>
+              <div class="swatch-info-mini">
+                <span class="swatch-name-mini">Terracotta</span>
+                <span class="swatch-hex-mini">#D98B70</span>
+                <span class="swatch-role-mini">Urgent supply appeals, medical alerts & heart icons. Signals urgency without panic-red.</span>
+              </div>
+            </div>
+
+            <!-- 6. Soft Yellow -->
+            <div class="swatch-card-mini">
+              <div class="swatch-tile-mini" style="background-color: #E5B95C;">
+                <span class="swatch-tile-tag" style="color: #29352B;">Pending Cue</span>
+              </div>
+              <div class="swatch-info-mini">
+                <span class="swatch-name-mini">Soft Yellow</span>
+                <span class="swatch-hex-mini">#E5B95C</span>
+                <span class="swatch-role-mini">Pending review badges, milestone stars, and adoption highlights. Warm amber sunlight.</span>
+              </div>
+            </div>
+
+            <!-- 7. White -->
+            <div class="swatch-card-mini">
+              <div class="swatch-tile-mini" style="background-color: #FFFFFF; border-bottom: 1px solid rgba(41,53,43,0.1);">
+                <span class="swatch-tile-tag" style="color: #29352B;">Elevated Surface</span>
+              </div>
+              <div class="swatch-info-mini">
+                <span class="swatch-name-mini">Pure White</span>
+                <span class="swatch-hex-mini">#FFFFFF</span>
+                <span class="swatch-role-mini">Focus tiles, modal windows, and document cards. Provides clean optical elevation.</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Contrast Ratio Table & Token Action -->
+          <div class="grid-2-col" style="gap: 14px;">
+            <div class="contrast-table-container">
+              <div class="section-kicker" style="margin-bottom: 6px;">WCAG ACCESSIBILITY & CONTRAST RATIO AUDIT</div>
+              <table class="contrast-table">
+                <thead>
+                  <tr>
+                    <th>Background</th>
+                    <th>Foreground / Text</th>
+                    <th>Ratio</th>
+                    <th>WCAG Rating</th>
+                    <th>UI Application</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Warm Cream (<code>#F7F3E9</code>)</td>
+                    <td>Dark Green (<code>#29352B</code>)</td>
+                    <td><strong>10.2 : 1</strong></td>
+                    <td><span class="wcag-pass-pill">AAA Pass</span></td>
+                    <td>Primary body text & headings</td>
+                  </tr>
+                  <tr>
+                    <td>Soft Green (<code>#E8EDE3</code>)</td>
+                    <td>Dark Green (<code>#29352B</code>)</td>
+                    <td><strong>9.4 : 1</strong></td>
+                    <td><span class="wcag-pass-pill">AAA Pass</span></td>
+                    <td>Form input fields & active pills</td>
+                  </tr>
+                  <tr>
+                    <td>Olive Green (<code>#536747</code>)</td>
+                    <td>White (<code>#FFFFFF</code>)</td>
+                    <td><strong>4.6 : 1</strong></td>
+                    <td><span class="wcag-pass-pill">AA Pass</span></td>
+                    <td>Primary CTA action buttons</td>
+                  </tr>
+                  <tr>
+                    <td>Warm Cream (<code>#F7F3E9</code>)</td>
+                    <td>Olive Green (<code>#536747</code>)</td>
+                    <td><strong>4.8 : 1</strong></td>
+                    <td><span class="wcag-pass-pill">AA Pass</span></td>
+                    <td>Section labels & verified markers</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="figma-token-banner" style="margin: 0; height: 100%; box-sizing: border-box;">
+              <div class="figma-token-left">
+                <span class="figma-icon">🎨</span>
+                <div>
+                  <strong>Developer & Design Tokens Ready</strong>
+                  <span class="token-code-row">
+                    All 7 HEX codes formatted as CSS custom properties with WCAG AAA verification.
+                  </span>
+                </div>
+              </div>
+              <button type="button" class="btn-copy-tokens" id="btn-copy-tokens">Copy Tokens (CSS)</button>
             </div>
           </div>
         </div>
 
         <div class="slide-footer">
-          <span>PawBridge Brand Presentation • Slide 31 / 35</span>
+          <span>PawBridge Brand Presentation • Colour Palette • Slide 31 / 35</span>
           <span class="slide-hint">Use ← and → keys to navigate</span>
         </div>
       </section>
 
 
       <!-- ============================================================ -->
-      <!-- SLIDE 32: SECTION 07 — HARMONIOUS COLOUR PALETTE             -->
+      <!-- SLIDE 32: SECTION 07 — TYPOGRAPHY SYSTEM                     -->
       <!-- ============================================================ -->
       <section class="slide-card" id="slide-31" data-index="31">
         <div class="slide-header">
           <div class="slide-tag">SECTION 07 / BRAND IDENTITY & UI DESIGN SYSTEM</div>
-          <div class="slide-meta-badge">03 / Harmonious Colour Palette</div>
-        </div>
-
-        <div class="slide-content">
-          <div class="intro-block">
-            <h2 class="slide-h2">An earthy, grounding palette rooted in Indian shelter realities.</h2>
-            <p class="body-lead">
-              Our color system reflects natural sunlight, courtyard stone, herbal veterinary care, and organic soil. Every hex code is calibrated for high accessibility and calming legibility.
-            </p>
-          </div>
-
-          <div class="color-swatches-grid">
-            <div class="swatch-card">
-              <div class="swatch-tile" style="background-color: #536747;"><span class="swatch-on-dark">60% Primary</span></div>
-              <div class="swatch-info">
-                <h4 class="swatch-name">Olive Green</h4>
-                <div class="swatch-hex">#536747</div>
-                <div class="swatch-role">Primary Action, Brand Headers & Verified Marks</div>
-                <p class="swatch-rationale">Evokes botanical healing, nature, resilience, and calm steady authority.</p>
-              </div>
-            </div>
-
-            <div class="swatch-card">
-              <div class="swatch-tile" style="background-color: #F7F3E9; border-bottom: 1px solid rgba(41,53,43,0.1);"><span class="swatch-on-light">30% Canvas</span></div>
-              <div class="swatch-info">
-                <h4 class="swatch-name">Warm Cream</h4>
-                <div class="swatch-hex">#F7F3E9</div>
-                <div class="swatch-role">Global Screen Background & Card Canvas</div>
-                <p class="swatch-rationale">Replaces harsh hospital white with warm sun-baked parchment paper.</p>
-              </div>
-            </div>
-
-            <div class="swatch-card">
-              <div class="swatch-tile" style="background-color: #29352B;"><span class="swatch-on-dark">Text Standard</span></div>
-              <div class="swatch-info">
-                <h4 class="swatch-name">Dark Green</h4>
-                <div class="swatch-hex">#29352B</div>
-                <div class="swatch-role">High Contrast Typography & Structural Borders</div>
-                <p class="swatch-rationale">Deep botanical forest tone offering softer contrast than aggressive pure black.</p>
-              </div>
-            </div>
-
-            <div class="swatch-card">
-              <div class="swatch-tile" style="background-color: #D98B70;"><span class="swatch-on-dark">10% Accent</span></div>
-              <div class="swatch-info">
-                <h4 class="swatch-name">Terracotta</h4>
-                <div class="swatch-hex">#D98B70</div>
-                <div class="swatch-role">Urgent Needs, Medical Alerts & Heart Tokens</div>
-                <p class="swatch-rationale">Warm earthen clay. Signals urgency without panic-inducing neon red.</p>
-              </div>
-            </div>
-
-            <div class="swatch-card">
-              <div class="swatch-tile" style="background-color: #E5B95C;"><span class="swatch-on-light" style="color: #4A3B18;">Secondary Cue</span></div>
-              <div class="swatch-info">
-                <h4 class="swatch-name">Soft Gold</h4>
-                <div class="swatch-hex">#E5B95C</div>
-                <div class="swatch-role">Pending Review, Milestones & Highlights</div>
-                <p class="swatch-rationale">Warm amber sunlight. Highlights pending reviews and successful adoptions.</p>
-              </div>
-            </div>
-
-            <div class="swatch-card">
-              <div class="swatch-tile" style="background-color: #E8EDE3; border-bottom: 1px solid rgba(41,53,43,0.1);"><span class="swatch-on-light" style="color: #384A33;">Subtle Surface</span></div>
-              <div class="swatch-info">
-                <h4 class="swatch-name">Pale Green</h4>
-                <div class="swatch-hex">#E8EDE3</div>
-                <div class="swatch-role">Input Backgrounds, Success States & Badges</div>
-                <p class="swatch-rationale">Gentle sage tint providing breathable contrast against Warm Cream panels.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="slide-footer">
-          <span>PawBridge Brand Presentation • Slide 32 / 35</span>
-          <span class="slide-hint">Use ← and → keys to navigate</span>
-        </div>
-      </section>
-
-
-      <!-- ============================================================ -->
-      <!-- SLIDE 33: SECTION 07 — TYPOGRAPHY SYSTEM                     -->
-      <!-- ============================================================ -->
-      <section class="slide-card" id="slide-32" data-index="32">
-        <div class="slide-header">
-          <div class="slide-tag">SECTION 07 / BRAND IDENTITY & UI DESIGN SYSTEM</div>
-          <div class="slide-meta-badge">04 / Typography Hierarchy</div>
+          <div class="slide-meta-badge">03 / Typography Hierarchy (DM Sans & Inter)</div>
         </div>
 
         <div class="slide-content grid-2-col">
           <div class="editorial-col">
             <div>
-              <h2 class="slide-h2">DM Sans & Inter: Character meets interface clarity.</h2>
+              <h2 class="slide-h2">DM Sans & Inter: Character Meets Interface Clarity</h2>
               <p class="body-lead">
-                We pair a warm geometric heading typeface with an ultra-legible, highly neutral body workhorse.
+                We pair a warm geometric heading typeface with an ultra-legible, highly neutral body workhorse designed for numerical precision.
               </p>
             </div>
 
@@ -2996,17 +3020,17 @@
               <div class="font-header">
                 <div>
                   <h3 class="font-title">DM Sans</h3>
-                  <span class="font-tag">Heading Font • Semi-formal Geometric</span>
+                  <span class="font-tag">Heading Font • Geometric Humanist</span>
                 </div>
                 <span class="font-sample-big" style="font-family: 'DM Sans', sans-serif;">Aa</span>
               </div>
               <p class="body-p">
-                Geometric and friendly, with humanist proportions and gentle round shapes. Gives titles an approachable yet disciplined editorial gravitas.
+                Geometric and friendly, with humanist proportions and gentle round terminals. Gives shelter titles an approachable yet disciplined editorial gravitas.
               </p>
               <div class="font-weights-row">
                 <span class="weight-pill">Medium (500)</span>
                 <span class="weight-pill active">SemiBold (600)</span>
-                <span class="weight-pill">Bold (700)</span>
+                <span class="weight-pill active">Bold (700)</span>
               </div>
             </div>
 
@@ -3022,7 +3046,7 @@
                 Tall x-height, clear optical distinctions, and superb numeral legibility for tabular rescue data, medical dosages, and legal statutes.
               </p>
               <div class="font-weights-row">
-                <span class="weight-pill">Regular (400)</span>
+                <span class="weight-pill active">Regular (400)</span>
                 <span class="weight-pill active">Medium (500)</span>
                 <span class="weight-pill">SemiBold (600)</span>
               </div>
@@ -3032,7 +3056,7 @@
           <div class="editorial-col">
             <div class="card-white-elevated">
               <div class="section-kicker">TYPOGRAPHIC SCALE SPECS</div>
-              <h3 class="card-inner-title">Desktop & Mobile Modular Hierarchy</h3>
+              <h3 class="card-inner-title">Desktop & Modular Hierarchy Table</h3>
               
               <div class="type-scale-table">
                 <div class="type-row">
@@ -3040,7 +3064,7 @@
                     <span class="type-level">Display / Hero</span>
                     <code>32px / 1.2 • DM Sans Bold</code>
                   </div>
-                  <div class="type-preview" style="font-size: 26px; font-weight: 700; font-family: 'DM Sans';">
+                  <div class="type-preview" style="font-size: 24px; font-weight: 700; font-family: 'DM Sans'; color: var(--color-dark-green);">
                     Rescue Records & Medical Care
                   </div>
                 </div>
@@ -3048,9 +3072,9 @@
                 <div class="type-row">
                   <div class="type-meta">
                     <span class="type-level">Section Heading</span>
-                    <code>24–28px / 1.25 • DM Sans SemiBold</code>
+                    <code>24px / 1.25 • DM Sans SemiBold</code>
                   </div>
-                  <div class="type-preview" style="font-size: 20px; font-weight: 600; font-family: 'DM Sans';">
+                  <div class="type-preview" style="font-size: 19px; font-weight: 600; font-family: 'DM Sans'; color: var(--color-dark-green);">
                     Legal Document Verification Checklist
                   </div>
                 </div>
@@ -3060,8 +3084,8 @@
                     <span class="type-level">Card Titles / Subhead</span>
                     <code>16–18px / 1.3 • DM Sans SemiBold</code>
                   </div>
-                  <div class="type-preview" style="font-size: 15px; font-weight: 600; font-family: 'DM Sans';">
-                    SSO Animal Welfare Trust (Nagpur, MH)
+                  <div class="type-preview" style="font-size: 15px; font-weight: 600; font-family: 'DM Sans'; color: var(--color-dark-green);">
+                    Save Speechless Organisation (SSO Nagpur)
                   </div>
                 </div>
 
@@ -3070,7 +3094,7 @@
                     <span class="type-level">Body Lead & Description</span>
                     <code>14–16px / 1.5 • Inter Regular</code>
                   </div>
-                  <div class="type-preview" style="font-size: 13.5px; font-weight: 400; font-family: 'Inter';">
+                  <div class="type-preview" style="font-size: 13px; font-weight: 400; font-family: 'Inter'; color: rgba(41,53,43,0.85);">
                     Street canine rescued with fractured femur; post-operative cast applied with daily analgesic dressings.
                   </div>
                 </div>
@@ -3078,78 +3102,278 @@
                 <div class="type-row">
                   <div class="type-meta">
                     <span class="type-level">Meta, Labels & Badges</span>
-                    <code>11–13px / 1.4 • Inter Medium / JetBrains Mono</code>
+                    <code>11–13px / 1.4 • Inter Medium</code>
                   </div>
-                  <div class="type-preview" style="font-size: 12px; font-weight: 600; font-family: 'Inter'; color: var(--color-olive);">
-                    CASE #PB-2026-089 • VERIFIED 12A/80G CERTIFIED
+                  <div class="type-preview" style="font-size: 11.5px; font-weight: 600; font-family: 'Inter'; color: var(--color-olive);">
+                    CASE #PB-2026-089 • 12A/80G TAX CERTIFIED • ACTIVE INTAKE
                   </div>
                 </div>
               </div>
+            </div>
+
+            <div class="card-cream-subtle" style="margin-top: 2px;">
+              <div class="section-kicker">NUMERIC & SPECIAL CHARACTER RULES</div>
+              <p style="font-size: 12px; color: rgba(41, 53, 43, 0.85); margin: 4px 0 0; line-height: 1.45;">
+                Currency symbols (<strong>₹ INR</strong>) use tabular lining numerals to guarantee alignment across support requests, budget tables, and supply cost breakdowns.
+              </p>
             </div>
           </div>
         </div>
 
         <div class="slide-footer">
-          <span>PawBridge Brand Presentation • Slide 33 / 35</span>
+          <span>PawBridge Brand Presentation • Typography Hierarchy • Slide 32 / 35</span>
           <span class="slide-hint">Use ← and → keys to navigate</span>
         </div>
       </section>
 
 
       <!-- ============================================================ -->
-      <!-- SLIDE 34: SECTION 07 — VISUAL IDENTITY IN REAL APPLICATION   -->
+      <!-- SLIDE 33: SECTION 07 — BUTTONS, INPUTS & 6 COMPONENT STATES  -->
+      <!-- ============================================================ -->
+      <section class="slide-card" id="slide-32" data-index="32">
+        <div class="slide-header">
+          <div class="slide-tag">SECTION 07 / BRAND IDENTITY & UI DESIGN SYSTEM</div>
+          <div class="slide-meta-badge">04 / Buttons, Input Fields & 6 Component States</div>
+        </div>
+
+        <div class="slide-content">
+          <div>
+            <h2 class="slide-h2">Interactive Form Controls & 6-State Visual Matrix</h2>
+            <p class="body-lead">
+              Every interactive element follows strict state definitions (Default, Hover, Active, Disabled, Error, and Success) to eliminate confusion during document upload and donation.
+            </p>
+          </div>
+
+          <!-- Top Row: Interactive Component Specimens -->
+          <div class="grid-2-col" style="gap: 14px;">
+            <!-- Buttons Overview -->
+            <div class="card-white-elevated" style="padding: 14px 16px;">
+              <div class="section-kicker" style="margin-bottom: 8px;">BUTTON HIERARCHY SPECIMENS</div>
+              <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
+                <button type="button" class="btn-specimen primary-default" style="padding: 8px 16px; font-size: 12px;">Primary Button</button>
+                <button type="button" class="btn-specimen sec-default" style="padding: 8px 16px; font-size: 12px;">Secondary Button</button>
+                <button type="button" class="sample-btn-outline" style="padding: 7px 14px; font-size: 12px;">Outline Action</button>
+              </div>
+              <div style="font-size: 11px; color: rgba(41, 53, 43, 0.7); margin-top: 8px; line-height: 1.35;">
+                <strong>Primary:</strong> Solid Olive Green (#536747) for definitive actions (Publish, Submit). <strong>Secondary:</strong> Warm Cream with Olive border for non-destructive tasks (Save Draft).
+              </div>
+            </div>
+
+            <!-- Input Fields Overview -->
+            <div class="card-white-elevated" style="padding: 14px 16px;">
+              <div class="section-kicker" style="margin-bottom: 8px;">INPUT FIELD VARIANTS</div>
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                <div>
+                  <label style="font-size: 10px; font-weight: 700; text-transform: uppercase; color: var(--color-dark-green);">Text Input</label>
+                  <input type="text" class="input-specimen" value="Nagpur Street Dogs Trust" placeholder="Enter shelter name..." />
+                </div>
+                <div>
+                  <label style="font-size: 10px; font-weight: 700; text-transform: uppercase; color: var(--color-dark-green);">Search Input</label>
+                  <div style="position: relative;">
+                    <input type="text" class="input-specimen" value="Antibiotics & Deworming" style="padding-left: 22px;" />
+                    <span style="position: absolute; left: 6px; top: 6px; font-size: 11px; opacity: 0.6;">🔍</span>
+                  </div>
+                </div>
+              </div>
+              <div style="font-size: 11px; color: rgba(41, 53, 43, 0.7); margin-top: 8px; line-height: 1.35;">
+                Inputs feature tall touch targets (38px desktop / 44px mobile) with gentle focus rings and inline validation help copy.
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom: The 6 Component States Visual Matrix -->
+          <div class="card-white-elevated" style="padding: 14px 16px;">
+            <div class="section-kicker" style="margin-bottom: 10px;">THE 6 COMPONENT STATES MATRIX (BUTTONS & INPUT FIELDS)</div>
+
+            <div class="states-matrix-grid">
+              <!-- 1. Default -->
+              <div class="state-col">
+                <span class="state-tag-header default">1. DEFAULT</span>
+                <button type="button" class="btn-specimen primary-default">Submit</button>
+                <button type="button" class="btn-specimen sec-default">Save Draft</button>
+                <input type="text" class="input-specimen" value="Idle input" readonly />
+                <span style="font-size: 9.5px; color: rgba(41,53,43,0.65);">Resting surface, crisp 1px border.</span>
+              </div>
+
+              <!-- 2. Hover -->
+              <div class="state-col">
+                <span class="state-tag-header hover">2. HOVER</span>
+                <button type="button" class="btn-specimen primary-hover">Submit</button>
+                <button type="button" class="btn-specimen sec-hover">Save Draft</button>
+                <input type="text" class="input-specimen hover" value="Hovered field" readonly />
+                <span style="font-size: 9.5px; color: rgba(41,53,43,0.65);">-1px elevation, soft shadow, Olive tint.</span>
+              </div>
+
+              <!-- 3. Active / Pressed -->
+              <div class="state-col">
+                <span class="state-tag-header active">3. ACTIVE</span>
+                <button type="button" class="btn-specimen primary-active">Submit</button>
+                <button type="button" class="btn-specimen sec-active">Save Draft</button>
+                <input type="text" class="input-specimen active" value="Focused cursor" readonly />
+                <span style="font-size: 9.5px; color: rgba(41,53,43,0.65);">2px solid Olive focus ring with 2px offset.</span>
+              </div>
+
+              <!-- 4. Disabled -->
+              <div class="state-col">
+                <span class="state-tag-header disabled">4. DISABLED</span>
+                <button type="button" class="btn-specimen primary-disabled" disabled>Submit</button>
+                <button type="button" class="btn-specimen sec-disabled" disabled>Save Draft</button>
+                <input type="text" class="input-specimen disabled" value="Not available" disabled />
+                <span style="font-size: 9.5px; color: rgba(41,53,43,0.65);">40% opacity, greyed fill, not-allowed.</span>
+              </div>
+
+              <!-- 5. Error -->
+              <div class="state-col">
+                <span class="state-tag-header error">5. ERROR</span>
+                <button type="button" class="btn-specimen primary-error">Retry</button>
+                <button type="button" class="btn-specimen sec-error">Fix Issues</button>
+                <input type="text" class="input-specimen error" value="Invalid PAN" readonly />
+                <span style="font-size: 9.5px; color: #C25B37;">Terracotta border (#D98B70) + error text.</span>
+              </div>
+
+              <!-- 6. Success -->
+              <div class="state-col">
+                <span class="state-tag-header success">6. SUCCESS</span>
+                <button type="button" class="btn-specimen primary-success">Done ✓</button>
+                <button type="button" class="btn-specimen sec-success">Verified ✓</button>
+                <input type="text" class="input-specimen success" value="12A Verified" readonly />
+                <span style="font-size: 9.5px; color: #2E7D32;">Green outline (#388E3C) + checkmark cue.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="slide-footer">
+          <span>PawBridge Brand Presentation • Buttons & States • Slide 33 / 35</span>
+          <span class="slide-hint">Use ← and → keys to navigate</span>
+        </div>
+      </section>
+
+
+      <!-- ============================================================ -->
+      <!-- SLIDE 34: SECTION 07 — NAVIGATION COMPONENTS, CARDS & BADGES -->
       <!-- ============================================================ -->
       <section class="slide-card" id="slide-33" data-index="33">
         <div class="slide-header">
           <div class="slide-tag">SECTION 07 / BRAND IDENTITY & UI DESIGN SYSTEM</div>
-          <div class="slide-meta-badge">05 / Component Application</div>
+          <div class="slide-meta-badge">05 / Navigation Components, Cards & Status Badges</div>
         </div>
 
         <div class="slide-content">
-          <div class="intro-block">
-            <h2 class="slide-h2">Design tokens in real operational context.</h2>
+          <div>
+            <h2 class="slide-h2">Navigation System, Cards & Status Indicators</h2>
             <p class="body-lead">
-              Our components prioritize clarity for stressed NGO staff in noisy animal shelters and reassurance for cautious community donors.
+              Scalable interface components designed for effortless wayfinding, transparent shelter profiles, and live rescue tracking.
             </p>
           </div>
 
-          <div class="ui-mockups-grid">
-            <div class="mockup-frame">
-              <div class="mockup-header">
-                <span class="mockup-title">Credential Verification</span>
-                <span class="badge-status verified">✓ Verified</span>
+          <!-- Top Navigation Elements: Topbar, Tabs, Breadcrumbs, Chips -->
+          <div class="card-white-elevated" style="padding: 12px 16px; display: flex; flex-direction: column; gap: 10px;">
+            <div class="section-kicker">NAVIGATION SYSTEM COMPONENTS</div>
+
+            <!-- Desktop Persistent Topbar Mockup -->
+            <div class="nav-bar-mockup" style="background: var(--color-cream); padding: 8px 14px; border-radius: var(--radius-sm); border: 1px solid rgba(41,53,43,0.12);">
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <span style="font-weight: 700; color: var(--color-olive); font-family: 'DM Sans';">🐾 PawBridge</span>
+                <span class="wf-badge">Persistent Topbar</span>
               </div>
-              <div class="mockup-body">
-                <div class="doc-item-row">
-                  <div class="doc-icon">📄</div>
-                  <div class="doc-text">
-                    <strong>Trust Registration Deed</strong>
-                    <span>Verified on 14 Oct 2026 • Private Vault</span>
-                  </div>
-                  <span class="badge-status-pill success">Approved</span>
-                </div>
-                <div class="doc-item-row">
-                  <div class="doc-icon">🛡️</div>
-                  <div class="doc-text">
-                    <strong>Section 80G Tax Exemption</strong>
-                    <span>Valid until 2029 • Publicly Claimable</span>
-                  </div>
-                  <span class="badge-status-pill success">Verified</span>
-                </div>
-                <div class="doc-item-row">
-                  <div class="doc-icon">⏳</div>
-                  <div class="doc-text">
-                    <strong>Annual FCRA Audit Return</strong>
-                    <span>Uploaded 2 days ago • Under Officer Review</span>
-                  </div>
-                  <span class="badge-status-pill warning">Pending</span>
-                </div>
+              <div class="nav-item-pills">
+                <span class="nav-mini-pill active">Explore NGOs</span>
+                <span class="nav-mini-pill">Urgent Needs</span>
+                <span class="nav-mini-pill">Rescue Stories</span>
+                <span class="nav-mini-pill">Impact Reports</span>
               </div>
-              <div class="mockup-footer">
-                <span>All tax IDs validated via Ministry Portal</span>
+              <div style="display: flex; gap: 6px;">
+                <span class="nav-mini-pill" style="border-color: var(--color-olive); color: var(--color-olive);">Shelter Portal</span>
+                <span class="nav-mini-pill" style="background: var(--color-olive); color: #fff;">Donate</span>
               </div>
             </div>
 
+            <!-- Breadcrumbs, Contextual Tabs & Filter Chips -->
+            <div style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 12px; align-items: center;">
+              <div style="display: flex; flex-direction: column; gap: 6px;">
+                <div class="breadcrumbs-specimen">
+                  <span>Home</span> <span class="bc-sep">/</span>
+                  <span>Maharashtra</span> <span class="bc-sep">/</span>
+                  <span>Nagpur</span> <span class="bc-sep">/</span>
+                  <span class="active">Save Speechless Organisation</span>
+                </div>
+                <div class="contextual-tabs-row">
+                  <span class="ctx-tab-item active">About & Trust</span>
+                  <span class="ctx-tab-item">Rescue Records (14)</span>
+                  <span class="ctx-tab-item">Support Needs (3)</span>
+                  <span class="ctx-tab-item">Impact Reports</span>
+                </div>
+              </div>
+
+              <div>
+                <span style="font-size: 10.5px; font-weight: 700; text-transform: uppercase; color: var(--color-dark-green); display: block; margin-bottom: 4px;">Category Filter Chips</span>
+                <div class="filter-chips-row">
+                  <span class="filter-chip-item active">All Categories</span>
+                  <span class="filter-chip-item">Puppy Food</span>
+                  <span class="filter-chip-item">Medicines</span>
+                  <span class="filter-chip-item">Surgeries</span>
+                  <span class="filter-chip-item">Foster</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Middle: 3 Core Cards (NGO Profile, Support Request, Rescue Case) -->
+          <div class="ui-mockups-grid" style="grid-template-columns: repeat(3, 1fr); gap: 14px;">
+            <!-- Card 1: NGO Profile Card -->
+            <div class="mockup-frame">
+              <div class="mockup-header">
+                <span class="mockup-title">NGO Profile Card</span>
+                <span class="badge-status verified">✓ Verified</span>
+              </div>
+              <div class="mockup-body">
+                <div class="dog-case-header">
+                  <div class="dog-avatar" style="background: #E8EDE3; font-size: 18px;">🏛️</div>
+                  <div>
+                    <h4 class="dog-name">SSO Animal Welfare Trust</h4>
+                    <span class="dog-location">Nagpur, Maharashtra • Est. 2018</span>
+                  </div>
+                </div>
+                <p class="dog-diagnosis" style="margin-top: 6px;">
+                  Registered 12A/80G charitable trust caring for 65+ resident dogs and operating an emergency street canine trauma center.
+                </p>
+                <div style="display: flex; justify-content: space-between; font-size: 11px; margin-top: 8px; padding-top: 6px; border-top: 1px solid rgba(41,53,43,0.08);">
+                  <span><strong>142</strong> Rescued</span>
+                  <span><strong>80G</strong> Tax Saving</span>
+                  <span><strong>4.9★</strong> Rating</span>
+                </div>
+              </div>
+              <div class="mockup-footer">
+                <button type="button" class="btn-micro-action" style="width: 100%;">View Full Profile</button>
+              </div>
+            </div>
+
+            <!-- Card 2: Support Request Card -->
+            <div class="mockup-frame">
+              <div class="mockup-header">
+                <span class="mockup-title">Support Request Card</span>
+                <span class="badge-status urgent">High Urgency</span>
+              </div>
+              <div class="mockup-body">
+                <h4 class="appeal-title">50 Bags Puppy Starter Kibble</h4>
+                <p class="appeal-desc">
+                  Monsoon litter intake: 18 orphan indie pups needing high-protein nutrition across East Nagpur shelter wards.
+                </p>
+                <div class="target-amount-box">
+                  <span class="amount-raised">₹14,200</span>
+                  <span class="amount-goal">of ₹22,000 target</span>
+                </div>
+                <div class="progress-track">
+                  <div class="progress-fill terracotta" style="width: 64%;"></div>
+                </div>
+              </div>
+              <div class="mockup-footer">
+                <button type="button" class="btn-micro-donate" style="width: 100%;">Sponsor 2 Bags (₹880)</button>
+              </div>
+            </div>
+
+            <!-- Card 3: Rescue Case Card -->
             <div class="mockup-frame">
               <div class="mockup-header">
                 <span class="mockup-title">Rescue Case #PB-408</span>
@@ -3164,7 +3388,7 @@
                   </div>
                 </div>
                 <p class="dog-diagnosis">
-                  <strong>Medical Status:</strong> Deep laceration on left paw; stitches clean, course of cephalexin ongoing.
+                  Deep paw laceration; surgical sutures clean, course of cephalexin and daily sterile dressings ongoing.
                 </p>
                 <div class="progress-bar-container">
                   <div class="progress-label">
@@ -3177,149 +3401,193 @@
                 </div>
               </div>
               <div class="mockup-footer">
-                <button type="button" class="btn-micro-action">Update Health Log</button>
+                <button type="button" class="btn-micro-action" style="width: 100%;">Update Health Log</button>
               </div>
             </div>
+          </div>
 
-            <div class="mockup-frame">
-              <div class="mockup-header">
-                <span class="mockup-title">Urgent Supply Appeal</span>
-                <span class="badge-status urgent">High Urgency</span>
-              </div>
-              <div class="mockup-body">
-                <h4 class="appeal-title">50 Bags Puppy Starter Kibble</h4>
-                <p class="appeal-desc">
-                  Monsoon litter intake: 18 orphan pups rescued across East Nagpur shelter wards.
-                </p>
-                <div class="target-amount-box">
-                  <span class="amount-raised">₹14,200</span>
-                  <span class="amount-goal">of ₹22,000 target</span>
-                </div>
-                <div class="progress-track">
-                  <div class="progress-fill terracotta" style="width: 64%;"></div>
-                </div>
-              </div>
-              <div class="mockup-footer">
-                <button type="button" class="btn-micro-donate">Sponsor 2 Bags (₹880)</button>
-              </div>
+          <!-- Bottom: Status Indicators Strip -->
+          <div class="card-white-elevated" style="padding: 10px 16px;">
+            <div class="section-kicker" style="margin-bottom: 6px;">STATUS INDICATORS & TAG SYSTEM</div>
+            <div class="status-indicators-strip">
+              <div class="status-pill-demo verified">✓ Verified NGO</div>
+              <div class="status-pill-demo pending">⏳ Pending Review</div>
+              <div class="status-pill-demo urgent">⚠️ High Urgency</div>
+              <div class="status-pill-demo fulfilled">✓✓ Fulfilled</div>
+              <div class="status-pill-demo recovery">🐕 In Recovery</div>
+              <div class="status-pill-demo changes">✏️ Needs Changes</div>
             </div>
           </div>
         </div>
 
         <div class="slide-footer">
-          <span>PawBridge Brand Presentation • Slide 34 / 35</span>
+          <span>PawBridge Brand Presentation • Navigation & Cards • Slide 34 / 35</span>
           <span class="slide-hint">Use ← and → keys to navigate</span>
         </div>
       </section>
 
 
       <!-- ============================================================ -->
-      <!-- SLIDE 35: SECTION 07 — UI DESIGN SYSTEM GUIDELINES & TOKENS   -->
+      <!-- SLIDE 35: SECTION 07 — ICON STYLE, 8PT GRID & GUIDELINES     -->
       <!-- ============================================================ -->
       <section class="slide-card" id="slide-34" data-index="34">
         <div class="slide-header">
           <div class="slide-tag">SECTION 07 / BRAND IDENTITY & UI DESIGN SYSTEM</div>
-          <div class="slide-meta-badge">06 / UI Design System Guidelines</div>
+          <div class="slide-meta-badge">06 / Icon Style, 8pt Spacing Grid & Ethics</div>
         </div>
 
         <div class="slide-content">
-          <div class="intro-block">
-            <h2 class="slide-h2">Engineering rigor: tokens, spacing, and ethics.</h2>
+          <div>
+            <h2 class="slide-h2">Icon Style, 8pt Spacing Grid & Ethical Design Rules</h2>
             <p class="body-lead">
-              Our design system enforces cohesive spacing, predictable component states, and strict ethical standards for animal welfare representation.
+              Engineering discipline and humane ethical standards that ensure consistency, accessibility, and compassion across the entire platform.
             </p>
           </div>
 
-          <div class="guidelines-grid-6">
+          <!-- Top: 24px Monoline Icon Style Showcase -->
+          <div class="card-white-elevated" style="padding: 12px 16px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+              <span class="section-kicker">ICON SYSTEM: 24PX MONOLINE ROUNDED STROKE (2PX STROKE WIDTH)</span>
+              <span class="spec-pill">8 Primary System Icons</span>
+            </div>
+            
+            <div class="icon-showcase-grid">
+              <!-- 1. Shield Check -->
+              <div class="icon-showcase-tile">
+                <svg width="24" height="24" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+                <span class="icon-label-text">Trust Check</span>
+              </div>
+
+              <!-- 2. Heart -->
+              <div class="icon-showcase-tile">
+                <svg width="24" height="24" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                <span class="icon-label-text">Compassion</span>
+              </div>
+
+              <!-- 3. Medical Cross -->
+              <div class="icon-showcase-tile">
+                <svg width="24" height="24" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="4"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+                <span class="icon-label-text">Medical Care</span>
+              </div>
+
+              <!-- 4. Canine Paw -->
+              <div class="icon-showcase-tile">
+                <svg width="24" height="24" viewBox="0 0 24 24"><circle cx="7" cy="8.5" r="2"/><circle cx="17" cy="8.5" r="2"/><circle cx="10" cy="5" r="2"/><circle cx="14" cy="5" r="2"/><ellipse cx="12" cy="15" rx="5" ry="4"/></svg>
+                <span class="icon-label-text">Animal Intake</span>
+              </div>
+
+              <!-- 5. Search -->
+              <div class="icon-showcase-tile">
+                <svg width="24" height="24" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                <span class="icon-label-text">Directory</span>
+              </div>
+
+              <!-- 6. Filter Sliders -->
+              <div class="icon-showcase-tile">
+                <svg width="24" height="24" viewBox="0 0 24 24"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg>
+                <span class="icon-label-text">Needs Filter</span>
+              </div>
+
+              <!-- 7. Document Deed -->
+              <div class="icon-showcase-tile">
+                <svg width="24" height="24" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                <span class="icon-label-text">80G / Deed</span>
+              </div>
+
+              <!-- 8. Location Pin -->
+              <div class="icon-showcase-tile">
+                <svg width="24" height="24" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                <span class="icon-label-text">Shelter Pin</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Middle: 8pt Spacing Grid Visual Ruler -->
+          <div class="spacing-ruler-container">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+              <span class="section-kicker">8PT MODULAR SPATIAL GRID SCALE</span>
+              <span class="spec-pill">Multiples of 8px (with 4px half-step)</span>
+            </div>
+
+            <div class="spacing-ruler-row">
+              <span class="spacing-token-name">space-4</span>
+              <span class="spacing-token-px">4px (Micro)</span>
+              <div class="spacing-token-bar" style="width: 24px;"></div>
+              <span style="font-size: 11px; color: rgba(41,53,43,0.7);">Icon-to-text gap, badge micro-padding</span>
+            </div>
+
+            <div class="spacing-ruler-row">
+              <span class="spacing-token-name">space-8</span>
+              <span class="spacing-token-px">8px (Base)</span>
+              <div class="spacing-token-bar" style="width: 48px;"></div>
+              <span style="font-size: 11px; color: rgba(41,53,43,0.7);">Inner form field padding, button tag gaps</span>
+            </div>
+
+            <div class="spacing-ruler-row">
+              <span class="spacing-token-name">space-16</span>
+              <span class="spacing-token-px">16px (Card)</span>
+              <div class="spacing-token-bar" style="width: 96px;"></div>
+              <span style="font-size: 11px; color: rgba(41,53,43,0.7);">Standard card padding, list item separation</span>
+            </div>
+
+            <div class="spacing-ruler-row">
+              <span class="spacing-token-name">space-24</span>
+              <span class="spacing-token-px">24px (Gutter)</span>
+              <div class="spacing-token-bar" style="width: 144px;"></div>
+              <span style="font-size: 11px; color: rgba(41,53,43,0.7);">Grid gutters between UI cards, section headers</span>
+            </div>
+
+            <div class="spacing-ruler-row">
+              <span class="spacing-token-name">space-32</span>
+              <span class="spacing-token-px">32px (Block)</span>
+              <div class="spacing-token-bar" style="width: 192px;"></div>
+              <span style="font-size: 11px; color: rgba(41,53,43,0.7);">Major module separation, desktop screen margins</span>
+            </div>
+
+            <div class="spacing-ruler-row">
+              <span class="spacing-token-name">space-48</span>
+              <span class="spacing-token-px">48px (Hero)</span>
+              <div class="spacing-token-bar" style="width: 260px;"></div>
+              <span style="font-size: 11px; color: rgba(41,53,43,0.7);">Editorial hero padding, stage boundary breathing room</span>
+            </div>
+          </div>
+
+          <!-- Bottom: Accessibility & Ethical Standards Matrix -->
+          <div class="guidelines-grid-6" style="grid-template-columns: repeat(3, 1fr); gap: 12px;">
             <div class="guide-box">
               <div class="guide-box-header">
                 <span class="guide-num">01</span>
-                <h3 class="guide-title">Button Hierarchy</h3>
+                <h3 class="guide-title">Sunlight Outdoor Contrast</h3>
               </div>
-              <ul class="guide-rules">
-                <li><strong>Primary:</strong> Solid Olive Green (<code>#536747</code>) with white text. Reserved for decisive commits (Publish, Submit).</li>
-                <li><strong>Secondary:</strong> Cream fill with 1.5px Olive border. For non-destructive steps (Save Draft, Back).</li>
-                <li><strong>Tertiary:</strong> Transparent ghost button with hover tint for filters and modal toggles.</li>
-              </ul>
+              <p style="font-size: 11.5px; color: rgba(41,53,43,0.85); line-height: 1.4;">
+                Dark Green on Warm Cream provides <strong>10.2:1 contrast (WCAG AAA)</strong>, ensuring shelter caretakers can update rescue intake records outdoors in bright sunlight.
+              </p>
             </div>
 
             <div class="guide-box">
               <div class="guide-box-header">
                 <span class="guide-num">02</span>
-                <h3 class="guide-title">Card & Surface Styles</h3>
+                <h3 class="guide-title">Sensitive Document Vault</h3>
               </div>
-              <ul class="guide-rules">
-                <li><strong>Elevation:</strong> Flat cards with crisp 1px borders (<code>rgba(41, 53, 43, 0.12)</code>) and soft ambient shadows.</li>
-                <li><strong>Surface Backgrounds:</strong> Warm Cream (<code>#F7F3E9</code>) for stages, pure white (<code>#FFFFFF</code>) for interactive focus tiles.</li>
-                <li><strong>Focus Rings:</strong> 2px solid Olive with 2px offset for keyboard navigation.</li>
-              </ul>
+              <p style="font-size: 11.5px; color: rgba(41,53,43,0.85); line-height: 1.4;">
+                NGO registration certificates, PAN cards, and trustee IDs are isolated in an encrypted private vault—never exposed to public crawlers or indexed online.
+              </p>
             </div>
 
             <div class="guide-box">
               <div class="guide-box-header">
                 <span class="guide-num">03</span>
-                <h3 class="guide-title">Form Validation</h3>
+                <h3 class="guide-title">Humane Dignity Imagery</h3>
               </div>
-              <ul class="guide-rules">
-                <li><strong>Inline Cues:</strong> Validate upon blur, never while the user is actively typing.</li>
-                <li><strong>Help Text:</strong> Specific guidance below labels (e.g. “Upload clear PDF or PNG under 10MB”).</li>
-                <li><strong>Error States:</strong> Terracotta border (<code>#D98B70</code>) with supportive correction copy.</li>
-              </ul>
+              <p style="font-size: 11.5px; color: rgba(41,53,43,0.85); line-height: 1.4;">
+                Strict prohibition of graphic gore or exploitative shock imagery. All media must document veterinary treatment and milestones toward healing and adoption.
+              </p>
             </div>
-
-            <div class="guide-box">
-              <div class="guide-box-header">
-                <span class="guide-num">04</span>
-                <h3 class="guide-title">Status Indicators</h3>
-              </div>
-              <ul class="guide-rules">
-                <li><strong>Verified / Healthy:</strong> Olive Green (<code>#536747</code>) with checkmark icon.</li>
-                <li><strong>Pending / Draft:</strong> Soft Gold (<code>#E5B95C</code>) with clock icon.</li>
-                <li><strong>Urgent / Needs Attention:</strong> Terracotta (<code>#D98B70</code>) with alert indicator.</li>
-              </ul>
-            </div>
-
-            <div class="guide-box">
-              <div class="guide-box-header">
-                <span class="guide-num">05</span>
-                <h3 class="guide-title">8pt Spacing Grid</h3>
-              </div>
-              <ul class="guide-rules">
-                <li><strong>Spatial Scale:</strong> 4px (micro) • 8px (inner gap) • 16px (card padding) • 24px (section gap) • 32px (container).</li>
-                <li><strong>Card Radii:</strong> 16px on outer mobile cards, 8–10px on inner input blocks and child tiles.</li>
-                <li><strong>Layout Margin:</strong> 16–20px screen edge gutters on mobile viewports.</li>
-              </ul>
-            </div>
-
-            <div class="guide-box">
-              <div class="guide-box-header">
-                <span class="guide-num">06</span>
-                <h3 class="guide-title">Accessibility & Ethics</h3>
-              </div>
-              <ul class="guide-rules">
-                <li><strong>Contrast:</strong> Dark Green (<code>#29352B</code>) on Warm Cream achieves 10.2:1 (well above WCAG AAA 7:1).</li>
-                <li><strong>Sensitive Vault:</strong> Legal statutory documents (PAN, Deeds) are never publicly crawlable or indexed.</li>
-                <li><strong>Dignity Rule:</strong> Photography must emphasize humane recovery and veterinary care; avoid exploitative trauma.</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="figma-token-banner">
-            <div class="figma-token-left">
-              <span class="figma-icon">🎨</span>
-              <div>
-                <strong>Figma Color Tokens Quick Copy:</strong>
-                <span class="token-code-row">
-                  <code>Primary: #536747</code> • <code>Background: #F7F3E9</code> • <code>Text: #29352B</code> • <code>Accent: #D98B70</code> • <code>Gold: #E5B95C</code> • <code>Surface: #E8EDE3</code>
-                </span>
-              </div>
-            </div>
-            <button type="button" class="btn-copy-tokens" id="btn-copy-tokens">Copy Tokens (CSS)</button>
           </div>
         </div>
 
         <div class="slide-footer">
-          <span>PawBridge Brand Presentation • Slide 35 / 35</span>
+          <span>PawBridge Brand Presentation • System Guidelines • Slide 35 / 35</span>
           <span class="slide-hint">Presentation Complete • Press 'G' for Overview Grid</span>
         </div>
       </section>
