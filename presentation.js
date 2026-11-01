@@ -6,7 +6,7 @@
 
 const DeckState = {
   currentIndex: 0,
-  totalSlides: 27,
+  totalSlides: 35,
   isGridOpen: false,
   slides: [
     // SECTION 01: COVER
@@ -40,13 +40,23 @@ const DeckState = {
     { num: '20', title: 'Wireframes: Discovery & Profile', section: 'SECTION 05: CONCEPTS & WIREFRAMES', desc: 'Greyscale low-fidelity wireframes for Directory Search & Public Verified NGO Profile' },
     { num: '21', title: 'Wireframes: Need, Rescue & Console', section: 'SECTION 05: CONCEPTS & WIREFRAMES', desc: 'Greyscale low-fidelity wireframes for Support Requests, Animal Health Logs & NGO Portal' },
 
-    // SECTION 06: BRAND IDENTITY & UI DESIGN SYSTEM
-    { num: '22', title: 'Brand Foundation & Essence', section: 'SECTION 06: DESIGN SYSTEM', desc: 'Logo construction, architectural bridge arc, purpose & identity keywords' },
-    { num: '23', title: 'Brand Personality & Pillars', section: 'SECTION 06: DESIGN SYSTEM', desc: 'Trustworthy, compassionate, transparent & community-led foundation' },
-    { num: '24', title: 'Harmonious Colour Palette', section: 'SECTION 06: DESIGN SYSTEM', desc: 'Olive Green, Warm Cream, Dark Green, Terracotta & Soft Gold harmonious system' },
-    { num: '25', title: 'Typography System', section: 'SECTION 06: DESIGN SYSTEM', desc: 'DM Sans & Inter pairing, hierarchy scales, and line heights' },
-    { num: '26', title: 'Visual Identity in Real Application', section: 'SECTION 06: DESIGN SYSTEM', desc: 'Desktop & mobile UI components: NGO verification, rescue records, and support requests' },
-    { num: '27', title: 'UI Design System Guidelines', section: 'SECTION 06: DESIGN SYSTEM', desc: '8pt spatial grid, accessibility tokens, and sensitive document vault ethics' },
+    // SECTION 06: USER TESTING: ROUND 1 (LOW-FIDELITY PROTOTYPE)
+    { num: '22', title: 'Testing Introduction & Objectives', section: 'SECTION 06: USABILITY TESTING', desc: 'Testing purpose, scope & 6 core evaluation goals for the low-fidelity wireframes' },
+    { num: '23', title: 'Testing Methodology & Protocol', section: 'SECTION 06: USABILITY TESTING', desc: 'Think-aloud protocol, 3–5 recommended participants, screening criteria & collected metrics' },
+    { num: '24', title: 'Participant Profile Template', section: 'SECTION 06: USABILITY TESTING', desc: 'Standardized profile logs (P1–P5) with editable placeholders awaiting session deployment' },
+    { num: '25', title: 'Testing Task Scenarios (Tasks 1–5)', section: 'SECTION 06: USABILITY TESTING', desc: 'Scenarios for NGO discovery, credibility check, urgent needs, support options & recovery updates' },
+    { num: '26', title: 'Observation & Note-Taking Table', section: 'SECTION 06: USABILITY TESTING', desc: 'Structured task observation template logging actions, hesitation, confusion & completion' },
+    { num: '27', title: 'Designer-Led Heuristic Walkthrough', section: 'SECTION 06: USABILITY TESTING', desc: 'Nielsen Norman heuristic evaluation identifying wireframe friction and cognitive gaps' },
+    { num: '28', title: 'Findings & Design Recommendations', section: 'SECTION 06: USABILITY TESTING', desc: 'Strategic recommendations across navigation, trust verification, need clarity & continuity' },
+    { num: '29', title: 'Changes to Make Before Hi-Fi Design', section: 'SECTION 06: USABILITY TESTING', desc: 'Prioritized design revision backlog (High, Med, Low) before visual styling commits' },
+
+    // SECTION 07: VISUAL IDENTITY & UI DESIGN SYSTEM
+    { num: '30', title: 'Brand Foundation & Essence', section: 'SECTION 07: DESIGN SYSTEM', desc: 'Logo construction, architectural bridge arc, purpose & identity keywords' },
+    { num: '31', title: 'Brand Personality & Pillars', section: 'SECTION 07: DESIGN SYSTEM', desc: 'Trustworthy, compassionate, transparent & community-led foundation' },
+    { num: '32', title: 'Harmonious Colour Palette', section: 'SECTION 07: DESIGN SYSTEM', desc: 'Olive Green, Warm Cream, Dark Green, Terracotta & Soft Gold harmonious system' },
+    { num: '33', title: 'Typography System', section: 'SECTION 07: DESIGN SYSTEM', desc: 'DM Sans & Inter pairing, hierarchy scales, and line heights' },
+    { num: '34', title: 'Visual Identity in Real Application', section: 'SECTION 07: DESIGN SYSTEM', desc: 'Desktop & mobile UI components: NGO verification, rescue records, and support requests' },
+    { num: '35', title: 'UI Design System Guidelines', section: 'SECTION 07: DESIGN SYSTEM', desc: '8pt spatial grid, accessibility tokens, and sensitive document vault ethics' },
   ]
 };
 
@@ -71,7 +81,6 @@ function goToSlide(index) {
   pills.forEach((pill, idx) => {
     if (idx === index) {
       pill.classList.add('active');
-      // Scroll pill into view smoothly if in scrollable container
       pill.scrollIntoView({ behavior: 'smooth', inline: 'nearest', block: 'nearest' });
     } else {
       pill.classList.remove('active');
@@ -118,7 +127,8 @@ function updateSectionQuickLinks(index) {
   else if (index >= 3 && index <= 11) currentSection = '03';
   else if (index >= 12 && index <= 14) currentSection = '04';
   else if (index >= 15 && index <= 20) currentSection = '05';
-  else currentSection = '06';
+  else if (index >= 21 && index <= 28) currentSection = '06';
+  else currentSection = '07';
 
   sectionBtns.forEach(btn => {
     if (btn.getAttribute('data-sec') === currentSection) {

@@ -3529,3 +3529,368 @@ body.deck-body {
   align-items: center;
   gap: 4px;
 }
+
+/* ============================================================
+   SECTION 06 — USER TESTING: ROUND 1 (LOW-FIDELITY PROTOTYPE)
+   ============================================================ */
+
+/* Testing Objectives Grid */
+.testing-objectives-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.objective-card {
+  background-color: var(--color-white);
+  border-radius: var(--radius-md);
+  padding: 16px 18px;
+  border: 1px solid rgba(41, 53, 43, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  box-shadow: 0 2px 8px rgba(41, 53, 43, 0.03);
+}
+
+.objective-card-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.obj-num-badge {
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-sm);
+  background-color: var(--color-pale-green);
+  color: var(--color-olive);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.obj-title {
+  font-family: var(--font-heading);
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--color-dark-green);
+}
+
+.obj-desc {
+  font-size: 12px;
+  line-height: 1.45;
+  color: rgba(41, 53, 43, 0.8);
+}
+
+/* Methodology Grid */
+.methodology-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+
+.method-card {
+  background-color: var(--color-white);
+  border-radius: var(--radius-md);
+  padding: 18px 16px;
+  border: 1px solid rgba(41, 53, 43, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  box-shadow: 0 2px 8px rgba(41, 53, 43, 0.03);
+}
+
+.method-tag {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--color-olive);
+}
+
+.method-title {
+  font-family: var(--font-heading);
+  font-size: 14.5px;
+  font-weight: 700;
+  color: var(--color-dark-green);
+}
+
+.method-desc {
+  font-size: 12px;
+  color: rgba(41, 53, 43, 0.8);
+  line-height: 1.4;
+}
+
+/* Testing Placeholder Banner */
+.testing-placeholder-banner {
+  background-color: #FFF9DB;
+  border: 1.5px dashed #E5B95C;
+  border-radius: var(--radius-md);
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 12px;
+  color: #5C450C;
+}
+
+.testing-placeholder-banner strong {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-heading);
+  font-size: 12.5px;
+}
+
+/* Participant Profile Table */
+.participant-table-wrapper {
+  background-color: var(--color-white);
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(41, 53, 43, 0.1);
+  overflow-x: auto;
+  box-shadow: var(--shadow-card);
+}
+
+.participant-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+}
+
+.participant-table th {
+  background-color: var(--color-pale-green);
+  font-family: var(--font-heading);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--color-dark-green);
+  padding: 10px 12px;
+  text-align: left;
+  border-bottom: 2px solid rgba(83, 103, 71, 0.2);
+}
+
+.participant-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid rgba(41, 53, 43, 0.08);
+  color: rgba(41, 53, 43, 0.85);
+  vertical-align: middle;
+}
+
+.placeholder-cell {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: #8C6A1E;
+  background-color: #FCF9EE;
+  padding: 4px 8px;
+  border-radius: 4px;
+  border: 1px dashed #D4C868;
+  display: inline-block;
+}
+
+/* Task Scenarios Grid */
+.scenarios-grid-5 {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+}
+
+.scenario-card {
+  background-color: var(--color-white);
+  border-radius: var(--radius-md);
+  padding: 14px 12px;
+  border: 1px solid rgba(41, 53, 43, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 8px;
+  box-shadow: 0 2px 8px rgba(41, 53, 43, 0.03);
+}
+
+.scenario-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.scenario-num-pill {
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: var(--radius-pill);
+  background-color: var(--color-cream);
+  color: var(--color-dark-green);
+  border: 1px solid rgba(41, 53, 43, 0.15);
+}
+
+.scenario-title {
+  font-family: var(--font-heading);
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--color-dark-green);
+}
+
+.scenario-prompt {
+  font-size: 11px;
+  line-height: 1.4;
+  color: rgba(41, 53, 43, 0.85);
+  font-style: italic;
+  border-left: 2px solid var(--color-olive);
+  padding-left: 6px;
+}
+
+.scenario-success-criteria {
+  background-color: var(--color-cream);
+  padding: 6px 8px;
+  border-radius: var(--radius-sm);
+  font-size: 10.5px;
+  color: rgba(41, 53, 43, 0.8);
+  line-height: 1.35;
+}
+
+/* Observation Table */
+.observation-table-wrapper {
+  background-color: var(--color-white);
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(41, 53, 43, 0.1);
+  overflow-x: auto;
+  box-shadow: var(--shadow-card);
+}
+
+.obs-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 11.5px;
+}
+
+.obs-table th {
+  background-color: var(--color-pale-green);
+  font-family: var(--font-heading);
+  font-size: 10.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--color-dark-green);
+  padding: 8px 10px;
+  text-align: left;
+  border-bottom: 2px solid rgba(83, 103, 71, 0.2);
+}
+
+.obs-table td {
+  padding: 8px 10px;
+  border-bottom: 1px solid rgba(41, 53, 43, 0.08);
+  color: rgba(41, 53, 43, 0.85);
+  vertical-align: top;
+  line-height: 1.35;
+}
+
+/* Heuristic Walkthrough Grid */
+.heuristic-grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.heuristic-card {
+  background-color: var(--color-white);
+  border-radius: var(--radius-md);
+  padding: 14px 14px;
+  border: 1px solid rgba(41, 53, 43, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  box-shadow: 0 2px 8px rgba(41, 53, 43, 0.03);
+}
+
+.heuristic-badge-tag {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: var(--radius-sm);
+  background-color: #FDF1EC;
+  color: #C25B37;
+  width: fit-content;
+}
+
+.heuristic-title {
+  font-family: var(--font-heading);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--color-dark-green);
+}
+
+.heuristic-issue {
+  font-size: 11.5px;
+  line-height: 1.4;
+  color: rgba(41, 53, 43, 0.85);
+}
+
+.heuristic-fix {
+  background-color: var(--color-pale-green);
+  padding: 6px 8px;
+  border-radius: var(--radius-sm);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--color-olive);
+}
+
+/* Changes Priority Table */
+.changes-priority-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.priority-col-card {
+  background-color: var(--color-white);
+  border-radius: var(--radius-md);
+  padding: 16px 16px;
+  border: 1px solid rgba(41, 53, 43, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: 0 2px 8px rgba(41, 53, 43, 0.03);
+}
+
+.priority-badge {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: var(--radius-pill);
+  width: fit-content;
+  text-transform: uppercase;
+}
+
+.priority-badge.high { background-color: #FDF1EC; color: #C25B37; border: 1px solid #D98B70; }
+.priority-badge.med { background-color: #FAF0D7; color: #8C6A1E; border: 1px solid #E5B95C; }
+.priority-badge.low { background-color: #EDF2EA; color: var(--color-olive); border: 1px solid var(--color-olive); }
+
+.changes-item-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 12px;
+}
+
+.changes-item-list li {
+  padding: 8px 10px;
+  background-color: var(--color-cream);
+  border-radius: var(--radius-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  color: var(--color-dark-green);
+}
+
+.changes-item-list li strong {
+  font-family: var(--font-heading);
+  font-size: 12.5px;
+}
