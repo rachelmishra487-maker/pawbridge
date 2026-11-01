@@ -6,7 +6,7 @@
 
 const DeckState = {
   currentIndex: 0,
-  totalSlides: 42,
+  totalSlides: 49,
   isGridOpen: false,
   slides: [
     // SECTION 01: COVER
@@ -66,6 +66,15 @@ const DeckState = {
     { num: '40', title: 'Hi-Fi: Rescue Timelines & Impact Reports', section: 'SECTION 08: FINAL SOLUTION', desc: 'Sheru #PB-408 medical healing stepper, post-op updates & organization-reported impact reports' },
     { num: '41', title: 'Hi-Fi: NGO Operations Console', section: 'SECTION 08: FINAL SOLUTION', desc: 'Shelter document verification hub, 5 status badges, rescue records & request management' },
     { num: '42', title: 'Research Synthesis Matrix & Live Prototype Handoff', section: 'SECTION 08: FINAL SOLUTION', desc: 'Direct empirical mapping, tested findings vs proposed hypotheses & desktop prototype launch' },
+
+    // SECTION 09: USER TESTING: ROUND 2 & VALIDATION
+    { num: '43', title: 'Round 2 Testing Objectives & Protocol', section: 'SECTION 09: TESTING R2 & VALIDATION', desc: 'Objectives, remote think-aloud methodology, desktop screen criteria & evaluation protocol' },
+    { num: '44', title: 'Participant Profiles & Task Scenarios', section: 'SECTION 09: TESTING R2 & VALIDATION', desc: 'Standardized profile template (P1–P5) & 5 testing task scenarios from discovery to follow-up' },
+    { num: '45', title: 'Standardized Observation Sheet', section: 'SECTION 09: TESTING R2 & VALIDATION', desc: 'Observation template across Tasks 1–5 logging actions, hesitation, confusion, and completion' },
+    { num: '46', title: 'Designer-Led Heuristic Evaluation', section: 'SECTION 09: TESTING R2 & VALIDATION', desc: 'Nielsen Norman heuristic review of hi-fi screens (not participant testing) & eliminated friction' },
+    { num: '47', title: 'Round 1 vs Round 2 Comparison Matrix', section: 'SECTION 09: TESTING R2 & VALIDATION', desc: 'Evidence comparison across Navigation, Trust clarity, Needs visibility, Support action & Follow-up' },
+    { num: '48', title: 'Remaining Usability Issues & Changes', section: 'SECTION 09: TESTING R2 & VALIDATION', desc: 'Prioritized post-testing backlog (mobile touch targets, offline queueing, receipt generation)' },
+    { num: '49', title: 'Final Validation Summary & Readiness', section: 'SECTION 09: TESTING R2 & VALIDATION', desc: 'Experience scorecard, academic synthesis, and desktop prototype deployment readiness' },
   ]
 };
 
@@ -138,7 +147,8 @@ function updateSectionQuickLinks(index) {
   else if (index >= 15 && index <= 20) currentSection = '05';
   else if (index >= 21 && index <= 28) currentSection = '06';
   else if (index >= 29 && index <= 34) currentSection = '07';
-  else currentSection = '08';
+  else if (index >= 35 && index <= 41) currentSection = '08';
+  else currentSection = '09';
 
   sectionBtns.forEach(btn => {
     if (btn.getAttribute('data-sec') === currentSection) {
