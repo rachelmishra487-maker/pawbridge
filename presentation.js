@@ -6,12 +6,17 @@
 
 const DeckState = {
   currentIndex: 0,
-  totalSlides: 18,
+  totalSlides: 27,
   isGridOpen: false,
   slides: [
+    // SECTION 01: COVER
     { num: '01', title: 'Cover Page', section: 'SECTION 01: COVER', desc: 'Understanding People Who Support Animal Shelters Online • Rachel Mishra, B.Des UI/UX' },
+    
+    // SECTION 02: OVERVIEW
     { num: '02', title: 'Project Overview & Problem Statement', section: 'SECTION 02: OVERVIEW', desc: 'Good intent stalls at uncertainty • Verbatim problem statement, context & target users' },
     { num: '03', title: 'Research Objectives, Scope & Journey', section: 'SECTION 02: OVERVIEW', desc: 'Research goal, in-scope touchpoints & 5-stage supporter journey framework' },
+    
+    // SECTION 03: RESEARCH SUMMARY
     { num: '04', title: 'User Interview Profiles & Themes', section: 'SECTION 03: RESEARCH', desc: 'Kanchan, Khushi, Dishank, Asha, and unnamed perspectives + key research themes' },
     { num: '05', title: 'Four Key Insights', section: 'SECTION 03: RESEARCH', desc: 'Trust before transaction, clarity over volume, specific needs, and familiarity differences' },
     { num: '06', title: 'Observation & Design Matrix', section: 'SECTION 03: RESEARCH', desc: 'Direct verbatim mapping: User observations translated into concrete design implications' },
@@ -21,12 +26,27 @@ const DeckState = {
     { num: '10', title: 'NGO Field Research & Case Studies', section: 'SECTION 03: RESEARCH', desc: 'Nagpur fieldwork (SSO, Rise for Tails, NSD) & Pan-India benchmarks (PFA, Blue Cross, RESQ)' },
     { num: '11', title: 'NGO Pain Points & Funding Ecosystem', section: 'SECTION 03: RESEARCH', desc: 'Operational reality, ₹5–6 lakh funding range, support channels, and core pain points' },
     { num: '12', title: 'Strategic Solutions & How Might We', section: 'SECTION 03: RESEARCH', desc: 'How Might We framing, 4 action levers, and 3 platform solution concepts' },
-    { num: '13', title: 'Brand Foundation & Essence', section: 'SECTION 04: DESIGN SYSTEM', desc: 'Logo construction, architectural bridge arc, purpose & identity keywords' },
-    { num: '14', title: 'Brand Personality & Pillars', section: 'SECTION 04: DESIGN SYSTEM', desc: 'Trustworthy, compassionate, transparent & community-led foundation' },
-    { num: '15', title: 'Harmonious Colour Palette', section: 'SECTION 04: DESIGN SYSTEM', desc: 'Olive Green, Warm Cream, Dark Green, Terracotta & Soft Gold harmonious system' },
-    { num: '16', title: 'Typography System', section: 'SECTION 04: DESIGN SYSTEM', desc: 'DM Sans & Inter pairing, hierarchy scales, and line heights' },
-    { num: '17', title: 'Visual Identity in Real Application', section: 'SECTION 04: DESIGN SYSTEM', desc: 'Desktop & mobile UI components: NGO verification, rescue records, and support requests' },
-    { num: '18', title: 'UI Design System Guidelines', section: 'SECTION 04: DESIGN SYSTEM', desc: '8pt spatial grid, accessibility tokens, and sensitive document vault ethics' },
+
+    // SECTION 04: INFORMATION ARCHITECTURE & EXPERIENCE STRUCTURE
+    { num: '13', title: 'Information Architecture & Sitemap', section: 'SECTION 04: IA & STRUCTURE', desc: 'Platform hierarchical sitemap: Public Supporter Hub & NGO Operations Console' },
+    { num: '14', title: 'Navigation Structure & User Flow', section: 'SECTION 04: IA & STRUCTURE', desc: 'Desktop navigation blueprint & end-to-end supporter decision user flow' },
+    { num: '15', title: 'Task Flow & 6 Core Features', section: 'SECTION 04: IA & STRUCTURE', desc: 'Step-by-step urgent need fulfillment task flow & feature matrix addressing the 6 user goals' },
+
+    // SECTION 05: CONCEPT EXPLORATION & LOW-FIDELITY DESIGN
+    { num: '16', title: 'Three Research Concepts (A, B & C)', section: 'SECTION 05: CONCEPTS & WIREFRAMES', desc: 'Concept A (Directory), Concept B (Donation Platform), Concept C (Community Platform)' },
+    { num: '17', title: 'Concept Comparison & Trade-offs', section: 'SECTION 05: CONCEPTS & WIREFRAMES', desc: 'Evaluation matrix across 6 parameters + advantages and limitations of each model' },
+    { num: '18', title: 'Selection Criteria & Hybrid Rationale', section: 'SECTION 05: CONCEPTS & WIREFRAMES', desc: 'Evidence-based selection criteria & why the PawBridge Integrated Model was chosen' },
+    { num: '19', title: 'Initial Sketches & Ideation', section: 'SECTION 05: CONCEPTS & WIREFRAMES', desc: 'Handwritten layout ideation, visual hierarchy notes, and distinction of tested vs proposed ideas' },
+    { num: '20', title: 'Wireframes: Discovery & Profile', section: 'SECTION 05: CONCEPTS & WIREFRAMES', desc: 'Greyscale low-fidelity wireframes for Directory Search & Public Verified NGO Profile' },
+    { num: '21', title: 'Wireframes: Need, Rescue & Console', section: 'SECTION 05: CONCEPTS & WIREFRAMES', desc: 'Greyscale low-fidelity wireframes for Support Requests, Animal Health Logs & NGO Portal' },
+
+    // SECTION 06: BRAND IDENTITY & UI DESIGN SYSTEM
+    { num: '22', title: 'Brand Foundation & Essence', section: 'SECTION 06: DESIGN SYSTEM', desc: 'Logo construction, architectural bridge arc, purpose & identity keywords' },
+    { num: '23', title: 'Brand Personality & Pillars', section: 'SECTION 06: DESIGN SYSTEM', desc: 'Trustworthy, compassionate, transparent & community-led foundation' },
+    { num: '24', title: 'Harmonious Colour Palette', section: 'SECTION 06: DESIGN SYSTEM', desc: 'Olive Green, Warm Cream, Dark Green, Terracotta & Soft Gold harmonious system' },
+    { num: '25', title: 'Typography System', section: 'SECTION 06: DESIGN SYSTEM', desc: 'DM Sans & Inter pairing, hierarchy scales, and line heights' },
+    { num: '26', title: 'Visual Identity in Real Application', section: 'SECTION 06: DESIGN SYSTEM', desc: 'Desktop & mobile UI components: NGO verification, rescue records, and support requests' },
+    { num: '27', title: 'UI Design System Guidelines', section: 'SECTION 06: DESIGN SYSTEM', desc: '8pt spatial grid, accessibility tokens, and sensitive document vault ethics' },
   ]
 };
 
@@ -96,7 +116,9 @@ function updateSectionQuickLinks(index) {
   if (index === 0) currentSection = '01';
   else if (index >= 1 && index <= 2) currentSection = '02';
   else if (index >= 3 && index <= 11) currentSection = '03';
-  else currentSection = '04';
+  else if (index >= 12 && index <= 14) currentSection = '04';
+  else if (index >= 15 && index <= 20) currentSection = '05';
+  else currentSection = '06';
 
   sectionBtns.forEach(btn => {
     if (btn.getAttribute('data-sec') === currentSection) {

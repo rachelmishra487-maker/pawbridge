@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Understanding People Who Support Animal Shelters Online — PawBridge UEDP-5</title>
-  <meta name="description" content="UEDP-5 UX Research Presentation and Design System for PawBridge, a platform connecting animal welfare NGOs, rescues, and community support online.">
+  <meta name="description" content="UEDP-5 UX Research, Information Architecture, Concept Exploration, Low-Fidelity Wireframes and Design System for PawBridge.">
   
   <!-- Typography: DM Sans, Inter & JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -40,7 +40,9 @@
       <button type="button" class="btn-section-tab active" data-sec="01" data-target-slide="0" title="Section 01: Cover Page">01 Cover</button>
       <button type="button" class="btn-section-tab" data-sec="02" data-target-slide="1" title="Section 02: Project Overview & Scope">02 Overview</button>
       <button type="button" class="btn-section-tab" data-sec="03" data-target-slide="3" title="Section 03: Qualitative Research & NGO Study">03 Research</button>
-      <button type="button" class="btn-section-tab" data-sec="04" data-target-slide="12" title="Section 04: Brand Identity & UI Design System">04 Design System</button>
+      <button type="button" class="btn-section-tab" data-sec="04" data-target-slide="12" title="Section 04: Information Architecture & Flows">04 IA & Flows</button>
+      <button type="button" class="btn-section-tab" data-sec="05" data-target-slide="15" title="Section 05: Concept Exploration & Wireframes">05 Concepts</button>
+      <button type="button" class="btn-section-tab" data-sec="06" data-target-slide="21" title="Section 06: Brand Identity & UI Design System">06 Design System</button>
     </div>
 
     <!-- Slide Thumbnails / Indicator Pill Bar (Scrollable) -->
@@ -57,12 +59,21 @@
       <button type="button" class="slide-pill" data-slide="9" title="Slide 10: Comparative NGO Fieldwork"><span class="pill-num">10</span> NGOs</button>
       <button type="button" class="slide-pill" data-slide="10" title="Slide 11: NGO Pain Points & Ecosystem"><span class="pill-num">11</span> Pain Points</button>
       <button type="button" class="slide-pill" data-slide="11" title="Slide 12: Strategic Solutions & HMW"><span class="pill-num">12</span> Solutions</button>
-      <button type="button" class="slide-pill" data-slide="12" title="Slide 13: Brand Foundation & Essence"><span class="pill-num">13</span> Brand</button>
-      <button type="button" class="slide-pill" data-slide="13" title="Slide 14: Brand Personality & Pillars"><span class="pill-num">14</span> Personality</button>
-      <button type="button" class="slide-pill" data-slide="14" title="Slide 15: Harmonious Colour Palette"><span class="pill-num">15</span> Palette</button>
-      <button type="button" class="slide-pill" data-slide="15" title="Slide 16: Typography System"><span class="pill-num">16</span> Typography</button>
-      <button type="button" class="slide-pill" data-slide="16" title="Slide 17: Visual Identity in Use"><span class="pill-num">17</span> Components</button>
-      <button type="button" class="slide-pill" data-slide="17" title="Slide 18: UI Design System Guidelines"><span class="pill-num">18</span> Guidelines</button>
+      <button type="button" class="slide-pill" data-slide="12" title="Slide 13: Information Architecture & Sitemap"><span class="pill-num">13</span> Sitemap</button>
+      <button type="button" class="slide-pill" data-slide="13" title="Slide 14: Navigation Structure & User Flow"><span class="pill-num">14</span> User Flow</button>
+      <button type="button" class="slide-pill" data-slide="14" title="Slide 15: Task Flow & 6 Core Features"><span class="pill-num">15</span> Features</button>
+      <button type="button" class="slide-pill" data-slide="15" title="Slide 16: Three Research Concepts (A, B, C)"><span class="pill-num">16</span> 3 Concepts</button>
+      <button type="button" class="slide-pill" data-slide="16" title="Slide 17: Concept Comparison & Trade-offs"><span class="pill-num">17</span> Comparison</button>
+      <button type="button" class="slide-pill" data-slide="17" title="Slide 18: Selection Criteria & Rationale"><span class="pill-num">18</span> Selection</button>
+      <button type="button" class="slide-pill" data-slide="18" title="Slide 19: Initial Sketches & Ideation"><span class="pill-num">19</span> Sketches</button>
+      <button type="button" class="slide-pill" data-slide="19" title="Slide 20: Low-Fidelity Wireframes (Directory & Profile)"><span class="pill-num">20</span> Wireframes 1</button>
+      <button type="button" class="slide-pill" data-slide="20" title="Slide 21: Low-Fidelity Wireframes (Need, Case & Console)"><span class="pill-num">21</span> Wireframes 2</button>
+      <button type="button" class="slide-pill" data-slide="21" title="Slide 22: Brand Foundation & Essence"><span class="pill-num">22</span> Brand</button>
+      <button type="button" class="slide-pill" data-slide="22" title="Slide 23: Brand Personality & Pillars"><span class="pill-num">23</span> Personality</button>
+      <button type="button" class="slide-pill" data-slide="23" title="Slide 24: Harmonious Colour Palette"><span class="pill-num">24</span> Palette</button>
+      <button type="button" class="slide-pill" data-slide="24" title="Slide 25: Typography System"><span class="pill-num">25</span> Typography</button>
+      <button type="button" class="slide-pill" data-slide="25" title="Slide 26: Visual Identity in Real Application"><span class="pill-num">26</span> Components</button>
+      <button type="button" class="slide-pill" data-slide="26" title="Slide 27: UI Design System Guidelines"><span class="pill-num">27</span> Guidelines</button>
     </div>
 
     <!-- Actions: Prototype Link, Grid View, Fullscreen -->
@@ -81,7 +92,7 @@
 
   <!-- PROGRESS BAR -->
   <div class="deck-progress-track">
-    <div class="deck-progress-fill" id="deck-progress-bar" style="width: 5.55%;"></div>
+    <div class="deck-progress-fill" id="deck-progress-bar" style="width: 3.7%;"></div>
   </div>
 
   <!-- MAIN PRESENTATION STAGE -->
@@ -151,24 +162,16 @@
               <!-- Stylized Shelter Compassion SVG Illustration -->
               <div class="cover-dogs-art">
                 <svg width="240" height="150" viewBox="0 0 240 150" fill="none">
-                  <!-- Shelter Ground Base -->
                   <path d="M15 130C60 128 180 128 225 130" stroke="#536747" stroke-width="3" stroke-linecap="round"/>
-                  <!-- Bridge Connecting Arc -->
                   <path d="M20 125C65 45 175 45 220 125" stroke="#D98B70" stroke-width="3.5" stroke-linecap="round"/>
                   <path d="M25 125C70 55 170 55 215 125" stroke="#E5B95C" stroke-width="2" stroke-linecap="round" stroke-dasharray="4 5"/>
-                  
-                  <!-- Dog 1 Silhouette (Sitting, Reassured) -->
                   <path d="M75 125L75 90C75 80 85 75 92 82L98 88C103 84 110 88 110 95L110 125Z" fill="#E8EDE3" opacity="0.9"/>
                   <circle cx="95" cy="74" r="9" fill="#E8EDE3"/>
                   <path d="M90 68L88 60L96 66Z" fill="#536747"/>
                   <path d="M100 68L104 60L98 66Z" fill="#536747"/>
-                  
-                  <!-- Dog 2 Silhouette (Resting, Calm) -->
                   <ellipse cx="145" cy="118" rx="28" ry="12" fill="#E8EDE3" opacity="0.75"/>
                   <circle cx="168" cy="110" r="8" fill="#E8EDE3" opacity="0.85"/>
                   <path d="M172 104L177 98L171 104Z" fill="#D98B70"/>
-                  
-                  <!-- Caretaker Outreach Hand Arc -->
                   <path d="M45 75C60 70 80 76 90 80" stroke="#F7F3E9" stroke-width="3" stroke-linecap="round"/>
                   <circle cx="45" cy="75" r="4" fill="#E5B95C"/>
                 </svg>
@@ -187,7 +190,7 @@
         </div>
 
         <div class="slide-footer">
-          <span>UEDP-5 Research Presentation • Rachel Mishra • Slide 01 / 18</span>
+          <span>UEDP-5 Research Presentation • Rachel Mishra • Slide 01 / 27</span>
           <span class="slide-hint">Press → or Space to proceed • Press 'G' for Overview</span>
         </div>
       </section>
@@ -257,7 +260,7 @@
         </div>
 
         <div class="slide-footer">
-          <span>UEDP-5 Research Presentation • Project Overview • Slide 02 / 18</span>
+          <span>UEDP-5 Research Presentation • Project Overview • Slide 02 / 27</span>
           <span class="slide-hint">Use ← and → keys to navigate</span>
         </div>
       </section>
@@ -350,7 +353,7 @@
         </div>
 
         <div class="slide-footer">
-          <span>UEDP-5 Research Presentation • Project Overview • Slide 03 / 18</span>
+          <span>UEDP-5 Research Presentation • Project Overview • Slide 03 / 27</span>
           <span class="slide-hint">Use ← and → keys to navigate</span>
         </div>
       </section>
@@ -478,7 +481,7 @@
         </div>
 
         <div class="slide-footer">
-          <span>UEDP-5 Research Presentation • Research Summary • Slide 04 / 18</span>
+          <span>UEDP-5 Research Presentation • Research Summary • Slide 04 / 27</span>
           <span class="slide-hint">Use ← and → keys to navigate</span>
         </div>
       </section>
@@ -558,7 +561,7 @@
         </div>
 
         <div class="slide-footer">
-          <span>UEDP-5 Research Presentation • Key Insights • Slide 05 / 18</span>
+          <span>UEDP-5 Research Presentation • Key Insights • Slide 05 / 27</span>
           <span class="slide-hint">Use ← and → keys to navigate</span>
         </div>
       </section>
@@ -582,7 +585,6 @@
           </div>
 
           <div class="matrix-container">
-            <!-- Header Row -->
             <div class="matrix-row header">
               <div>DIMENSION</div>
               <div>OBSERVATION (SUPPORTER VOICE)</div>
@@ -590,7 +592,7 @@
               <div>PAWBRIDGE IMPLEMENTATION</div>
             </div>
 
-            <!-- Row 1: TRUST (From PDF Page 8) -->
+            <!-- Row 1: TRUST -->
             <div class="matrix-row">
               <div class="matrix-dim-badge trust">TRUST</div>
               <div class="matrix-obs">“I need confidence in who is asking.”</div>
@@ -598,7 +600,7 @@
               <div class="matrix-feat">Verified NGO Badge, 12A/80G & PAN status, registration check.</div>
             </div>
 
-            <!-- Row 2: CLARITY (From PDF Page 8) -->
+            <!-- Row 2: CLARITY -->
             <div class="matrix-row">
               <div class="matrix-dim-badge clarity">CLARITY</div>
               <div class="matrix-obs">“I need to grasp the ask quickly.”</div>
@@ -606,7 +608,7 @@
               <div class="matrix-feat">Itemized Support Requests card, urgency tags, concrete quantities.</div>
             </div>
 
-            <!-- Row 3: ACCESS (From PDF Page 8) -->
+            <!-- Row 3: ACCESS -->
             <div class="matrix-row">
               <div class="matrix-dim-badge access">ACCESS</div>
               <div class="matrix-obs">“I need a way to help that fits me.”</div>
@@ -614,7 +616,7 @@
               <div class="matrix-feat">Multi-modal actions: direct funds, food delivery, volunteer, foster.</div>
             </div>
 
-            <!-- Row 4: CONTINUITY (From PDF Page 8) -->
+            <!-- Row 4: CONTINUITY -->
             <div class="matrix-row">
               <div class="matrix-dim-badge continuity">CONTINUITY</div>
               <div class="matrix-obs">“I need to know what followed.”</div>
@@ -631,7 +633,7 @@
         </div>
 
         <div class="slide-footer">
-          <span>UEDP-5 Research Presentation • Observation Matrix • Slide 06 / 18</span>
+          <span>UEDP-5 Research Presentation • Observation Matrix • Slide 06 / 27</span>
           <span class="slide-hint">Use ← and → keys to navigate</span>
         </div>
       </section>
@@ -652,7 +654,7 @@
           </div>
 
           <div class="persona-grid">
-            <!-- Left Profile Column (Verbatim from PDF Page 9) -->
+            <!-- Left Profile Column -->
             <div class="persona-profile-col">
               <div>
                 <div class="persona-avatar-box">
@@ -680,45 +682,33 @@
               </div>
             </div>
 
-            <!-- Right 4 Quadrants Column (Verbatim from PDF Page 9) -->
+            <!-- Right 4 Quadrants Column -->
             <div class="persona-pillars-grid">
-              <!-- Goals -->
               <div class="persona-pillar-card goals">
                 <span class="pillar-tag">GOALS</span>
-                <p>
-                  Find credible shelters; understand urgent needs; help in a way that fits time and comfort.
-                </p>
+                <p>Find credible shelters; understand urgent needs; help in a way that fits time and comfort.</p>
               </div>
 
-              <!-- Frustrations -->
               <div class="persona-pillar-card frustrations">
                 <span class="pillar-tag">FRUSTRATIONS</span>
-                <p>
-                  Unclear legitimacy, vague appeals, scattered information and little follow-up.
-                </p>
+                <p>Unclear legitimacy, vague appeals, scattered information and little follow-up.</p>
               </div>
 
-              <!-- Behaviours -->
               <div class="persona-pillar-card behaviours">
                 <span class="pillar-tag">BEHAVIOURS</span>
-                <p>
-                  Checks social proof, compares posts, saves links, donates occasionally and shares selectively.
-                </p>
+                <p>Checks social proof, compares posts, saves links, donates occasionally and shares selectively.</p>
               </div>
 
-              <!-- Design Needs -->
               <div class="persona-pillar-card needs">
                 <span class="pillar-tag">DESIGN NEEDS</span>
-                <p>
-                  Verified identity, specific asks, inclusive support modes and an easy way to reconnect.
-                </p>
+                <p>Verified identity, specific asks, inclusive support modes and an easy way to reconnect.</p>
               </div>
             </div>
           </div>
         </div>
 
         <div class="slide-footer">
-          <span>UEDP-5 Research Presentation • User Persona • Slide 07 / 18</span>
+          <span>UEDP-5 Research Presentation • User Persona • Slide 07 / 27</span>
           <span class="slide-hint">Use ← and → keys to navigate</span>
         </div>
       </section>
@@ -742,50 +732,33 @@
           </div>
 
           <div class="empathy-stage-container">
-            <!-- 4-Quadrant Grid (Verbatim from PDF Page 10) -->
             <div class="empathy-quadrant-wrapper">
-              <!-- Center Circular Archetype Badge -->
               <div class="empathy-center-badge">
                 POTENTIAL SUPPORTER
               </div>
 
-              <!-- SAYS (Yellow) -->
               <div class="empathy-quadrant says">
                 <span class="empathy-quadrant-tag">SAYS</span>
-                <p>
-                  “I want to help, but I need to know it is genuine.”<br>
-                  Asks what is needed now.
-                </p>
+                <p>“I want to help, but I need to know it is genuine.”<br>Asks what is needed now.</p>
               </div>
 
-              <!-- THINKS (Green) -->
               <div class="empathy-quadrant thinks">
                 <span class="empathy-quadrant-tag">THINKS</span>
-                <p>
-                  Is this shelter credible?<br>
-                  Will my support make a useful difference?
-                </p>
+                <p>Is this shelter credible?<br>Will my support make a useful difference?</p>
               </div>
 
-              <!-- DOES (Lavender) -->
               <div class="empathy-quadrant does">
                 <span class="empathy-quadrant-tag">DOES</span>
-                <p>
-                  Checks posts, comments and updates.<br>
-                  Shares, donates, saves or moves on.
-                </p>
+                <p>Checks posts, comments and updates.<br>Shares, donates, saves or moves on.</p>
               </div>
 
-              <!-- FEELS (Terracotta) -->
               <div class="empathy-quadrant feels">
                 <span class="empathy-quadrant-tag">FEELS</span>
-                <p>
-                  Concerned and hopeful; sometimes unsure, overwhelmed or cautious.
-                </p>
+                <p>Concerned and hopeful; sometimes unsure, overwhelmed or cautious.</p>
               </div>
             </div>
 
-            <!-- Bottom Synthesis Bar (Pains & Needs) -->
+            <!-- Bottom Synthesis Bar -->
             <div class="empathy-synthesis-bar">
               <div class="empathy-synth-col">
                 <span class="empathy-synth-tag">PAINS</span>
@@ -800,7 +773,7 @@
         </div>
 
         <div class="slide-footer">
-          <span>UEDP-5 Research Presentation • Empathy Map • Slide 08 / 18</span>
+          <span>UEDP-5 Research Presentation • Empathy Map • Slide 08 / 27</span>
           <span class="slide-hint">Use ← and → keys to navigate</span>
         </div>
       </section>
@@ -824,16 +797,12 @@
           </div>
 
           <div class="journey-deep-dive-grid">
-            <!-- Stage 1: DISCOVER -->
             <div class="journey-card-deep">
               <div>
-                <div class="journey-step-badge-top">
-                  <span class="journey-num-pill">PHASE 01</span>
-                </div>
+                <div class="journey-step-badge-top"><span class="journey-num-pill">PHASE 01</span></div>
                 <h3 class="journey-phase-title" style="margin-top: 6px;">DISCOVER</h3>
                 <div class="journey-phase-quote">“Who is out there?”</div>
               </div>
-
               <div class="journey-detail-item">
                 <strong>Current Channel</strong>
                 <span>Instagram reels, WhatsApp stories, mutual shares.</span>
@@ -848,16 +817,12 @@
               </div>
             </div>
 
-            <!-- Stage 2: VERIFY -->
             <div class="journey-card-deep">
               <div>
-                <div class="journey-step-badge-top">
-                  <span class="journey-num-pill">PHASE 02</span>
-                </div>
+                <div class="journey-step-badge-top"><span class="journey-num-pill">PHASE 02</span></div>
                 <h3 class="journey-phase-title" style="margin-top: 6px;">VERIFY</h3>
                 <div class="journey-phase-quote">“Can I trust this?”</div>
               </div>
-
               <div class="journey-detail-item">
                 <strong>Current Channel</strong>
                 <span>Comments inspection, Google search, cross-checking.</span>
@@ -872,16 +837,12 @@
               </div>
             </div>
 
-            <!-- Stage 3: UNDERSTAND -->
             <div class="journey-card-deep">
               <div>
-                <div class="journey-step-badge-top">
-                  <span class="journey-num-pill">PHASE 03</span>
-                </div>
+                <div class="journey-step-badge-top"><span class="journey-num-pill">PHASE 03</span></div>
                 <h3 class="journey-phase-title" style="margin-top: 6px;">UNDERSTAND</h3>
                 <div class="journey-phase-quote">“What is needed now?”</div>
               </div>
-
               <div class="journey-detail-item">
                 <strong>Current Channel</strong>
                 <span>Deciphering unorganized captions and UPI screenshots.</span>
@@ -896,16 +857,12 @@
               </div>
             </div>
 
-            <!-- Stage 4: ACT -->
             <div class="journey-card-deep">
               <div>
-                <div class="journey-step-badge-top">
-                  <span class="journey-num-pill">PHASE 04</span>
-                </div>
+                <div class="journey-step-badge-top"><span class="journey-num-pill">PHASE 04</span></div>
                 <h3 class="journey-phase-title" style="margin-top: 6px;">ACT</h3>
                 <div class="journey-phase-quote">“What can I do?”</div>
               </div>
-
               <div class="journey-detail-item">
                 <strong>Current Channel</strong>
                 <span>Unstructured UPI transfers, manual DMs for visits.</span>
@@ -920,16 +877,12 @@
               </div>
             </div>
 
-            <!-- Stage 5: FOLLOW UP -->
             <div class="journey-card-deep">
               <div>
-                <div class="journey-step-badge-top">
-                  <span class="journey-num-pill">PHASE 05</span>
-                </div>
+                <div class="journey-step-badge-top"><span class="journey-num-pill">PHASE 05</span></div>
                 <h3 class="journey-phase-title" style="margin-top: 6px;">FOLLOW UP</h3>
                 <div class="journey-phase-quote">“What happened next?”</div>
               </div>
-
               <div class="journey-detail-item">
                 <strong>Current Channel</strong>
                 <span>Rare follow-ups; posts get buried in algorithms.</span>
@@ -947,7 +900,7 @@
         </div>
 
         <div class="slide-footer">
-          <span>UEDP-5 Research Presentation • Supporter Journey • Slide 09 / 18</span>
+          <span>UEDP-5 Research Presentation • Supporter Journey • Slide 09 / 27</span>
           <span class="slide-hint">Use ← and → keys to navigate</span>
         </div>
       </section>
@@ -970,9 +923,8 @@
             </p>
           </div>
 
-          <!-- 6 NGO Cards Grid (Verbatim from PDF Pages 12, 13, 14) -->
           <div class="ngo-grid-6">
-            <!-- NGO 1: Save Speechless Organisation -->
+            <!-- NGO 1: SSO -->
             <div class="ngo-card">
               <div>
                 <div class="ngo-card-header">
@@ -1071,7 +1023,7 @@
         </div>
 
         <div class="slide-footer">
-          <span>UEDP-5 Research Presentation • NGO Research • Slide 10 / 18</span>
+          <span>UEDP-5 Research Presentation • NGO Research • Slide 10 / 27</span>
           <span class="slide-hint">Use ← and → keys to navigate</span>
         </div>
       </section>
@@ -1094,7 +1046,6 @@
             </p>
           </div>
 
-          <!-- 3 Columns (Verbatim from PDF Page 15) -->
           <div class="ngo-pain-points-grid">
             <!-- Column 1: Types of Support -->
             <div class="pain-col-card needs">
@@ -1134,7 +1085,7 @@
             </div>
           </div>
 
-          <!-- Funding Banner (Verbatim from PDF Page 15) -->
+          <!-- Funding Banner -->
           <div class="funding-stat-banner">
             <div class="funding-stat-left">
               <span class="funding-stat-label">REPORTED FUNDING RANGE</span>
@@ -1152,7 +1103,7 @@
         </div>
 
         <div class="slide-footer">
-          <span>UEDP-5 Research Presentation • NGO Pain Points • Slide 11 / 18</span>
+          <span>UEDP-5 Research Presentation • NGO Pain Points • Slide 11 / 27</span>
           <span class="slide-hint">Use ← and → keys to navigate</span>
         </div>
       </section>
@@ -1168,7 +1119,6 @@
         </div>
 
         <div class="slide-content">
-          <!-- HMW Statement Hero (From PDF Page 11) -->
           <div class="hmw-statement-hero">
             <div class="hmw-tag">STRATEGIC OPPORTUNITY QUESTION</div>
             <h2 class="hmw-headline">
@@ -1176,7 +1126,7 @@
             </h2>
           </div>
 
-          <!-- 4 Action Pillars (From PDF Page 16) -->
+          <!-- 4 Action Pillars -->
           <div class="hmw-actions-grid-4">
             <div class="hmw-action-card c1">
               <span class="hmw-num">01 / DISCOVERABILITY</span>
@@ -1200,7 +1150,7 @@
             </div>
           </div>
 
-          <!-- 3 Possible Solution Concepts Evaluated (From PDF Page 18) -->
+          <!-- 3 Possible Solution Concepts Evaluated -->
           <div class="solutions-trio-grid">
             <div class="solution-card">
               <span class="solution-badge">CONCEPT A</span>
@@ -1233,31 +1183,959 @@
         </div>
 
         <div class="slide-footer">
-          <span>UEDP-5 Research Presentation • Solutions Framing • Slide 12 / 18</span>
+          <span>UEDP-5 Research Presentation • Solutions Framing • Slide 12 / 27</span>
           <span class="slide-hint">Use ← and → keys to navigate</span>
         </div>
       </section>
 
 
       <!-- ============================================================ -->
-      <!-- SLIDE 13: SECTION 04 — BRAND FOUNDATION & ESSENCE            -->
+      <!-- SLIDE 13: SECTION 04 — SITEMAP & INFORMATION ARCHITECTURE   -->
       <!-- ============================================================ -->
       <section class="slide-card" id="slide-12" data-index="12">
         <div class="slide-header">
-          <div class="slide-tag">SECTION 04 / BRAND IDENTITY & DESIGN SYSTEM</div>
+          <div class="slide-tag">SECTION 04 / INFORMATION ARCHITECTURE & EXPERIENCE STRUCTURE</div>
+          <div class="slide-meta-badge">System Architecture & Sitemap</div>
+        </div>
+
+        <div class="slide-content">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+            <div>
+              <h2 class="slide-h2">Platform Information Architecture & Hierarchical Sitemap</h2>
+              <p class="body-lead">
+                Organizing the dual-user ecosystem: connecting outward-facing supporter discovery with inward-facing shelter management.
+              </p>
+            </div>
+            <div style="display: flex; gap: 8px;">
+              <span class="badge-tested">✓ Tested Finding: Verification & Need-Led</span>
+              <span class="badge-hypothesis">⚡ Proposed: 2-Tier Portal</span>
+            </div>
+          </div>
+
+          <div class="sitemap-visual-container">
+            <!-- Root Node -->
+            <div class="sitemap-root-node">
+              <span>🌐 PawBridge Core Digital System (Root Ecosystem)</span>
+            </div>
+
+            <div class="sitemap-branch-row">
+              <!-- Public Supporter Hub Branch -->
+              <div class="sitemap-branch-col">
+                <div class="sitemap-branch-header">
+                  <span>PUBLIC SUPPORTER EXPERIENCE (COMMUNITY-FACING)</span>
+                  <span class="spec-pill">For Aarohi & Donors</span>
+                </div>
+
+                <div class="sitemap-subnodes-grid">
+                  <div class="sitemap-node-card">
+                    <h5>01. NGO Directory & Search</h5>
+                    <span>Filter by City, Urgent Needs, Medical Cases, Verified Status.</span>
+                  </div>
+                  <div class="sitemap-node-card">
+                    <h5>02. Verified NGO Profiles</h5>
+                    <span>Mission, Leadership, Shelter Location, Statutory Verification Vault.</span>
+                  </div>
+                  <div class="sitemap-node-card">
+                    <h5>03. Active Support Requests</h5>
+                    <span>Specific asks: Food bags, Anti-rabies vials, Surgeries, Transport.</span>
+                  </div>
+                  <div class="sitemap-node-card">
+                    <h5>04. Rescue Health Records</h5>
+                    <span>Case log, Dog profiles, Veterinary treatments, Recovery progress.</span>
+                  </div>
+                  <div class="sitemap-node-card">
+                    <h5>05. Contribution Gateway</h5>
+                    <span>Direct UPI/Card, Supply Delivery Address, Volunteer, Foster.</span>
+                  </div>
+                  <div class="sitemap-node-card">
+                    <h5>06. Impact & Transparency</h5>
+                    <span>Monthly animals rescued, treated, adopted, and fund expenditures.</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- NGO Back-Office Console Branch -->
+              <div class="sitemap-branch-col">
+                <div class="sitemap-branch-header">
+                  <span>NGO OPERATIONS CONSOLE (SHELTER-FACING)</span>
+                  <span class="spec-pill">For Rescuers & Staff</span>
+                </div>
+
+                <div class="sitemap-subnodes-grid" style="grid-template-columns: 1fr;">
+                  <div class="sitemap-node-card">
+                    <h5>01. 5-Step Registration Wizard</h5>
+                    <span>Org details, Contact, Location, Tax Docs, Rescue History.</span>
+                  </div>
+                  <div class="sitemap-node-card">
+                    <h5>02. Document Verification Vault</h5>
+                    <span>Upload Registration, PAN, 12A/80G deeds for officer approval.</span>
+                  </div>
+                  <div class="sitemap-node-card">
+                    <h5>03. Rescue Record Manager</h5>
+                    <span>Log incoming strays, upload clinical photos, update health milestones.</span>
+                  </div>
+                  <div class="sitemap-node-card">
+                    <h5>04. Support Appeal Builder</h5>
+                    <span>Publish itemized needs with deadlines, quantities, and urgency badges.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="slide-footer">
+          <span>UEDP-5 Presentation • Information Architecture • Slide 13 / 27</span>
+          <span class="slide-hint">Use ← and → keys to navigate</span>
+        </div>
+      </section>
+
+
+      <!-- ============================================================ -->
+      <!-- SLIDE 14: SECTION 04 — NAVIGATION & GLOBAL USER FLOW          -->
+      <!-- ============================================================ -->
+      <section class="slide-card" id="slide-13" data-index="13">
+        <div class="slide-header">
+          <div class="slide-tag">SECTION 04 / INFORMATION ARCHITECTURE & EXPERIENCE STRUCTURE</div>
+          <div class="slide-meta-badge">Navigation Structure & Supporter Flow</div>
+        </div>
+
+        <div class="slide-content">
+          <div>
+            <h2 class="slide-h2">Desktop Navigation Structure & End-to-End User Flow</h2>
+            <p class="body-lead">
+              Guiding potential supporters smoothly from algorithmic social discovery to verified contribution and follow-up closure.
+            </p>
+          </div>
+
+          <!-- Navigation Blueprint Card -->
+          <div class="nav-blueprint-card">
+            <div class="nav-blueprint-header">
+              <span class="section-kicker">GLOBAL DESKTOP NAVIGATION MODEL</span>
+              <span class="spec-pill">Persistent 64px Desktop Topbar</span>
+            </div>
+            <div class="nav-bar-mockup">
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <span style="font-weight: 700; color: var(--color-olive);">🐾 PawBridge</span>
+                <span class="wf-badge">Desktop</span>
+              </div>
+              <div class="nav-item-pills">
+                <span class="nav-mini-pill active">Explore NGOs</span>
+                <span class="nav-mini-pill">Urgent Needs</span>
+                <span class="nav-mini-pill">Rescue Stories</span>
+                <span class="nav-mini-pill">Impact Reports</span>
+                <span class="nav-mini-pill">About Trust</span>
+              </div>
+              <div style="display: flex; gap: 6px;">
+                <span class="nav-mini-pill" style="border-color: var(--color-olive); color: var(--color-olive);">NGO Login</span>
+                <span class="nav-mini-pill" style="background: var(--color-olive); color: #fff;">Register Shelter</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Global Supporter User Flow Pipeline -->
+          <div class="card-white-elevated" style="padding: 16px 20px;">
+            <div class="section-kicker" style="margin-bottom: 12px;">PRIMARY SUPPORTER USER FLOW: DISCOVER TO RECONNECT</div>
+            
+            <div class="flowchart-container">
+              <!-- Step 1 -->
+              <div class="flow-step-box start">
+                <span class="flow-step-num">STAGE 01</span>
+                <span class="flow-step-title">Landing & Search</span>
+                <span class="flow-step-desc">Filters by City (e.g. Nagpur) & Need Category.</span>
+              </div>
+              <span class="flow-arrow-divider">→</span>
+
+              <!-- Step 2 -->
+              <div class="flow-step-box">
+                <span class="flow-step-num">STAGE 02</span>
+                <span class="flow-step-title">Browse Shelters</span>
+                <span class="flow-step-desc">Scans cards; spots Verified Badge & Urgent Needs counter.</span>
+              </div>
+              <span class="flow-arrow-divider">→</span>
+
+              <!-- Step 3 (Decision) -->
+              <div class="flow-step-box decision">
+                <span class="flow-step-num">DECISION GATE</span>
+                <span class="flow-step-title">Inspect Trust</span>
+                <span class="flow-step-desc">Checks 12A/80G credentials & physical shelter address.</span>
+              </div>
+              <span class="flow-arrow-divider">→</span>
+
+              <!-- Step 4 -->
+              <div class="flow-step-box">
+                <span class="flow-step-num">STAGE 03</span>
+                <span class="flow-step-title">Select Need</span>
+                <span class="flow-step-desc">Reviews itemized ask: Food, Medicine, or Surgery.</span>
+              </div>
+              <span class="flow-arrow-divider">→</span>
+
+              <!-- Step 5 (Action) -->
+              <div class="flow-step-box action">
+                <span class="flow-step-num">STAGE 04</span>
+                <span class="flow-step-title">Choose Action</span>
+                <span class="flow-step-desc">Donates funds, orders kibble, or signs up to foster.</span>
+              </div>
+              <span class="flow-arrow-divider">→</span>
+
+              <!-- Step 6 (End) -->
+              <div class="flow-step-box end">
+                <span class="flow-step-num">STAGE 05</span>
+                <span class="flow-step-title">Track Closure</span>
+                <span class="flow-step-desc">Receives recovery update log; bookmarks shelter progress.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="slide-footer">
+          <span>UEDP-5 Presentation • Navigation & Flows • Slide 14 / 27</span>
+          <span class="slide-hint">Use ← and → keys to navigate</span>
+        </div>
+      </section>
+
+
+      <!-- ============================================================ -->
+      <!-- SLIDE 15: SECTION 04 — TASK FLOW & 6 CORE EXPERIENCE GOALS   -->
+      <!-- ============================================================ -->
+      <section class="slide-card" id="slide-14" data-index="14">
+        <div class="slide-header">
+          <div class="slide-tag">SECTION 04 / INFORMATION ARCHITECTURE & EXPERIENCE STRUCTURE</div>
+          <div class="slide-meta-badge">Task Flow & 6 Core Experience Goals</div>
+        </div>
+
+        <div class="slide-content">
+          <div>
+            <h2 class="slide-h2">Focused Task Flow & Core Feature Mapping</h2>
+            <p class="body-lead">
+              Directly mapping user research objectives into six concrete product features that eliminate supporter uncertainty.
+            </p>
+          </div>
+
+          <!-- 6 Experience Goals Grid -->
+          <div class="experience-goals-grid">
+            <!-- Goal 1 -->
+            <div class="goal-feature-card">
+              <div class="goal-card-top">
+                <div class="goal-icon-badge">01</div>
+                <div class="goal-title-text">Discover Lesser-Known NGOs</div>
+              </div>
+              <p class="goal-desc-text">
+                Surfacing grassroots animal shelters in Tier-2/3 cities that lack big social marketing budgets.
+              </p>
+              <div class="goal-feature-mapping">
+                Feature: Regional Directory with City & Needs Filter
+              </div>
+            </div>
+
+            <!-- Goal 2 -->
+            <div class="goal-feature-card">
+              <div class="goal-card-top">
+                <div class="goal-icon-badge">02</div>
+                <div class="goal-title-text">Understand Profiles</div>
+              </div>
+              <p class="goal-desc-text">
+                Providing comprehensive context on shelter history, active resident count, and daily veterinary routine.
+              </p>
+              <div class="goal-feature-mapping">
+                Feature: Public Verified NGO Profile Pages
+              </div>
+            </div>
+
+            <!-- Goal 3 -->
+            <div class="goal-feature-card">
+              <div class="goal-card-top">
+                <div class="goal-icon-badge">03</div>
+                <div class="goal-title-text">Check Credibility</div>
+              </div>
+              <p class="goal-desc-text">
+                Empowering supporters to verify legal registration, PAN, and 80G tax certificates before committing funds.
+              </p>
+              <div class="goal-feature-mapping">
+                Feature: Document Verification Status Vault
+              </div>
+            </div>
+
+            <!-- Goal 4 -->
+            <div class="goal-feature-card">
+              <div class="goal-card-top">
+                <div class="goal-icon-badge">04</div>
+                <div class="goal-title-text">Explore Current Needs</div>
+              </div>
+              <p class="goal-desc-text">
+                Replacing vague appeals with concrete, scannable asks: puppy kibble bags, antibiotic vials, emergency surgery.
+              </p>
+              <div class="goal-feature-mapping">
+                Feature: Urgency-Badged Support Request Cards
+              </div>
+            </div>
+
+            <!-- Goal 5 -->
+            <div class="goal-feature-card">
+              <div class="goal-card-top">
+                <div class="goal-icon-badge">05</div>
+                <div class="goal-title-text">Choose How to Help</div>
+              </div>
+              <p class="goal-desc-text">
+                Accommodating different comfort levels—allowing supporters afraid of dogs to help remotely without contact.
+              </p>
+              <div class="goal-feature-mapping">
+                Feature: Multimodal Gateway (Funds, Goods, Foster)
+              </div>
+            </div>
+
+            <!-- Goal 6 -->
+            <div class="goal-feature-card">
+              <div class="goal-card-top">
+                <div class="goal-icon-badge">06</div>
+                <div class="goal-title-text">Follow Updates & Progress</div>
+              </div>
+              <p class="goal-desc-text">
+                Closing the emotional loop with humane recovery timelines and transparent monthly activity reports.
+              </p>
+              <div class="goal-feature-mapping">
+                Feature: Rescue Case Trackers & Impact Reports
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="slide-footer">
+          <span>UEDP-5 Presentation • Experience Structure • Slide 15 / 27</span>
+          <span class="slide-hint">Use ← and → keys to navigate</span>
+        </div>
+      </section>
+
+
+      <!-- ============================================================ -->
+      <!-- SLIDE 16: SECTION 05 — THE THREE RESEARCH CONCEPTS          -->
+      <!-- ============================================================ -->
+      <section class="slide-card" id="slide-15" data-index="15">
+        <div class="slide-header">
+          <div class="slide-tag">SECTION 05 / CONCEPT EXPLORATION & LOW-FIDELITY DESIGN</div>
+          <div class="slide-meta-badge">Three Conceptual Archetypes</div>
+        </div>
+
+        <div class="slide-content">
+          <div>
+            <h2 class="slide-h2">Three Possible Concepts (From Research Synthesis)</h2>
+            <p class="body-lead">
+              Investigating three architectural directions identified in our primary field study, each addressing distinct aspects of the animal welfare ecosystem.
+            </p>
+          </div>
+
+          <!-- Three Concept Cards (From PDF Page 18) -->
+          <div class="concept-cards-trio">
+            <!-- Concept A -->
+            <div class="concept-deck-card concept-a">
+              <div>
+                <span class="concept-card-badge">CONCEPT A</span>
+                <h3 class="concept-title">NGO Directory</h3>
+                <p class="concept-definition">
+                  “A platform to discover animal welfare NGOs by location and support category.”
+                </p>
+              </div>
+
+              <ul class="concept-key-features">
+                <li>Searchable geographic database of animal shelters.</li>
+                <li>Filter by city, rescue specialty, and contact channels.</li>
+                <li>Static shelter overview pages with phone & UPI QR.</li>
+              </ul>
+
+              <div class="spec-pill" style="background: #FAF0D7; color: #8C6A1E;">
+                Primary Focus: Regional Discovery
+              </div>
+            </div>
+
+            <!-- Concept B -->
+            <div class="concept-deck-card concept-b">
+              <div>
+                <span class="concept-card-badge">CONCEPT B</span>
+                <h3 class="concept-title">Transparent Donation Platform</h3>
+                <p class="concept-definition">
+                  “A platform showing NGO information, specific needs and how donations are used.”
+                </p>
+              </div>
+
+              <ul class="concept-key-features">
+                <li>Itemized fundraising targets with expense receipts.</li>
+                <li>Statutory document verification & 80G tax receipts.</li>
+                <li>Financial progress bars and verified bank linkages.</li>
+              </ul>
+
+              <div class="spec-pill" style="background: #FDF1EC; color: #C25B37;">
+                Primary Focus: Trust & Financial Tangibility
+              </div>
+            </div>
+
+            <!-- Concept C -->
+            <div class="concept-deck-card concept-c">
+              <div>
+                <span class="concept-card-badge">CONCEPT C</span>
+                <h3 class="concept-title">Animal Welfare Community</h3>
+                <p class="concept-definition">
+                  “A platform connecting NGOs with donors, volunteers, foster families and adopters.”
+                </p>
+              </div>
+
+              <ul class="concept-key-features">
+                <li>Social rescue updates, dog profiles, and foster boards.</li>
+                <li>Community volunteer shift coordination & hotlines.</li>
+                <li>Direct messaging between adopters and rescuers.</li>
+              </ul>
+
+              <div class="spec-pill" style="background: #EDF2EA; color: var(--color-olive);">
+                Primary Focus: Ongoing Community Advocacy
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="slide-footer">
+          <span>UEDP-5 Presentation • Concept Exploration • Slide 16 / 27</span>
+          <span class="slide-hint">Use ← and → keys to navigate</span>
+        </div>
+      </section>
+
+
+      <!-- ============================================================ -->
+      <!-- SLIDE 17: SECTION 05 — CONCEPT COMPARISON & TRADE-OFFS        -->
+      <!-- ============================================================ -->
+      <section class="slide-card" id="slide-16" data-index="16">
+        <div class="slide-header">
+          <div class="slide-tag">SECTION 05 / CONCEPT EXPLORATION & LOW-FIDELITY DESIGN</div>
+          <div class="slide-meta-badge">Comparative Evaluation & Trade-offs</div>
+        </div>
+
+        <div class="slide-content">
+          <div>
+            <h2 class="slide-h2">Concept Comparison & Trade-off Analysis</h2>
+            <p class="body-lead">
+              Evaluating each model against the critical tensions identified in user interviews and shelter fieldwork.
+            </p>
+          </div>
+
+          <!-- Evaluation Matrix Table -->
+          <div class="comparison-table-wrapper">
+            <table class="comparison-table">
+              <thead>
+                <tr>
+                  <th>EVALUATION PARAMETER</th>
+                  <th>CONCEPT A: DIRECTORY</th>
+                  <th>CONCEPT B: DONATION PLATFORM</th>
+                  <th>CONCEPT C: COMMUNITY HUB</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Discoverability</strong><br><span style="font-size: 11px; opacity: 0.7;">Finding lesser-known shelters</span></td>
+                  <td><span class="eval-pill high">HIGH</span> Comprehensive catalog by city and zone.</td>
+                  <td><span class="eval-pill mid">MID</span> Algorithm prioritizes high-urgency appeals.</td>
+                  <td><span class="eval-pill low">LOW</span> Favors popular viral rescue stories.</td>
+                </tr>
+                <tr>
+                  <td><strong>Trust & Verification</strong><br><span style="font-size: 11px; opacity: 0.7;">Resolving legitimacy fears</span></td>
+                  <td><span class="eval-pill low">LOW</span> Zero verification; listing claims are unvetted.</td>
+                  <td><span class="eval-pill high">HIGH</span> Rigorous statutory document checks (12A/80G).</td>
+                  <td><span class="eval-pill mid">MID</span> Relies on informal social proof & comments.</td>
+                </tr>
+                <tr>
+                  <td><strong>Need Specificity</strong><br><span style="font-size: 11px; opacity: 0.7;">Actionable daily supply clarity</span></td>
+                  <td><span class="eval-pill low">LOW</span> Generic descriptions; no live supply status.</td>
+                  <td><span class="eval-pill high">HIGH</span> Itemized requests with exact target costs.</td>
+                  <td><span class="eval-pill mid">MID</span> Scattered across diverse conversational posts.</td>
+                </tr>
+                <tr>
+                  <td><strong>Inclusive Modes</strong><br><span style="font-size: 11px; opacity: 0.7;">Support for dog-afraid & non-monetary</span></td>
+                  <td><span class="eval-pill mid">MID</span> Lists phone numbers; requires manual calls.</td>
+                  <td><span class="eval-pill low">LOW</span> Only accepts direct monetary transactions.</td>
+                  <td><span class="eval-pill high">HIGH</span> Rich foster, volunteer, and digital sharing.</td>
+                </tr>
+                <tr>
+                  <td><strong>NGO Feasibility</strong><br><span style="font-size: 11px; opacity: 0.7;">Operational burden on 2–3 person staff</span></td>
+                  <td><span class="eval-pill high">HIGH</span> One-time listing; zero daily upkeep.</td>
+                  <td><span class="eval-pill mid">MID</span> Requires uploading expense bills & receipts.</td>
+                  <td><span class="eval-pill low">VERY LOW</span> High burden: moderating DMs, comments, calls.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Trade-offs Grid -->
+          <div class="tradeoffs-grid-3">
+            <div class="tradeoff-card">
+              <h4>Concept A Trade-offs</h4>
+              <ul class="tradeoff-list pros">
+                <li>Simple to browse and find local NGOs.</li>
+                <li>Zero ongoing maintenance for shelters.</li>
+              </ul>
+              <ul class="tradeoff-list cons">
+                <li>Leaves user trust questions completely unanswered.</li>
+                <li>Does not provide actionable urgency or closure.</li>
+              </ul>
+            </div>
+
+            <div class="tradeoff-card">
+              <h4>Concept B Trade-offs</h4>
+              <ul class="tradeoff-list pros">
+                <li>Exceptional credibility and financial clarity.</li>
+                <li>Itemized costs make asks tangible.</li>
+              </ul>
+              <ul class="tradeoff-list cons">
+                <li>Excludes non-financial supporters (foster/supplies).</li>
+                <li>Feels transactional; lacks emotional animal recovery.</li>
+              </ul>
+            </div>
+
+            <div class="tradeoff-card">
+              <h4>Concept C Trade-offs</h4>
+              <ul class="tradeoff-list pros">
+                <li>Warm, community-driven, humane stories.</li>
+                <li>Encourages long-term volunteering and adoptions.</li>
+              </ul>
+              <ul class="tradeoff-list cons">
+                <li>Overwhelms small shelters with daily chat inquiries.</li>
+                <li>Does not solve institutional verification.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="slide-footer">
+          <span>UEDP-5 Presentation • Comparison Matrix • Slide 17 / 27</span>
+          <span class="slide-hint">Use ← and → keys to navigate</span>
+        </div>
+      </section>
+
+
+      <!-- ============================================================ -->
+      <!-- SLIDE 18: SECTION 05 — SELECTION CRITERIA & HYBRID RATIONALE -->
+      <!-- ============================================================ -->
+      <section class="slide-card" id="slide-17" data-index="17">
+        <div class="slide-header">
+          <div class="slide-tag">SECTION 05 / CONCEPT EXPLORATION & LOW-FIDELITY DESIGN</div>
+          <div class="slide-meta-badge">Evidence-Based Selection Rationale</div>
+        </div>
+
+        <div class="slide-content">
+          <div>
+            <h2 class="slide-h2">Selection Criteria & The PawBridge Synthesis</h2>
+            <p class="body-lead">
+              Why picking a single concept is fundamentally flawed—and how the research dictates an integrated bridge.
+            </p>
+          </div>
+
+          <div class="grid-2-col">
+            <!-- Left: Selection Criteria from Research -->
+            <div class="editorial-col">
+              <div class="card-white-elevated">
+                <div class="section-kicker">SELECTION CRITERIA (DERIVED FROM RESEARCH)</div>
+                <h3 class="card-inner-title">Six Non-Negotiable System Requirements</h3>
+                <ul class="guide-rules" style="margin-top: 10px;">
+                  <li><strong>1. Trust Before Transaction:</strong> The platform must provide verifiable legal identity (12A/80G/PAN) before asking for money.</li>
+                  <li><strong>2. Clarity Over Volume:</strong> Needs must be itemized (e.g. 5 bags kibble) rather than long emotional text dumps.</li>
+                  <li><strong>3. Multimodal Participation:</strong> Must accommodate users afraid of dogs or with tight budgets via remote wishlists & fostering.</li>
+                  <li><strong>4. Closure & Recovery Cues:</strong> Must show post-care animal updates to turn one-time donors into long-term supporters.</li>
+                  <li><strong>5. NGO Feasibility:</strong> Must automate repetitive inquiries so 2–3 person shelter teams can focus on medical treatments.</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Right: Synthesis Rationale -->
+            <div class="editorial-col">
+              <div class="selection-rationale-banner">
+                <div class="section-kicker" style="color: var(--color-soft-gold);">THE WINNING SELECTION</div>
+                <h3>The PawBridge Integrated Architecture</h3>
+                <p>
+                  <strong>Why No Single Concept Was Selected Alone:</strong> Concept A fails to provide trust; Concept B excludes non-monetary aid; Concept C overwhelms grassroots rescuers with communication fatigue.
+                </p>
+                <p>
+                  <strong>The Evidence-Backed Rationale:</strong> PawBridge unifies the geographic discoverability of Concept A, the statutory trust and itemized need clarity of Concept B, and the humane recovery stories of Concept C.
+                </p>
+                <p style="font-size: 12.5px; border-top: 1px solid rgba(255,255,255,0.15); padding-top: 8px;">
+                  🛡️ <em>Result:</em> An integrated desktop operations platform for shelters paired with a clean, transparent public discovery portal for the community.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="slide-footer">
+          <span>UEDP-5 Presentation • Concept Selection • Slide 18 / 27</span>
+          <span class="slide-hint">Use ← and → keys to navigate</span>
+        </div>
+      </section>
+
+
+      <!-- ============================================================ -->
+      <!-- SLIDE 19: SECTION 05 — INITIAL SKETCHES & IDEATION           -->
+      <!-- ============================================================ -->
+      <section class="slide-card" id="slide-18" data-index="18">
+        <div class="slide-header">
+          <div class="slide-tag">SECTION 05 / CONCEPT EXPLORATION & LOW-FIDELITY DESIGN</div>
+          <div class="slide-meta-badge">Initial Ideation Sketches & Notes</div>
+        </div>
+
+        <div class="slide-content">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+            <div>
+              <h2 class="slide-h2">Initial Sketches & Architectural Ideation</h2>
+              <p class="body-lead">
+                Exploring spatial layouts and interaction patterns on paper before committing to digital wireframes.
+              </p>
+            </div>
+            <div style="display: flex; gap: 8px;">
+              <span class="badge-tested">✓ Based on Interview Friction</span>
+              <span class="badge-hypothesis">⚡ Layout Explorations</span>
+            </div>
+          </div>
+
+          <!-- 4 Sketched Ideation Blocks -->
+          <div class="personality-grid-4">
+            <!-- Sketch 1 -->
+            <div class="wireframe-container">
+              <div class="sketch-note-callout">
+                ✏️ Sketch Iteration 1: Discovery Rail
+              </div>
+              <div class="wf-box" style="height: 140px; display: flex; flex-direction: column; justify-content: space-between;">
+                <div style="border-bottom: 1px dashed #999; padding-bottom: 4px; font-size: 10px; font-family: monospace;">
+                  [Search City...] [Filter: Food / Meds]
+                </div>
+                <div style="display: flex; gap: 6px;">
+                  <div style="flex: 1; border: 1px solid #777; padding: 4px; font-size: 9px;">Card 1: SSO [✓ Verified]</div>
+                  <div style="flex: 1; border: 1px solid #777; padding: 4px; font-size: 9px;">Card 2: Rise [✓ Verified]</div>
+                </div>
+                <div style="font-size: 9px; color: #555;">→ Decision: Card view beats map for low-bandwidth</div>
+              </div>
+              <p style="font-size: 11px; color: #444;">
+                Tested Finding: Users need to see verified status immediately on the card before clicking.
+              </p>
+            </div>
+
+            <!-- Sketch 2 -->
+            <div class="wireframe-container">
+              <div class="sketch-note-callout">
+                ✏️ Sketch Iteration 2: Profile Vault
+              </div>
+              <div class="wf-box" style="height: 140px; display: flex; flex-direction: column; justify-content: space-between;">
+                <div style="display: flex; gap: 6px; align-items: center;">
+                  <div class="wf-img-placeholder" style="width: 28px; height: 28px;">Logo</div>
+                  <div style="font-size: 10px; font-weight: bold;">NGO Profile Header</div>
+                </div>
+                <div style="background: #EEE; padding: 4px; font-size: 9px; border-left: 2px solid #333;">
+                  [80G Tax Exemption: Valid 2029]
+                </div>
+                <div style="font-size: 9px; color: #555;">→ Decision: Keep legal credentials above fold</div>
+              </div>
+              <p style="font-size: 11px; color: #444;">
+                Tested Finding: Placing credibility proof above donations eliminates hesitation.
+              </p>
+            </div>
+
+            <!-- Sketch 3 -->
+            <div class="wireframe-container">
+              <div class="sketch-note-callout">
+                ✏️ Sketch Iteration 3: Need Cards
+              </div>
+              <div class="wf-box" style="height: 140px; display: flex; flex-direction: column; justify-content: space-between;">
+                <div style="font-size: 10px; font-weight: bold;">Appeal: 10kg Puppy Food</div>
+                <div class="wf-text-bar" style="width: 70%; background: #999;"></div>
+                <div style="display: flex; justify-content: space-between; font-size: 9px;">
+                  <span>Raised: ₹1,200</span>
+                  <span>Goal: ₹2,000</span>
+                </div>
+                <div style="font-size: 9px; color: #555;">→ Decision: Show quantity, not just money</div>
+              </div>
+              <p style="font-size: 11px; color: #444;">
+                Tested Finding: Itemized asks feel tangible and give immediate next-step purpose.
+              </p>
+            </div>
+
+            <!-- Sketch 4 -->
+            <div class="wireframe-container">
+              <div class="sketch-note-callout">
+                ✏️ Sketch Iteration 4: Humane Timeline
+              </div>
+              <div class="wf-box" style="height: 140px; display: flex; flex-direction: column; justify-content: space-between;">
+                <div style="font-size: 10px; font-weight: bold;">Rescue: Sheru Recovery</div>
+                <div style="display: flex; gap: 4px; font-size: 8px;">
+                  <span style="background: #DDD; padding: 2px;">Day 1: Vet</span>
+                  <span style="background: #DDD; padding: 2px;">Day 5: Cast</span>
+                  <span style="background: #DDD; padding: 2px;">Day 14: Healed</span>
+                </div>
+                <div style="font-size: 9px; color: #555;">→ Decision: Celebrate recovery over trauma</div>
+              </div>
+              <p style="font-size: 11px; color: #444;">
+                Ethical Principle: Avoid exploitative graphic injury; focus on medical healing.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="slide-footer">
+          <span>UEDP-5 Presentation • Initial Sketches • Slide 19 / 27</span>
+          <span class="slide-hint">Use ← and → keys to navigate</span>
+        </div>
+      </section>
+
+
+      <!-- ============================================================ -->
+      <!-- SLIDE 20: SECTION 05 — LOW-FIDELITY WIREFRAMES (DISCOVERY)   -->
+      <!-- ============================================================ -->
+      <section class="slide-card" id="slide-19" data-index="19">
+        <div class="slide-header">
+          <div class="slide-tag">SECTION 05 / CONCEPT EXPLORATION & LOW-FIDELITY DESIGN</div>
+          <div class="slide-meta-badge">Low-Fidelity Screen Wireframes (Part 1)</div>
+        </div>
+
+        <div class="slide-content">
+          <div>
+            <h2 class="slide-h2">Low-Fidelity Wireframes: Discovery & NGO Profile</h2>
+            <p class="body-lead">
+              Clean black, white, and grey wireframe layouts validating structural information hierarchy without cosmetic distractions.
+            </p>
+          </div>
+
+          <div class="grid-2-col">
+            <!-- Screen 1: Discovery & Directory Wireframe -->
+            <div class="wireframe-container">
+              <div class="wireframe-window-bar">
+                <div class="wf-dot"></div><div class="wf-dot"></div><div class="wf-dot"></div>
+                <div class="wf-address-bar">pawbridge.org/directory?city=nagpur</div>
+              </div>
+
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <span style="font-family: monospace; font-size: 11px; font-weight: bold;">[SCREEN 01: REGIONAL DISCOVERY]</span>
+                <span class="wf-badge">Public Hub</span>
+              </div>
+
+              <!-- Search & Filter Bar Wireframe -->
+              <div class="wf-box" style="display: flex; gap: 8px; padding: 6px 10px; background: #EEE;">
+                <span style="font-size: 11px; color: #666;">🔍 Search NGO or City...</span>
+                <span class="wf-badge">City: Nagpur ▾</span>
+                <span class="wf-badge">Urgent Needs Only ☑</span>
+              </div>
+
+              <!-- NGO Cards Grid Wireframe -->
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                <!-- NGO Card 1 -->
+                <div class="wf-box">
+                  <div style="display: flex; gap: 8px;">
+                    <div class="wf-img-placeholder" style="width: 38px; height: 38px;">Logo</div>
+                    <div>
+                      <div style="font-size: 11px; font-weight: bold;">SSO Animal Shelter</div>
+                      <span class="wf-badge" style="background: #333; color: #FFF;">✓ Verified NGO</span>
+                    </div>
+                  </div>
+                  <div class="wf-text-bar" style="width: 90%;"></div>
+                  <div class="wf-text-bar" style="width: 70%;"></div>
+                  <div style="display: flex; justify-content: space-between; margin-top: 8px;">
+                    <span style="font-size: 9px; color: #555;">3 Urgent Needs</span>
+                    <span class="wf-btn" style="padding: 3px 6px; font-size: 9px;">View Profile</span>
+                  </div>
+                </div>
+
+                <!-- NGO Card 2 -->
+                <div class="wf-box">
+                  <div style="display: flex; gap: 8px;">
+                    <div class="wf-img-placeholder" style="width: 38px; height: 38px;">Logo</div>
+                    <div>
+                      <div style="font-size: 11px; font-weight: bold;">Rise for Tails</div>
+                      <span class="wf-badge" style="background: #333; color: #FFF;">✓ Verified NGO</span>
+                    </div>
+                  </div>
+                  <div class="wf-text-bar" style="width: 90%;"></div>
+                  <div class="wf-text-bar" style="width: 60%;"></div>
+                  <div style="display: flex; justify-content: space-between; margin-top: 8px;">
+                    <span style="font-size: 9px; color: #555;">5 Urgent Needs</span>
+                    <span class="wf-btn" style="padding: 3px 6px; font-size: 9px;">View Profile</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Screen 2: Public Verified NGO Profile Wireframe -->
+            <div class="wireframe-container">
+              <div class="wireframe-window-bar">
+                <div class="wf-dot"></div><div class="wf-dot"></div><div class="wf-dot"></div>
+                <div class="wf-address-bar">pawbridge.org/ngo/sso-nagpur</div>
+              </div>
+
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <span style="font-family: monospace; font-size: 11px; font-weight: bold;">[SCREEN 02: VERIFIED NGO PROFILE]</span>
+                <span class="wf-badge">Credibility Layer</span>
+              </div>
+
+              <!-- Profile Header Wireframe -->
+              <div class="wf-box">
+                <div class="wf-img-placeholder" style="height: 50px; margin-bottom: 8px;">Shelter Cover Banner Photo</div>
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <div>
+                    <h4 style="font-size: 13px; font-weight: bold;">Save Speechless Organisation</h4>
+                    <span style="font-size: 10px; color: #555;">Nagpur, Maharashtra • Reg #NGP-2018-994</span>
+                  </div>
+                  <span class="wf-badge" style="background: #333; color: #FFF;">✓ 12A / 80G Certified</span>
+                </div>
+              </div>
+
+              <!-- Profile Navigation Tabs -->
+              <div style="display: flex; gap: 4px; border-bottom: 1px solid #CCC; padding-bottom: 4px;">
+                <span class="wf-badge" style="background: #333; color: #FFF;">Overview</span>
+                <span class="wf-badge">Urgent Needs (3)</span>
+                <span class="wf-badge">Rescue Cases (24)</span>
+                <span class="wf-badge">Impact Reports</span>
+              </div>
+
+              <!-- Active Needs Preview inside Profile -->
+              <div class="wf-box" style="display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                  <div style="font-size: 10.5px; font-weight: bold;">Urgent: 10 Vials Anti-Rabies Vaccine</div>
+                  <span style="font-size: 9px; color: #666;">Target: ₹3,200 • Needed in 48 hours</span>
+                </div>
+                <span class="wf-btn">Sponsor (₹320 / vial)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="slide-footer">
+          <span>UEDP-5 Presentation • Low-Fidelity Wireframes • Slide 20 / 27</span>
+          <span class="slide-hint">Use ← and → keys to navigate</span>
+        </div>
+      </section>
+
+
+      <!-- ============================================================ -->
+      <!-- SLIDE 21: SECTION 05 — LOW-FIDELITY WIREFRAMES (NEEDS & OPS)  -->
+      <!-- ============================================================ -->
+      <section class="slide-card" id="slide-20" data-index="20">
+        <div class="slide-header">
+          <div class="slide-tag">SECTION 05 / CONCEPT EXPLORATION & LOW-FIDELITY DESIGN</div>
+          <div class="slide-meta-badge">Low-Fidelity Screen Wireframes (Part 2)</div>
+        </div>
+
+        <div class="slide-content">
+          <div>
+            <h2 class="slide-h2">Low-Fidelity Wireframes: Appeals, Cases & NGO Console</h2>
+            <p class="body-lead">
+              Visualizing the specific interaction loops for itemized needs, healing progress tracking, and shelter operational workflows.
+            </p>
+          </div>
+
+          <div class="personality-grid-4" style="grid-template-columns: 1fr 1fr 1.1fr;">
+            <!-- Screen 3: Support Request Item Detail -->
+            <div class="wireframe-container">
+              <div class="wireframe-window-bar">
+                <div class="wf-dot"></div><div class="wf-dot"></div>
+                <div class="wf-address-bar">pawbridge.org/requests/req-104</div>
+              </div>
+              <span style="font-family: monospace; font-size: 10.5px; font-weight: bold;">[SCREEN 03: SUPPORT NEED]</span>
+
+              <div class="wf-box" style="display: flex; flex-direction: column; gap: 6px;">
+                <span class="wf-badge" style="background: #333; color: #FFF; width: fit-content;">High Urgency • 2 Days Left</span>
+                <h4 style="font-size: 12px; font-weight: bold;">50kg Adult Dog Food & Rice</h4>
+                <div class="wf-text-bar" style="width: 100%;"></div>
+                
+                <div style="display: flex; justify-content: space-between; font-size: 10px; margin-top: 4px;">
+                  <span>Raised: 32kg</span>
+                  <span>Goal: 50kg</span>
+                </div>
+                <div class="wf-text-bar" style="width: 64%; background: #555;"></div>
+
+                <div style="display: flex; gap: 6px; margin-top: 8px;">
+                  <span class="wf-btn" style="flex: 1;">Donate Funds (₹)</span>
+                  <span class="wf-btn secondary" style="flex: 1;">Ship Food (Kg)</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Screen 4: Rescue Case Record & Recovery Log -->
+            <div class="wireframe-container">
+              <div class="wireframe-window-bar">
+                <div class="wf-dot"></div><div class="wf-dot"></div>
+                <div class="wf-address-bar">pawbridge.org/rescues/pb-408</div>
+              </div>
+              <span style="font-family: monospace; font-size: 10.5px; font-weight: bold;">[SCREEN 04: RECOVERY LOG]</span>
+
+              <div class="wf-box" style="display: flex; flex-direction: column; gap: 6px;">
+                <div style="display: flex; gap: 8px;">
+                  <div class="wf-img-placeholder" style="width: 44px; height: 44px;">Photo</div>
+                  <div>
+                    <h4 style="font-size: 11px; font-weight: bold;">Sheru (Indie • ~3 yrs)</h4>
+                    <span style="font-size: 9px; color: #666;">Fractured Left Paw • Treated</span>
+                  </div>
+                </div>
+
+                <div style="font-size: 9.5px; border-top: 1px solid #EEE; padding-top: 4px;">
+                  <strong>Milestones:</strong>
+                  <div style="display: flex; gap: 4px; margin-top: 4px;">
+                    <span class="wf-badge">Day 1: X-Ray</span>
+                    <span class="wf-badge">Day 7: Cast Clean</span>
+                    <span class="wf-badge" style="background: #333; color: #FFF;">Day 21: Adopted</span>
+                  </div>
+                </div>
+                <span class="wf-btn secondary" style="margin-top: 6px;">Follow Patient Updates</span>
+              </div>
+            </div>
+
+            <!-- Screen 5: NGO Operations Desktop Portal -->
+            <div class="wireframe-container">
+              <div class="wireframe-window-bar">
+                <div class="wf-dot"></div><div class="wf-dot"></div>
+                <div class="wf-address-bar">app.pawbridge.org/ngo-console</div>
+              </div>
+              <span style="font-family: monospace; font-size: 10.5px; font-weight: bold;">[SCREEN 05: NGO OPERATIONS PORTAL]</span>
+
+              <div class="wf-box" style="display: flex; gap: 10px;">
+                <!-- Mini Sidebar -->
+                <div style="width: 65px; border-right: 1px solid #EEE; display: flex; flex-direction: column; gap: 4px; font-size: 8.5px;">
+                  <span style="font-weight: bold;">Dashboard</span>
+                  <span>Rescues</span>
+                  <span>Requests</span>
+                  <span>Docs Vault</span>
+                  <span>Impact</span>
+                </div>
+
+                <!-- Main Panel -->
+                <div style="flex: 1; display: flex; flex-direction: column; gap: 6px;">
+                  <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <span style="font-size: 10px; font-weight: bold;">Daily Shelter Overview</span>
+                    <span class="wf-btn" style="font-size: 8.5px; padding: 2px 6px;">+ Add Rescue</span>
+                  </div>
+                  <div style="background: #EEE; padding: 4px 6px; border-radius: 2px; font-size: 8.5px;">
+                    ✓ Trust Deed: Verified | 80G Exemption: Active
+                  </div>
+                  <div class="wf-text-bar" style="width: 80%;"></div>
+                  <div class="wf-text-bar" style="width: 50%;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="slide-footer">
+          <span>UEDP-5 Presentation • Low-Fidelity Wireframes • Slide 21 / 27</span>
+          <span class="slide-hint">Use ← and → keys to navigate</span>
+        </div>
+      </section>
+
+
+      <!-- ============================================================ -->
+      <!-- SLIDE 22: SECTION 06 — BRAND FOUNDATION & ESSENCE            -->
+      <!-- ============================================================ -->
+      <section class="slide-card" id="slide-21" data-index="21">
+        <div class="slide-header">
+          <div class="slide-tag">SECTION 06 / BRAND IDENTITY & UI DESIGN SYSTEM</div>
           <div class="slide-meta-badge">01 / Brand Foundation & Essence</div>
         </div>
 
         <div class="slide-content grid-2-col">
-          <!-- Left Column: Logo & Tagline -->
           <div class="editorial-col">
             <div class="logo-hero-container">
               <div class="logo-mark-display">
                 <svg width="68" height="68" viewBox="0 0 48 48" fill="none">
-                  <!-- Architectural Bridge Arc -->
                   <path d="M6 38C13 22 24 14 42 14" stroke="#536747" stroke-width="4.5" stroke-linecap="round"/>
                   <path d="M6 38C15 38 27 32 42 14" stroke="#D98B70" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="3 4"/>
-                  <!-- Stylized Animal Care Paw Nodes -->
                   <circle cx="19" cy="18" r="3.6" fill="#536747"/>
                   <circle cx="27" cy="16" r="3.6" fill="#536747"/>
                   <circle cx="35" cy="22" r="3.2" fill="#E5B95C"/>
@@ -1284,7 +2162,6 @@
             </div>
           </div>
 
-          <!-- Right Column: Brand Purpose & Keywords -->
           <div class="editorial-col">
             <div class="card-white-elevated">
               <div class="section-kicker">OUR CORE PURPOSE</div>
@@ -1323,18 +2200,18 @@
         </div>
 
         <div class="slide-footer">
-          <span>PawBridge Brand Presentation • Slide 13 / 18</span>
+          <span>PawBridge Brand Presentation • Slide 22 / 27</span>
           <span class="slide-hint">Use ← and → keys to navigate</span>
         </div>
       </section>
 
 
       <!-- ============================================================ -->
-      <!-- SLIDE 14: SECTION 04 — BRAND PERSONALITY & PILLARS           -->
+      <!-- SLIDE 23: SECTION 06 — BRAND PERSONALITY & PILLARS           -->
       <!-- ============================================================ -->
-      <section class="slide-card" id="slide-13" data-index="13">
+      <section class="slide-card" id="slide-22" data-index="22">
         <div class="slide-header">
-          <div class="slide-tag">SECTION 04 / BRAND IDENTITY & DESIGN SYSTEM</div>
+          <div class="slide-tag">SECTION 06 / BRAND IDENTITY & UI DESIGN SYSTEM</div>
           <div class="slide-meta-badge">02 / Brand Character & Visual Tone</div>
         </div>
 
@@ -1346,9 +2223,7 @@
             </p>
           </div>
 
-          <!-- 4 Pillars Grid -->
           <div class="personality-grid-4">
-            <!-- Pillar 1 -->
             <div class="pillar-card">
               <div class="pillar-icon-box">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#536747" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
@@ -1363,7 +2238,6 @@
               </div>
             </div>
 
-            <!-- Pillar 2 -->
             <div class="pillar-card">
               <div class="pillar-icon-box">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#536747" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
@@ -1378,7 +2252,6 @@
               </div>
             </div>
 
-            <!-- Pillar 3 -->
             <div class="pillar-card">
               <div class="pillar-icon-box">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#536747" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
@@ -1393,7 +2266,6 @@
               </div>
             </div>
 
-            <!-- Pillar 4 -->
             <div class="pillar-card">
               <div class="pillar-icon-box">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#536747" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
@@ -1411,18 +2283,18 @@
         </div>
 
         <div class="slide-footer">
-          <span>PawBridge Brand Presentation • Slide 14 / 18</span>
+          <span>PawBridge Brand Presentation • Slide 23 / 27</span>
           <span class="slide-hint">Use ← and → keys to navigate</span>
         </div>
       </section>
 
 
       <!-- ============================================================ -->
-      <!-- SLIDE 15: SECTION 04 — HARMONIOUS COLOUR PALETTE             -->
+      <!-- SLIDE 24: SECTION 06 — HARMONIOUS COLOUR PALETTE             -->
       <!-- ============================================================ -->
-      <section class="slide-card" id="slide-14" data-index="14">
+      <section class="slide-card" id="slide-23" data-index="23">
         <div class="slide-header">
-          <div class="slide-tag">SECTION 04 / BRAND IDENTITY & DESIGN SYSTEM</div>
+          <div class="slide-tag">SECTION 06 / BRAND IDENTITY & UI DESIGN SYSTEM</div>
           <div class="slide-meta-badge">03 / Harmonious Colour Palette</div>
         </div>
 
@@ -1434,13 +2306,9 @@
             </p>
           </div>
 
-          <!-- Color Swatches Grid -->
           <div class="color-swatches-grid">
-            <!-- Olive Green -->
             <div class="swatch-card">
-              <div class="swatch-tile" style="background-color: #536747;">
-                <span class="swatch-on-dark">60% Primary</span>
-              </div>
+              <div class="swatch-tile" style="background-color: #536747;"><span class="swatch-on-dark">60% Primary</span></div>
               <div class="swatch-info">
                 <h4 class="swatch-name">Olive Green</h4>
                 <div class="swatch-hex">#536747</div>
@@ -1449,11 +2317,8 @@
               </div>
             </div>
 
-            <!-- Warm Cream -->
             <div class="swatch-card">
-              <div class="swatch-tile" style="background-color: #F7F3E9; border-bottom: 1px solid rgba(41,53,43,0.1);">
-                <span class="swatch-on-light">30% Canvas</span>
-              </div>
+              <div class="swatch-tile" style="background-color: #F7F3E9; border-bottom: 1px solid rgba(41,53,43,0.1);"><span class="swatch-on-light">30% Canvas</span></div>
               <div class="swatch-info">
                 <h4 class="swatch-name">Warm Cream</h4>
                 <div class="swatch-hex">#F7F3E9</div>
@@ -1462,11 +2327,8 @@
               </div>
             </div>
 
-            <!-- Dark Green -->
             <div class="swatch-card">
-              <div class="swatch-tile" style="background-color: #29352B;">
-                <span class="swatch-on-dark">Text Standard</span>
-              </div>
+              <div class="swatch-tile" style="background-color: #29352B;"><span class="swatch-on-dark">Text Standard</span></div>
               <div class="swatch-info">
                 <h4 class="swatch-name">Dark Green</h4>
                 <div class="swatch-hex">#29352B</div>
@@ -1475,11 +2337,8 @@
               </div>
             </div>
 
-            <!-- Terracotta -->
             <div class="swatch-card">
-              <div class="swatch-tile" style="background-color: #D98B70;">
-                <span class="swatch-on-dark">10% Accent</span>
-              </div>
+              <div class="swatch-tile" style="background-color: #D98B70;"><span class="swatch-on-dark">10% Accent</span></div>
               <div class="swatch-info">
                 <h4 class="swatch-name">Terracotta</h4>
                 <div class="swatch-hex">#D98B70</div>
@@ -1488,11 +2347,8 @@
               </div>
             </div>
 
-            <!-- Soft Gold -->
             <div class="swatch-card">
-              <div class="swatch-tile" style="background-color: #E5B95C;">
-                <span class="swatch-on-light" style="color: #4A3B18;">Secondary Cue</span>
-              </div>
+              <div class="swatch-tile" style="background-color: #E5B95C;"><span class="swatch-on-light" style="color: #4A3B18;">Secondary Cue</span></div>
               <div class="swatch-info">
                 <h4 class="swatch-name">Soft Gold</h4>
                 <div class="swatch-hex">#E5B95C</div>
@@ -1501,11 +2357,8 @@
               </div>
             </div>
 
-            <!-- Pale Green -->
             <div class="swatch-card">
-              <div class="swatch-tile" style="background-color: #E8EDE3; border-bottom: 1px solid rgba(41,53,43,0.1);">
-                <span class="swatch-on-light" style="color: #384A33;">Subtle Surface</span>
-              </div>
+              <div class="swatch-tile" style="background-color: #E8EDE3; border-bottom: 1px solid rgba(41,53,43,0.1);"><span class="swatch-on-light" style="color: #384A33;">Subtle Surface</span></div>
               <div class="swatch-info">
                 <h4 class="swatch-name">Pale Green</h4>
                 <div class="swatch-hex">#E8EDE3</div>
@@ -1517,23 +2370,22 @@
         </div>
 
         <div class="slide-footer">
-          <span>PawBridge Brand Presentation • Slide 15 / 18</span>
+          <span>PawBridge Brand Presentation • Slide 24 / 27</span>
           <span class="slide-hint">Use ← and → keys to navigate</span>
         </div>
       </section>
 
 
       <!-- ============================================================ -->
-      <!-- SLIDE 16: SECTION 04 — TYPOGRAPHY SYSTEM                     -->
+      <!-- SLIDE 25: SECTION 06 — TYPOGRAPHY SYSTEM                     -->
       <!-- ============================================================ -->
-      <section class="slide-card" id="slide-15" data-index="15">
+      <section class="slide-card" id="slide-24" data-index="24">
         <div class="slide-header">
-          <div class="slide-tag">SECTION 04 / BRAND IDENTITY & DESIGN SYSTEM</div>
+          <div class="slide-tag">SECTION 06 / BRAND IDENTITY & UI DESIGN SYSTEM</div>
           <div class="slide-meta-badge">04 / Typography Hierarchy</div>
         </div>
 
         <div class="slide-content grid-2-col">
-          <!-- Left: Font Pairing Rationales -->
           <div class="editorial-col">
             <div>
               <h2 class="slide-h2">DM Sans & Inter: Character meets interface clarity.</h2>
@@ -1542,7 +2394,6 @@
               </p>
             </div>
 
-            <!-- Heading Font Card -->
             <div class="font-spec-card">
               <div class="font-header">
                 <div>
@@ -1561,7 +2412,6 @@
               </div>
             </div>
 
-            <!-- Body Font Card -->
             <div class="font-spec-card">
               <div class="font-header">
                 <div>
@@ -1581,14 +2431,12 @@
             </div>
           </div>
 
-          <!-- Right: Concrete Scale Specimen Table -->
           <div class="editorial-col">
             <div class="card-white-elevated">
               <div class="section-kicker">TYPOGRAPHIC SCALE SPECS</div>
               <h3 class="card-inner-title">Desktop & Mobile Modular Hierarchy</h3>
               
               <div class="type-scale-table">
-                <!-- Scale Row 1 -->
                 <div class="type-row">
                   <div class="type-meta">
                     <span class="type-level">Display / Hero</span>
@@ -1599,7 +2447,6 @@
                   </div>
                 </div>
 
-                <!-- Scale Row 2 -->
                 <div class="type-row">
                   <div class="type-meta">
                     <span class="type-level">Section Heading</span>
@@ -1610,7 +2457,6 @@
                   </div>
                 </div>
 
-                <!-- Scale Row 3 -->
                 <div class="type-row">
                   <div class="type-meta">
                     <span class="type-level">Card Titles / Subhead</span>
@@ -1621,7 +2467,6 @@
                   </div>
                 </div>
 
-                <!-- Scale Row 4 -->
                 <div class="type-row">
                   <div class="type-meta">
                     <span class="type-level">Body Lead & Description</span>
@@ -1632,7 +2477,6 @@
                   </div>
                 </div>
 
-                <!-- Scale Row 5 -->
                 <div class="type-row">
                   <div class="type-meta">
                     <span class="type-level">Meta, Labels & Badges</span>
@@ -1648,18 +2492,18 @@
         </div>
 
         <div class="slide-footer">
-          <span>PawBridge Brand Presentation • Slide 16 / 18</span>
+          <span>PawBridge Brand Presentation • Slide 25 / 27</span>
           <span class="slide-hint">Use ← and → keys to navigate</span>
         </div>
       </section>
 
 
       <!-- ============================================================ -->
-      <!-- SLIDE 17: SECTION 04 — VISUAL IDENTITY IN REAL APPLICATION   -->
+      <!-- SLIDE 26: SECTION 06 — VISUAL IDENTITY IN REAL APPLICATION   -->
       <!-- ============================================================ -->
-      <section class="slide-card" id="slide-16" data-index="16">
+      <section class="slide-card" id="slide-25" data-index="25">
         <div class="slide-header">
-          <div class="slide-tag">SECTION 04 / BRAND IDENTITY & DESIGN SYSTEM</div>
+          <div class="slide-tag">SECTION 06 / BRAND IDENTITY & UI DESIGN SYSTEM</div>
           <div class="slide-meta-badge">05 / Component Application</div>
         </div>
 
@@ -1671,7 +2515,6 @@
             </p>
           </div>
 
-          <!-- UI Mockups Row -->
           <div class="ui-mockups-grid">
             <!-- Mockup Card 1: NGO Verification Status Badge -->
             <div class="mockup-frame">
@@ -1769,18 +2612,18 @@
         </div>
 
         <div class="slide-footer">
-          <span>PawBridge Brand Presentation • Slide 17 / 18</span>
+          <span>PawBridge Brand Presentation • Slide 26 / 27</span>
           <span class="slide-hint">Use ← and → keys to navigate</span>
         </div>
       </section>
 
 
       <!-- ============================================================ -->
-      <!-- SLIDE 18: SECTION 04 — UI DESIGN SYSTEM GUIDELINES & PRINCIPLES -->
+      <!-- SLIDE 27: SECTION 06 — UI DESIGN SYSTEM GUIDELINES & TOKENS   -->
       <!-- ============================================================ -->
-      <section class="slide-card" id="slide-17" data-index="17">
+      <section class="slide-card" id="slide-26" data-index="26">
         <div class="slide-header">
-          <div class="slide-tag">SECTION 04 / BRAND IDENTITY & DESIGN SYSTEM</div>
+          <div class="slide-tag">SECTION 06 / BRAND IDENTITY & UI DESIGN SYSTEM</div>
           <div class="slide-meta-badge">06 / UI Design System Guidelines</div>
         </div>
 
@@ -1792,9 +2635,7 @@
             </p>
           </div>
 
-          <!-- 6 Rule Boxes -->
           <div class="guidelines-grid-6">
-            <!-- Box 1: Button Hierarchy -->
             <div class="guide-box">
               <div class="guide-box-header">
                 <span class="guide-num">01</span>
@@ -1807,7 +2648,6 @@
               </ul>
             </div>
 
-            <!-- Box 2: Card & Border Tokens -->
             <div class="guide-box">
               <div class="guide-box-header">
                 <span class="guide-num">02</span>
@@ -1820,7 +2660,6 @@
               </ul>
             </div>
 
-            <!-- Box 3: Form States & Validation -->
             <div class="guide-box">
               <div class="guide-box-header">
                 <span class="guide-num">03</span>
@@ -1833,7 +2672,6 @@
               </ul>
             </div>
 
-            <!-- Box 4: Status System -->
             <div class="guide-box">
               <div class="guide-box-header">
                 <span class="guide-num">04</span>
@@ -1846,7 +2684,6 @@
               </ul>
             </div>
 
-            <!-- Box 5: 8pt Spacing Grid -->
             <div class="guide-box">
               <div class="guide-box-header">
                 <span class="guide-num">05</span>
@@ -1859,7 +2696,6 @@
               </ul>
             </div>
 
-            <!-- Box 6: Accessibility & Ethics -->
             <div class="guide-box">
               <div class="guide-box-header">
                 <span class="guide-num">06</span>
@@ -1873,7 +2709,6 @@
             </div>
           </div>
 
-          <!-- Figma Design Token Cheat-Sheet -->
           <div class="figma-token-banner">
             <div class="figma-token-left">
               <span class="figma-icon">🎨</span>
@@ -1889,7 +2724,7 @@
         </div>
 
         <div class="slide-footer">
-          <span>PawBridge Brand Presentation • Slide 18 / 18</span>
+          <span>PawBridge Brand Presentation • Slide 27 / 27</span>
           <span class="slide-hint">Presentation Complete • Press 'G' for Overview Grid</span>
         </div>
       </section>
@@ -1898,7 +2733,7 @@
 
     <!-- FLOATING DECK CONTROLS (Bottom Left/Right) -->
     <nav class="deck-bottom-controls" aria-label="Slide Controls">
-      <div class="deck-counter" id="deck-counter">Slide 1 of 18</div>
+      <div class="deck-counter" id="deck-counter">Slide 1 of 27</div>
 
       <div class="deck-arrow-buttons">
         <button type="button" class="deck-btn-nav" id="btn-prev-slide" aria-label="Previous Slide">
@@ -1914,7 +2749,7 @@
   <!-- GRID OVERVIEW MODAL (Triggered by 'G' or topbar icon) -->
   <div class="deck-grid-modal" id="deck-grid-modal" style="display: none;">
     <div class="grid-modal-header">
-      <h3 class="grid-modal-title">Presentation Slide Overview (18 Slides across 4 Sections)</h3>
+      <h3 class="grid-modal-title">Presentation Slide Overview (27 Slides across 6 Sections)</h3>
       <button type="button" class="btn-close-grid" id="btn-close-grid">✕ Close</button>
     </div>
     <div class="grid-thumbnails-container" id="grid-thumbnails-container">
