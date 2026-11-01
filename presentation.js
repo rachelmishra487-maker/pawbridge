@@ -6,7 +6,7 @@
 
 const DeckState = {
   currentIndex: 0,
-  totalSlides: 35,
+  totalSlides: 42,
   isGridOpen: false,
   slides: [
     // SECTION 01: COVER
@@ -57,6 +57,15 @@ const DeckState = {
     { num: '33', title: 'Buttons, Inputs & 6 Component States', section: 'SECTION 07: DESIGN SYSTEM', desc: 'Primary/secondary buttons, input fields, and 6 states: default, hover, active, disabled, error, success' },
     { num: '34', title: 'Navigation Components, Cards & Statuses', section: 'SECTION 07: DESIGN SYSTEM', desc: 'Desktop topbar, tabs, breadcrumbs, filter chips, 3 card types & status badges' },
     { num: '35', title: 'Icon Style, 8pt Grid & System Guidelines', section: 'SECTION 07: DESIGN SYSTEM', desc: '24px monoline rounded icons, 8pt spatial grid ruler & accessibility/vault privacy guidelines' },
+
+    // SECTION 08: FINAL SOLUTION & HIGH-FIDELITY PROTOTYPE
+    { num: '36', title: 'Platform Introduction & Research Mapping', section: 'SECTION 08: FINAL SOLUTION', desc: 'PawBridge platform architecture, research-to-design rationale & interactive prototype launcher' },
+    { num: '37', title: 'Final Supporter Journey & Key Interactions', section: 'SECTION 08: FINAL SOLUTION', desc: '5-phase supporter journey, 64px desktop topbar, micro-unit selection & address auto-copy' },
+    { num: '38', title: 'Hi-Fi: NGO Discovery & Credibility Vault', section: 'SECTION 08: FINAL SOLUTION', desc: 'Regional search filters, verified badges, physical shelter profile & private document vault' },
+    { num: '39', title: 'Hi-Fi: Support Needs & Contribution Gateway', section: 'SECTION 08: FINAL SOLUTION', desc: 'Itemized supply appeals, puppy kibble targets, micro-donation modal & non-contact support' },
+    { num: '40', title: 'Hi-Fi: Rescue Timelines & Impact Reports', section: 'SECTION 08: FINAL SOLUTION', desc: 'Sheru #PB-408 medical healing stepper, post-op updates & organization-reported impact reports' },
+    { num: '41', title: 'Hi-Fi: NGO Operations Console', section: 'SECTION 08: FINAL SOLUTION', desc: 'Shelter document verification hub, 5 status badges, rescue records & request management' },
+    { num: '42', title: 'Research Synthesis Matrix & Live Prototype Handoff', section: 'SECTION 08: FINAL SOLUTION', desc: 'Direct empirical mapping, tested findings vs proposed hypotheses & desktop prototype launch' },
   ]
 };
 
@@ -128,7 +137,8 @@ function updateSectionQuickLinks(index) {
   else if (index >= 12 && index <= 14) currentSection = '04';
   else if (index >= 15 && index <= 20) currentSection = '05';
   else if (index >= 21 && index <= 28) currentSection = '06';
-  else currentSection = '07';
+  else if (index >= 29 && index <= 34) currentSection = '07';
+  else currentSection = '08';
 
   sectionBtns.forEach(btn => {
     if (btn.getAttribute('data-sec') === currentSection) {
@@ -300,6 +310,59 @@ function initEditableFields() {
       showToast('✓ Project tagline auto-saved');
     });
   }
+
+  // 3. Section 08 Prototype Link & Button Label
+  const protoUrlInput = document.getElementById('prototype-url-input');
+  const protoLabelInput = document.getElementById('prototype-label-input');
+
+  const savedProtoUrl = localStorage.getItem('uedp5_prototype_url');
+  const savedProtoLabel = localStorage.getItem('uedp5_prototype_label');
+
+  if (savedProtoUrl && protoUrlInput) {
+    protoUrlInput.value = savedProtoUrl;
+    updatePrototypeLinkAcrossDeck(savedProtoUrl);
+  }
+  if (savedProtoLabel && protoLabelInput) {
+    protoLabelInput.value = savedProtoLabel;
+    updatePrototypeLabelAcrossDeck(savedProtoLabel);
+  }
+
+  if (protoUrlInput) {
+    protoUrlInput.addEventListener('input', (e) => {
+      localStorage.setItem('uedp5_prototype_url', e.target.value);
+      updatePrototypeLinkAcrossDeck(e.target.value);
+    });
+    protoUrlInput.addEventListener('change', () => {
+      showToast('✓ Prototype URL auto-saved');
+    });
+  }
+
+  if (protoLabelInput) {
+    protoLabelInput.addEventListener('input', (e) => {
+      localStorage.setItem('uedp5_prototype_label', e.target.value);
+      updatePrototypeLabelAcrossDeck(e.target.value);
+    });
+    protoLabelInput.addEventListener('change', () => {
+      showToast('✓ Prototype button label auto-saved');
+    });
+  }
+}
+
+function updatePrototypeLinkAcrossDeck(url) {
+  if (!url) return;
+  document.querySelectorAll('.btn-prototype-launch').forEach(el => {
+    el.setAttribute('href', url);
+  });
+  document.querySelectorAll('.btn-action-outline').forEach(el => {
+    el.setAttribute('href', url);
+  });
+}
+
+function updatePrototypeLabelAcrossDeck(label) {
+  if (!label) return;
+  document.querySelectorAll('.btn-prototype-launch').forEach(el => {
+    el.textContent = label;
+  });
 }
 
 function updateProjectNameAcrossDeck(name) {

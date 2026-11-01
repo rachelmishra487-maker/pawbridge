@@ -44,6 +44,7 @@
       <button type="button" class="btn-section-tab" data-sec="05" data-target-slide="15" title="Section 05: Concept Exploration & Wireframes">05 Concepts</button>
       <button type="button" class="btn-section-tab" data-sec="06" data-target-slide="21" title="Section 06: Usability Testing Round 1">06 Testing R1</button>
       <button type="button" class="btn-section-tab" data-sec="07" data-target-slide="29" title="Section 07: Brand Identity & UI Design System">07 Design System</button>
+      <button type="button" class="btn-section-tab" data-sec="08" data-target-slide="35" title="Section 08: Final Solution & Hi-Fi Prototype">08 Final Solution</button>
     </div>
 
     <!-- Slide Thumbnails / Indicator Pill Bar (Scrollable) -->
@@ -83,6 +84,13 @@
       <button type="button" class="slide-pill" data-slide="32" title="Slide 33: Buttons, Inputs & 6 States"><span class="pill-num">33</span> Controls & States</button>
       <button type="button" class="slide-pill" data-slide="33" title="Slide 34: Navigation Components & Cards"><span class="pill-num">34</span> Nav & Cards</button>
       <button type="button" class="slide-pill" data-slide="34" title="Slide 35: Icon Style & 8pt Spacing Grid"><span class="pill-num">35</span> Grid & Icons</button>
+      <button type="button" class="slide-pill" data-slide="35" title="Slide 36: Platform Intro & Research Mapping"><span class="pill-num">36</span> Solution</button>
+      <button type="button" class="slide-pill" data-slide="36" title="Slide 37: Supporter Journey & Key Interactions"><span class="pill-num">37</span> Journey</button>
+      <button type="button" class="slide-pill" data-slide="37" title="Slide 38: Hi-Fi: Discovery & Profile Vault"><span class="pill-num">38</span> Discovery</button>
+      <button type="button" class="slide-pill" data-slide="38" title="Slide 39: Hi-Fi: Support Needs & Contribution"><span class="pill-num">39</span> Needs</button>
+      <button type="button" class="slide-pill" data-slide="39" title="Slide 40: Hi-Fi: Rescue Timelines & Impact"><span class="pill-num">40</span> Impact</button>
+      <button type="button" class="slide-pill" data-slide="40" title="Slide 41: Hi-Fi: NGO Operations Console"><span class="pill-num">41</span> NGO Portal</button>
+      <button type="button" class="slide-pill" data-slide="41" title="Slide 42: Research Matrix & Prototype Handoff"><span class="pill-num">42</span> Synthesis</button>
     </div>
 
     <!-- Actions: Prototype Link, Grid View, Fullscreen -->
@@ -3587,7 +3595,869 @@
         </div>
 
         <div class="slide-footer">
-          <span>PawBridge Brand Presentation • System Guidelines • Slide 35 / 35</span>
+          <span>PawBridge Brand Presentation • System Guidelines • Slide 35 / 42</span>
+          <span class="slide-hint">Use ← and → keys to navigate</span>
+        </div>
+      </section>
+
+
+      <!-- ============================================================ -->
+      <!-- SLIDE 36: SECTION 08 — FINAL SOLUTION INTRODUCTION & MAPPING -->
+      <!-- ============================================================ -->
+      <section class="slide-card" id="slide-35" data-index="35">
+        <div class="slide-header">
+          <div class="slide-tag">SECTION 08 / FINAL SOLUTION & HIGH-FIDELITY PROTOTYPE</div>
+          <div class="slide-meta-badge">01 / Selected Solution & Research Rationale</div>
+        </div>
+
+        <div class="slide-content grid-2-col">
+          <div class="editorial-col">
+            <div>
+              <h2 class="slide-h2">PawBridge: An Integrated Animal Welfare Ecosystem</h2>
+              <p class="body-lead">
+                Synthesizing our empirical research into a bidirectional platform connecting cautious animal supporters with resource-starved grassroots dog shelters.
+              </p>
+            </div>
+
+            <div class="card-cream-subtle">
+              <h3 class="card-inner-title">Selected Concept Rationale: The Hybrid Model</h3>
+              <p class="body-p">
+                Neither a passive directory (Concept A) nor an opaque donation pool (Concept B) solves the core trust barrier. PawBridge adopts an <strong>Integrated Hybrid Model</strong>: pairing transparent statutory verification and itemized supply requests with an NGO operational console that tracks veterinary recovery from intake to adoption.
+              </p>
+              <div class="construction-specs">
+                <div class="spec-pill"><strong>Portal 1:</strong> Public Supporter Hub</div>
+                <div class="spec-pill"><strong>Portal 2:</strong> NGO Operations Console</div>
+                <div class="spec-pill"><strong>Model:</strong> Verified Transparency</div>
+              </div>
+            </div>
+
+            <!-- Interactive Prototype Link Panel (Editable with LocalStorage Persistence) -->
+            <div class="proto-editable-panel">
+              <div class="proto-editable-header">
+                <span class="section-kicker">WORKING PROTOTYPE ACCESS (LIVE & EDITABLE)</span>
+                <span class="spec-pill" style="font-size: 10px;">Auto-Saved to Browser</span>
+              </div>
+              <p style="font-size: 11px; color: rgba(41, 53, 43, 0.75); margin: 0; line-height: 1.35;">
+                Enter or modify the prototype deployment URL below. Clicking the button opens the live desktop prototype.
+              </p>
+              <div class="brand-input-row" style="grid-template-columns: 1fr 1.2fr;">
+                <div class="brand-input-group">
+                  <label for="prototype-url-input">Prototype URL</label>
+                  <input type="text" id="prototype-url-input" class="brand-input-field" value="/" placeholder="/" />
+                </div>
+                <div class="brand-input-group">
+                  <label for="prototype-label-input">Button Caption</label>
+                  <input type="text" id="prototype-label-input" class="brand-input-field" value="🚀 Launch Desktop Prototype" placeholder="Button Caption" />
+                </div>
+              </div>
+              <a href="/" id="btn-launch-prototype" target="_blank" class="btn-prototype-launch" style="align-self: flex-start;">
+                🚀 Launch Desktop Prototype
+              </a>
+            </div>
+          </div>
+
+          <div class="editorial-col">
+            <div class="card-white-elevated">
+              <div class="section-kicker">RESEARCH INSIGHTS → DESIGN DECISIONS MAPPING</div>
+              <h3 class="card-inner-title" style="margin-top: 4px;">Direct Translation of Participant Pains into Interface Systems</h3>
+              
+              <div class="keyword-tags-grid" style="margin-top: 8px;">
+                <div class="keyword-card">
+                  <span class="kw-icon">🛡️</span>
+                  <strong>1. Trust Before Transaction</strong>
+                  <p>Kanchan & Khushi: "Where does my ₹500 go?" $\rightarrow$ <strong>Statutory Document Vault</strong> with 12A/80G validation before any donation request is presented.</p>
+                </div>
+                <div class="keyword-card">
+                  <span class="kw-icon">🎯</span>
+                  <strong>2. Clarity Over Volume</strong>
+                  <p>Dishank: "50 starving dogs causes emotional fatigue" $\rightarrow$ <strong>Itemized Supply Requisitions</strong> (kibble bags, antibiotics) instead of generic corpus appeals.</p>
+                </div>
+                <div class="keyword-card">
+                  <span class="kw-icon">⚡</span>
+                  <strong>3. Specific Needs Feel Actionable</strong>
+                  <p>Khushi: "Can I just buy 2kg food?" $\rightarrow$ <strong>Micro-Sponsorship Selector</strong> (₹250/₹500) + 1-click address copy for direct online supply delivery.</p>
+                </div>
+                <div class="keyword-card">
+                  <span class="kw-icon">🤝</span>
+                  <strong>4. Familiarity Differs</strong>
+                  <p>Asha: Fear of aggressive street dogs $\rightarrow$ <strong>Non-Contact Support Options</strong> (remote advocacy, food drop-offs, foster sponsorship without dog handling).</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="slide-footer">
+          <span>PawBridge Final Presentation • Solution Rationale • Slide 36 / 42</span>
+          <span class="slide-hint">Use ← and → keys to navigate</span>
+        </div>
+      </section>
+
+
+      <!-- ============================================================ -->
+      <!-- SLIDE 37: SECTION 08 — FINAL SUPPORTER USER JOURNEY & FLOW   -->
+      <!-- ============================================================ -->
+      <section class="slide-card" id="slide-36" data-index="36">
+        <div class="slide-header">
+          <div class="slide-tag">SECTION 08 / FINAL SOLUTION & HIGH-FIDELITY PROTOTYPE</div>
+          <div class="slide-meta-badge">02 / Final Supporter Journey & Key Interactions</div>
+        </div>
+
+        <div class="slide-content">
+          <div>
+            <h2 class="slide-h2">Final Supporter User Journey & Key Interaction Patterns</h2>
+            <p class="body-lead">
+              A frictionless 5-phase supporter path designed to reduce cognitive anxiety, verify legitimacy, and provide closure through verified recovery logs.
+            </p>
+          </div>
+
+          <!-- 5-Phase Supporter Journey Diagram -->
+          <div class="card-white-elevated" style="padding: 14px 18px;">
+            <div class="section-kicker" style="margin-bottom: 10px;">REFINED 5-PHASE SUPPORTER JOURNEY WITH COGNITIVE CHECKPOINTS</div>
+
+            <div class="flowchart-container">
+              <div class="flow-step-box start">
+                <span class="flow-step-num">STAGE 01</span>
+                <span class="flow-step-title">Discover</span>
+                <span class="flow-step-desc">Regional filter (Nagpur, MH), active shelter pulse, urgent needs counter.</span>
+              </div>
+              <span class="flow-arrow-divider">→</span>
+
+              <div class="flow-step-box decision">
+                <span class="flow-step-num">STAGE 02</span>
+                <span class="flow-step-title">Verify</span>
+                <span class="flow-step-desc">Checks 12A/80G status, statutory trust registration, and municipal shelter lease.</span>
+              </div>
+              <span class="flow-arrow-divider">→</span>
+
+              <div class="flow-step-box">
+                <span class="flow-step-num">STAGE 03</span>
+                <span class="flow-step-title">Understand</span>
+                <span class="flow-step-desc">Scans itemized supply list: 50 bags puppy starter kibble with live progress bar.</span>
+              </div>
+              <span class="flow-arrow-divider">→</span>
+
+              <div class="flow-step-box action">
+                <span class="flow-step-num">STAGE 04</span>
+                <span class="flow-step-title">Act</span>
+                <span class="flow-step-desc">Micro-sponsors ₹250 or copies gate address to ship via Amazon Pet Store.</span>
+              </div>
+              <span class="flow-arrow-divider">→</span>
+
+              <div class="flow-step-box end">
+                <span class="flow-step-num">STAGE 05</span>
+                <span class="flow-step-title">Follow Up</span>
+                <span class="flow-step-desc">Receives post-op healing updates and WhatsApp log without forced account signup.</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3 Key Interaction Patterns -->
+          <div class="changes-priority-grid" style="margin-top: 4px;">
+            <div class="priority-col-card">
+              <div class="guide-box-header">
+                <span class="guide-num">01</span>
+                <h3 class="guide-title">1-Click Direct Supply Shipping</h3>
+              </div>
+              <p class="body-p">
+                Allows supporters who distrust monetary transactions to order physical dog food, suture packs, or antiseptics directly to the shelter's verified gate address via Blinkit or Amazon.
+              </p>
+              <div class="spec-pill" style="width: fit-content; margin-top: auto;">Auto-copies shelter address & PIN</div>
+            </div>
+
+            <div class="priority-col-card">
+              <div class="guide-box-header">
+                <span class="guide-num">02</span>
+                <h3 class="guide-title">Micro-Unit Quantity Selector</h3>
+              </div>
+              <p class="body-p">
+                Eliminates student donation intimidation by breaking large ₹22,000 targets into bite-sized units (e.g. "Sponsor 1 Bag for ₹440" or "Sponsor 2 Meals for ₹90").
+              </p>
+              <div class="spec-pill" style="width: fit-content; margin-top: auto;">Preset ₹250, ₹500, ₹1,000 pills</div>
+            </div>
+
+            <div class="priority-col-card">
+              <div class="guide-box-header">
+                <span class="guide-num">03</span>
+                <h3 class="guide-title">Lightweight Follow (No Signup)</h3>
+              </div>
+              <p class="body-p">
+                Solves participant drop-off by allowing supporters to follow an injured dog's recovery updates via a 1-tap WhatsApp alert or email digest without creating a full password account.
+              </p>
+              <div class="spec-pill" style="width: fit-content; margin-top: auto;">1-Click WhatsApp / Email Follow</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="slide-footer">
+          <span>PawBridge Final Presentation • User Journey & Interactions • Slide 37 / 42</span>
+          <span class="slide-hint">Use ← and → keys to navigate</span>
+        </div>
+      </section>
+
+
+      <!-- ============================================================ -->
+      <!-- SLIDE 38: SECTION 08 — HI-FI: DISCOVERY & PROFILE VAULT      -->
+      <!-- ============================================================ -->
+      <section class="slide-card" id="slide-37" data-index="37">
+        <div class="slide-header">
+          <div class="slide-tag">SECTION 08 / FINAL SOLUTION & HIGH-FIDELITY PROTOTYPE</div>
+          <div class="slide-meta-badge">03 / Hi-Fi Screens: Discovery & Credibility Vault</div>
+        </div>
+
+        <div class="slide-content">
+          <div>
+            <h2 class="slide-h2">Hi-Fi Screens: Regional Discovery & Public Verified Profile</h2>
+            <p class="body-lead">
+              Surfacing grassroots animal welfare trusts in Tier-2/3 cities and presenting transparent, tamper-proof statutory credentials.
+            </p>
+          </div>
+
+          <div class="grid-2-col" style="gap: 14px;">
+            <!-- Screen 1: Regional Discovery Hub Mockup -->
+            <div class="hifi-browser-frame">
+              <div class="browser-titlebar">
+                <div class="browser-traffic-lights">
+                  <span class="traffic-dot red"></span>
+                  <span class="traffic-dot yellow"></span>
+                  <span class="traffic-dot green"></span>
+                </div>
+                <div class="browser-url-bar">
+                  <span>🔒</span> https://pawbridge.org/explore?city=nagpur
+                </div>
+              </div>
+
+              <div class="browser-viewport">
+                <!-- Search & Filters -->
+                <div style="display: flex; gap: 8px;">
+                  <div style="flex: 1; position: relative;">
+                    <input type="text" class="input-specimen" value="Nagpur, Maharashtra" style="background: #fff; font-weight: 600;" readonly />
+                  </div>
+                  <span class="filter-chip-item active" style="font-size: 10.5px;">All Needs (18)</span>
+                  <span class="filter-chip-item" style="font-size: 10.5px;">Kibble</span>
+                  <span class="filter-chip-item" style="font-size: 10.5px;">Surgery</span>
+                </div>
+
+                <!-- Shelter Card Preview -->
+                <div class="mockup-frame" style="background: #fff;">
+                  <div class="mockup-header">
+                    <div>
+                      <span style="font-size: 10px; font-family: var(--font-mono); color: var(--color-olive);">TIER-2 NAGPUR FIELDWORK</span>
+                      <h4 style="font-family: var(--font-heading); font-size: 13.5px; margin: 2px 0; color: var(--color-dark-green);">Save Speechless Organisation (SSO)</h4>
+                    </div>
+                    <span class="badge-status verified">✓ Verified NGO</span>
+                  </div>
+                  <p style="font-size: 11px; color: rgba(41,53,43,0.75); margin: 4px 0;">
+                    Outer Wardha Road, Nagpur • 65+ Resident Dogs • Active Today
+                  </p>
+                  <div style="background: var(--color-cream); padding: 6px 8px; border-radius: 4px; display: flex; justify-content: space-between; font-size: 10.5px;">
+                    <span>🚨 Urgent Need: <strong>50 Bags Puppy Starter</strong></span>
+                    <span style="color: var(--color-olive); font-weight: 700;">64% Funded</span>
+                  </div>
+                </div>
+
+                <!-- Shelter Card 2 -->
+                <div class="mockup-frame" style="background: #fff;">
+                  <div class="mockup-header">
+                    <h4 style="font-family: var(--font-heading); font-size: 13px; color: var(--color-dark-green);">Rise for Tails (Nagpur)</h4>
+                    <span class="badge-status verified">✓ Verified NGO</span>
+                  </div>
+                  <p style="font-size: 11px; color: rgba(41,53,43,0.75); margin: 2px 0;">
+                    Opposite MIHAN, Nagpur • Emergency Ambulance & Trauma Unit
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Screen 2: Public Verified Profile & Credibility Vault -->
+            <div class="hifi-browser-frame">
+              <div class="browser-titlebar">
+                <div class="browser-traffic-lights">
+                  <span class="traffic-dot red"></span>
+                  <span class="traffic-dot yellow"></span>
+                  <span class="traffic-dot green"></span>
+                </div>
+                <div class="browser-url-bar">
+                  <span>🔒</span> https://pawbridge.org/ngo/sso-nagpur/trust-credentials
+                </div>
+              </div>
+
+              <div class="browser-viewport">
+                <!-- Profile Header -->
+                <div style="display: flex; gap: 10px; align-items: center; background: #fff; padding: 10px; border-radius: 6px; border: 1px solid rgba(41,53,43,0.08);">
+                  <div style="font-size: 26px; background: var(--color-pale-green); padding: 8px; border-radius: 8px;">🏛️</div>
+                  <div>
+                    <h4 style="font-family: var(--font-heading); font-size: 14px; margin: 0; color: var(--color-dark-green);">SSO Animal Welfare Trust</h4>
+                    <span style="font-size: 11px; color: rgba(41,53,43,0.7);">Reg #MAH/NGP/2018/142 • Wardha Road Facility</span>
+                  </div>
+                  <span class="status-pill-demo verified" style="margin-left: auto; font-size: 10px;">✓ 80G Tax Certified</span>
+                </div>
+
+                <!-- Statutory Credentials Box -->
+                <div style="background: #fff; padding: 10px 12px; border-radius: 6px; border: 1px solid rgba(41,53,43,0.08); display: flex; flex-direction: column; gap: 6px;">
+                  <span class="section-kicker" style="font-size: 9.5px;">STATUTORY CREDENTIALS & COMPLIANCE VAULT</span>
+                  
+                  <div class="doc-file-info" style="justify-content: space-between;">
+                    <span>📄 Trust Registration Deed (MH Registrar)</span>
+                    <span class="wcag-pass-pill" style="font-size: 8.5px;">Validated 14 Oct 2026</span>
+                  </div>
+                  <div class="doc-file-info" style="justify-content: space-between;">
+                    <span>🛡️ Section 80G Tax Exemption (Valid 2029)</span>
+                    <span class="wcag-pass-pill" style="font-size: 8.5px;">Claimable for Tax Rebate</span>
+                  </div>
+                  <div class="doc-file-info" style="justify-content: space-between;">
+                    <span>📍 Municipal Shelter Land Verification</span>
+                    <span class="wcag-pass-pill" style="font-size: 8.5px;">Physical Inspection Pass</span>
+                  </div>
+                </div>
+
+                <!-- Sensitive Vault Notice -->
+                <div class="mock-privacy-vault-pill" style="font-size: 9px; padding: 6px 10px;">
+                  🔒 Sensitive documents (Trustee PAN, Aadhaar & Bank Details) are secured in private vault and shielded from web crawlers.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="slide-footer">
+          <span>PawBridge Final Presentation • Discovery & Profile • Slide 38 / 42</span>
+          <span class="slide-hint">Use ← and → keys to navigate</span>
+        </div>
+      </section>
+
+
+      <!-- ============================================================ -->
+      <!-- SLIDE 39: SECTION 08 — HI-FI: SUPPORT NEEDS & CONTRIBUTION   -->
+      <!-- ============================================================ -->
+      <section class="slide-card" id="slide-38" data-index="38">
+        <div class="slide-header">
+          <div class="slide-tag">SECTION 08 / FINAL SOLUTION & HIGH-FIDELITY PROTOTYPE</div>
+          <div class="slide-meta-badge">04 / Hi-Fi Screens: Support Needs & Contribution Modal</div>
+        </div>
+
+        <div class="slide-content">
+          <div>
+            <h2 class="slide-h2">Hi-Fi Screens: Support Needs Hub & Contribution Modal</h2>
+            <p class="body-lead">
+              Replacing generic donation buckets with concrete itemized supply appeals and multimodal support channels.
+            </p>
+          </div>
+
+          <div class="grid-2-col" style="gap: 14px;">
+            <!-- Screen 1: Itemized Support Needs Hub -->
+            <div class="hifi-browser-frame">
+              <div class="browser-titlebar">
+                <div class="browser-traffic-lights">
+                  <span class="traffic-dot red"></span>
+                  <span class="traffic-dot yellow"></span>
+                  <span class="traffic-dot green"></span>
+                </div>
+                <div class="browser-url-bar">
+                  <span>🔒</span> https://pawbridge.org/ngo/sso-nagpur/support-requests
+                </div>
+              </div>
+
+              <div class="browser-viewport">
+                <!-- Urgency Tabs -->
+                <div class="contextual-tabs-row" style="margin-bottom: 4px;">
+                  <span class="ctx-tab-item active" style="font-size: 11px;">Active Requests (3)</span>
+                  <span class="ctx-tab-item" style="font-size: 11px;">Fulfilled (14)</span>
+                  <span class="ctx-tab-item" style="font-size: 11px;">Monthly Budget</span>
+                </div>
+
+                <!-- Need Card 1 -->
+                <div class="mockup-frame" style="background: #fff; padding: 10px;">
+                  <div class="mockup-header">
+                    <span style="font-size: 10.5px; font-weight: 700; color: var(--color-olive);">🥣 FOOD & NUTRITION</span>
+                    <span class="badge-status urgent" style="font-size: 9px;">High Urgency</span>
+                  </div>
+                  <h4 style="font-family: var(--font-heading); font-size: 12.5px; margin: 3px 0; color: var(--color-dark-green);">50 Bags Puppy Starter Kibble</h4>
+                  <p style="font-size: 10.5px; color: rgba(41,53,43,0.7); margin-bottom: 6px;">Monsoon litter intake: 18 orphan indie puppies rescued in East Nagpur.</p>
+                  <div class="progress-track" style="height: 6px;"><div class="progress-fill terracotta" style="width: 64%;"></div></div>
+                  <div style="display: flex; justify-content: space-between; font-size: 10px; margin-top: 4px;">
+                    <span>₹14,200 raised</span>
+                    <span style="font-weight: 700;">Target: ₹22,000 (32 bags left)</span>
+                  </div>
+                </div>
+
+                <!-- Need Card 2 -->
+                <div class="mockup-frame" style="background: #fff; padding: 10px;">
+                  <div class="mockup-header">
+                    <span style="font-size: 10.5px; font-weight: 700; color: var(--color-terracotta);">💰 EMERGENCY SURGERY</span>
+                    <span class="badge-status urgent" style="font-size: 9px;">Critical &lt; 48h</span>
+                  </div>
+                  <h4 style="font-family: var(--font-heading); font-size: 12.5px; margin: 3px 0; color: var(--color-dark-green);">Orthopedic Titanium Plates & Pinning</h4>
+                  <p style="font-size: 10.5px; color: rgba(41,53,43,0.7); margin-bottom: 6px;">Case #PB-408 Leo (Compound fracture from hit-and-run on Ring Rd).</p>
+                  <div class="progress-track" style="height: 6px;"><div class="progress-fill" style="width: 68%;"></div></div>
+                  <div style="display: flex; justify-content: space-between; font-size: 10px; margin-top: 4px;">
+                    <span>₹58,000 raised</span>
+                    <span style="font-weight: 700;">Target: ₹85,000</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Screen 2: Multimodal Contribution Modal -->
+            <div class="hifi-browser-frame">
+              <div class="browser-titlebar">
+                <div class="browser-traffic-lights">
+                  <span class="traffic-dot red"></span>
+                  <span class="traffic-dot yellow"></span>
+                  <span class="traffic-dot green"></span>
+                </div>
+                <div class="browser-url-bar">
+                  <span>🔒</span> https://pawbridge.org/modal/contribute?req=REQ-102
+                </div>
+              </div>
+
+              <div class="browser-viewport">
+                <!-- Modal Window Frame -->
+                <div style="background: #fff; border-radius: 8px; padding: 14px; border: 1.5px solid var(--color-olive); display: flex; flex-direction: column; gap: 10px;">
+                  <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(41,53,43,0.08); padding-bottom: 6px;">
+                    <h4 style="font-family: var(--font-heading); font-size: 13.5px; margin: 0; color: var(--color-dark-green);">Support Requisition: 50 Bags Kibble</h4>
+                    <span style="font-size: 11px; cursor: pointer;">✕</span>
+                  </div>
+
+                  <!-- Contribution Tabs -->
+                  <div style="display: flex; gap: 6px;">
+                    <span class="filter-chip-item active" style="font-size: 10.5px; flex: 1; text-align: center;">Donate Funds (80G)</span>
+                    <span class="filter-chip-item" style="font-size: 10.5px; flex: 1; text-align: center;">Ship Supplies Directly</span>
+                  </div>
+
+                  <!-- Micro-Donation Amount Selector -->
+                  <div>
+                    <label style="font-size: 10px; font-weight: 700; text-transform: uppercase; color: var(--color-dark-green); display: block; margin-bottom: 4px;">Select Contribution Amount</label>
+                    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px;">
+                      <button type="button" class="btn-specimen sec-default" style="font-size: 10px; padding: 5px;">₹250 (½ Bag)</button>
+                      <button type="button" class="btn-specimen sec-hover" style="font-size: 10px; padding: 5px; border-color: var(--color-olive); background: #E8EDE3;">₹500 (1 Bag)</button>
+                      <button type="button" class="btn-specimen sec-default" style="font-size: 10px; padding: 5px;">₹1,000 (2 Bags)</button>
+                      <button type="button" class="btn-specimen sec-default" style="font-size: 10px; padding: 5px;">Custom ₹</button>
+                    </div>
+                  </div>
+
+                  <!-- Direct Shipping Address Auto-Copy -->
+                  <div style="background: var(--color-cream); padding: 8px 10px; border-radius: 4px; display: flex; justify-content: space-between; align-items: center;">
+                    <span style="font-size: 10.5px; color: var(--color-dark-green);">📍 SSO Trauma Center, Outer Wardha Rd, Nagpur 440025</span>
+                    <button type="button" class="btn-specimen" style="font-size: 9.5px; padding: 3px 8px; background: var(--color-olive); color: #fff;">Copy Address</button>
+                  </div>
+
+                  <!-- Non-Contact Checkbox -->
+                  <label style="display: flex; align-items: center; gap: 6px; font-size: 10.5px; color: rgba(41,53,43,0.85); cursor: pointer;">
+                    <input type="checkbox" checked /> I wish to support remotely without direct animal contact
+                  </label>
+
+                  <button type="button" class="mock-btn-primary" style="margin-top: 2px;">Proceed to Contribution (80G Tax Receipt)</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="slide-footer">
+          <span>PawBridge Final Presentation • Support Needs & Modal • Slide 39 / 42</span>
+          <span class="slide-hint">Use ← and → keys to navigate</span>
+        </div>
+      </section>
+
+
+      <!-- ============================================================ -->
+      <!-- SLIDE 40: SECTION 08 — HI-FI: RESCUE UPDATES & IMPACT        -->
+      <!-- ============================================================ -->
+      <section class="slide-card" id="slide-39" data-index="39">
+        <div class="slide-header">
+          <div class="slide-tag">SECTION 08 / FINAL SOLUTION & HIGH-FIDELITY PROTOTYPE</div>
+          <div class="slide-meta-badge">05 / Hi-Fi Screens: Rescue Updates & Impact Reports</div>
+        </div>
+
+        <div class="slide-content">
+          <div>
+            <h2 class="slide-h2">Hi-Fi Screens: Rescue Timelines & Monthly Impact Reports</h2>
+            <p class="body-lead">
+              Closing the emotional loop with ethical recovery milestones and transparent, organization-reported activity metrics.
+            </p>
+          </div>
+
+          <div class="grid-2-col" style="gap: 14px;">
+            <!-- Screen 1: Medical Recovery Stepper Mockup -->
+            <div class="hifi-browser-frame">
+              <div class="browser-titlebar">
+                <div class="browser-traffic-lights">
+                  <span class="traffic-dot red"></span>
+                  <span class="traffic-dot yellow"></span>
+                  <span class="traffic-dot green"></span>
+                </div>
+                <div class="browser-url-bar">
+                  <span>🔒</span> https://pawbridge.org/cases/PB-408-sheru
+                </div>
+              </div>
+
+              <div class="browser-viewport">
+                <!-- Case Profile Header -->
+                <div style="display: flex; gap: 10px; align-items: center; background: #fff; padding: 10px; border-radius: 6px; border: 1px solid rgba(41,53,43,0.08);">
+                  <div style="font-size: 24px;">🐕</div>
+                  <div>
+                    <h4 style="font-family: var(--font-heading); font-size: 13.5px; margin: 0; color: var(--color-dark-green);">Case #PB-408: Sheru (Indie • ~3 yrs)</h4>
+                    <span style="font-size: 11px; color: rgba(41,53,43,0.7);">Rescued: Dharampeth, Nagpur • Ward A (Post-Op)</span>
+                  </div>
+                  <span class="badge-status recovering" style="margin-left: auto; font-size: 10px;">In Recovery</span>
+                </div>
+
+                <!-- Chronological Medical Stepper -->
+                <div class="medical-stepper-row">
+                  <div class="stepper-stage-col">
+                    <span class="stepper-stage-pill done">✓ Stage 1</span>
+                    <span class="stepper-stage-title">Intake & Stabilization</span>
+                    <span class="stepper-stage-desc">14 Oct • Blood profile & IV saline administered.</span>
+                  </div>
+                  <div class="stepper-stage-col">
+                    <span class="stepper-stage-pill done">✓ Stage 2</span>
+                    <span class="stepper-stage-title">Surgical Suture</span>
+                    <span class="stepper-stage-desc">18 Oct • Clean debridement & suture closure.</span>
+                  </div>
+                  <div class="stepper-stage-col">
+                    <span class="stepper-stage-pill active">🟢 Stage 3</span>
+                    <span class="stepper-stage-title">Rehabilitation</span>
+                    <span class="stepper-stage-desc">Current (75%) • Walking on paw without limp.</span>
+                  </div>
+                  <div class="stepper-stage-col">
+                    <span class="stepper-stage-pill upcoming">⏳ Stage 4</span>
+                    <span class="stepper-stage-title">Adoption / Release</span>
+                    <span class="stepper-stage-desc">Expected 05 Nov • Community feeder reunion.</span>
+                  </div>
+                </div>
+
+                <!-- Follow Action Bar -->
+                <div style="background: #fff; padding: 8px 12px; border-radius: 6px; display: flex; justify-content: space-between; align-items: center;">
+                  <span style="font-size: 11px; color: rgba(41,53,43,0.85);">Receive recovery closure alerts for Sheru:</span>
+                  <div style="display: flex; gap: 6px;">
+                    <button type="button" class="btn-specimen" style="font-size: 10px; padding: 4px 10px; background: #25D366; color: #fff;">WhatsApp Updates</button>
+                    <button type="button" class="btn-specimen sec-default" style="font-size: 10px; padding: 4px 10px;">Email Digest</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Screen 2: Public Impact Reports Hub -->
+            <div class="hifi-browser-frame">
+              <div class="browser-titlebar">
+                <div class="browser-traffic-lights">
+                  <span class="traffic-dot red"></span>
+                  <span class="traffic-dot yellow"></span>
+                  <span class="traffic-dot green"></span>
+                </div>
+                <div class="browser-url-bar">
+                  <span>🔒</span> https://pawbridge.org/ngo/sso-nagpur/impact-reports
+                </div>
+              </div>
+
+              <div class="browser-viewport">
+                <!-- 4 KPI Metrics Strip -->
+                <div class="kpi-metric-strip-4">
+                  <div class="kpi-metric-box">
+                    <span class="kpi-metric-num">142</span>
+                    <span class="kpi-metric-lbl">Animals Rescued</span>
+                    <span class="kpi-metric-sub">Year-to-date 2026</span>
+                  </div>
+                  <div class="kpi-metric-box">
+                    <span class="kpi-metric-num">118</span>
+                    <span class="kpi-metric-lbl">Treated / Surgeries</span>
+                    <span class="kpi-metric-sub">In trauma center</span>
+                  </div>
+                  <div class="kpi-metric-box">
+                    <span class="kpi-metric-num">74</span>
+                    <span class="kpi-metric-lbl">Rehabilitated</span>
+                    <span class="kpi-metric-sub">Complete recovery</span>
+                  </div>
+                  <div class="kpi-metric-box">
+                    <span class="kpi-metric-num">38</span>
+                    <span class="kpi-metric-lbl">Adopted</span>
+                    <span class="kpi-metric-sub">Permanent homes</span>
+                  </div>
+                </div>
+
+                <!-- Monthly Activity Chart Mockup -->
+                <div style="background: #fff; padding: 10px 14px; border-radius: 6px; border: 1px solid rgba(41,53,43,0.08);">
+                  <div style="display: flex; justify-content: space-between; font-size: 10.5px; margin-bottom: 6px;">
+                    <strong>Monthly Intake vs Successful Re-homing (May–Oct 2026)</strong>
+                    <span style="color: var(--color-olive);">Active Rescue Pace: +24/mo</span>
+                  </div>
+                  <!-- Mini Bar Chart Simulation -->
+                  <div style="display: flex; align-items: flex-end; justify-content: space-between; height: 50px; padding-top: 6px; border-bottom: 1px solid rgba(41,53,43,0.1);">
+                    <div style="text-align: center;"><div style="width: 18px; height: 32px; background: var(--color-olive); border-radius: 2px;"></div><span style="font-size: 8px;">May</span></div>
+                    <div style="text-align: center;"><div style="width: 18px; height: 38px; background: var(--color-olive); border-radius: 2px;"></div><span style="font-size: 8px;">Jun</span></div>
+                    <div style="text-align: center;"><div style="width: 18px; height: 44px; background: var(--color-terracotta); border-radius: 2px;"></div><span style="font-size: 8px;">Jul</span></div>
+                    <div style="text-align: center;"><div style="width: 18px; height: 48px; background: var(--color-terracotta); border-radius: 2px;"></div><span style="font-size: 8px;">Aug</span></div>
+                    <div style="text-align: center;"><div style="width: 18px; height: 36px; background: var(--color-olive); border-radius: 2px;"></div><span style="font-size: 8px;">Sep</span></div>
+                    <div style="text-align: center;"><div style="width: 18px; height: 42px; background: var(--color-olive); border-radius: 2px;"></div><span style="font-size: 8px;">Oct</span></div>
+                  </div>
+                </div>
+
+                <!-- Organization-Reported Label -->
+                <div style="font-size: 9.5px; color: rgba(41,53,43,0.7); background: #FAF0D7; padding: 4px 8px; border-radius: 4px; border: 1px solid #E5B95C;">
+                  ⚠️ <strong>Transparency Notice:</strong> All metrics are organization-reported until reviewed and audited by PawBridge verification officers.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="slide-footer">
+          <span>PawBridge Final Presentation • Rescue & Impact • Slide 40 / 42</span>
+          <span class="slide-hint">Use ← and → keys to navigate</span>
+        </div>
+      </section>
+
+
+      <!-- ============================================================ -->
+      <!-- SLIDE 41: SECTION 08 — HI-FI: NGO OPERATIONS CONSOLE         -->
+      <!-- ============================================================ -->
+      <section class="slide-card" id="slide-40" data-index="40">
+        <div class="slide-header">
+          <div class="slide-tag">SECTION 08 / FINAL SOLUTION & HIGH-FIDELITY PROTOTYPE</div>
+          <div class="slide-meta-badge">06 / Hi-Fi Screens: NGO Operations Console</div>
+        </div>
+
+        <div class="slide-content">
+          <div>
+            <h2 class="slide-h2">Hi-Fi Screens: NGO Operations Console & Document Vault</h2>
+            <p class="body-lead">
+              Streamlining administrative burden for overworked shelter caretakers with an intuitive desktop portal to submit credentials and manage rescue logs.
+            </p>
+          </div>
+
+          <div class="grid-2-col" style="gap: 14px;">
+            <!-- Screen 1: Document Verification Hub -->
+            <div class="hifi-browser-frame">
+              <div class="browser-titlebar">
+                <div class="browser-traffic-lights">
+                  <span class="traffic-dot red"></span>
+                  <span class="traffic-dot yellow"></span>
+                  <span class="traffic-dot green"></span>
+                </div>
+                <div class="browser-url-bar">
+                  <span>🔒</span> https://pawbridge.org/console/document-verification
+                </div>
+              </div>
+
+              <div class="browser-viewport">
+                <!-- Checklist Banner -->
+                <div style="display: flex; justify-content: space-between; align-items: center; background: #fff; padding: 8px 12px; border-radius: 6px;">
+                  <div>
+                    <span style="font-size: 10px; font-weight: 700; color: var(--color-olive);">VERIFICATION CHECKLIST (3 OF 4 VERIFIED)</span>
+                    <h4 style="font-family: var(--font-heading); font-size: 12.5px; margin: 0; color: var(--color-dark-green);">Statutory Trust Document Vault</h4>
+                  </div>
+                  <span class="doc-status-badge pending">Pending Final Review</span>
+                </div>
+
+                <!-- 4 Document Upload Cards -->
+                <div class="doc-uploads-grid-4">
+                  <div class="doc-upload-item-card">
+                    <div class="doc-upload-header">
+                      <span class="doc-type-title">1. Trust Deed</span>
+                      <span class="doc-status-badge verified">Verified ✓</span>
+                    </div>
+                    <div class="doc-file-info">📄 SSO_Deed_2018.pdf (2.4 MB)</div>
+                    <div class="doc-file-actions"><span>Replace</span> • <span>Remove</span></div>
+                  </div>
+
+                  <div class="doc-upload-item-card">
+                    <div class="doc-upload-header">
+                      <span class="doc-type-title">2. Organization PAN</span>
+                      <span class="doc-status-badge verified">Verified ✓</span>
+                    </div>
+                    <div class="doc-file-info">📄 SSO_PAN_Card.pdf (840 KB)</div>
+                    <div class="doc-file-actions"><span>Replace</span> • <span>Remove</span></div>
+                  </div>
+
+                  <div class="doc-upload-item-card">
+                    <div class="doc-upload-header">
+                      <span class="doc-type-title">3. Section 12A/80G</span>
+                      <span class="doc-status-badge verified">Verified ✓</span>
+                    </div>
+                    <div class="doc-file-info">📄 80G_Certificate.pdf (1.2 MB)</div>
+                    <div class="doc-file-actions"><span>Replace</span> • <span>Remove</span></div>
+                  </div>
+
+                  <div class="doc-upload-item-card">
+                    <div class="doc-upload-header">
+                      <span class="doc-type-title">4. Facility Lease</span>
+                      <span class="doc-status-badge pending">Pending Review</span>
+                    </div>
+                    <div class="doc-file-info">📄 Shelter_Lease.pdf (3.1 MB)</div>
+                    <div class="doc-file-actions"><span>Replace</span> • <span>Remove</span></div>
+                  </div>
+                </div>
+
+                <!-- Status Legend Strip -->
+                <div style="font-size: 9px; color: rgba(41,53,43,0.7); display: flex; gap: 6px; align-items: center; justify-content: center; background: #fff; padding: 4px; border-radius: 4px;">
+                  <span>Statuses:</span>
+                  <span class="doc-status-badge draft">Draft</span>
+                  <span class="doc-status-badge pending">Pending review</span>
+                  <span class="doc-status-badge verified">Verified</span>
+                  <span class="doc-status-badge changes">Needs changes</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Screen 2: Rescue Records & Request Console -->
+            <div class="hifi-browser-frame">
+              <div class="browser-titlebar">
+                <div class="browser-traffic-lights">
+                  <span class="traffic-dot red"></span>
+                  <span class="traffic-dot yellow"></span>
+                  <span class="traffic-dot green"></span>
+                </div>
+                <div class="browser-url-bar">
+                  <span>🔒</span> https://pawbridge.org/console/rescue-records
+                </div>
+              </div>
+
+              <div class="browser-viewport">
+                <!-- Action Header -->
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <span style="font-size: 11px; font-weight: 700; color: var(--color-dark-green);">Active In-Shelter Canines (42 in care)</span>
+                  <button type="button" class="btn-specimen" style="font-size: 10px; padding: 4px 10px; background: var(--color-olive); color: #fff;">+ Add New Rescue Case</button>
+                </div>
+
+                <!-- Rescue Table / Card Row 1 -->
+                <div style="background: #fff; padding: 8px 10px; border-radius: 6px; border: 1px solid rgba(41,53,43,0.08); display: flex; align-items: center; gap: 10px;">
+                  <span style="font-size: 18px;">🐕</span>
+                  <div style="flex: 1;">
+                    <div style="display: flex; justify-content: space-between;">
+                      <strong style="font-size: 12px; color: var(--color-dark-green);">Leo (#RC-1048) • ICU-03</strong>
+                      <span class="badge-status urgent" style="font-size: 8.5px;">Compound Fracture</span>
+                    </div>
+                    <span style="font-size: 10px; color: rgba(41,53,43,0.65);">Admitted 26 Oct • Orthopedic theater scheduled • Dr. Sharma</span>
+                  </div>
+                  <button type="button" class="btn-specimen sec-default" style="font-size: 9px; padding: 3px 6px;">Edit Case</button>
+                </div>
+
+                <!-- Rescue Table / Card Row 2 -->
+                <div style="background: #fff; padding: 8px 10px; border-radius: 6px; border: 1px solid rgba(41,53,43,0.08); display: flex; align-items: center; gap: 10px;">
+                  <span style="font-size: 18px;">🐾</span>
+                  <div style="flex: 1;">
+                    <div style="display: flex; justify-content: space-between;">
+                      <strong style="font-size: 12px; color: var(--color-dark-green);">Flood Pups (Litter #B-14) • Ward B</strong>
+                      <span class="badge-status recovering" style="font-size: 8.5px;">Quarantine / Weaning</span>
+                    </div>
+                    <span style="font-size: 10px; color: rgba(41,53,43,0.65);">14 pups rescued from storm drain • Probiotic starter feed</span>
+                  </div>
+                  <button type="button" class="btn-specimen sec-default" style="font-size: 9px; padding: 3px 6px;">Edit Case</button>
+                </div>
+
+                <!-- Request Management Strip -->
+                <div style="background: #fff; padding: 6px 10px; border-radius: 6px; display: flex; justify-content: space-between; align-items: center; font-size: 10px;">
+                  <span>Support Requisitions: <strong>3 Active</strong> • <strong>14 Fulfilled</strong></span>
+                  <button type="button" class="btn-specimen" style="font-size: 9px; padding: 3px 8px; background: var(--color-dark-green); color: #fff;">+ New Aid Request</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="slide-footer">
+          <span>PawBridge Final Presentation • NGO Console • Slide 41 / 42</span>
+          <span class="slide-hint">Use ← and → keys to navigate</span>
+        </div>
+      </section>
+
+
+      <!-- ============================================================ -->
+      <!-- SLIDE 42: SECTION 08 — RESEARCH MATRIX & PROTOTYPE HANDOFF   -->
+      <!-- ============================================================ -->
+      <section class="slide-card" id="slide-41" data-index="41">
+        <div class="slide-header">
+          <div class="slide-tag">SECTION 08 / FINAL SOLUTION & HIGH-FIDELITY PROTOTYPE</div>
+          <div class="slide-meta-badge">07 / Research Decisions Matrix & Live Prototype Handoff</div>
+        </div>
+
+        <div class="slide-content">
+          <div>
+            <h2 class="slide-h2">Research Insights vs Final Design Decisions Matrix</h2>
+            <p class="body-lead">
+              A rigorous empirical audit demonstrating how every interface component is grounded in research evidence, distinguishing tested findings from proposed design decisions.
+            </p>
+          </div>
+
+          <!-- Research to Design Decision Matrix Table -->
+          <div class="matrix-table-container">
+            <table class="matrix-table">
+              <thead>
+                <tr>
+                  <th style="width: 18%;">Research Theme / Insight</th>
+                  <th style="width: 20%;">Participant Evidence</th>
+                  <th style="width: 22%;">User Friction / Cognitive Gap</th>
+                  <th style="width: 26%;">Final Design Decision</th>
+                  <th style="width: 14%;">Validation Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Trust Before Transaction</strong></td>
+                  <td>Kanchan: "I hesitate donating online because I don't know if the shelter is real."</td>
+                  <td>Uncertainty regarding NGO legal legitimacy and misuse of funds.</td>
+                  <td><strong>Statutory Document Vault:</strong> Pre-verified 12A/80G and PAN certificates displayed with clear tax benefit labels.</td>
+                  <td><span class="status-tag-tested">Tested Finding</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Clarity Over Volume</strong></td>
+                  <td>Dishank: "Seeing 50 starving animals on Instagram causes immediate paralysis."</td>
+                  <td>Emotional exhaustion and helplessness from massive unquantified appeals.</td>
+                  <td><strong>Itemized Requisition Cards:</strong> Capped micro-targets (e.g. 50 bags puppy kibble) with transparent unit costs.</td>
+                  <td><span class="status-tag-tested">Tested Finding</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Specific Needs Feel Actionable</strong></td>
+                  <td>Khushi: "Can I just buy 2kg food or medicine instead of donating ₹5,000?"</td>
+                  <td>Bulk purchase intimidation alienating college students and modest donors.</td>
+                  <td><strong>Micro-Unit Selector & Shipping Copy:</strong> Preset ₹250/₹500 pills + 1-click address copy for direct online supply orders.</td>
+                  <td><span class="status-tag-tested">Tested Finding</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Familiarity Differs</strong></td>
+                  <td>Asha/grandmother: Fear of dog bites prevents visiting shelter campus.</td>
+                  <td>Supporters afraid of dogs avoid all volunteering and aid appeals.</td>
+                  <td><strong>Non-Contact Support Options:</strong> Explicit "Remote Support / No Contact Required" tagging on administrative and supply tasks.</td>
+                  <td><span class="status-tag-tested">Tested Finding</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Post-Rescue Closure</strong></td>
+                  <td>Supporter testing feedback: Drop-off occurs when accounts are mandatory.</td>
+                  <td>Supporters want recovery updates but refuse long registration forms.</td>
+                  <td><strong>Lightweight WhatsApp Follow:</strong> 1-click subscription for specific case alerts without account password signup.</td>
+                  <td><span class="status-tag-tested">Tested Finding</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Shelter Operational Reality</strong></td>
+                  <td>SSO / Rise for Tails fieldwork: Staff lack time for complex marketing graphics.</td>
+                  <td>Exhausted caretakers cannot maintain multi-channel social media appeals.</td>
+                  <td><strong>Streamlined NGO Console:</strong> Rapid rescue logging, automated card generation, and 1-click requisition publishing.</td>
+                  <td><span class="status-tag-proposed">Proposed Hypothesis</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Working Prototype Live Launch Banner -->
+          <div class="figma-token-banner" style="background: var(--color-olive); margin-top: 4px; padding: 12px 18px;">
+            <div class="figma-token-left">
+              <span class="figma-icon">🚀</span>
+              <div>
+                <strong>Experience the Complete PawBridge Desktop Application</strong>
+                <span class="token-code-row" style="color: #E8EDE3;">
+                  Fully functional desktop prototype featuring regional discovery, public profile, verified document vault, rescue logs, and support requests.
+                </span>
+              </div>
+            </div>
+            <a href="/" target="_blank" class="btn-prototype-launch" style="background: #ffffff; color: var(--color-olive); border: none; font-size: 12.5px; padding: 8px 18px;">
+              Open Desktop Prototype →
+            </a>
+          </div>
+        </div>
+
+        <div class="slide-footer">
+          <span>PawBridge Final Presentation • Prototype Handoff • Slide 42 / 42</span>
           <span class="slide-hint">Presentation Complete • Press 'G' for Overview Grid</span>
         </div>
       </section>
@@ -3596,7 +4466,7 @@
 
     <!-- FLOATING DECK CONTROLS (Bottom Left/Right) -->
     <nav class="deck-bottom-controls" aria-label="Slide Controls">
-      <div class="deck-counter" id="deck-counter">Slide 1 of 35</div>
+      <div class="deck-counter" id="deck-counter">Slide 1 of 42</div>
 
       <div class="deck-arrow-buttons">
         <button type="button" class="deck-btn-nav" id="btn-prev-slide" aria-label="Previous Slide">
@@ -3612,7 +4482,7 @@
   <!-- GRID OVERVIEW MODAL (Triggered by 'G' or topbar icon) -->
   <div class="deck-grid-modal" id="deck-grid-modal" style="display: none;">
     <div class="grid-modal-header">
-      <h3 class="grid-modal-title">Presentation Slide Overview (35 Slides across 7 Sections)</h3>
+      <h3 class="grid-modal-title">Presentation Slide Overview (42 Slides across 8 Sections)</h3>
       <button type="button" class="btn-close-grid" id="btn-close-grid">✕ Close</button>
     </div>
     <div class="grid-thumbnails-container" id="grid-thumbnails-container">

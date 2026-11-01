@@ -4410,3 +4410,323 @@ body.deck-body {
 .status-pill-demo.fulfilled { background: #E8F5E9; color: #2E7D32; border: 1px solid #81C784; }
 .status-pill-demo.recovery { background: #E8EDE3; color: #384A33; border: 1px solid #536747; }
 .status-pill-demo.changes { background: #FDE8E8; color: #C53030; border: 1px solid #F56565; }
+
+/* ============================================================
+   SECTION 08 — FINAL SOLUTION & HIGH-FIDELITY PROTOTYPE STYLES
+   ============================================================ */
+
+/* Prototype Launch & Editable URL Card */
+.proto-editable-panel {
+  background: var(--color-white);
+  border: 1.5px dashed var(--color-olive);
+  border-radius: var(--radius-md);
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  box-shadow: var(--shadow-card);
+}
+
+.proto-editable-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.btn-prototype-launch {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background-color: var(--color-olive);
+  color: #ffffff;
+  font-family: var(--font-heading);
+  font-size: 13.5px;
+  font-weight: 700;
+  padding: 10px 22px;
+  border-radius: var(--radius-pill);
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(83, 103, 71, 0.25);
+  transition: all 0.2s ease;
+  width: fit-content;
+}
+
+.btn-prototype-launch:hover {
+  background-color: #3e4e34;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(83, 103, 71, 0.35);
+  color: #ffffff;
+}
+
+/* Hi-Fi Desktop Browser Window Frame */
+.hifi-browser-frame {
+  background-color: #ffffff;
+  border-radius: var(--radius-md);
+  border: 1.5px solid rgba(41, 53, 43, 0.14);
+  box-shadow: 0 6px 20px rgba(41, 53, 43, 0.08);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.browser-titlebar {
+  background-color: #EAE6DB;
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-bottom: 1px solid rgba(41, 53, 43, 0.1);
+}
+
+.browser-traffic-lights {
+  display: flex;
+  gap: 5px;
+}
+
+.traffic-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+}
+.traffic-dot.red { background: #FF5F56; }
+.traffic-dot.yellow { background: #FFBD2E; }
+.traffic-dot.green { background: #27C93F; }
+
+.browser-url-bar {
+  background: #ffffff;
+  border-radius: var(--radius-sm);
+  padding: 3px 10px;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  color: rgba(41, 53, 43, 0.7);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex: 1;
+  max-width: 480px;
+  border: 1px solid rgba(41, 53, 43, 0.1);
+}
+
+.browser-viewport {
+  background-color: var(--color-cream);
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Chronological Medical Stepper */
+.medical-stepper-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  position: relative;
+  background: var(--color-white);
+  padding: 12px 14px;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(41, 53, 43, 0.08);
+}
+
+.stepper-stage-col {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  position: relative;
+}
+
+.stepper-stage-pill {
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  font-weight: 700;
+  padding: 3px 6px;
+  border-radius: var(--radius-pill);
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.stepper-stage-pill.done {
+  background: #EDF2EA;
+  color: #2E7D32;
+  border: 1px solid #A5D6A7;
+}
+
+.stepper-stage-pill.active {
+  background: var(--color-olive);
+  color: #ffffff;
+}
+
+.stepper-stage-pill.upcoming {
+  background: #EAE6DB;
+  color: rgba(41, 53, 43, 0.6);
+}
+
+.stepper-stage-title {
+  font-family: var(--font-heading);
+  font-size: 11.5px;
+  font-weight: 700;
+  color: var(--color-dark-green);
+}
+
+.stepper-stage-desc {
+  font-size: 10px;
+  color: rgba(41, 53, 43, 0.7);
+  line-height: 1.3;
+}
+
+/* KPI Metric Strip */
+.kpi-metric-strip-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.kpi-metric-box {
+  background: var(--color-white);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  border: 1px solid rgba(41, 53, 43, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.kpi-metric-num {
+  font-family: var(--font-heading);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--color-olive);
+  line-height: 1.1;
+}
+
+.kpi-metric-lbl {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--color-dark-green);
+}
+
+.kpi-metric-sub {
+  font-size: 9.5px;
+  color: rgba(41, 53, 43, 0.6);
+}
+
+/* Document Upload Cards (NGO Console) */
+.doc-uploads-grid-4 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.doc-upload-item-card {
+  background: var(--color-white);
+  border-radius: var(--radius-sm);
+  padding: 10px 12px;
+  border: 1px solid rgba(41, 53, 43, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.doc-upload-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.doc-type-title {
+  font-family: var(--font-heading);
+  font-size: 11.5px;
+  font-weight: 700;
+  color: var(--color-dark-green);
+}
+
+.doc-status-badge {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: var(--radius-pill);
+}
+
+.doc-status-badge.verified { background: #EDF2EA; color: #2E7D32; border: 1px solid #81C784; }
+.doc-status-badge.pending { background: #FAF0D7; color: #8C6A1E; border: 1px solid #E5B95C; }
+.doc-status-badge.draft { background: #EEEEEE; color: #666666; }
+.doc-status-badge.changes { background: #FDE8E8; color: #C53030; border: 1px solid #F56565; }
+
+.doc-file-info {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 10.5px;
+  color: rgba(41, 53, 43, 0.8);
+  background: var(--color-cream);
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.doc-file-actions {
+  display: flex;
+  gap: 8px;
+  font-size: 10px;
+  color: var(--color-olive);
+}
+
+/* Research-to-Design Decision Matrix Table */
+.matrix-table-container {
+  background: var(--color-white);
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(41, 53, 43, 0.08);
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(41, 53, 43, 0.03);
+}
+
+.matrix-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 11px;
+}
+
+.matrix-table th {
+  background: var(--color-pale-green);
+  color: var(--color-dark-green);
+  font-family: var(--font-heading);
+  font-weight: 700;
+  padding: 8px 10px;
+  text-align: left;
+  border-bottom: 1.5px solid rgba(41, 53, 43, 0.12);
+  text-transform: uppercase;
+  font-size: 10px;
+  letter-spacing: 0.5px;
+}
+
+.matrix-table td {
+  padding: 7px 10px;
+  border-bottom: 1px solid rgba(41, 53, 43, 0.06);
+  color: rgba(41, 53, 43, 0.85);
+  line-height: 1.35;
+}
+
+.status-tag-tested {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 700;
+  background: #EDF2EA;
+  color: #2E7D32;
+  padding: 2px 6px;
+  border-radius: 4px;
+  border: 1px solid #A5D6A7;
+  white-space: nowrap;
+}
+
+.status-tag-proposed {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 700;
+  background: #FAF0D7;
+  color: #8C6A1E;
+  padding: 2px 6px;
+  border-radius: 4px;
+  border: 1px solid #E5B95C;
+  white-space: nowrap;
+}
