@@ -1,19 +1,32 @@
 /**
- * PAWBRIDGE BRAND IDENTITY & TYPOGRAPHY PRESENTATION
- * Interactive Slide Deck Engine & Shortcuts
+ * PAWBRIDGE & UEDP-5 RESEARCH PRESENTATION DECK
+ * Interactive Presentation Engine with Section Grouping & LocalStorage Persistence
+ * Author: Rachel Mishra (B.Des UI/UX)
  */
 
 const DeckState = {
   currentIndex: 0,
-  totalSlides: 6,
+  totalSlides: 18,
   isGridOpen: false,
   slides: [
-    { num: '01', title: 'Brand Introduction', desc: 'Logo construction, tagline, purpose & core identity keywords' },
-    { num: '02', title: 'Brand Personality', desc: 'Trustworthy, compassionate, transparent & community-led pillars' },
-    { num: '03', title: 'Colour Palette', desc: 'Olive Green, Warm Cream, Dark Green, Terracotta & Soft Gold' },
-    { num: '04', title: 'Typography System', desc: 'DM Sans & Inter pairing, hierarchy scales, and line heights' },
-    { num: '05', title: 'Visual Identity in Use', desc: 'Mobile UI components for registration, vault, rescues, and appeals' },
-    { num: '06', title: 'Design Guidelines', desc: '8pt grid, button hierarchy, status badges, accessibility tokens' },
+    { num: '01', title: 'Cover Page', section: 'SECTION 01: COVER', desc: 'Understanding People Who Support Animal Shelters Online • Rachel Mishra, B.Des UI/UX' },
+    { num: '02', title: 'Project Overview & Problem Statement', section: 'SECTION 02: OVERVIEW', desc: 'Good intent stalls at uncertainty • Verbatim problem statement, context & target users' },
+    { num: '03', title: 'Research Objectives, Scope & Journey', section: 'SECTION 02: OVERVIEW', desc: 'Research goal, in-scope touchpoints & 5-stage supporter journey framework' },
+    { num: '04', title: 'User Interview Profiles & Themes', section: 'SECTION 03: RESEARCH', desc: 'Kanchan, Khushi, Dishank, Asha, and unnamed perspectives + key research themes' },
+    { num: '05', title: 'Four Key Insights', section: 'SECTION 03: RESEARCH', desc: 'Trust before transaction, clarity over volume, specific needs, and familiarity differences' },
+    { num: '06', title: 'Observation & Design Matrix', section: 'SECTION 03: RESEARCH', desc: 'Direct verbatim mapping: User observations translated into concrete design implications' },
+    { num: '07', title: 'User Persona: Aarohi, 22', section: 'SECTION 03: RESEARCH', desc: 'Goals, frustrations, behaviours, and design needs of digitally active animal supporters' },
+    { num: '08', title: 'Supporter Empathy Map', section: 'SECTION 03: RESEARCH', desc: 'Says, Thinks, Does, Feels, Pains, and Needs for potential shelter supporters' },
+    { num: '09', title: 'Supporter Journey Deep Dive', section: 'SECTION 03: RESEARCH', desc: '5 progressive phases: Discover → Verify → Understand → Act → Follow Up' },
+    { num: '10', title: 'NGO Field Research & Case Studies', section: 'SECTION 03: RESEARCH', desc: 'Nagpur fieldwork (SSO, Rise for Tails, NSD) & Pan-India benchmarks (PFA, Blue Cross, RESQ)' },
+    { num: '11', title: 'NGO Pain Points & Funding Ecosystem', section: 'SECTION 03: RESEARCH', desc: 'Operational reality, ₹5–6 lakh funding range, support channels, and core pain points' },
+    { num: '12', title: 'Strategic Solutions & How Might We', section: 'SECTION 03: RESEARCH', desc: 'How Might We framing, 4 action levers, and 3 platform solution concepts' },
+    { num: '13', title: 'Brand Foundation & Essence', section: 'SECTION 04: DESIGN SYSTEM', desc: 'Logo construction, architectural bridge arc, purpose & identity keywords' },
+    { num: '14', title: 'Brand Personality & Pillars', section: 'SECTION 04: DESIGN SYSTEM', desc: 'Trustworthy, compassionate, transparent & community-led foundation' },
+    { num: '15', title: 'Harmonious Colour Palette', section: 'SECTION 04: DESIGN SYSTEM', desc: 'Olive Green, Warm Cream, Dark Green, Terracotta & Soft Gold harmonious system' },
+    { num: '16', title: 'Typography System', section: 'SECTION 04: DESIGN SYSTEM', desc: 'DM Sans & Inter pairing, hierarchy scales, and line heights' },
+    { num: '17', title: 'Visual Identity in Real Application', section: 'SECTION 04: DESIGN SYSTEM', desc: 'Desktop & mobile UI components: NGO verification, rescue records, and support requests' },
+    { num: '18', title: 'UI Design System Guidelines', section: 'SECTION 04: DESIGN SYSTEM', desc: '8pt spatial grid, accessibility tokens, and sensitive document vault ethics' },
   ]
 };
 
@@ -38,6 +51,8 @@ function goToSlide(index) {
   pills.forEach((pill, idx) => {
     if (idx === index) {
       pill.classList.add('active');
+      // Scroll pill into view smoothly if in scrollable container
+      pill.scrollIntoView({ behavior: 'smooth', inline: 'nearest', block: 'nearest' });
     } else {
       pill.classList.remove('active');
     }
@@ -56,7 +71,10 @@ function goToSlide(index) {
     counter.textContent = `Slide ${index + 1} of ${DeckState.totalSlides}`;
   }
 
-  // 5. Scroll stage into view smoothly if needed
+  // 5. Update Section Quick Links active status
+  updateSectionQuickLinks(index);
+
+  // 6. Scroll stage into view smoothly if needed
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
@@ -70,6 +88,23 @@ function prevSlide() {
   if (DeckState.currentIndex > 0) {
     goToSlide(DeckState.currentIndex - 1);
   }
+}
+
+function updateSectionQuickLinks(index) {
+  const sectionBtns = document.querySelectorAll('.btn-section-tab');
+  let currentSection = '01';
+  if (index === 0) currentSection = '01';
+  else if (index >= 1 && index <= 2) currentSection = '02';
+  else if (index >= 3 && index <= 11) currentSection = '03';
+  else currentSection = '04';
+
+  sectionBtns.forEach(btn => {
+    if (btn.getAttribute('data-sec') === currentSection) {
+      btn.classList.add('active');
+    } else {
+      btn.classList.remove('active');
+    }
+  });
 }
 
 function toggleGridModal() {
@@ -88,13 +123,24 @@ function renderGridThumbnails() {
   const container = document.getElementById('grid-thumbnails-container');
   if (!container) return;
 
-  container.innerHTML = DeckState.slides.map((s, idx) => `
-    <div class="grid-thumb-card ${idx === DeckState.currentIndex ? 'active' : ''}" data-index="${idx}">
-      <span class="thumb-num">SLIDE ${s.num}</span>
-      <h4 class="thumb-title">${s.title}</h4>
-      <p class="thumb-desc">${s.desc}</p>
-    </div>
-  `).join('');
+  let html = '';
+  let currentSection = '';
+
+  DeckState.slides.forEach((s, idx) => {
+    if (s.section !== currentSection) {
+      currentSection = s.section;
+      html += `<div class="grid-section-heading">${currentSection}</div>`;
+    }
+    html += `
+      <div class="grid-thumb-card ${idx === DeckState.currentIndex ? 'active' : ''}" data-index="${idx}">
+        <span class="thumb-num">SLIDE ${s.num}</span>
+        <h4 class="thumb-title">${s.title}</h4>
+        <p class="thumb-desc">${s.desc}</p>
+      </div>
+    `;
+  });
+
+  container.innerHTML = html;
 
   container.querySelectorAll('.grid-thumb-card').forEach(card => {
     card.onclick = () => {
@@ -153,6 +199,40 @@ function showToast(message) {
   }, 2600);
 }
 
+// Initialize editable fields with LocalStorage persistence
+function initEditableFields() {
+  const facultyInput = document.getElementById('faculty-name-input');
+  const dateInput = document.getElementById('submission-date-input');
+
+  const savedFaculty = localStorage.getItem('uedp5_faculty_name');
+  const savedDate = localStorage.getItem('uedp5_submission_date');
+
+  if (savedFaculty && facultyInput) {
+    facultyInput.value = savedFaculty;
+  }
+  if (savedDate && dateInput) {
+    dateInput.value = savedDate;
+  }
+
+  if (facultyInput) {
+    facultyInput.addEventListener('input', (e) => {
+      localStorage.setItem('uedp5_faculty_name', e.target.value);
+    });
+    facultyInput.addEventListener('change', () => {
+      showToast('✓ Faculty name auto-saved');
+    });
+  }
+
+  if (dateInput) {
+    dateInput.addEventListener('input', (e) => {
+      localStorage.setItem('uedp5_submission_date', e.target.value);
+    });
+    dateInput.addEventListener('change', () => {
+      showToast('✓ Submission date auto-saved');
+    });
+  }
+}
+
 // Event Listeners
 document.addEventListener('DOMContentLoaded', () => {
   // Arrow Navigation buttons
@@ -169,6 +249,14 @@ document.addEventListener('DOMContentLoaded', () => {
     };
   });
 
+  // Section Tab Buttons
+  document.querySelectorAll('.btn-section-tab').forEach(btn => {
+    btn.onclick = () => {
+      const targetSlide = parseInt(btn.getAttribute('data-target-slide'), 10);
+      goToSlide(targetSlide);
+    };
+  });
+
   // Action icons
   const btnGrid = document.getElementById('btn-toggle-grid');
   const btnCloseGrid = document.getElementById('btn-close-grid');
@@ -181,23 +269,34 @@ document.addEventListener('DOMContentLoaded', () => {
   const btnCopyTokens = document.getElementById('btn-copy-tokens');
   if (btnCopyTokens) btnCopyTokens.onclick = copyTokensToClipboard;
 
+  // Cover Page "Start Presentation" CTA
+  const btnStartCover = document.getElementById('btn-start-presentation');
+  if (btnStartCover) {
+    btnStartCover.onclick = (e) => {
+      e.preventDefault();
+      goToSlide(1);
+    };
+  }
+
   // Keyboard navigation
   window.addEventListener('keydown', (e) => {
     if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
 
-    if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === 'Space') {
+    if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') {
+      e.preventDefault();
       nextSlide();
     } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+      e.preventDefault();
       prevSlide();
     } else if (e.key.toLowerCase() === 'g') {
       toggleGridModal();
     } else if (e.key.toLowerCase() === 'f') {
       toggleFullscreen();
-    } else if (e.key >= '1' && e.key <= '6') {
-      const num = parseInt(e.key, 10) - 1;
-      goToSlide(num);
     }
   });
+
+  // Initialize editable fields
+  initEditableFields();
 
   // Initialize on first slide
   goToSlide(0);
