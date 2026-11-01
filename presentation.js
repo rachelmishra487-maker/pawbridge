@@ -6,7 +6,7 @@
 
 const DeckState = {
   currentIndex: 0,
-  totalSlides: 49,
+  totalSlides: 55,
   isGridOpen: false,
   slides: [
     // SECTION 01: COVER
@@ -75,6 +75,16 @@ const DeckState = {
     { num: '47', title: 'Round 1 vs Round 2 Comparison Matrix', section: 'SECTION 09: TESTING R2 & VALIDATION', desc: 'Evidence comparison across Navigation, Trust clarity, Needs visibility, Support action & Follow-up' },
     { num: '48', title: 'Remaining Usability Issues & Changes', section: 'SECTION 09: TESTING R2 & VALIDATION', desc: 'Prioritized post-testing backlog (mobile touch targets, offline queueing, receipt generation)' },
     { num: '49', title: 'Final Validation Summary & Readiness', section: 'SECTION 09: TESTING R2 & VALIDATION', desc: 'Experience scorecard, academic synthesis, and desktop prototype deployment readiness' },
+
+    // SECTION 10: CASE STUDY & LEARNINGS
+    { num: '50', title: 'Complete UX Process & Problem Framing', section: 'SECTION 10: CASE STUDY & LEARNINGS', desc: '9-stage design methodology, evidence-based problem framing & qualitative synthesis' },
+    { num: '51', title: 'Concept Selection Rationale & Interface Decisions', section: 'SECTION 10: CASE STUDY & LEARNINGS', desc: 'Hybrid platform justification, 4 foundational interface decisions & testing impact' },
+    { num: '52', title: 'Project Limitations & Design Trade-offs', section: 'SECTION 10: CASE STUDY & LEARNINGS', desc: 'Verification scalability, demographic bounds, offline rural realities & delivery constraints' },
+    { num: '53', title: 'Personal Learnings & Future Roadmap', section: 'SECTION 10: CASE STUDY & LEARNINGS', desc: 'Reflective B.Des student perspective, emotional design boundaries & post-degree roadmap' },
+
+    // SECTION 11: REFERENCES & CREDITS
+    { num: '54', title: 'NGO Fieldwork Sites & Research Sources', section: 'SECTION 11: REFERENCES & CREDITS', desc: 'Fieldwork shelter URLs (SSO, Rise for Tails, NSD, PFA, Blue Cross, RESQ), AWBI & 80G legal sources' },
+    { num: '55', title: 'Design Tools, Asset Credits & Acknowledgements', section: 'SECTION 11: REFERENCES & CREDITS', desc: 'Design stack, Unsplash photographer credits, 24px icon system & mentor/participant gratitude' },
   ]
 };
 
@@ -148,7 +158,9 @@ function updateSectionQuickLinks(index) {
   else if (index >= 21 && index <= 28) currentSection = '06';
   else if (index >= 29 && index <= 34) currentSection = '07';
   else if (index >= 35 && index <= 41) currentSection = '08';
-  else currentSection = '09';
+  else if (index >= 42 && index <= 48) currentSection = '09';
+  else if (index >= 49 && index <= 52) currentSection = '10';
+  else currentSection = '11';
 
   sectionBtns.forEach(btn => {
     if (btn.getAttribute('data-sec') === currentSection) {
