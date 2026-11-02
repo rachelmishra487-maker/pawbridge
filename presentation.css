@@ -5091,3 +5091,121 @@ body.deck-body {
   font-family: var(--font-heading);
   color: var(--color-dark-green);
 }
+
+/* ============================================================
+   CONTINUOUS SCROLL MODE & DUAL-MODE PRESENTATION ENGINE
+   ============================================================ */
+html {
+  scroll-behavior: smooth;
+}
+
+.deck-topbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: var(--color-white);
+  box-shadow: 0 2px 14px rgba(41, 53, 43, 0.07);
+}
+
+.deck-topbar .deck-progress-track {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: rgba(41, 53, 43, 0.08);
+  margin: 0;
+  padding: 0;
+  z-index: 10;
+}
+
+.deck-topbar-actions .btn-toggle-scroll-mode {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: #EDF2EA;
+  color: var(--color-dark-green);
+  border: 1.5px solid var(--color-olive);
+  font-family: var(--font-heading);
+  font-size: 11.5px;
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: all 0.18s ease;
+  white-space: nowrap;
+}
+
+.deck-topbar-actions .btn-toggle-scroll-mode:hover {
+  background-color: var(--color-olive);
+  color: var(--color-white);
+}
+
+.deck-topbar-actions .btn-toggle-scroll-mode.active-mode {
+  background-color: var(--color-olive);
+  color: var(--color-white);
+  box-shadow: 0 2px 8px rgba(83, 103, 71, 0.35);
+}
+
+/* Continuous Scroll Layout */
+.deck-stage.continuous-scroll {
+  justify-content: flex-start;
+  align-items: center;
+  padding: 32px 20px 140px;
+  width: 100%;
+  min-height: 100vh;
+}
+
+.deck-stage.continuous-scroll .slide-viewport {
+  max-width: 1200px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+  min-height: auto;
+}
+
+.deck-stage.continuous-scroll .slide-card {
+  display: flex !important;
+  width: 100%;
+  min-height: 700px;
+  margin-bottom: 24px;
+  scroll-margin-top: 84px;
+  box-shadow: 0 8px 30px rgba(41, 53, 43, 0.07);
+  border: 1px solid rgba(41, 53, 43, 0.12);
+  transition: border-color 0.22s ease, box-shadow 0.22s ease, transform 0.2s ease;
+  animation: none !important;
+  position: relative;
+}
+
+.deck-stage.continuous-scroll .slide-card:hover {
+  border-color: rgba(83, 103, 71, 0.4);
+  box-shadow: 0 12px 36px rgba(41, 53, 43, 0.09);
+}
+
+.deck-stage.continuous-scroll .slide-card.active-in-view {
+  border-color: var(--color-olive);
+  box-shadow: 0 16px 48px rgba(83, 103, 71, 0.16), 0 2px 10px rgba(41, 53, 43, 0.08);
+}
+
+/* Quick Scroll-To-Top Button in Floating Controls */
+.deck-btn-scroll-top {
+  background: var(--color-white);
+  border: 1px solid rgba(41, 53, 43, 0.15);
+  border-radius: var(--radius-pill);
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-dark-green);
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(41, 53, 43, 0.08);
+  transition: all 0.15s ease;
+}
+
+.deck-btn-scroll-top:hover {
+  background-color: var(--color-pale-green);
+  color: var(--color-olive);
+  transform: translateY(-2px);
+}

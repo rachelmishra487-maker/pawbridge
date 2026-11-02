@@ -8,6 +8,7 @@ const DeckState = {
   currentIndex: 0,
   totalSlides: 55,
   isGridOpen: false,
+  isContinuousScroll: true,
   slides: [
     // SECTION 01: COVER
     { num: '01', title: 'Cover Page', section: 'SECTION 01: COVER', desc: 'Understanding People Who Support Animal Shelters Online • Rachel Mishra, B.Des UI/UX' },
@@ -88,19 +89,81 @@ const DeckState = {
   ]
 };
 
-function goToSlide(index) {
+let isProgrammaticScroll = false;
+
+function setScrollMode(enableContinuous) {
+  DeckState.isContinuousScroll = enableContinuous;
+  const stage = document.getElementById('deck-stage');
+  const btn = document.getElementById('btn-toggle-scroll-mode');
+  const modeIcon = document.getElementById('scroll-mode-icon');
+  const modeLabel = document.getElementById('scroll-mode-label');
+
+  if (enableContinuous) {
+    if (stage) stage.classList.add('continuous-scroll');
+    if (btn) btn.classList.add('active-mode');
+    if (modeIcon) modeIcon.textContent = '📜';
+    if (modeLabel) modeLabel.textContent = 'Scroll Mode: ON';
+
+    // In continuous scroll mode, all slides are visible
+    document.querySelectorAll('.slide-card').forEach((slide, idx) => {
+      slide.style.display = 'flex';
+      if (idx === DeckState.currentIndex) {
+        slide.classList.add('active-in-view');
+        slide.classList.add('active');
+      } else {
+        slide.classList.remove('active-in-view');
+      }
+    });
+  } else {
+    if (stage) stage.classList.remove('continuous-scroll');
+    if (btn) btn.classList.remove('active-mode');
+    if (modeIcon) modeIcon.textContent = '⎘';
+    if (modeLabel) modeLabel.textContent = 'Single Slide';
+
+    // In single slide mode, only active slide is visible
+    document.querySelectorAll('.slide-card').forEach((slide, idx) => {
+      if (idx === DeckState.currentIndex) {
+        slide.style.display = 'flex';
+        slide.classList.add('active');
+      } else {
+        slide.style.display = 'none';
+        slide.classList.remove('active');
+        slide.classList.remove('active-in-view');
+      }
+    });
+  }
+}
+
+function toggleScrollMode() {
+  const nextMode = !DeckState.isContinuousScroll;
+  setScrollMode(nextMode);
+  localStorage.setItem('uedp5_deck_scroll_mode', nextMode ? 'continuous' : 'single');
+
+  if (nextMode) {
+    showToast('📜 Continuous Scroll Mode enabled (Scroll freely through all 55 slides)');
+    goToSlide(DeckState.currentIndex);
+  } else {
+    showToast('⎘ Single Slide Mode enabled (Viewing slide ' + (DeckState.currentIndex + 1) + ')');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+}
+
+function syncDeckState(index) {
   if (index < 0) index = 0;
   if (index >= DeckState.totalSlides) index = DeckState.totalSlides - 1;
-
   DeckState.currentIndex = index;
 
-  // 1. Hide all slides, show active slide
+  // 1. Highlight active slide in view
   const allSlides = document.querySelectorAll('.slide-card');
   allSlides.forEach((slide, idx) => {
     if (idx === index) {
+      slide.classList.add('active-in-view');
       slide.classList.add('active');
     } else {
-      slide.classList.remove('active');
+      slide.classList.remove('active-in-view');
+      if (!DeckState.isContinuousScroll) {
+        slide.classList.remove('active');
+      }
     }
   });
 
@@ -130,8 +193,40 @@ function goToSlide(index) {
 
   // 5. Update Section Quick Links active status
   updateSectionQuickLinks(index);
+}
 
-  // 6. Scroll stage into view smoothly if needed
+function goToSlide(index) {
+  if (index < 0) index = 0;
+  if (index >= DeckState.totalSlides) index = DeckState.totalSlides - 1;
+
+  DeckState.currentIndex = index;
+
+  if (DeckState.isContinuousScroll) {
+    const target = document.getElementById('slide-' + index);
+    if (target) {
+      isProgrammaticScroll = true;
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      syncDeckState(index);
+      setTimeout(() => {
+        isProgrammaticScroll = false;
+      }, 700);
+      return;
+    }
+  }
+
+  // Single Slide Mode
+  const allSlides = document.querySelectorAll('.slide-card');
+  allSlides.forEach((slide, idx) => {
+    if (idx === index) {
+      slide.style.display = 'flex';
+      slide.classList.add('active');
+    } else {
+      slide.style.display = 'none';
+      slide.classList.remove('active');
+    }
+  });
+
+  syncDeckState(index);
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
@@ -145,6 +240,31 @@ function prevSlide() {
   if (DeckState.currentIndex > 0) {
     goToSlide(DeckState.currentIndex - 1);
   }
+}
+
+function initScrollWatcher() {
+  let scrollAnimFrame = null;
+
+  window.addEventListener('scroll', () => {
+    if (isProgrammaticScroll || !DeckState.isContinuousScroll) return;
+
+    if (scrollAnimFrame) cancelAnimationFrame(scrollAnimFrame);
+    scrollAnimFrame = requestAnimationFrame(() => {
+      const slides = document.querySelectorAll('.slide-card');
+      const scrollPosition = window.scrollY + 130; // offset below sticky topbar
+
+      let currentIdx = 0;
+      slides.forEach((slide, idx) => {
+        if (scrollPosition >= slide.offsetTop) {
+          currentIdx = idx;
+        }
+      });
+
+      if (currentIdx !== DeckState.currentIndex) {
+        syncDeckState(currentIdx);
+      }
+    });
+  }, { passive: true });
 }
 
 function updateSectionQuickLinks(index) {
@@ -441,6 +561,18 @@ document.addEventListener('DOMContentLoaded', () => {
   const btnCopyTokens = document.getElementById('btn-copy-tokens');
   if (btnCopyTokens) btnCopyTokens.onclick = copyTokensToClipboard;
 
+  // View mode toggle (Continuous Scroll vs Single Slide)
+  const btnScrollMode = document.getElementById('btn-toggle-scroll-mode');
+  if (btnScrollMode) btnScrollMode.onclick = toggleScrollMode;
+
+  // Scroll to Top floating button
+  const btnScrollTop = document.getElementById('btn-scroll-top');
+  if (btnScrollTop) {
+    btnScrollTop.onclick = () => {
+      goToSlide(0);
+    };
+  }
+
   // Cover Page "Start Presentation" CTA
   const btnStartCover = document.getElementById('btn-start-presentation');
   if (btnStartCover) {
@@ -454,12 +586,20 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('keydown', (e) => {
     if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
 
-    if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === 'PageDown' || e.key === ' ') {
       e.preventDefault();
       nextSlide();
-    } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+    } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp' || e.key === 'PageUp') {
       e.preventDefault();
       prevSlide();
+    } else if (e.key === 'Home') {
+      e.preventDefault();
+      goToSlide(0);
+    } else if (e.key === 'End') {
+      e.preventDefault();
+      goToSlide(DeckState.totalSlides - 1);
+    } else if (e.key.toLowerCase() === 's') {
+      toggleScrollMode();
     } else if (e.key.toLowerCase() === 'g') {
       toggleGridModal();
     } else if (e.key.toLowerCase() === 'f') {
@@ -470,6 +610,16 @@ document.addEventListener('DOMContentLoaded', () => {
   // Initialize editable fields
   initEditableFields();
 
-  // Initialize on first slide
-  goToSlide(0);
+  // Initialize scroll watcher
+  initScrollWatcher();
+
+  // Initialize view mode from localStorage or default to continuous scroll
+  const savedMode = localStorage.getItem('uedp5_deck_scroll_mode');
+  if (savedMode === 'single') {
+    setScrollMode(false);
+    goToSlide(0);
+  } else {
+    setScrollMode(true);
+    goToSlide(0);
+  }
 });
