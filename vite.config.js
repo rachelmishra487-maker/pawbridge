@@ -6,7 +6,8 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: resolve(import.meta.dirname, 'index.html'),
-        presentation: resolve(import.meta.dirname, 'presentation.html')
+        presentation: resolve(import.meta.dirname, 'presentation.html'),
+        poster: resolve(import.meta.dirname, 'poster.html')
       }
     }
   }

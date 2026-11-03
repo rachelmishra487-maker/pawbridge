@@ -9,6 +9,10 @@
     {
       "source": "/presentation",
       "destination": "/presentation.html"
+    },
+    {
+      "source": "/poster",
+      "destination": "/poster.html"
     }
   ],
   "headers": [
