@@ -832,47 +832,101 @@ body.poster-body {
 }
 
 /* ============================================================
-   SECTION 06: DESIGN OPPORTUNITIES
+   SECTION 06: STRATEGIC HOW-MIGHT-WE & DESIGN OPPORTUNITIES
    ============================================================ */
 .section-opportunities {
   position: relative;
   z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.opportunities-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Central HMW Opportunity Hero Banner */
+.hmw-hero-banner {
+  background: linear-gradient(135deg, #294C3B 0%, #1E372B 100%);
+  border-radius: var(--radius-md);
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  box-shadow: 0 4px 16px rgba(41, 76, 59, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.hmw-kicker-tag {
+  background: var(--color-yellow);
+  color: var(--color-forest-dark);
+  font-family: var(--font-heading);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.6px;
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  white-space: nowrap;
+}
+
+.hmw-banner-quote {
+  font-family: var(--font-heading);
+  font-size: 14.5px;
+  font-weight: 700;
+  color: var(--color-white);
+  line-height: 1.35;
+  letter-spacing: -0.2px;
 }
 
 .opps-4-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 14px;
+  gap: 12px;
 }
 
 .opp-card {
   background: var(--color-white);
   border-radius: var(--radius-md);
-  padding: 16px 14px;
+  padding: 14px;
   border: 1.5px solid var(--color-border-subtle);
   display: flex;
   flex-direction: column;
   gap: 8px;
   box-shadow: var(--shadow-sm);
+  transition: transform 0.15s ease;
 }
 
-.opp-icon-pill {
-  width: 32px;
-  height: 32px;
-  border-radius: var(--radius-sm);
+.opp-card:hover {
+  transform: translateY(-2px);
+}
+
+.opp-header-row {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
 }
 
-.opp-1 .opp-icon-pill { background: var(--color-yellow); }
-.opp-2 .opp-icon-pill { background: var(--color-olive-light); }
-.opp-3 .opp-icon-pill { background: var(--color-peach); }
-.opp-4 .opp-icon-pill { background: var(--color-lavender); }
+.opp-num-tag {
+  font-family: var(--font-heading);
+  font-size: 9.5px;
+  font-weight: 800;
+  letter-spacing: 0.4px;
+  padding: 2px 7px;
+  border-radius: var(--radius-pill);
+}
+
+.opp-sub-kicker {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--color-text-muted);
+}
 
 .opp-title {
   font-family: var(--font-heading);
-  font-size: 13.5px;
+  font-size: 13px;
   font-weight: 800;
   color: var(--color-forest);
 }
@@ -881,6 +935,22 @@ body.poster-body {
   font-size: 11px;
   line-height: 1.4;
   color: var(--color-text-main);
+  flex: 1;
+}
+
+.opp-bridge-pill {
+  font-size: 10px;
+  padding: 4px 8px;
+  border-radius: var(--radius-xs);
+  background: #F4F7F2;
+  color: var(--color-forest);
+  border-left: 3px solid var(--color-olive);
+  line-height: 1.35;
+}
+
+.opp-bridge-pill strong {
+  color: var(--color-forest);
+  font-weight: 700;
 }
 
 /* ============================================================
@@ -938,43 +1008,63 @@ body.poster-body {
   color: var(--color-white);
 }
 
-/* Realistic Floating UI Mockups Composition */
-.ui-mockups-stage {
+/* Multi-Screen High-Fidelity UI Gallery (3-Column Symmetrical Grid) */
+.ui-screens-gallery {
   display: grid;
-  grid-template-columns: 1.4fr 1fr;
-  gap: 28px;
+  grid-template-columns: 1.05fr 1.35fr 1fr;
+  gap: 16px;
   align-items: start;
   position: relative;
 }
 
-/* Desktop Browser Mockup Window */
-.browser-window-card {
+.screen-column {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Screen Wrapper Cards */
+.screen-window-frame {
   background: var(--color-white);
-  border-radius: 16px;
-  border: 1.5px solid rgba(41, 76, 59, 0.18);
+  border-radius: 14px;
+  border: 1.5px solid rgba(41, 76, 59, 0.16);
   box-shadow: var(--shadow-mockup);
   overflow: hidden;
   display: flex;
   flex-direction: column;
 }
 
-.browser-header-bar {
-  background: #E8EDE5;
-  padding: 8px 14px;
+.screen-label-tag {
+  font-family: var(--font-heading);
+  font-size: 9.5px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  background: var(--color-forest);
+  color: var(--color-white);
   display: flex;
   align-items: center;
-  gap: 12px;
+  justify-content: space-between;
+}
+
+.browser-header-bar {
+  background: #E8EDE5;
+  padding: 6px 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
   border-bottom: 1px solid rgba(41, 76, 59, 0.12);
 }
 
 .browser-dots {
   display: flex;
-  gap: 6px;
+  gap: 5px;
 }
 
 .dot {
-  width: 9px;
-  height: 9px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
 }
 .dot-red { background: #FF5F56; }
@@ -984,55 +1074,144 @@ body.poster-body {
 .browser-url-bar {
   flex: 1;
   background: var(--color-white);
-  border-radius: 6px;
-  padding: 3px 10px;
+  border-radius: 5px;
+  padding: 2.5px 8px;
   font-family: var(--font-mono);
-  font-size: 10px;
+  font-size: 9.5px;
   color: var(--color-forest);
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 5px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
-/* Desktop UI Inner Screen Content */
-.browser-inner-content {
-  padding: 16px;
+/* Column 1: Discovery Screen Styles */
+.discovery-body {
+  padding: 12px;
+  background: #FAF8F2;
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 10px;
+}
+
+.discovery-search-box {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #FFFFFF;
+  border: 1.5px solid var(--color-olive);
+  border-radius: 6px;
+  padding: 5px 8px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--color-forest);
+}
+
+.discovery-filter-pills {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+
+.filter-pill {
+  font-size: 9px;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: var(--radius-pill);
+  background: #EAEFE7;
+  color: var(--color-forest);
+  border: 1px solid rgba(41, 76, 59, 0.1);
+}
+
+.filter-pill.active {
+  background: var(--color-forest);
+  color: #FFF;
+}
+
+.shelter-listing-card {
+  background: #FFFFFF;
+  border-radius: 8px;
+  padding: 9px 10px;
+  border: 1px solid rgba(41, 76, 59, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.shelter-listing-card.highlight {
+  border-left: 3px solid #2E7D32;
+  box-shadow: 0 2px 6px rgba(46, 125, 50, 0.1);
+}
+
+.shelter-listing-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.shelter-listing-name {
+  font-family: var(--font-heading);
+  font-size: 11.5px;
+  font-weight: 800;
+  color: var(--color-forest);
+}
+
+.shelter-listing-meta {
+  font-size: 9.5px;
+  color: var(--color-text-muted);
+}
+
+.shelter-need-highlight {
+  background: var(--color-yellow-light);
+  border: 1px solid rgba(247, 217, 120, 0.8);
+  border-radius: 4px;
+  padding: 4px 6px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 9px;
+  color: var(--color-forest);
+}
+
+/* Column 2: Public Profile Screen Styles */
+.browser-inner-content {
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
   background: #FAF7F0;
 }
 
-/* Top Mini Nav */
 .mini-topbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
   background: #FFFFFF;
-  padding: 8px 12px;
-  border-radius: 8px;
+  padding: 6px 10px;
+  border-radius: 6px;
   border: 1px solid rgba(41, 76, 59, 0.08);
 }
 
 .mini-brand {
   font-family: var(--font-heading);
   font-weight: 800;
-  font-size: 13px;
+  font-size: 11.5px;
   color: var(--color-forest);
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 5px;
 }
 
 .mini-tabs {
   display: flex;
-  gap: 6px;
+  gap: 4px;
 }
 
 .mini-tab {
-  font-size: 10.5px;
+  font-size: 9px;
   font-weight: 600;
-  padding: 2px 8px;
+  padding: 2px 6px;
   border-radius: 4px;
   color: var(--color-forest);
 }
@@ -1042,16 +1221,15 @@ body.poster-body {
   color: #FFF;
 }
 
-/* NGO Header Profile Card */
 .mockup-ngo-hero {
   background: #FFFFFF;
-  border-radius: 12px;
-  padding: 12px 14px;
+  border-radius: 10px;
+  padding: 10px 12px;
   border: 1px solid rgba(41, 76, 59, 0.1);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 12px;
+  gap: 8px;
 }
 
 .ngo-meta-group {
@@ -1063,12 +1241,12 @@ body.poster-body {
 .ngo-name-row {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
 }
 
 .ngo-name {
   font-family: var(--font-heading);
-  font-size: 14.5px;
+  font-size: 12.5px;
   font-weight: 800;
   color: var(--color-forest);
 }
@@ -1076,9 +1254,9 @@ body.poster-body {
 .badge-verified-glow {
   background: #E8F5E9;
   color: #2E7D32;
-  font-size: 9.5px;
+  font-size: 8.5px;
   font-weight: 700;
-  padding: 2px 6px;
+  padding: 2px 5px;
   border-radius: 4px;
   border: 1px solid #A5D6A7;
   display: inline-flex;
@@ -1087,41 +1265,40 @@ body.poster-body {
 }
 
 .ngo-location-tag {
-  font-size: 10px;
+  font-size: 9px;
   color: var(--color-text-muted);
 }
 
 .ngo-cta-buttons {
   display: flex;
-  gap: 6px;
+  gap: 4px;
 }
 
 .btn-mini-primary {
   background: var(--color-forest);
   color: #FFF;
-  font-size: 10.5px;
+  font-size: 9.5px;
   font-weight: 700;
-  padding: 5px 10px;
-  border-radius: 6px;
+  padding: 4px 8px;
+  border-radius: 5px;
   border: none;
 }
 
 .btn-mini-outline {
   background: #FFF;
   color: var(--color-forest);
-  font-size: 10.5px;
+  font-size: 9.5px;
   font-weight: 600;
-  padding: 5px 10px;
-  border-radius: 6px;
+  padding: 4px 8px;
+  border-radius: 5px;
   border: 1px solid var(--color-forest);
 }
 
-/* Statutory Credibility Vault Strip */
 .credibility-vault-strip {
   background: #EDF4EC;
   border: 1.5px dashed var(--color-olive);
-  border-radius: 10px;
-  padding: 10px 12px;
+  border-radius: 8px;
+  padding: 8px 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -1130,50 +1307,49 @@ body.poster-body {
 .vault-title-group {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
 }
 
 .vault-label {
   font-family: var(--font-heading);
-  font-size: 11.5px;
+  font-size: 10.5px;
   font-weight: 800;
   color: var(--color-forest);
 }
 
 .vault-docs-pills {
   display: flex;
-  gap: 6px;
+  gap: 5px;
 }
 
 .doc-pill {
   background: #FFFFFF;
   border: 1px solid #B0D4B8;
-  padding: 2px 7px;
+  padding: 2px 6px;
   border-radius: 4px;
-  font-size: 9.5px;
+  font-size: 8.5px;
   font-weight: 700;
   color: var(--color-forest);
 }
 
-/* Active Urgent Support Cards Row */
 .mockup-needs-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 10px;
+  gap: 8px;
 }
 
 .need-item-card {
   background: #FFFFFF;
-  border-radius: 10px;
-  padding: 10px 12px;
+  border-radius: 8px;
+  padding: 8px 10px;
   border: 1px solid rgba(41, 76, 59, 0.1);
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 5px;
 }
 
 .need-item-card.urgent {
-  border-left: 3.5px solid var(--color-coral);
+  border-left: 3px solid var(--color-coral);
 }
 
 .need-title-row {
@@ -1184,7 +1360,7 @@ body.poster-body {
 
 .need-item-name {
   font-family: var(--font-heading);
-  font-size: 11.5px;
+  font-size: 10.5px;
   font-weight: 700;
   color: var(--color-forest);
 }
@@ -1192,15 +1368,15 @@ body.poster-body {
 .need-urgency-tag {
   background: #FDF1EC;
   color: var(--color-coral);
-  font-size: 8.5px;
+  font-size: 8px;
   font-weight: 700;
-  padding: 1px 5px;
+  padding: 1px 4px;
   border-radius: 3px;
 }
 
 .need-progress-bar {
   width: 100%;
-  height: 5px;
+  height: 4.5px;
   background: #ECE5D8;
   border-radius: 4px;
   overflow: hidden;
@@ -1215,7 +1391,7 @@ body.poster-body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 9.5px;
+  font-size: 8.5px;
   color: var(--color-text-muted);
 }
 
@@ -1223,29 +1399,23 @@ body.poster-body {
   background: var(--color-yellow);
   color: var(--color-forest);
   border: none;
-  font-size: 9px;
+  font-size: 8.5px;
   font-weight: 700;
-  padding: 3px 8px;
+  padding: 2.5px 6px;
   border-radius: 4px;
+  cursor: pointer;
 }
 
-/* Secondary Column: Stack of Mobile Mockup & Recovery Stepper Card */
-.mockup-secondary-column {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-/* Medical Recovery Case Card (Sheru #PB-408) */
+/* Column 3: Stack of Recovery Stepper, NGO Console, and Mobile Frame */
 .recovery-case-card {
   background: #FFFFFF;
-  border-radius: 14px;
-  padding: 14px 16px;
-  border: 1.5px solid rgba(41, 76, 59, 0.15);
-  box-shadow: var(--shadow-md);
+  border-radius: 10px;
+  padding: 10px 12px;
+  border: 1px solid rgba(41, 76, 59, 0.14);
+  box-shadow: var(--shadow-sm);
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 6px;
 }
 
 .case-header-row {
@@ -1256,36 +1426,34 @@ body.poster-body {
 
 .case-dog-id {
   font-family: var(--font-mono);
-  font-size: 10px;
+  font-size: 9px;
   font-weight: 700;
   background: var(--color-yellow-light);
   color: var(--color-forest);
-  padding: 2px 7px;
-  border-radius: 4px;
+  padding: 1px 5px;
+  border-radius: 3px;
 }
 
 .case-title {
   font-family: var(--font-heading);
-  font-size: 13px;
+  font-size: 11px;
   font-weight: 800;
   color: var(--color-forest);
 }
 
-/* 4-Step Clinical Recovery Stepper */
 .stepper-mini-timeline {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 4px;
-  position: relative;
 }
 
 .mini-step {
   display: flex;
   flex-direction: column;
-  gap: 2px;
-  padding: 6px 4px;
+  gap: 1px;
+  padding: 4px;
   background: #F8FAF6;
-  border-radius: 6px;
+  border-radius: 4px;
   border-left: 2px solid var(--color-olive);
 }
 
@@ -1296,53 +1464,105 @@ body.poster-body {
 
 .mini-step-name {
   font-family: var(--font-heading);
-  font-size: 9.5px;
+  font-size: 8.5px;
   font-weight: 700;
   color: var(--color-forest);
 }
 
 .mini-step-date {
-  font-size: 8px;
+  font-size: 7.5px;
   color: var(--color-text-muted);
 }
 
-/* Mobile Screen Mockup */
+/* Screen 4: NGO Operations Console Mini View */
+.console-card {
+  background: #FFFFFF;
+  border-radius: 10px;
+  padding: 10px 12px;
+  border: 1px solid rgba(41, 76, 59, 0.14);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.console-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.console-title {
+  font-family: var(--font-heading);
+  font-size: 10.5px;
+  font-weight: 800;
+  color: var(--color-forest);
+}
+
+.console-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4px;
+}
+
+.console-stat-box {
+  background: #F5F7F3;
+  border-radius: 4px;
+  padding: 4px 6px;
+  text-align: center;
+}
+
+.console-stat-val {
+  font-family: var(--font-heading);
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--color-forest);
+  line-height: 1;
+}
+
+.console-stat-lbl {
+  font-size: 7.5px;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+}
+
+/* Screen 5: Mobile Screen Mockup */
 .mobile-device-frame {
   width: 100%;
   background: #FFFFFF;
-  border-radius: 18px;
-  border: 2px solid rgba(41, 76, 59, 0.2);
-  box-shadow: var(--shadow-mockup);
+  border-radius: 12px;
+  border: 1.5px solid rgba(41, 76, 59, 0.18);
+  box-shadow: var(--shadow-sm);
   overflow: hidden;
-  padding: 12px;
+  padding: 8px 10px;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 5px;
 }
 
 .mobile-notch-bar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 8.5px;
+  font-size: 8px;
   font-weight: 700;
   color: var(--color-forest);
-  padding-bottom: 4px;
+  padding-bottom: 3px;
   border-bottom: 1px solid rgba(41, 76, 59, 0.08);
 }
 
 .mobile-content-preview {
   background: #FAF7F0;
-  border-radius: 10px;
-  padding: 10px;
+  border-radius: 6px;
+  padding: 6px 8px;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 4px;
 }
 
 .mobile-quick-donate {
   display: flex;
-  gap: 6px;
+  gap: 4px;
 }
 
 .pill-amount {
@@ -1350,10 +1570,10 @@ body.poster-body {
   text-align: center;
   background: #FFF;
   border: 1px solid var(--color-olive);
-  font-size: 10px;
+  font-size: 9px;
   font-weight: 700;
-  padding: 4px 0;
-  border-radius: 6px;
+  padding: 2px 0;
+  border-radius: 4px;
   color: var(--color-forest);
 }
 
@@ -1365,10 +1585,10 @@ body.poster-body {
 .btn-mobile-checkout {
   background: var(--color-forest);
   color: #FFF;
-  font-size: 10.5px;
+  font-size: 9px;
   font-weight: 700;
-  padding: 6px;
-  border-radius: 6px;
+  padding: 4px;
+  border-radius: 4px;
   text-align: center;
 }
 
@@ -1377,21 +1597,21 @@ body.poster-body {
   position: absolute;
   background: var(--color-forest);
   color: var(--color-white);
-  padding: 6px 12px;
+  padding: 5px 10px;
   border-radius: var(--radius-pill);
   font-family: var(--font-heading);
-  font-size: 10.5px;
+  font-size: 9.5px;
   font-weight: 700;
   display: flex;
   align-items: center;
-  gap: 6px;
-  box-shadow: 0 6px 20px rgba(41, 76, 59, 0.3);
+  gap: 5px;
+  box-shadow: 0 4px 16px rgba(41, 76, 59, 0.25);
   border: 1.5px solid var(--color-white);
   z-index: 5;
 }
 
-.callout-1 { top: -14px; right: 280px; background: var(--color-coral); }
-.callout-2 { bottom: -10px; left: 40px; background: var(--color-forest); }
+.callout-1 { top: -12px; right: 280px; background: var(--color-coral); }
+.callout-2 { bottom: -10px; left: 30px; background: var(--color-forest); }
 
 /* ============================================================
    SECTION 09: OUTCOME & FUTURE SCOPE (FOOTER ZONE)
