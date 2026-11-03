@@ -327,6 +327,41 @@ body.poster-body {
   border-radius: var(--radius-pill);
 }
 
+.badge-dimension {
+  background: var(--color-yellow-light);
+  color: var(--color-forest-dark);
+  border: 1.5px solid rgba(247, 217, 120, 0.7);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.sheet-spec-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  border: 1.5px solid rgba(41, 76, 59, 0.15);
+  border-radius: var(--radius-pill);
+  padding: 5px 14px;
+  font-size: 11px;
+  font-family: var(--font-mono);
+  color: var(--color-forest);
+  box-shadow: var(--shadow-sm);
+}
+
+.sheet-spec-pill .spec-label {
+  font-weight: 800;
+  color: var(--color-coral);
+  letter-spacing: 0.5px;
+}
+
 .intro-title {
   font-family: var(--font-heading);
   font-size: 42px;
@@ -1455,6 +1490,7 @@ body.poster-body {
 
 /* ============================================================
    HIGH-RESOLUTION PRINT RULES FOR A1 EXPORT
+   Standard ISO 216: 594 × 841 mm (59.4 × 84.1 cm / 23.4 × 33.1 in)
    ============================================================ */
 @page {
   size: 594mm 841mm;
@@ -1463,9 +1499,14 @@ body.poster-body {
 
 @media print {
   html, body.poster-body {
+    width: 594mm !important;
+    height: 841mm !important;
+    max-width: 594mm !important;
+    max-height: 841mm !important;
     background: var(--color-ivory) !important;
     margin: 0 !important;
     padding: 0 !important;
+    overflow: hidden !important;
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
   }
@@ -1477,16 +1518,25 @@ body.poster-body {
   .poster-viewport {
     padding: 0 !important;
     margin: 0 !important;
+    width: 594mm !important;
+    height: 841mm !important;
+    overflow: hidden !important;
   }
 
   .poster-artboard {
     width: 594mm !important;
     height: 841mm !important;
+    min-height: 841mm !important;
+    max-height: 841mm !important;
+    box-sizing: border-box !important;
     border-radius: 0 !important;
     box-shadow: none !important;
     margin: 0 !important;
-    padding: 32mm 28mm 24mm !important;
+    padding: 28mm 26mm 22mm !important;
     transform: none !important;
     page-break-inside: avoid !important;
+    page-break-after: avoid !important;
+    overflow: hidden !important;
   }
 }
+
